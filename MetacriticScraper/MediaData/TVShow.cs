@@ -10,7 +10,7 @@ namespace MetacriticScraper.MediaData
     {
         private int m_season;
 
-        public TVShow Parse(string html)
+        public TVShow Parse(string htm)
         {
             return null;
         }
