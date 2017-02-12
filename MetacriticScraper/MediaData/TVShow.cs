@@ -6,9 +6,14 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class TVShow : MediaItem, IScrapable<TVShow>, IMediaItem
+    public class TVShow : MediaItem, IScrapable<TVShow>
     {
         private int m_season;
+
+        public string Scrape()
+        {
+            return string.Empty;
+        }
 
         public TVShow Parse(string html)
         {

@@ -6,11 +6,16 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class Film : MediaItem, IScrapable<Film>, IMediaItem
+    public class Movie : MediaItem, IScrapable<Movie>
     {
         private Person m_director;
+        public string Scrape()
+        {
 
-        public Film Parse(string html)
+            return null;
+        }
+
+        public Movie Parse(string html)
         {
             return null;
         }
