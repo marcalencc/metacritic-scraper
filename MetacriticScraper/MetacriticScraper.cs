@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MetacriticScraper.RequestData;
+using MetacriticScraper.MediaData;
+using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper
 {
@@ -39,37 +41,57 @@ namespace MetacriticScraper
         {
             lock (m_queueLock)
             {
-                return base.Dequeue();
+                if (base.Count > 0)
+                {
+                    return base.Dequeue();
+                }
             }
+
+            return default(T);
         }
     }
 
-
     public class MetacriticScraper
     {
-        private RequestQueue<IMediaItemRequest> m_requestQueue;
+        private bool m_isRunning;
+        private RequestQueue<RequestItem> m_requestQueue;
         private Thread m_requestThread;
         private AutoResetEvent m_requestSignal;
-        private bool m_isRunning;
+
+        private RequestQueue<IScrapable<MediaItem>> m_dataFetchQueue;
+        private Thread m_dataFetchThread;
+        private AutoResetEvent m_dataFetchSignal;
 
         public MetacriticScraper()
         {
-            m_requestQueue = new RequestQueue<IMediaItemRequest>(10);
+            m_requestQueue = new RequestQueue<RequestItem>(10);
             m_requestThread = new Thread(RequestThreadProc);
             m_requestSignal = new AutoResetEvent(false);
+
+            m_dataFetchQueue = new RequestQueue<IScrapable<MediaItem>>(10);
+            m_dataFetchThread = new Thread(DataFetchThreadProc);
+            m_dataFetchSignal = new AutoResetEvent(false);
         }
 
         public void Initialize()
         {
             m_isRunning = true;
             m_requestThread.Start();
+            m_dataFetchThread.Start();
+        }
+
+        public static void Main(String[] args)
+        {
+            MetacriticScraper scr = new MetacriticScraper();
+            scr.Initialize();
+            scr.AddItem("lala");
         }
 
         public void AddItem(string url)
         {
             if (m_requestQueue.HasAvailableSlot())
             {
-                m_requestQueue.Enqueue(new MovieRequest(url));
+                m_requestQueue.Enqueue(new MovieRequestItem(url));
             }
             else
             {
@@ -81,10 +103,10 @@ namespace MetacriticScraper
         {
             while (m_isRunning)
             {
-                IMediaItemRequest item = m_requestQueue.Dequeue();
+                RequestItem item = m_requestQueue.Dequeue();
                 if (item != null)
                 {
-                    ProcessRequest(item);
+                    ProcessAutoSearch(item);
                 }
                 else
                 {
@@ -97,10 +119,74 @@ namespace MetacriticScraper
             }
         }
 
-        private void ProcessRequest(IMediaItemRequest request)
+        private void ProcessAutoSearch(RequestItem request)
         {
-
+            var task = request.AutoSearch();
+            if (task.Result)
+            {
+                if (request.FilterValidUrls())
+                {
+                    m_dataFetchQueue.Enqueue(request);
+                }
+                else
+                {
+                    // log
+                }
+            }
+            else
+            {
+                // log
+            }
         }
 
+        private void DataFetchThreadProc()
+        {
+            while (m_isRunning)
+            {
+                IScrapable<MediaItem> item = m_dataFetchQueue.Dequeue();
+                if (item != null)
+                {
+                    FetchResults(item);
+                }
+                else
+                {
+                    if (!m_requestSignal.WaitOne(10000))
+                    {
+                        // log
+                    }
+                }
+                Thread.Sleep(10);
+            }
+        }
+
+        public async void FetchResults(IScrapable<MediaItem> item)
+        {
+            var tasks = item.Urls.Select(url => FetchResults(item, url));
+
+            try
+            {
+                List<MediaItem>[] htmlResp = await Task.WhenAll(tasks);
+            }
+            catch (Exception)
+            {
+                var exceptions = tasks.Where(t => t.Exception != null).Select(t => t.Exception);
+                // log
+            }
+        }
+
+        private Task<List<MediaItem>> FetchResults(IScrapable<MediaItem> item, string url)
+        {
+            string html = item.Scrape(url);
+            if (!string.IsNullOrEmpty(html))
+            {
+                return item.Parse(html);
+            }
+            else
+            {
+                // log
+            }
+
+            return null;
+        }
     }
 }

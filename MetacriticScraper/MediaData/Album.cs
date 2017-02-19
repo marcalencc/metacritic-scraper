@@ -6,7 +6,7 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class Album : MediaItem, IScrapable<Album>
+    public class Album : MediaItem
     {
         private Person m_primaryArtist;
 

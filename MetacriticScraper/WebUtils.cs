@@ -103,15 +103,15 @@ namespace MetacriticScraper
 
                 if ((objRequest.Headers["Content-Type"] ?? "").Trim().Length == 0)
                 {
-                    objRequest.Headers.Add("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
+                    objRequest.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
                 }
 
-                if (string.IsNullOrEmpty(referer))
+                if (!string.IsNullOrEmpty(referer))
                 {
                     objRequest.Referer = referer;
                 }
 
-                if (string.IsNullOrEmpty(host))
+                if (!string.IsNullOrEmpty(host))
                 {
                     objRequest.Host = host;
                 }
@@ -176,15 +176,15 @@ namespace MetacriticScraper
 
                 if ((objRequest.Headers["Content-Type"] ?? "").Trim().Length == 0)
                 {
-                    objRequest.Headers.Add("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
+                    objRequest.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
                 }
 
-                if (string.IsNullOrEmpty(referer))
+                if (!string.IsNullOrEmpty(referer))
                 {
                     objRequest.Referer = referer;
                 }
 
-                if (string.IsNullOrEmpty(host))
+                if (!string.IsNullOrEmpty(host))
                 {
                     objRequest.Host = host;
                 }

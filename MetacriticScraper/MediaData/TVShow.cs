@@ -6,7 +6,7 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class TVShow : MediaItem, IScrapable<TVShow>
+    public class TVShow : MediaItem
     {
         private int m_season;
 
