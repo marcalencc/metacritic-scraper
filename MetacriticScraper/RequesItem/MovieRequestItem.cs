@@ -16,16 +16,21 @@ namespace MetacriticScraper.RequestData
             MediaType = Constants.MovieTypeId;
         }
 
-        public override string Scrape(string url)
+        public override List<string> Scrape()
         {
-            var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url, Constants.MetacriticDomain,
-                Constants.MetacriticDomain, 30000);
-            return task.Result;
+            List<string> urls = new List<string>();
+            foreach (string url in Urls)
+            {
+                var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url, Constants.MetacriticURL, 30000);
+                urls.Add(task.Result);
+            }
+
+            return urls;
         }
 
-        public override Task<List<MediaItem>> Parse(string html)
+        public async override Task<MediaItem> Parse(string html)
         {
-            return null;
+            return new MediaItem();
         }
     }
 }

@@ -62,14 +62,14 @@ namespace MetacriticScraper.RequestData
             m_webUtils = new WebUtils();
         }
 
-        public abstract string Scrape(string url);
-        public abstract Task<List<MediaItem>> Parse(string html);
+        public abstract List<string> Scrape();
+        public abstract Task<MediaItem> Parse(string html);
 
         public async Task<bool> AutoSearch()
         {
             string postData = "search_term=" + m_searchString + "&search_each=1";
             string resp = await m_webUtils.HttpPost(Constants.MetacriticURL + "/" + "autosearch", postData,
-                Constants.MetacriticDomain, Constants.MetacriticDomain, 30000);
+                Constants.MetacriticURL, 30000);
             var completeData = JsonConvert.DeserializeObject<RootObject>(resp);
             if (completeData != null)
             {

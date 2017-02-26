@@ -161,32 +161,18 @@ namespace MetacriticScraper
 
         public async void FetchResults(IScrapable<MediaItem> item)
         {
-            var tasks = item.Urls.Select(url => FetchResults(item, url));
+            List<string> htmlResponses = item.Scrape();
+            var tasks = htmlResponses.Select(html => Task.Run( () => item.Parse(html) ));
 
             try
             {
-                List<MediaItem>[] htmlResp = await Task.WhenAll(tasks);
+                MediaItem[] htmlResp = await Task.WhenAll(tasks);
             }
             catch (Exception)
             {
                 var exceptions = tasks.Where(t => t.Exception != null).Select(t => t.Exception);
                 // log
             }
-        }
-
-        private Task<List<MediaItem>> FetchResults(IScrapable<MediaItem> item, string url)
-        {
-            string html = item.Scrape(url);
-            if (!string.IsNullOrEmpty(html))
-            {
-                return item.Parse(html);
-            }
-            else
-            {
-                // log
-            }
-
-            return null;
         }
     }
 }

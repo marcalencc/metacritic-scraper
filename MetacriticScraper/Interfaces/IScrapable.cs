@@ -9,7 +9,7 @@ namespace MetacriticScraper.Interfaces
     public interface IScrapable<T>
     {
         List<string> Urls { get; set; }
-        string Scrape(string url);
-        Task<List<T>> Parse(string html);
+        List<string> Scrape();
+        Task<T> Parse(string html);
     }
 }
