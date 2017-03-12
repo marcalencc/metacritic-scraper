@@ -8,6 +8,6 @@ namespace MetacriticScraper.MediaData
 {
     public class Movie : MediaItem
     {
-        private Person m_director;
+        public Person Director { get; set; }
     }
 }

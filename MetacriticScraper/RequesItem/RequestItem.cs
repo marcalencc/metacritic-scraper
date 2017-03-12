@@ -63,7 +63,7 @@ namespace MetacriticScraper.RequestData
         }
 
         public abstract List<string> Scrape();
-        public abstract Task<MediaItem> Parse(string html);
+        public abstract MediaItem Parse(string html);
 
         public async Task<bool> AutoSearch()
         {

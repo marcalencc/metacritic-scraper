@@ -8,19 +8,22 @@ namespace MetacriticScraper.MediaData
 {
     public class Rating
     {
-        private short m_criticRating;
-        public short CriticRating
+        public Rating(short criticRating, short userRating,
+            short criticReviewCount, short userReviewCount)
         {
-            get
-            {
-                return m_criticRating;
-            }
+            CriticRating = criticRating;
+            UserRating = userRating;
+            CriticReviewCount = criticReviewCount;
+            UserReviewCount = userReviewCount;
         }
 
-        private short m_criticReviewCount;
+        public Rating (short criticRating, short criticReviewCount): this (criticRating, -1, criticReviewCount, -1)
+        {
+        }
 
-        private short m_userRating;
-
-        private short m_userReviewCount;
+        public short CriticRating { get; set; }
+        public short CriticReviewCount { get; set; }
+        public short UserRating { get; set; }
+        public short UserReviewCount { get; set; }
     }
 }

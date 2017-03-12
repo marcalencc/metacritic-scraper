@@ -10,6 +10,6 @@ namespace MetacriticScraper.Interfaces
     {
         List<string> Urls { get; set; }
         List<string> Scrape();
-        Task<T> Parse(string html);
+        T Parse(string html);
     }
 }
