@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MetacriticScraper.Interfaces;
 using MetacriticScraper.MediaData;
-using HtmlAgilityPack;
 
 namespace MetacriticScraper.RequestData
 {
