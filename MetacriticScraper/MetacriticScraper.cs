@@ -80,18 +80,11 @@ namespace MetacriticScraper
             m_dataFetchThread.Start();
         }
 
-        public static void Main(String[] args)
-        {
-            MetacriticScraper scr = new MetacriticScraper();
-            scr.Initialize();
-            scr.AddItem("lala");
-        }
-
         public void AddItem(string url)
         {
             if (m_requestQueue.HasAvailableSlot())
             {
-                m_requestQueue.Enqueue(new MovieRequestItem(url));
+                m_requestQueue.Enqueue(new TVShowRequestItem(url));
             }
             else
             {

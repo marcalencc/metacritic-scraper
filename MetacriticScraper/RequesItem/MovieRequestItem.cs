@@ -27,6 +27,12 @@ namespace MetacriticScraper.RequestData
             return urls;
         }
 
+        public override bool FilterValidUrls()
+        {
+            Urls = m_autoResult.Where(r => r.Equals(this)).Select(r => r.Url).ToList();
+            return Urls.Count > 0;
+        }
+
         public override MediaItem Parse(string html)
         {
             int startIndex = html.IndexOf(@"<script type=""application/ld+json"">");

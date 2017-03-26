@@ -84,7 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="JSONObjects\AutoComplete.cs" />
     <Compile Include="JSONObjects\Totals.cs" />
     <Compile Include="MediaData\MediaItem.cs" />
@@ -97,9 +97,11 @@
     <Compile Include="MediaData\TVShow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MetacriticScraper.cs" />
+    <Compile Include="RequesItem\AlbumRequestItem.cs" />
     <Compile Include="RequesItem\RequestItem.cs" />
     <Compile Include="RequesItem\MovieRequestItem.cs" />
     <Compile Include="JSONObjects\Result.cs" />
+    <Compile Include="RequesItem\TVShowRequestItem.cs" />
     <Compile Include="WebUtils.cs" />
   </ItemGroup>
   <ItemGroup>

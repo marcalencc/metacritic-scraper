@@ -11,8 +11,15 @@ namespace MetacriticScraper
         public static string MetacriticURL = @"http://www.metacritic.com";
         public static string MetacriticDomain = @"www.metacritic.com";
         public static int MovieTypeId = 150;
-        public static int TvShowTypeId = 170;
-        public static int AlbumTypeId = 70;
+        public static int TvShowTypeId = 70;
+        public static int AlbumTypeId = 170;
         public static int PersonTypeId = 110;
+    }
+
+    public interface IResult : IEquatable<IResult>
+    {
+        string Name { get; }
+        int RefTypeId { get; }
+        string ItemDate { get; }
     }
 }

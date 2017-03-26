@@ -10,7 +10,7 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.RequestData
 {
-    public abstract class RequestItem : IScrapable<MediaItem>
+    public abstract class RequestItem : IScrapable<MediaItem>, IResult
     {
         private int m_mediaType;
         protected int MediaType
@@ -39,18 +39,7 @@ namespace MetacriticScraper.RequestData
         }
 
         private string m_releaseYear;
-        private List<Result> m_autoResult;
-        protected List<Result> AutoResult
-        {
-            get
-            {
-                return m_autoResult;
-            }
-            set
-            {
-                m_autoResult = value;
-            }
-        }
+        protected List<Result> m_autoResult;
  
         private List<MediaItem> m_result;
         protected static WebUtils m_webUtils;
@@ -79,17 +68,37 @@ namespace MetacriticScraper.RequestData
             return m_autoResult != null;
         }
 
-        public bool FilterValidUrls()
-        {
-            List<Result> filteredResult = m_autoResult.Where(r => r.RefTypeId == m_mediaType &&
-                string.Equals(r.Name, m_searchString, StringComparison.OrdinalIgnoreCase)).ToList();
-            if (!string.IsNullOrEmpty(m_releaseYear))
-            {
-                filteredResult = m_autoResult.Where(r => string.Equals(r.ItemDate, m_releaseYear)).ToList();
-            }
+        public abstract bool FilterValidUrls();
 
-            Urls = filteredResult.Select(r => r.Url).ToList();
-            return Urls.Count > 0;
+        #region IResult
+        public string Name
+        {
+            get
+            {
+                return m_searchString;
+            }
         }
+
+        public int RefTypeId
+        {
+            get
+            {
+                return m_mediaType;
+            }
+        }
+
+        public string ItemDate
+        {
+            get
+            {
+                return m_releaseYear;
+            }
+        }
+
+        public bool Equals(IResult obj)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion IResult
     }
 }

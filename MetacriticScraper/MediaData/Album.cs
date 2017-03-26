@@ -8,16 +8,6 @@ namespace MetacriticScraper.MediaData
 {
     public class Album : MediaItem
     {
-        private Person m_primaryArtist;
-
-        public string Scrape()
-        {
-            return string.Empty;
-        }
-
-        public Album Parse(string html)
-        {
-            return null;
-        }
+        public Person PrimaryArtist { get; set; }
     }
 }
