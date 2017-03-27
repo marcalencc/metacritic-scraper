@@ -54,10 +54,12 @@ namespace MetacriticScraper.RequestData
                         movie.ReleaseDate = releaseDate;
                     }
 
-                    short criticRating = -1;
-                    criticRating = Int16.Parse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""));
-                    short criticRatingCount = -1;
-                    criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
+                    short criticRating = 0;
+                    short criticRatingCount = 0;
+                    if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out criticRating))
+                    {
+                        criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
+                    }
                     movie.Rating = new Rating(criticRating, criticRatingCount);
 
                     infoString = infoString.Substring(infoString.IndexOf(@"""director"""));

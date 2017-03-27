@@ -44,10 +44,13 @@ namespace MetacriticScraper.RequestData
                 album.ReleaseDate = releaseDate;
             }
 
-            short criticRating = -1;
-            criticRating = Int16.Parse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"));
-            short criticRatingCount = -1;
-            criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
+            short criticRating = 0;
+            short criticRatingCount = 0;
+            if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out criticRating))
+            {
+                criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
+            }
+
             album.Rating = new Rating(criticRating, criticRatingCount);
             return album;
         }

@@ -13,6 +13,7 @@ namespace MetacriticScraper.RequestData
 
         public TVShowRequestItem(string url)
         {
+            MediaType = Constants.TvShowTypeId;
         }
 
         public override List<string> Scrape()
@@ -41,10 +42,12 @@ namespace MetacriticScraper.RequestData
 
             tvShow.Studio = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
 
-            short criticRating = -1;
-            criticRating = Int16.Parse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"));
-            short criticRatingCount = -1;
-            criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
+            short criticRating = 0;
+            short criticRatingCount = 0;
+            if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out criticRating))
+            {
+                criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
+            }
             tvShow.Rating = new Rating(criticRating, criticRatingCount);
 
             string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""startDate"">", @"</span>");
