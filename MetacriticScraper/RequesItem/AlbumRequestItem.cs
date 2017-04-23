@@ -9,8 +9,14 @@ namespace MetacriticScraper.RequestData
 {
     public class AlbumRequestItem : RequestItem
     {
-        public AlbumRequestItem(string url)
+        public AlbumRequestItem(string title) : base(title)
         {
+            MediaType = Constants.AlbumTypeId;
+        }
+
+        public AlbumRequestItem(string title, string releaseYear) : base(title, releaseYear)
+        {
+            MediaType = Constants.AlbumTypeId;
         }
 
         public override List<string> Scrape()

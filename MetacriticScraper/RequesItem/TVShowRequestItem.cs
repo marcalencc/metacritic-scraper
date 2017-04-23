@@ -9,11 +9,16 @@ namespace MetacriticScraper.RequestData
 {
     public class TVShowRequestItem : RequestItem
     {
-        private int m_season;
+        private string m_season;
 
-        public TVShowRequestItem(string url)
+        public TVShowRequestItem(string title) : base(title)
         {
             MediaType = Constants.TvShowTypeId;
+        }
+
+        public TVShowRequestItem(string title, string season) : this(title)
+        {
+            m_season = season;
         }
 
         public override List<string> Scrape()

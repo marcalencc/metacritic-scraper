@@ -51,6 +51,16 @@ namespace MetacriticScraper.RequestData
             m_webUtils = new WebUtils();
         }
 
+        protected RequestItem(string searchString) : this()
+        {
+            m_searchString = searchString;
+        }
+
+        protected RequestItem(string searchString, string releaseYear) : this(searchString)
+        {
+            m_releaseYear = releaseYear;
+        }
+
         public abstract List<string> Scrape();
         public abstract MediaItem Parse(string html);
 

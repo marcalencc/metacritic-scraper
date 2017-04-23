@@ -94,19 +94,72 @@ namespace MetacriticScraper
                 }
             }
 
+            string title = string.Empty;
+            string yearOrSeason = string.Empty;
             if (!string.IsNullOrEmpty(keyword))
             {
-                string title = string.Empty;
                 url = url.Replace(keyword, string.Empty);
-
-                title = url;
-                int slashIdx = url.IndexOf('/');
-                if (slashIdx >= 0)
+                if (!string.IsNullOrEmpty(url))
                 {
-                    title = url.Substring(0, slashIdx - 1);
-                    url = url.Replace(title, string.Empty);
-                    int year;
-                    int.TryParse(url, out year);
+                    title = url;
+                    int slashIdx = url.IndexOf('/');
+                    if (slashIdx >= 0)
+                    {
+                        title = url.Substring(0, slashIdx - 1);
+                        url = url.Replace(title, string.Empty);
+                        int param;
+                        if (!int.TryParse(url, out param))
+                        {
+                            yearOrSeason = string.Empty;
+                        }
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+            return CreateRequestItem(keyword, title, yearOrSeason.ToString());
+        }
+
+        private RequestItem CreateRequestItem(string keyword, string title, string yearOrSeason)
+        {
+            if (keyword == "/movie/")
+            {
+                if (!string.IsNullOrEmpty(yearOrSeason) && yearOrSeason.Length == 4)
+                {
+                   return new MovieRequestItem(title, yearOrSeason);
+                }
+                else
+                {
+                    return new MovieRequestItem(title);
+                }
+            }
+            else if (keyword == "/album/")
+            {
+                if (!string.IsNullOrEmpty(yearOrSeason) && yearOrSeason.Length == 4)
+                {
+                    return new AlbumRequestItem(title, yearOrSeason);
+                }
+                else
+                {
+                    return new AlbumRequestItem(title);
+                }
+            }
+            else if (keyword == "/tvshow/")
+            {
+                if (!string.IsNullOrEmpty(yearOrSeason))
+                {
+                    return new TVShowRequestItem(title, yearOrSeason);
+                }
+                else
+                {
+                    return new TVShowRequestItem(title);
                 }
             }
 
