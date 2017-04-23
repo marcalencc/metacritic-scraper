@@ -53,6 +53,8 @@ namespace MetacriticScraper
 
     public class MetacriticScraper
     {
+        private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/", "/person/" };
+
         private bool m_isRunning;
         private RequestQueue<RequestItem> m_requestQueue;
         private Thread m_requestThread;
@@ -80,10 +82,43 @@ namespace MetacriticScraper
             m_dataFetchThread.Start();
         }
 
+        private RequestItem ParseRequestUrl(string url)
+        {
+            string keyword = string.Empty;
+            for (int idx = 0; idx <= MAIN_KEYWORDS.Length; ++idx)
+            {
+                if (url.StartsWith(MAIN_KEYWORDS[idx]))
+                {
+                    keyword = MAIN_KEYWORDS[idx];
+                    break;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                string title = string.Empty;
+                url = url.Replace(keyword, string.Empty);
+
+                title = url;
+                int slashIdx = url.IndexOf('/');
+                if (slashIdx >= 0)
+                {
+                    title = url.Substring(0, slashIdx - 1);
+                    url = url.Replace(title, string.Empty);
+                    int year;
+                    int.TryParse(url, out year);
+                }
+            }
+
+            return null;
+        }
+
+        // Url - no domain name
         public void AddItem(string url)
         {
             if (m_requestQueue.HasAvailableSlot())
             {
+
                 m_requestQueue.Enqueue(new TVShowRequestItem(url));
             }
             else
@@ -155,7 +190,7 @@ namespace MetacriticScraper
         public async void FetchResults(IScrapable<MediaItem> item)
         {
             List<string> htmlResponses = item.Scrape();
-            var tasks = htmlResponses.Select(html => Task.Run( () => item.Parse(html) ));
+            var tasks = htmlResponses.Select(html => Task.Run(() => item.Parse(html)));
 
             try
             {
