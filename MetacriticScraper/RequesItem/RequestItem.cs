@@ -25,7 +25,7 @@ namespace MetacriticScraper.RequestData
             }
         }
 
-        public string m_searchString;
+        private string m_searchString;
         protected string SearchString
         {
             get

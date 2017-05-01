@@ -105,12 +105,16 @@ namespace MetacriticScraper
                     int slashIdx = url.IndexOf('/');
                     if (slashIdx >= 0)
                     {
-                        title = url.Substring(0, slashIdx - 1);
-                        url = url.Replace(title, string.Empty);
+                        title = url.Substring(0, slashIdx);
+                        url = url.Replace(title + "/", string.Empty);
                         int param;
                         if (!int.TryParse(url, out param))
                         {
                             yearOrSeason = string.Empty;
+                        }
+                        else
+                        {
+                            yearOrSeason = param.ToString();
                         }
                     }
                 }
@@ -171,8 +175,11 @@ namespace MetacriticScraper
         {
             if (m_requestQueue.HasAvailableSlot())
             {
-
-                m_requestQueue.Enqueue(new TVShowRequestItem(url));
+                RequestItem req = ParseRequestUrl(url);
+                if (req != null)
+                {
+                    m_requestQueue.Enqueue(req);
+                }
             }
             else
             {
