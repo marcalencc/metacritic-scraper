@@ -68,7 +68,7 @@ namespace MetacriticScraper.RequestData
                     movie.Rating = new Rating(criticRating, criticRatingCount);
 
                     infoString = infoString.Substring(infoString.IndexOf(@"""director"""));
-                    movie.Director = new Person(ParseItem(ref infoString, @"""name"": """, @""""));
+                    movie.Director = ParseItem(ref infoString, @"""name"": """, @"""");
 
                     return movie;
                 }

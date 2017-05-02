@@ -16,11 +16,6 @@ namespace MetacriticScraper.MediaData
         private PersonRatingSummary m_filmRatingsSummary;
         private PersonRatingSummary m_albumRatingsSummary;
 
-        public Person(string name)
-        {
-            m_name = name;
-        }
-
         public Person (string name, List<MediaItem> tvShows, List<MediaItem> films,
             List<MediaItem> albums)
         {

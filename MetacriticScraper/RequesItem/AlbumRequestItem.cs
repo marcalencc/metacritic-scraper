@@ -42,7 +42,7 @@ namespace MetacriticScraper.RequestData
         {
             Album album = new Album();
             album.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
-            album.PrimaryArtist = new Person(ParseItem(ref html, @"<span class=""band_name"" itemprop=""name"">", @"</span>"));
+            album.PrimaryArtist = ParseItem(ref html, @"<span class=""band_name"" itemprop=""name"">", @"</span>");
             string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""datePublished"">", @"</span>");
             DateTime releaseDate;
             if (DateTime.TryParse(releaseDateStr, out releaseDate))

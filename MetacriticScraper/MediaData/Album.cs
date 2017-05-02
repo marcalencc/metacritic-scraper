@@ -8,6 +8,6 @@ namespace MetacriticScraper.MediaData
 {
     public class Album : MediaItem
     {
-        public Person PrimaryArtist { get; set; }
+        public string PrimaryArtist { get; set; }
     }
 }
