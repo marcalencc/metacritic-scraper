@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MetacriticScraper.RequestData;
 using MetacriticScraper.MediaData;
 using MetacriticScraper.Interfaces;
+using Newtonsoft.Json;
 
 namespace MetacriticScraper
 {
@@ -255,6 +256,10 @@ namespace MetacriticScraper
             try
             {
                 MediaItem[] htmlResp = await Task.WhenAll(tasks);
+                if (htmlResp != null && htmlResp.Length > 0)
+                {
+                    string resp = JsonConvert.SerializeObject(htmlResp);
+                }
             }
             catch (Exception)
             {

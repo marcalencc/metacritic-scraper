@@ -31,7 +31,8 @@ namespace MetacriticScraper
             else if (RefTypeId == Constants.MovieTypeId ||
                 RefTypeId == Constants.TvShowTypeId)
             {
-                result = string.Equals(Name, obj.Name); 
+                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(ItemDate, obj.ItemDate); 
             }
             else if (RefTypeId == Constants.AlbumTypeId)
             {

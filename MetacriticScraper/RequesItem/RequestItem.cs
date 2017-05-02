@@ -39,6 +39,7 @@ namespace MetacriticScraper.RequestData
         }
 
         private string m_releaseYear;
+
         protected List<Result> m_autoResult;
  
         private List<MediaItem> m_result;
@@ -53,7 +54,7 @@ namespace MetacriticScraper.RequestData
 
         protected RequestItem(string searchString) : this()
         {
-            m_searchString = searchString;
+            m_searchString = searchString.Replace("-", " ");
         }
 
         protected RequestItem(string searchString, string releaseYear) : this(searchString)
