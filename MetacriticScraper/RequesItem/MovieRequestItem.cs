@@ -10,12 +10,12 @@ namespace MetacriticScraper.RequestData
 {
     public class MovieRequestItem : RequestItem
     {
-        public MovieRequestItem(string title) : base(title)
+        public MovieRequestItem(string id, string title) : base(id, title)
         {
             MediaType = Constants.MovieTypeId;
         }
 
-        public MovieRequestItem(string title, string releaseYear) : base(title, releaseYear)
+        public MovieRequestItem(string id, string title, string releaseYear) : base(id, title, releaseYear)
         {
             MediaType = Constants.MovieTypeId;
         }
@@ -34,7 +34,7 @@ namespace MetacriticScraper.RequestData
 
         public override bool FilterValidUrls()
         {
-            Urls = m_autoResult.Where(r => r.Equals(this)).Select(r => r.Url).ToList();
+            Urls = m_autoResult.Where(r => Equals(r)).Select(r => r.Url).ToList();
             return Urls.Count > 0;
         }
 

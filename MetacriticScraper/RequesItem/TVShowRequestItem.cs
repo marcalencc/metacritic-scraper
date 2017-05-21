@@ -11,12 +11,12 @@ namespace MetacriticScraper.RequestData
     {
         private string m_season;
 
-        public TVShowRequestItem(string title) : base(title)
+        public TVShowRequestItem(string id, string title) : base(id, title)
         {
             MediaType = Constants.TvShowTypeId;
         }
 
-        public TVShowRequestItem(string title, string season) : this(title)
+        public TVShowRequestItem(string id, string title, string season) : this(id, title)
         {
             m_season = season;
         }
@@ -35,7 +35,7 @@ namespace MetacriticScraper.RequestData
 
         public override bool FilterValidUrls()
         {
-            Urls = m_autoResult.Where(r => r.Equals(this)).Select(r => r.Url + "/season-" + m_season).ToList();
+            Urls = m_autoResult.Where(r => Equals(r)).Select(r => r.Url + "/season-" + m_season).ToList();
             return Urls.Count > 0;
         }
 

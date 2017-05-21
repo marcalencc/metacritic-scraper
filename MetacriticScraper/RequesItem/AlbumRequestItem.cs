@@ -9,12 +9,12 @@ namespace MetacriticScraper.RequestData
 {
     public class AlbumRequestItem : RequestItem
     {
-        public AlbumRequestItem(string title) : base(title)
+        public AlbumRequestItem(string id, string title) : base(id, title)
         {
             MediaType = Constants.AlbumTypeId;
         }
 
-        public AlbumRequestItem(string title, string releaseYear) : base(title, releaseYear)
+        public AlbumRequestItem(string id, string title, string releaseYear) : base(id, title, releaseYear)
         {
             MediaType = Constants.AlbumTypeId;
         }
@@ -33,7 +33,7 @@ namespace MetacriticScraper.RequestData
 
         public override bool FilterValidUrls()
         {
-            Urls = m_autoResult.Where(r => r.Equals(this)).Select(r => r.Url).ToList();
+            Urls = m_autoResult.Where(r => Equals(r)).Select(r => r.Url).ToList();
             return Urls.Count > 0;
         }
 

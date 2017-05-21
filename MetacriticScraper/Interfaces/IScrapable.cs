@@ -11,5 +11,6 @@ namespace MetacriticScraper.Interfaces
         List<string> Urls { get; set; }
         List<string> Scrape();
         T Parse(string html);
+        string RequestId { get; }
     }
 }

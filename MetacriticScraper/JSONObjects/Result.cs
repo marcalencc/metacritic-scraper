@@ -19,33 +19,7 @@ namespace MetacriticScraper
 
         public bool Equals(IResult obj)
         {
-            bool result = false;
-            if (obj == null)
-            {
-                return false;
-            }
-            else if (RefTypeId != obj.RefTypeId)
-            {
-                return false;
-            }
-            else if (RefTypeId == Constants.MovieTypeId ||
-                RefTypeId == Constants.TvShowTypeId)
-            {
-                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase) &&
-                    string.Equals(ItemDate, obj.ItemDate); 
-            }
-            else if (RefTypeId == Constants.AlbumTypeId)
-            {
-                string name = obj.Name.Split('-')[0].Trim();
-                result = string.Equals(Name, obj.Name);
-            }
-
-            if (result && obj.ItemDate != null)
-            {
-                result = string.Equals(ItemDate, obj.ItemDate);
-            }
-
-            return result;
+            throw new NotImplementedException();
         }
     }
 }
