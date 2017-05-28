@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MetacriticScraper.RequestData;
 using MetacriticScraper.MediaData;
 using MetacriticScraper.Interfaces;
+using MetacriticScraper.Errors;
 using Newtonsoft.Json;
 
 namespace MetacriticScraper
@@ -23,6 +24,11 @@ namespace MetacriticScraper
         }
     
         DateTime m_dateAdded;
+
+        public bool IsExpired()
+        {
+            return (DateTime.Now - m_dateAdded).Milliseconds >= 30000;
+        }
 
         public RequestTrackerItem(string requestId)
         {
@@ -88,6 +94,7 @@ namespace MetacriticScraper
         private Action<string, string> m_responseChannel;
         private object m_requestTrackerLock;
         private List<RequestTrackerItem> m_requestTracker;
+        private System.Threading.Timer m_requestTrackerTimer;
 
         public MetacriticScraper(Action<string, string> responseChannel)
         {
@@ -101,7 +108,25 @@ namespace MetacriticScraper
 
             m_requestTracker = new List<RequestTrackerItem>();
             m_requestTrackerLock = new object();
+            m_requestTrackerTimer = new Timer(RequestTrackerChecker, null, 0, 30000);
             m_responseChannel = responseChannel;
+        }
+
+        private void RequestTrackerChecker(object state)
+        {
+            lock (m_requestTrackerLock)
+            {
+                for (int idx = 0; idx < m_requestTracker.Count; ++idx)
+                {
+                    if(m_requestTracker[idx].IsExpired())
+                    {
+                        Error error = new Error(new Errors.TimeoutException("Request took too long to be processed"));
+                        string resp = JsonConvert.SerializeObject(error);
+                        PublishResult(m_requestTracker[idx].RequestId, resp);
+                        m_requestTracker.RemoveAt(idx--);
+                    }
+                }
+            }
         }
 
         public void Initialize()
@@ -214,6 +239,12 @@ namespace MetacriticScraper
                         m_requestTracker.Add(new RequestTrackerItem(id));
                     }
                 }
+                else
+                {
+                    Error error = new Error(new Errors.InvalidUrlException("Url has invalid format"));
+                    string resp = JsonConvert.SerializeObject(error);
+                    PublishResult(id, resp);
+                }
             }
             else
             {
@@ -286,36 +317,42 @@ namespace MetacriticScraper
             List<string> htmlResponses = item.Scrape();
             var tasks = htmlResponses.Select(html => Task.Run(() => item.Parse(html)));
 
-            try
+            RequestTrackerItem tItem;
+            lock (m_requestTrackerLock)
             {
-                MediaItem[] htmlResp = await Task.WhenAll(tasks);
-                if (htmlResp != null && htmlResp.Length > 0)
+                tItem = m_requestTracker.FirstOrDefault(i => i.RequestId == item.RequestId);
+                if (!EqualityComparer<RequestTrackerItem>.Default.Equals(tItem, default(RequestTrackerItem)))
                 {
-                    RequestTrackerItem tItem;
-                    string resp = JsonConvert.SerializeObject(htmlResp);
-                    lock (m_requestTrackerLock)
-                    {
-                        tItem = m_requestTracker.FirstOrDefault(i => i.RequestId == item.RequestId);
-                        if (!EqualityComparer<RequestTrackerItem>.Default.Equals(tItem, default(RequestTrackerItem)))
-                        {
-                            m_requestTracker.Remove(tItem);
-                        }
-                    }
+                    m_requestTracker.Remove(tItem);
+                }
+            }
 
-                    if (!EqualityComparer<RequestTrackerItem>.Default.Equals(tItem, default(RequestTrackerItem)))
+            if (!EqualityComparer<RequestTrackerItem>.Default.Equals(tItem, default(RequestTrackerItem)))
+            {
+                try
+                {
+                    string resp;
+                    MediaItem[] htmlResp = await Task.WhenAll(tasks);
+                    if (htmlResp != null && htmlResp.Length > 0)
                     {
-                        PublishResult(tItem.RequestId, resp);
+                        resp = JsonConvert.SerializeObject(htmlResp);
                     }
                     else
                     {
-                        // log
+                        Error error = new Error(new Errors.EmptyResponseException("Empty response"));
+                        resp = JsonConvert.SerializeObject(error);
                     }
 
+                    PublishResult(tItem.RequestId, resp);
+                }
+                catch (Exception)
+                {
+                    var exceptions = tasks.Where(t => t.Exception != null).Select(t => t.Exception);
+                    // log
                 }
             }
-            catch (Exception)
+            else
             {
-                var exceptions = tasks.Where(t => t.Exception != null).Select(t => t.Exception);
                 // log
             }
         }

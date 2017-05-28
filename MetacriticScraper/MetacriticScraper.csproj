@@ -84,6 +84,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Errors\EmptyResponseException.cs" />
+    <Compile Include="Errors\Error.cs" />
+    <Compile Include="Errors\InvalidUrlException.cs" />
+    <Compile Include="Errors\TimeoutException.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="JSONObjects\AutoComplete.cs" />
     <Compile Include="JSONObjects\Totals.cs" />
