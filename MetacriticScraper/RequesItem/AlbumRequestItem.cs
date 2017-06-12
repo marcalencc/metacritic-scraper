@@ -33,7 +33,7 @@ namespace MetacriticScraper.RequestData
 
         public override bool FilterValidUrls()
         {
-            Urls = m_autoResult.Where(r => Equals(r)).Select(r => r.Url).ToList();
+            Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url).ToList();
             return Urls.Count > 0;
         }
 
@@ -67,6 +67,21 @@ namespace MetacriticScraper.RequestData
             infoStr = infoStr.Substring(startIndex);
             int endIndex = infoStr.IndexOf(endPos);
             return infoStr.Substring(0, endIndex).Trim();
+        }
+
+        public override bool Equals(IResult obj)
+        {
+            bool result = false;
+            if (base.Equals(obj))
+            {
+                string name = obj.Name.Split('-')[0].Trim();
+                result = string.Equals(Name, name, StringComparison.OrdinalIgnoreCase);
+                if (result && ItemDate != null)
+                {
+                    result = string.Equals(ItemDate, obj.ItemDate);
+                }
+            }
+            return result;
         }
     }
 }

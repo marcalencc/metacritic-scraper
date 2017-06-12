@@ -27,7 +27,7 @@ namespace MetacriticScraper
 
         public bool IsExpired()
         {
-            return (DateTime.Now - m_dateAdded).Milliseconds >= 30000;
+            return (DateTime.Now - m_dateAdded).TotalMilliseconds >= 30000;
         }
 
         public RequestTrackerItem(string requestId)
@@ -41,11 +41,13 @@ namespace MetacriticScraper
     {
         private int m_maxRequest;
         private object m_queueLock;
+        private AutoResetEvent m_requestSignal;
 
         public RequestQueue(int maxRequest)
         {
             m_maxRequest = maxRequest;
             m_queueLock = new object();
+            m_requestSignal = new AutoResetEvent(false);
         }
 
         public bool HasAvailableSlot()
@@ -62,6 +64,7 @@ namespace MetacriticScraper
             {
                 base.Enqueue(item);
             }
+            m_requestSignal.Set();
         }
 
         public new T Dequeue()
@@ -76,6 +79,11 @@ namespace MetacriticScraper
 
             return default(T);
         }
+
+        public bool WaitOnEmpty(int ms)
+        {
+            return m_requestSignal.WaitOne(ms);
+        }
     }
 
     public class MetacriticScraper
@@ -85,11 +93,9 @@ namespace MetacriticScraper
         private bool m_isRunning;
         private RequestQueue<RequestItem> m_requestQueue;
         private Thread m_requestThread;
-        private AutoResetEvent m_requestSignal;
 
         private RequestQueue<IScrapable<MediaItem>> m_dataFetchQueue;
         private Thread m_dataFetchThread;
-        private AutoResetEvent m_dataFetchSignal;
 
         private Action<string, string> m_responseChannel;
         private object m_requestTrackerLock;
@@ -100,11 +106,9 @@ namespace MetacriticScraper
         {
             m_requestQueue = new RequestQueue<RequestItem>(10);
             m_requestThread = new Thread(RequestThreadProc);
-            m_requestSignal = new AutoResetEvent(false);
 
             m_dataFetchQueue = new RequestQueue<IScrapable<MediaItem>>(10);
             m_dataFetchThread = new Thread(DataFetchThreadProc);
-            m_dataFetchSignal = new AutoResetEvent(false);
 
             m_requestTracker = new List<RequestTrackerItem>();
             m_requestTrackerLock = new object();
@@ -225,11 +229,10 @@ namespace MetacriticScraper
         }
 
         // Url - no domain name
-        public void AddItem(string url)
+        public void AddItem(string id, string url)
         {
             if (m_requestQueue.HasAvailableSlot())
             {
-                string id = Guid.NewGuid().ToString();
                 RequestItem req = ParseRequestUrl(id, url);
                 if (req != null)
                 {
@@ -263,7 +266,7 @@ namespace MetacriticScraper
                 }
                 else
                 {
-                    if (!m_requestSignal.WaitOne(10000))
+                    if (!m_requestQueue.WaitOnEmpty(10000))
                     {
                         // log
                     }
@@ -303,7 +306,7 @@ namespace MetacriticScraper
                 }
                 else
                 {
-                    if (!m_requestSignal.WaitOne(10000))
+                    if (!m_dataFetchQueue.WaitOnEmpty(10000))
                     {
                         // log
                     }

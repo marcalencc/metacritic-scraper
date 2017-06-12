@@ -10,7 +10,7 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.RequestData
 {
-    public abstract class RequestItem : IScrapable<MediaItem>, IResult
+    public abstract class RequestItem : IScrapable<MediaItem>, IResult, IEquatable<IResult>
     {
         private int m_mediaType;
         protected int MediaType
@@ -117,35 +117,9 @@ namespace MetacriticScraper.RequestData
             }
         }
 
-        public bool Equals(IResult obj)
+        public virtual bool Equals(IResult obj)
         {
-            bool result = false;
-            if (obj == null)
-            {
-                return false;
-            }
-            else if (RefTypeId != obj.RefTypeId)
-            {
-                return false;
-            }
-            else if (RefTypeId == Constants.MovieTypeId ||
-                RefTypeId == Constants.TvShowTypeId)
-            {
-                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase) &&
-                    string.Equals(ItemDate, obj.ItemDate);
-            }
-            else if (RefTypeId == Constants.AlbumTypeId)
-            {
-                string name = obj.Name.Split('-')[0].Trim();
-                result = string.Equals(Name, obj.Name);
-            }
-
-            if (result && obj.ItemDate != null)
-            {
-                result = string.Equals(ItemDate, obj.ItemDate);
-            }
-
-            return result;
+            return obj != null && obj.RefTypeId == RefTypeId;
         }
         #endregion IResult
     }

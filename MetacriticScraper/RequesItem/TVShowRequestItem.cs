@@ -35,7 +35,7 @@ namespace MetacriticScraper.RequestData
 
         public override bool FilterValidUrls()
         {
-            Urls = m_autoResult.Where(r => Equals(r)).Select(r => r.Url + "/season-" + m_season).ToList();
+            Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url + "/season-" + m_season).ToList();
             return Urls.Count > 0;
         }
 
@@ -72,5 +72,14 @@ namespace MetacriticScraper.RequestData
             return infoStr.Substring(0, endIndex).Trim();
         }
 
+        public override bool Equals(IResult obj)
+        {
+            bool result = false;
+            if (base.Equals(obj))
+            {
+                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase);
+            }
+            return result;
+        }
     }
 }

@@ -10,11 +10,11 @@ namespace MetacriticScraper.Errors
     {
         public Error (Exception exception)
         {
-            Exception = exception;
+            Exception = exception.ToString();
             Message = exception.Message;
         }
 
-        public Exception Exception { get; set; }
+        public string Exception { get; set; }
         public string Message { get; set; }
     }
 }
