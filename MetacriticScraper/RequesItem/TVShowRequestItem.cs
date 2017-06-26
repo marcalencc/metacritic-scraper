@@ -23,6 +23,7 @@ namespace MetacriticScraper.RequestData
 
         public override List<string> Scrape()
         {
+            Logger.Info("Scraping {0} urls for {1}", Urls.Count, SearchString);
             List<string> urls = new List<string>();
             foreach (string url in Urls)
             {
@@ -36,6 +37,7 @@ namespace MetacriticScraper.RequestData
         public override bool FilterValidUrls()
         {
             Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url + "/season-" + m_season).ToList();
+            Logger.Info("{0} urls filtered for {1}", Urls.Count, SearchString);
             return Urls.Count > 0;
         }
 

@@ -7,11 +7,15 @@ using MetacriticScraper.MediaData;
 using Newtonsoft.Json;
 using MetacriticScraper.JSONObjects;
 using MetacriticScraper.Interfaces;
+using MetacriticScraper.Web;
+using NLog;
 
 namespace MetacriticScraper.RequestData
 {
     public abstract class RequestItem : IScrapable<MediaItem>, IResult, IEquatable<IResult>
     {
+        protected static Logger Logger = LogManager.GetCurrentClassLogger();
+
         private int m_mediaType;
         protected int MediaType
         {
@@ -66,6 +70,7 @@ namespace MetacriticScraper.RequestData
         {
             m_searchString = searchString.Replace("-", " ");
             m_requestId = id;
+            Logger = LogManager.GetLogger(GetType().FullName);
         }
 
         protected RequestItem(string id, string searchString, string releaseYear) : this(id, searchString)
@@ -78,6 +83,7 @@ namespace MetacriticScraper.RequestData
 
         public async Task<bool> AutoSearch()
         {
+            Logger.Info("Autosearching for term {0} ", m_searchString);
             string postData = "search_term=" + m_searchString + "&search_each=1";
             string resp = await m_webUtils.HttpPost(Constants.MetacriticURL + "/" + "autosearch", postData,
                 Constants.MetacriticURL, 30000);

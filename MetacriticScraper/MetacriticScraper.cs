@@ -9,8 +9,9 @@ using MetacriticScraper.MediaData;
 using MetacriticScraper.Interfaces;
 using MetacriticScraper.Errors;
 using Newtonsoft.Json;
+using NLog;
 
-namespace MetacriticScraper
+namespace MetacriticScraper.Scraper
 {
     public struct RequestTrackerItem
     {
@@ -86,8 +87,9 @@ namespace MetacriticScraper
         }
     }
 
-    public class MetacriticScraper
+    public class Scraper
     {
+        private static Logger Logger = LogManager.GetCurrentClassLogger();
         private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/", "/person/" };
 
         private bool m_isRunning;
@@ -102,7 +104,7 @@ namespace MetacriticScraper
         private List<RequestTrackerItem> m_requestTracker;
         private System.Threading.Timer m_requestTrackerTimer;
 
-        public MetacriticScraper(Action<string, string> responseChannel)
+        public Scraper(Action<string, string> responseChannel)
         {
             m_requestQueue = new RequestQueue<RequestItem>(10);
             m_requestThread = new Thread(RequestThreadProc);
@@ -114,6 +116,8 @@ namespace MetacriticScraper
             m_requestTrackerLock = new object();
             m_requestTrackerTimer = new Timer(RequestTrackerChecker, null, 0, 30000);
             m_responseChannel = responseChannel;
+
+            Logger.Info("Metacritic Sccraper Initialized...");
         }
 
         private void RequestTrackerChecker(object state)
@@ -124,6 +128,7 @@ namespace MetacriticScraper
                 {
                     if(m_requestTracker[idx].IsExpired())
                     {
+                        Logger.Error("Request took too long to be processed => {0}", m_requestTracker[idx].RequestId);
                         Error error = new Error(new Errors.TimeoutException("Request took too long to be processed"));
                         string resp = JsonConvert.SerializeObject(error);
                         PublishResult(m_requestTracker[idx].RequestId, resp);
@@ -138,6 +143,8 @@ namespace MetacriticScraper
             m_isRunning = true;
             m_requestThread.Start();
             m_dataFetchThread.Start();
+
+            Logger.Info("Metacritic Sccraper Started...");
         }
 
         private RequestItem ParseRequestUrl(string id, string url)
@@ -231,6 +238,7 @@ namespace MetacriticScraper
         // Url - no domain name
         public void AddItem(string id, string url)
         {
+            Logger.Info("Adding request item => Id: {0}, Url: {1}", id, url);
             if (m_requestQueue.HasAvailableSlot())
             {
                 RequestItem req = ParseRequestUrl(id, url);
@@ -239,11 +247,13 @@ namespace MetacriticScraper
                     m_requestQueue.Enqueue(req);
                     lock (m_requestTrackerLock)
                     {
+                        Logger.Info("--Successfully added request item.");
                         m_requestTracker.Add(new RequestTrackerItem(id));
                     }
                 }
                 else
                 {
+                    Logger.Error("--Failed to add request item. Invalid url format.");
                     Error error = new Error(new Errors.InvalidUrlException("Url has invalid format"));
                     string resp = JsonConvert.SerializeObject(error);
                     PublishResult(id, resp);
@@ -251,7 +261,10 @@ namespace MetacriticScraper
             }
             else
             {
-                // log
+                Logger.Error("--Failed to add request item. System busy.");
+                Error error = new Error(new Errors.SystemBusyException("Too many request at the moment"));
+                string resp = JsonConvert.SerializeObject(error);
+                PublishResult(id, resp);
             }
         }
 
@@ -268,7 +281,7 @@ namespace MetacriticScraper
                 {
                     if (!m_requestQueue.WaitOnEmpty(10000))
                     {
-                        // log
+                        Logger.Info("RequestThreadProc woke up after ten seconds.");
                     }
                 }
                 Thread.Sleep(10);
@@ -286,12 +299,12 @@ namespace MetacriticScraper
                 }
                 else
                 {
-                    // log
+                    Logger.Info("No valid urls matching the request");
                 }
             }
             else
             {
-                // log
+                Logger.Info("No valid matches when autosearching");
             }
         }
 
@@ -308,7 +321,7 @@ namespace MetacriticScraper
                 {
                     if (!m_dataFetchQueue.WaitOnEmpty(10000))
                     {
-                        // log
+                        Logger.Info("DataFetchThreadProc woke up after ten seconds.");
                     }
                 }
                 Thread.Sleep(10);
@@ -342,6 +355,7 @@ namespace MetacriticScraper
                     }
                     else
                     {
+                        Logger.Error("No response received");
                         Error error = new Error(new Errors.EmptyResponseException("Empty response"));
                         resp = JsonConvert.SerializeObject(error);
                     }
@@ -351,12 +365,16 @@ namespace MetacriticScraper
                 catch (Exception)
                 {
                     var exceptions = tasks.Where(t => t.Exception != null).Select(t => t.Exception);
-                    // log
+                    Logger.Error("Encountered exception while parsing. Exceptions: ");
+                    foreach (Exception ex in exceptions)
+                    {
+                        Logger.Error("-- {0}", ex.ToString());
+                    }
                 }
             }
             else
             {
-                // log
+                Logger.Warn("Item not found in request tracker");
             }
         }
 
@@ -364,9 +382,10 @@ namespace MetacriticScraper
         {
             if (m_responseChannel == null)
             {
-                // log , exc
+                Logger.Error("No output channel...");
             }
 
+            Logger.Info("Publishing result for {0}, => {1}", requestId, result);
             m_responseChannel(requestId, result);
         }
     }
