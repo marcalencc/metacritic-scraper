@@ -9,13 +9,15 @@ using System.Collections;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using NLog;
 
-namespace MetacriticScraper
+namespace MetacriticScraper.Web
 {
     public class WebUtils
     {
         private static HttpClient m_httpClient;
         private static HttpClientHandler m_handler;
+        private static Logger Logger = LogManager.GetCurrentClassLogger();
 
         public WebUtils()
         {
@@ -30,6 +32,8 @@ namespace MetacriticScraper
             m_httpClient.Timeout = new TimeSpan(0, 0, 0, 0, 30000);
             m_httpClient.DefaultRequestHeaders.Add("Accept-Language", "en-us,en;q=0.8");
             m_httpClient.DefaultRequestHeaders.Host = Constants.MetacriticDomain;
+
+            Logger.Info("WebUtils Initialized...");
         }
 
         public async Task<string> SendAsync(HttpRequestMessage request)
@@ -40,9 +44,10 @@ namespace MetacriticScraper
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync();
             }
-            catch (HttpRequestException)
+            catch (HttpRequestException ex)
             {
-                // handle and log
+                Logger.Error("HttpRequestException encountered wgile sending request {0}. Error: {1}",
+                    request.RequestUri, ex.ToString());
             }
 
             return null;
@@ -50,6 +55,8 @@ namespace MetacriticScraper
 
         public async Task<string> HttpPost(string url, string strPostData, string referer, int timeout)
         {
+            Logger.Debug("Posting to {0} -> PostdData: {1}", url, strPostData);
+
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url);
 
             StringContent postData = new StringContent(strPostData, Encoding.UTF8);
@@ -70,6 +77,8 @@ namespace MetacriticScraper
 
         public async Task<string> HttpGet(string url, string referer, int timeout)
         {
+            Logger.Debug("Getting {0} ", url);
+
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
             request.Headers.Add("Accept-Encoding", "gzip, deflate, sdch");
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
