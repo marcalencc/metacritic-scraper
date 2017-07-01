@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MetacriticScraper.Errors
 {
-    class TimeoutException : Exception
+    class TimeoutElapsedException : Exception
     {
-        public TimeoutException() : base()
+        public TimeoutElapsedException() : base()
         {
         }
 
-        public TimeoutException(string message) : base(message)
+        public TimeoutElapsedException(string message) : base(message)
         {
         }
     }

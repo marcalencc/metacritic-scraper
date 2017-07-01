@@ -126,10 +126,17 @@ namespace MetacriticScraper.Scraper
             {
                 for (int idx = 0; idx < m_requestTracker.Count; ++idx)
                 {
-                    if(m_requestTracker[idx].IsExpired())
+                    try
+                    {
+                        if (m_requestTracker[idx].IsExpired())
+                        {
+                            throw new TimeoutElapsedException("Request took too long to be processed");
+                        }
+                    }
+                    catch (TimeoutElapsedException ex)
                     {
                         Logger.Error("Request took too long to be processed => {0}", m_requestTracker[idx].RequestId);
-                        Error error = new Error(new Errors.TimeoutException("Request took too long to be processed"));
+                        Error error = new Error(ex);
                         string resp = JsonConvert.SerializeObject(error);
                         PublishResult(m_requestTracker[idx].RequestId, resp);
                         m_requestTracker.RemoveAt(idx--);
@@ -239,30 +246,42 @@ namespace MetacriticScraper.Scraper
         public void AddItem(string id, string url)
         {
             Logger.Info("Adding request item => Id: {0}, Url: {1}", id, url);
-            if (m_requestQueue.HasAvailableSlot())
+
+            try
             {
-                RequestItem req = ParseRequestUrl(id, url);
-                if (req != null)
+                if (m_requestQueue.HasAvailableSlot())
                 {
-                    m_requestQueue.Enqueue(req);
-                    lock (m_requestTrackerLock)
+                    RequestItem req = ParseRequestUrl(id, url);
+                    if (req != null)
                     {
-                        Logger.Info("--Successfully added request item.");
-                        m_requestTracker.Add(new RequestTrackerItem(id));
+                        m_requestQueue.Enqueue(req);
+                        lock (m_requestTrackerLock)
+                        {
+                            Logger.Info("--Successfully added request item.");
+                            m_requestTracker.Add(new RequestTrackerItem(id));
+                        }
+                    }
+                    else
+                    {
+                        throw new InvalidUrlException("Url has invalid format");
                     }
                 }
                 else
                 {
-                    Logger.Error("--Failed to add request item. Invalid url format.");
-                    Error error = new Error(new Errors.InvalidUrlException("Url has invalid format"));
-                    string resp = JsonConvert.SerializeObject(error);
-                    PublishResult(id, resp);
+                    throw new SystemBusyException("Too many request at the moment");
                 }
             }
-            else
+            catch (InvalidUrlException ex)
+            {
+                Logger.Error("--Failed to add request item. Invalid url format.");
+                Error error = new Error(ex);
+                string resp = JsonConvert.SerializeObject(error);
+                PublishResult(id, resp);
+            }
+            catch (SystemBusyException ex)
             {
                 Logger.Error("--Failed to add request item. System busy.");
-                Error error = new Error(new Errors.SystemBusyException("Too many request at the moment"));
+                Error error = new Error(ex);
                 string resp = JsonConvert.SerializeObject(error);
                 PublishResult(id, resp);
             }
@@ -345,9 +364,9 @@ namespace MetacriticScraper.Scraper
 
             if (!EqualityComparer<RequestTrackerItem>.Default.Equals(tItem, default(RequestTrackerItem)))
             {
+                string resp;
                 try
                 {
-                    string resp;
                     MediaItem[] htmlResp = await Task.WhenAll(tasks);
                     if (htmlResp != null && htmlResp.Length > 0)
                     {
@@ -355,11 +374,16 @@ namespace MetacriticScraper.Scraper
                     }
                     else
                     {
-                        Logger.Error("No response received");
-                        Error error = new Error(new Errors.EmptyResponseException("Empty response"));
-                        resp = JsonConvert.SerializeObject(error);
+                        throw new Errors.EmptyResponseException("Empty response");
                     }
 
+                    PublishResult(tItem.RequestId, resp);
+                }
+                catch (EmptyResponseException ex)
+                {
+                    Logger.Error("No response received");
+                    Error error = new Error(ex);
+                    resp = JsonConvert.SerializeObject(error);
                     PublishResult(tItem.RequestId, resp);
                 }
                 catch (Exception)

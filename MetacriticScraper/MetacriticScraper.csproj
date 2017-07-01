@@ -92,7 +92,7 @@
     <Compile Include="Errors\Error.cs" />
     <Compile Include="Errors\InvalidUrlException.cs" />
     <Compile Include="Errors\SystemBusyException.cs" />
-    <Compile Include="Errors\TimeoutException.cs" />
+    <Compile Include="Errors\TimeoutElapsedException.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="JSONObjects\AutoComplete.cs" />
     <Compile Include="JSONObjects\Totals.cs" />
