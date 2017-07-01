@@ -122,10 +122,16 @@ namespace MetacriticScraper
             {
                 for (int idx = 0; idx < m_requestTracker.Count; ++idx)
                 {
-                    if(m_requestTracker[idx].IsExpired())
+                    try
                     {
-                        Error error = new Error(new Errors.TimeoutException("Request took too long to be processed"));
-                        string resp = JsonConvert.SerializeObject(error);
+                        if (m_requestTracker[idx].IsExpired())
+                        {
+                            throw new Errors.TimeoutException("Request took too long to be processed");
+                        }
+                    }
+                    catch(Errors.TimeoutException ex)
+                    {
+                        string resp = JsonConvert.SerializeObject(ex);
                         PublishResult(m_requestTracker[idx].RequestId, resp);
                         m_requestTracker.RemoveAt(idx--);
                     }
@@ -231,27 +237,34 @@ namespace MetacriticScraper
         // Url - no domain name
         public void AddItem(string id, string url)
         {
-            if (m_requestQueue.HasAvailableSlot())
+            try
             {
-                RequestItem req = ParseRequestUrl(id, url);
-                if (req != null)
+                if (m_requestQueue.HasAvailableSlot())
                 {
-                    m_requestQueue.Enqueue(req);
-                    lock (m_requestTrackerLock)
+                    RequestItem req = ParseRequestUrl(id, url);
+                    if (req != null)
                     {
-                        m_requestTracker.Add(new RequestTrackerItem(id));
+                        m_requestQueue.Enqueue(req);
+                        lock (m_requestTrackerLock)
+                        {
+                            m_requestTracker.Add(new RequestTrackerItem(id));
+                        }
+                    }
+                    else
+                    {
+                        Error error = new Error(new InvalidUrlException("Url has invalid format"));
+                        string resp = JsonConvert.SerializeObject(error);
+                        PublishResult(id, resp);
                     }
                 }
                 else
                 {
-                    Error error = new Error(new Errors.InvalidUrlException("Url has invalid format"));
-                    string resp = JsonConvert.SerializeObject(error);
-                    PublishResult(id, resp);
+                    // log
                 }
             }
-            else
+            catch ()
             {
-                // log
+
             }
         }
 
