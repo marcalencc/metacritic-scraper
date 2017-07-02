@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetacriticScraper.Errors
 {
-    class TimeoutElapsedException : Exception
+    public class TimeoutElapsedException : Exception
     {
         public TimeoutElapsedException() : base()
         {

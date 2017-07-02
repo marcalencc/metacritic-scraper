@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace MetacriticScraper.Errors
 {
-    class InvalidUrlException : Exception
+    public class InvalidUrlException : Exception
     {
         public InvalidUrlException() : base()
         {
         }
 
         public InvalidUrlException(string message) : base(message)
+        {
+        }
+
+        public InvalidUrlException(string message, Exception innerException) :
+            base(message, innerException)
         {
         }
     }

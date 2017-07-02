@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetacriticScraper", "MetacriticScraper\MetacriticScraper.csproj", "{98B43C05-C841-436A-A37D-DEA0C676CCB3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetacriticScraper.Tests", "MetacriticScraper.Tests\MetacriticScraper.Tests.csproj", "{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{98B43C05-C841-436A-A37D-DEA0C676CCB3} = {98B43C05-C841-436A-A37D-DEA0C676CCB3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

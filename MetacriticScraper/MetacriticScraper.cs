@@ -83,14 +83,14 @@ namespace MetacriticScraper.Scraper
 
         public bool WaitOnEmpty(int ms)
         {
+            m_requestSignal.WaitOne(ms);
             return m_requestSignal.WaitOne(ms);
         }
     }
 
-    public class Scraper
+    public class WebScraper : IScraper
     {
         private static Logger Logger = LogManager.GetCurrentClassLogger();
-        private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/", "/person/" };
 
         private bool m_isRunning;
         private RequestQueue<RequestItem> m_requestQueue;
@@ -103,19 +103,33 @@ namespace MetacriticScraper.Scraper
         private object m_requestTrackerLock;
         private List<RequestTrackerItem> m_requestTracker;
         private System.Threading.Timer m_requestTrackerTimer;
-
-        public Scraper(Action<string, string> responseChannel)
+        private UrlParser m_urlParser;
+        public UrlParser UrlParser
         {
-            m_requestQueue = new RequestQueue<RequestItem>(10);
+            get
+            {
+                return m_urlParser;
+            }
+            set
+            {
+                m_urlParser = value;
+            }
+        }
+
+        public WebScraper(Action<string, string> responseChannel, int limit)
+        {
+            m_requestQueue = new RequestQueue<RequestItem>(limit);
             m_requestThread = new Thread(RequestThreadProc);
 
-            m_dataFetchQueue = new RequestQueue<IScrapable<MediaItem>>(10);
+            m_dataFetchQueue = new RequestQueue<IScrapable<MediaItem>>(limit);
             m_dataFetchThread = new Thread(DataFetchThreadProc);
 
             m_requestTracker = new List<RequestTrackerItem>();
             m_requestTrackerLock = new object();
             m_requestTrackerTimer = new Timer(RequestTrackerChecker, null, 0, 30000);
             m_responseChannel = responseChannel;
+
+            m_urlParser = new UrlParser();
 
             Logger.Info("Metacritic Sccraper Initialized...");
         }
@@ -154,104 +168,20 @@ namespace MetacriticScraper.Scraper
             Logger.Info("Metacritic Sccraper Started...");
         }
 
-        private RequestItem ParseRequestUrl(string id, string url)
-        {
-            string keyword = string.Empty;
-            for (int idx = 0; idx <= MAIN_KEYWORDS.Length; ++idx)
-            {
-                if (url.StartsWith(MAIN_KEYWORDS[idx]))
-                {
-                    keyword = MAIN_KEYWORDS[idx];
-                    break;
-                }
-            }
-
-            string title = string.Empty;
-            string yearOrSeason = string.Empty;
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                url = url.Replace(keyword, string.Empty);
-                if (!string.IsNullOrEmpty(url))
-                {
-                    title = url;
-                    int slashIdx = url.IndexOf('/');
-                    if (slashIdx >= 0)
-                    {
-                        title = url.Substring(0, slashIdx);
-                        url = url.Replace(title + "/", string.Empty);
-                        int param;
-                        if (!int.TryParse(url, out param))
-                        {
-                            yearOrSeason = string.Empty;
-                        }
-                        else
-                        {
-                            yearOrSeason = param.ToString();
-                        }
-                    }
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-
-            return CreateRequestItem(id, keyword, title, yearOrSeason.ToString());
-        }
-
-        private RequestItem CreateRequestItem(string id, string keyword, string title, string yearOrSeason)
-        {
-            if (keyword == "/movie/")
-            {
-                if (!string.IsNullOrEmpty(yearOrSeason) && yearOrSeason.Length == 4)
-                {
-                   return new MovieRequestItem(id, title, yearOrSeason);
-                }
-                else
-                {
-                    return new MovieRequestItem(id, title);
-                }
-            }
-            else if (keyword == "/album/")
-            {
-                if (!string.IsNullOrEmpty(yearOrSeason) && yearOrSeason.Length == 4)
-                {
-                    return new AlbumRequestItem(id, title, yearOrSeason);
-                }
-                else
-                {
-                    return new AlbumRequestItem(id, title);
-                }
-            }
-            else if (keyword == "/tvshow/")
-            {
-                if (!string.IsNullOrEmpty(yearOrSeason))
-                {
-                    return new TVShowRequestItem(id, title, yearOrSeason);
-                }
-                else
-                {
-                    return new TVShowRequestItem(id, title);
-                }
-            }
-
-            return null;
-        }
-
         // Url - no domain name
         public void AddItem(string id, string url)
         {
             Logger.Info("Adding request item => Id: {0}, Url: {1}", id, url);
 
-            try
+            if (m_requestQueue.HasAvailableSlot())
             {
-                if (m_requestQueue.HasAvailableSlot())
+                string keyword;
+                string title;
+                string yearOrSeason;
+                bool valid = m_urlParser.ParseRequestUrl(id, url, out keyword, out title, out yearOrSeason);
+                if (valid)
                 {
-                    RequestItem req = ParseRequestUrl(id, url);
+                    RequestItem req = m_urlParser.CreateRequestItem(id, keyword, title, yearOrSeason.ToString());
                     if (req != null)
                     {
                         m_requestQueue.Enqueue(req);
@@ -259,31 +189,15 @@ namespace MetacriticScraper.Scraper
                         {
                             Logger.Info("--Successfully added request item.");
                             m_requestTracker.Add(new RequestTrackerItem(id));
+                            return;
                         }
                     }
-                    else
-                    {
-                        throw new InvalidUrlException("Url has invalid format");
-                    }
                 }
-                else
-                {
-                    throw new SystemBusyException("Too many request at the moment");
-                }
+                throw new InvalidUrlException("Url has invalid format");
             }
-            catch (InvalidUrlException ex)
+            else
             {
-                Logger.Error("--Failed to add request item. Invalid url format.");
-                Error error = new Error(ex);
-                string resp = JsonConvert.SerializeObject(error);
-                PublishResult(id, resp);
-            }
-            catch (SystemBusyException ex)
-            {
-                Logger.Error("--Failed to add request item. System busy.");
-                Error error = new Error(ex);
-                string resp = JsonConvert.SerializeObject(error);
-                PublishResult(id, resp);
+                throw new SystemBusyException("Too many requests at the moment");
             }
         }
 
@@ -347,7 +261,7 @@ namespace MetacriticScraper.Scraper
             }
         }
 
-        public async void FetchResults(IScrapable<MediaItem> item)
+        private async void FetchResults(IScrapable<MediaItem> item)
         {
             List<string> htmlResponses = item.Scrape();
             var tasks = htmlResponses.Select(html => Task.Run(() => item.Parse(html)));

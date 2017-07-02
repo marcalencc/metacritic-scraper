@@ -93,6 +93,8 @@
     <Compile Include="Errors\InvalidUrlException.cs" />
     <Compile Include="Errors\SystemBusyException.cs" />
     <Compile Include="Errors\TimeoutElapsedException.cs" />
+    <Compile Include="Interfaces\IScraper.cs" />
+    <Compile Include="UrlParser.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="JSONObjects\AutoComplete.cs" />
     <Compile Include="JSONObjects\Totals.cs" />
@@ -122,9 +124,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logging\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
