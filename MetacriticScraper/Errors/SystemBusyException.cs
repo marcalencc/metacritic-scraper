@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetacriticScraper.Errors
 {
-    class SystemBusyException : Exception
+    public class SystemBusyException : Exception
     {
         public SystemBusyException() : base()
         {

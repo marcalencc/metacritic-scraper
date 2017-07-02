@@ -43,13 +43,34 @@ namespace MetacriticScraper.RequestData
         }
 
         private string m_releaseYear;
-
         protected List<Result> m_autoResult;
- 
-        private List<MediaItem> m_result;
-        protected static WebUtils m_webUtils;
+        public List<Result> AutoResult
+        {
+            get
+            {
+                return m_autoResult;
+            }
+            set
+            {
+                m_autoResult = value;
+            }
+        }
 
+        private List<MediaItem> m_result;
         public List<string> Urls { get; set; }
+
+        protected static IWebUtils m_webUtils;
+        public IWebUtils WebUtils
+        {
+            get
+            {
+                return m_webUtils;
+            }
+            set
+            {
+                m_webUtils = value;
+            }
+        }
 
         private string m_requestId;
         public string RequestId
@@ -80,6 +101,7 @@ namespace MetacriticScraper.RequestData
 
         public abstract List<string> Scrape();
         public abstract MediaItem Parse(string html);
+        public abstract bool FilterValidUrls();
 
         public async Task<bool> AutoSearch()
         {
@@ -95,8 +117,6 @@ namespace MetacriticScraper.RequestData
 
             return m_autoResult != null;
         }
-
-        public abstract bool FilterValidUrls();
 
         #region IResult
         public string Name

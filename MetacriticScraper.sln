@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetacriticScraper", "MetacriticScraper\MetacriticScraper.csproj", "{98B43C05-C841-436A-A37D-DEA0C676CCB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetacriticScraper.Tests", "MetacriticScraper.Tests\MetacriticScraper.Tests.csproj", "{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{98B43C05-C841-436A-A37D-DEA0C676CCB3} = {98B43C05-C841-436A-A37D-DEA0C676CCB3}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,14 @@ Global
 		{98B43C05-C841-436A-A37D-DEA0C676CCB3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98B43C05-C841-436A-A37D-DEA0C676CCB3}.Release|x86.ActiveCfg = Release|x86
 		{98B43C05-C841-436A-A37D-DEA0C676CCB3}.Release|x86.Build.0 = Release|x86
+		{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}.Debug|x86.Build.0 = Debug|Any CPU
+		{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}.Release|x86.ActiveCfg = Release|Any CPU
+		{F3C6C606-F7FC-4FD7-9DC9-040E577E4BCC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

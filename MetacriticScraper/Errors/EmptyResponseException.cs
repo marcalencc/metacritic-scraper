@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetacriticScraper.Errors
 {
-    class EmptyResponseException : Exception
+    public class EmptyResponseException : Exception
     {
         public EmptyResponseException() : base()
         {

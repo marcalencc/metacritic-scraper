@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetacriticScraper.Errors
 {
-    class Error
+    public class Error
     {
         public Error (Exception exception)
         {

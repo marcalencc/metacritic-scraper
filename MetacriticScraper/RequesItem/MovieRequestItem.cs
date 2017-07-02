@@ -23,14 +23,14 @@ namespace MetacriticScraper.RequestData
         public override List<string> Scrape()
         {
             Logger.Info("Scraping {0} urls for {1}", Urls.Count, SearchString);
-            List<string> urls = new List<string>();
+            List<string> htmlResponses = new List<string>();
             foreach (string url in Urls)
             {
                 var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url, Constants.MetacriticURL, 30000);
-                urls.Add(task.Result);
+                htmlResponses.Add(task.Result);
             }
 
-            return urls;
+            return htmlResponses;
         }
 
         public override bool FilterValidUrls()
