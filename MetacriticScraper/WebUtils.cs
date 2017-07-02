@@ -9,11 +9,12 @@ using System.Collections;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using MetacriticScraper.Interfaces;
 using NLog;
 
 namespace MetacriticScraper.Web
 {
-    public class WebUtils
+    public class WebUtils : IWebUtils
     {
         private static HttpClient m_httpClient;
         private static HttpClientHandler m_handler;
@@ -36,7 +37,7 @@ namespace MetacriticScraper.Web
             Logger.Info("WebUtils Initialized...");
         }
 
-        public async Task<string> SendAsync(HttpRequestMessage request)
+        private async Task<string> SendAsync(HttpRequestMessage request)
         {
             try
             {

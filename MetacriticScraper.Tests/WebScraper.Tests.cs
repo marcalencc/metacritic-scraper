@@ -6,72 +6,84 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using MetacriticScraper.Scraper;
 using MetacriticScraper.Errors;
+using MetacriticScraper.Interfaces;
+using MetacriticScraper.RequestData;
+using Moq;
 
 namespace MetacriticScraper.Tests
 {
     [TestFixture]
     public class WebScraperTest
     {
-        private WebScraper _metacriticScraper;
-
         [OneTimeSetUp]
         public void Setup()
         {
-            _metacriticScraper = new WebScraper(null, 10);
         }
 
         [OneTimeTearDown]
         public void TearDown()
         {
-            _metacriticScraper = null;
         }
 
         [Test]
-        public void TestParseInvalidMovieItemYear()
+        public void TestErrorWhenParsingUrl()
         {
-            string id = "1";
-            string url = "/movie/there-will-be-blood/etc";
+            var parser = new Mock<IParser>();
+            string dummyKeyword;
+            string dummyTitle;
+            string dummyYear;
+            parser.Setup(p => p.ParseRequestUrl(It.IsAny<string>(), It.IsAny<string>(), out dummyKeyword,
+                out dummyTitle, out dummyYear)).Throws(new InvalidUrlException("Invalid year or season value"));
+            parser.Setup(p => p.CreateRequestItem(It.IsAny<string>(), It.IsAny<string>(),
+                It.IsAny<string>(), It.IsAny<string>())).Returns(new MovieRequestItem("id", "title"));
 
-            Assert.That(() => _metacriticScraper.AddItem(id, url),
+            IScraper scraper = new WebScraper(null, 10); 
+            scraper.UrlParser = parser.Object;
+
+            Assert.That(() => scraper.AddItem("id", "url"),
                 Throws.Exception.TypeOf<InvalidUrlException>().
                 With.Property("Message").
                 EqualTo("Invalid year or season value"));
         }
 
         [Test]
-        public void TestParseInvalidAlbumItemYear()
+        public void TestErrorWhenCreatingRequestData()
         {
-            string id = "1";
-            string url = "/album/lemonade/etc";
+            var parser = new Mock<IParser>();
+            string dummyKeyword;
+            string dummyTitle;
+            string dummyYear = "2012";
+            parser.Setup(p => p.ParseRequestUrl(It.IsAny<string>(), It.IsAny<string>(), out dummyKeyword,
+                out dummyTitle, out dummyYear)).Returns(true);
+            parser.Setup(p => p.CreateRequestItem(It.IsAny<string>(), It.IsAny<string>(),
+                It.IsAny<string>(), It.IsAny<string>())).
+                Throws(new InvalidUrlException("Invalid year or season value"));
 
-            Assert.That(() => _metacriticScraper.AddItem(id, url),
+            IScraper scraper = new WebScraper(null, 10);
+            scraper.UrlParser = parser.Object;
+
+            Assert.That(() => scraper.AddItem("id", "url"),
                 Throws.Exception.TypeOf<InvalidUrlException>().
                 With.Property("Message").
                 EqualTo("Invalid year or season value"));
         }
 
         [Test]
-        public void TestParseInvalidTvShowItemSeason()
+        public void TestSuccessfulAddProcess()
         {
-            string id = "1";
-            string url = "/tvshow/30-rock/etc";
+            var parser = new Mock<IParser>();
+            string dummyKeyword;
+            string dummyTitle;
+            string dummyYear = "2012";
+            parser.Setup(p => p.ParseRequestUrl(It.IsAny<string>(), It.IsAny<string>(), out dummyKeyword,
+                out dummyTitle, out dummyYear)).Returns(true);
+            parser.Setup(p => p.CreateRequestItem(It.IsAny<string>(), It.IsAny<string>(),
+                It.IsAny<string>(), It.IsAny<string>())).Returns(new MovieRequestItem("id", "title"));
 
-            Assert.That(() => _metacriticScraper.AddItem(id, url),
-                Throws.Exception.TypeOf<InvalidUrlException>().
-                With.Property("Message").
-                EqualTo("Invalid year or season value"));
-        }
+            IScraper scraper = new WebScraper(null, 10);
+            scraper.UrlParser = parser.Object;
 
-        [Test]
-        public void TestParseInvalidUrlFormat()
-        {
-            string id = "1";
-            string url = "/magazine/30-rock";
-
-            Assert.That(() => _metacriticScraper.AddItem(id, url),
-                Throws.Exception.TypeOf<InvalidUrlException>().
-                With.Property("Message").
-                EqualTo("Url has invalid format"));
+            Assert.IsTrue(scraper.AddItem("id", "url"));
         }
 
         [Test]

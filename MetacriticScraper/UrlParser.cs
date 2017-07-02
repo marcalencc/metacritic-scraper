@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using MetacriticScraper.RequestData;
 using MetacriticScraper.Errors;
+using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.Scraper
 {
-    public class UrlParser
+    public class UrlParser : IParser
     {
         private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/", "/person/" };
 

@@ -103,8 +103,8 @@ namespace MetacriticScraper.Scraper
         private object m_requestTrackerLock;
         private List<RequestTrackerItem> m_requestTracker;
         private System.Threading.Timer m_requestTrackerTimer;
-        private UrlParser m_urlParser;
-        public UrlParser UrlParser
+        private IParser m_urlParser;
+        public IParser UrlParser
         {
             get
             {
@@ -169,7 +169,7 @@ namespace MetacriticScraper.Scraper
         }
 
         // Url - no domain name
-        public void AddItem(string id, string url)
+        public bool AddItem(string id, string url)
         {
             Logger.Info("Adding request item => Id: {0}, Url: {1}", id, url);
 
@@ -189,7 +189,7 @@ namespace MetacriticScraper.Scraper
                         {
                             Logger.Info("--Successfully added request item.");
                             m_requestTracker.Add(new RequestTrackerItem(id));
-                            return;
+                            return true;
                         }
                     }
                 }

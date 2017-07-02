@@ -10,7 +10,7 @@ namespace MetacriticScraper.Interfaces
     public interface IScraper
     {
         void Initialize();
-        void AddItem(string id, string url);
-        UrlParser UrlParser { get; set; }
+        bool AddItem(string id, string url);
+        IParser UrlParser { get; set; }
     }
 }
