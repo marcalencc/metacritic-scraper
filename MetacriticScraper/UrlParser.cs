@@ -11,10 +11,11 @@ namespace MetacriticScraper.Scraper
 {
     public class UrlParser : IParser
     {
-        private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/", "/person/" };
+        private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/" };
+        private string[] OTHER_KEYWORDS = new string[] { "credits" };
 
         public bool ParseRequestUrl(string id, string url, out string keyword, out string title,
-            out string yearOrSeason)
+            out string yearOrSeason, out string thirdLevelReq)
         {
             try
             {
@@ -30,6 +31,7 @@ namespace MetacriticScraper.Scraper
 
                 title = string.Empty;
                 yearOrSeason = string.Empty;
+                thirdLevelReq = string.Empty;
                 if (!string.IsNullOrEmpty(keyword))
                 {
                     url = url.Replace(keyword, string.Empty);
@@ -37,18 +39,53 @@ namespace MetacriticScraper.Scraper
                     {
                         title = url;
                         int slashIdx = url.IndexOf('/');
-                        if (slashIdx >= 0)
+                        if (slashIdx > 0)
                         {
                             title = url.Substring(0, slashIdx);
                             url = url.Replace(title + "/", string.Empty);
-                            int param;
-                            if (!int.TryParse(url, out param))
+                            slashIdx = url.IndexOf('/');
+
+                            // There is only either year or third level request
+                            if (slashIdx < 0)
                             {
-                                throw new InvalidUrlException("Invalid year or season value");
+                                int param;
+                                if (!int.TryParse(url, out param))
+                                {
+                                    if (OTHER_KEYWORDS.Contains(url))
+                                    {
+                                        thirdLevelReq = url;
+                                    }
+                                    else
+                                    {
+                                        throw new InvalidUrlException("Invalid parameter: " + url);
+                                    }
+                                }
+                                else
+                                {
+                                    yearOrSeason = param.ToString();
+                                }
                             }
                             else
                             {
-                                yearOrSeason = param.ToString();
+                                string yearString = url.Substring(0, slashIdx);
+                                int param;
+                                if (!int.TryParse(yearString, out param))
+                                {
+                                    throw new InvalidUrlException("Invalid year or season value");
+                                }
+                                else
+                                {
+                                    yearOrSeason = param.ToString();
+                                    url = url.Replace(param.ToString() + "/", string.Empty);
+                                    if (OTHER_KEYWORDS.Contains(url))
+                                    {
+                                        thirdLevelReq = url;
+                                    }
+                                    else
+                                    {
+                                        throw new InvalidUrlException("Invalid parameter: " + url);
+                                    }
+                                }
                             }
                             return true;
                         }
@@ -66,39 +103,40 @@ namespace MetacriticScraper.Scraper
             return false;
         }
 
-        public RequestItem CreateRequestItem(string id, string keyword, string title, string yearOrSeason)
+        public RequestItem CreateRequestItem(string id, string keyword, string title, string yearOrSeason,
+            string thirdLevelReq)
         {
             if (keyword == "/movie/")
             {
                 if (!string.IsNullOrEmpty(yearOrSeason) && yearOrSeason.Length == 4)
                 {
-                    return new MovieRequestItem(id, title, yearOrSeason);
+                    return new MovieRequestItem(id, title, yearOrSeason, thirdLevelReq);
                 }
                 else
                 {
-                    return new MovieRequestItem(id, title);
+                    return new MovieRequestItem(id, title, thirdLevelReq);
                 }
             }
             else if (keyword == "/album/")
             {
                 if (!string.IsNullOrEmpty(yearOrSeason) && yearOrSeason.Length == 4)
                 {
-                    return new AlbumRequestItem(id, title, yearOrSeason);
+                    return new AlbumRequestItem(id, title, yearOrSeason, thirdLevelReq);
                 }
                 else
                 {
-                    return new AlbumRequestItem(id, title);
+                    return new AlbumRequestItem(id, title, thirdLevelReq);
                 }
             }
             else if (keyword == "/tvshow/")
             {
                 if (!string.IsNullOrEmpty(yearOrSeason))
                 {
-                    return new TVShowRequestItem(id, title, yearOrSeason);
+                    return new TVShowRequestItem(id, title, yearOrSeason, thirdLevelReq);
                 }
                 else
                 {
-                    return new TVShowRequestItem(id, title);
+                    return new TVShowRequestItem(id, title, thirdLevelReq);
                 }
             }
 

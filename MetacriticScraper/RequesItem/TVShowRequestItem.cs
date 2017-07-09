@@ -11,12 +11,14 @@ namespace MetacriticScraper.RequestData
     {
         private string m_season;
 
-        public TVShowRequestItem(string id, string title) : base(id, title)
+        public TVShowRequestItem(string id, string title, string thirdLevelRequest) :
+            base(id, title, thirdLevelRequest)
         {
             MediaType = Constants.TvShowTypeId;
         }
 
-        public TVShowRequestItem(string id, string title, string season) : this(id, title)
+        public TVShowRequestItem(string id, string title, string season, string thirdLevelRequest) :
+            this(id, title, thirdLevelRequest)
         {
             m_season = season;
         }

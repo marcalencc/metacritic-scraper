@@ -178,10 +178,13 @@ namespace MetacriticScraper.Scraper
                 string keyword;
                 string title;
                 string yearOrSeason;
-                bool valid = m_urlParser.ParseRequestUrl(id, url, out keyword, out title, out yearOrSeason);
+                string thirdLevelReq;
+                bool valid = m_urlParser.ParseRequestUrl(id, url, out keyword, out title, out yearOrSeason,
+                    out thirdLevelReq);
                 if (valid)
                 {
-                    RequestItem req = m_urlParser.CreateRequestItem(id, keyword, title, yearOrSeason.ToString());
+                    RequestItem req = m_urlParser.CreateRequestItem(id, keyword, title, yearOrSeason.ToString(),
+                        thirdLevelReq);
                     if (req != null)
                     {
                         m_requestQueue.Enqueue(req);

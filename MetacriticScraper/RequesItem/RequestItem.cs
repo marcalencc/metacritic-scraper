@@ -81,20 +81,26 @@ namespace MetacriticScraper.RequestData
             }
         }
 
-
-        private RequestItem()
+        private string m_thirdLevelRequest;
+        public string ThirdLevelRequest
         {
-            m_webUtils = new WebUtils();
+            get
+            {
+                return m_thirdLevelRequest;
+            }
         }
 
-        protected RequestItem(string id, string searchString) : this()
+        protected RequestItem(string id, string searchString, string thirdLevelReq)
         {
             m_searchString = searchString.Replace("-", " ");
             m_requestId = id;
             Logger = LogManager.GetLogger(GetType().FullName);
+            m_webUtils = new WebUtils();
+            m_thirdLevelRequest = thirdLevelReq;
         }
 
-        protected RequestItem(string id, string searchString, string releaseYear) : this(id, searchString)
+        protected RequestItem(string id, string searchString, string releaseYear, string thirdLevelReq) :
+            this(id, searchString, thirdLevelReq)
         {
             m_releaseYear = releaseYear;
         }
