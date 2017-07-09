@@ -124,6 +124,14 @@ namespace MetacriticScraper.RequestData
             return m_autoResult != null;
         }
 
+        protected void SetThirdLevelRequest()
+        {
+            if (m_thirdLevelRequest == "credits")
+            {
+                Urls = Urls.Select(u => u + "/details").ToList();
+            }
+        }
+
         #region IResult
         public string Name
         {
