@@ -30,15 +30,44 @@ namespace MetacriticScraper.Tests
         [Test]
         public void ParseInvalidYearOrSeason()
         {
-            string url = "/tvshow/veep/yolo";
+            string url = "/tvshow/veep/yolo/credits";
             string keyword;
             string title;
             string yearOrSeason;
+            string thirdLevelReq;
 
-            Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason),
-                Throws.Exception.TypeOf<InvalidUrlException>().
+            Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq), Throws.Exception.TypeOf<InvalidUrlException>().
                 With.Property("Message").
                 EqualTo("Invalid year or season value"));
+        }
+
+        public void ParseInvalidThirdLevelRequest()
+        {
+            string url = "/tvshow/veep/creditor";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq), Throws.Exception.TypeOf<InvalidUrlException>().
+                With.Property("Message").
+                EqualTo("Invalid parameter: creditor"));
+        }
+
+        public void ParseInvalidThirdLevelRequestWithSeason()
+        {
+            string url = "/tvshow/veep/3/creditor";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq), Throws.Exception.TypeOf<InvalidUrlException>().
+                With.Property("Message").
+                EqualTo("Invalid parameter: creditor"));
         }
 
         [Test]
@@ -48,12 +77,51 @@ namespace MetacriticScraper.Tests
             string keyword;
             string title;
             string yearOrSeason;
+            string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason);
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
 
             Assert.AreEqual(keyword, "");
             Assert.AreEqual(title, "");
             Assert.AreEqual(yearOrSeason, "");
+        }
+
+        [Test]
+        public void ParseValidTvShowUrlWithSeasonCredits()
+        {
+            string url = "/tvshow/veep/3/credits";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(keyword, "/tvshow/");
+            Assert.AreEqual(title, "veep");
+            Assert.AreEqual(yearOrSeason, "3");
+            Assert.AreEqual(thirdLevelReq, "credits");
+        }
+
+
+        [Test]
+        public void ParseValidTvShowUrlWithCredits()
+        {
+            string url = "/tvshow/veep/credits";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(keyword, "/tvshow/");
+            Assert.AreEqual(title, "veep");
+            Assert.AreEqual(yearOrSeason, "");
+            Assert.AreEqual(thirdLevelReq, "credits");
         }
 
         [Test]
@@ -63,8 +131,10 @@ namespace MetacriticScraper.Tests
             string keyword;
             string title;
             string yearOrSeason;
+            string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason);
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
 
             Assert.AreEqual(keyword, "/tvshow/");
             Assert.AreEqual(title, "veep");
@@ -78,12 +148,51 @@ namespace MetacriticScraper.Tests
             string keyword;
             string title;
             string yearOrSeason;
+            string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason);
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
 
             Assert.AreEqual(keyword, "/tvshow/");
             Assert.AreEqual(title, "game-of-thrones");
             Assert.AreEqual(yearOrSeason, "");
+        }
+
+        [Test]
+        public void ParseValidMovieUrlWithCredits()
+        {
+            string url = "/movie/the-master/credits";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(keyword, "/movie/");
+            Assert.AreEqual(title, "the-master");
+            Assert.AreEqual(yearOrSeason, "");
+            Assert.AreEqual(thirdLevelReq, "credits");
+        }
+
+
+        [Test]
+        public void ParseValidMovieUrlWithYearAndCredits()
+        {
+            string url = "/movie/the-master/2012/credits";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(keyword, "/movie/");
+            Assert.AreEqual(title, "the-master");
+            Assert.AreEqual(yearOrSeason, "2012");
+            Assert.AreEqual(thirdLevelReq, "credits");
         }
 
         [Test]
@@ -93,8 +202,10 @@ namespace MetacriticScraper.Tests
             string keyword;
             string title;
             string yearOrSeason;
+            string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason);
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
 
             Assert.AreEqual(keyword, "/movie/");
             Assert.AreEqual(title, "the-master");
@@ -108,12 +219,50 @@ namespace MetacriticScraper.Tests
             string keyword;
             string title;
             string yearOrSeason;
+            string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason);
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
 
             Assert.AreEqual(keyword, "/movie/");
             Assert.AreEqual(title, "guardians-of-the-galaxy");
             Assert.AreEqual(yearOrSeason, "");
+        }
+
+        [Test]
+        public void ParseValidAlbumUrlWithYearAndCredits()
+        {
+            string url = "/album/to-pimp-a-butterfly/2015/credits";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(keyword, "/album/");
+            Assert.AreEqual(title, "to-pimp-a-butterfly");
+            Assert.AreEqual(yearOrSeason, "2015");
+            Assert.AreEqual(thirdLevelReq, "credits");
+        }
+
+        [Test]
+        public void ParseValidAlbumUrlWithCredits()
+        {
+            string url = "/album/to-pimp-a-butterfly/credits";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(keyword, "/album/");
+            Assert.AreEqual(title, "to-pimp-a-butterfly");
+            Assert.AreEqual(yearOrSeason, "");
+            Assert.AreEqual(thirdLevelReq, "credits");
         }
 
         [Test]
@@ -123,8 +272,10 @@ namespace MetacriticScraper.Tests
             string keyword;
             string title;
             string yearOrSeason;
+            string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason);
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
 
             Assert.AreEqual(keyword, "/album/");
             Assert.AreEqual(title, "to-pimp-a-butterfly");
@@ -138,8 +289,10 @@ namespace MetacriticScraper.Tests
             string keyword;
             string title;
             string yearOrSeason;
+            string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason);
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
 
             Assert.AreEqual(keyword, "/album/");
             Assert.AreEqual(title, "the-suburbs");
@@ -147,13 +300,13 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieItemCreation()
+        public void TestMovieItemCreationNoThirdLevelRequest()
         {
             string keyword = "/movie/";
             string title = "die-another-day";
             string yearOrSeason = "";
 
-            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason);
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason, "");
 
             Assert.IsNotNull(item);
             Assert.IsInstanceOf(typeof(MovieRequestItem), item);
@@ -163,13 +316,33 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieItemCreationWithYear()
+        public void TestMovieItemCreationWithYearAndThirdLevelRequest()
+        {
+            string keyword = "/movie/";
+            string title = "la-la-land";
+            string yearOrSeason = "2016";
+            string thirdLevelRequest = "credits";
+
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason,
+                thirdLevelRequest);
+
+            Assert.IsNotNull(item);
+            Assert.IsInstanceOf(typeof(MovieRequestItem), item);
+            Assert.AreEqual(item.RefTypeId, Constants.MovieTypeId);
+            Assert.AreEqual(item.RequestId, "1");
+            Assert.AreEqual(item.Name, "la la land");
+            Assert.AreEqual(item.ItemDate, "2016");
+            Assert.AreEqual(item.ThirdLevelRequest, "credits");
+        }
+
+        [Test]
+        public void TestMovieItemCreationWithYearNoThirdLevelRequest()
         {
             string keyword = "/movie/";
             string title = "la-la-land";
             string yearOrSeason = "2016";
 
-            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason);
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason, "");
 
             Assert.IsNotNull(item);
             Assert.IsInstanceOf(typeof(MovieRequestItem), item);
@@ -180,13 +353,13 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestAlbumItemCreation()
+        public void TestAlbumItemCreationNoThirdLevelRequest()
         {
             string keyword = "/album/";
             string title = "views";
             string yearOrSeason = "";
 
-            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason);
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason, "");
 
             Assert.IsNotNull(item);
             Assert.IsInstanceOf(typeof(AlbumRequestItem), item);
@@ -196,13 +369,13 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestAlbumItemCreationWithYear()
+        public void TestAlbumItemCreationWithYearNoThirdLevelRequest()
         {
             string keyword = "/album/";
             string title = "melodrama";
             string yearOrSeason = "2017";
 
-            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason);
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason, "");
 
             Assert.IsNotNull(item);
             Assert.IsInstanceOf(typeof(AlbumRequestItem), item);
@@ -213,13 +386,52 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestTvShowItemCreation()
+        public void TestAlbumItemCreationWithYearAndThirdLevelRequest()
+        {
+            string keyword = "/album/";
+            string title = "melodrama";
+            string yearOrSeason = "2017";
+            string thirdLevelRequest = "credits";
+
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason,
+                thirdLevelRequest);
+
+            Assert.IsNotNull(item);
+            Assert.IsInstanceOf(typeof(AlbumRequestItem), item);
+            Assert.AreEqual(item.RefTypeId, Constants.AlbumTypeId);
+            Assert.AreEqual(item.RequestId, "1");
+            Assert.AreEqual(item.Name, "melodrama");
+            Assert.AreEqual(item.ItemDate, "2017");
+            Assert.AreEqual(item.ThirdLevelRequest, "credits");
+        }
+
+        [Test]
+        public void TestTvShowItemCreationWithThirdLevelRequest()
+        {
+            string keyword = "/tvshow/";
+            string title = "olive-kitteridge";
+            string yearOrSeason = ""; ;
+            string thirdLevelReq = "credits";
+
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason,
+                thirdLevelReq);
+
+            Assert.IsNotNull(item);
+            Assert.IsInstanceOf(typeof(TVShowRequestItem), item);
+            Assert.AreEqual(item.RefTypeId, Constants.TvShowTypeId);
+            Assert.AreEqual(item.RequestId, "1");
+            Assert.AreEqual(item.Name, "olive kitteridge");
+            Assert.AreEqual(item.ThirdLevelRequest, "credits");
+        }
+
+        [Test]
+        public void TestTvShowItemCreationNoThirdLevelRequest()
         {
             string keyword = "/tvshow/";
             string title = "olive-kitteridge";
             string yearOrSeason = "";
 
-            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason);
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason,"");
 
             Assert.IsNotNull(item);
             Assert.IsInstanceOf(typeof(TVShowRequestItem), item);
@@ -235,7 +447,7 @@ namespace MetacriticScraper.Tests
             string title = "2-broke-girls";
             string yearOrSeason = "1";
 
-            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason);
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason, "");
 
             Assert.IsNull(item);
         }
