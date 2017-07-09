@@ -63,6 +63,22 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        public void TestMovieFilterValidUrlsWithDetails()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData\movie_the_master.txt");
+            var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
+
+            MovieRequestItem item = new MovieRequestItem("1", "the master", "", "details");
+            item.AutoResult = completeData.AutoComplete.Results;
+            bool result = item.FilterValidUrls();
+
+            Assert.AreEqual(item.Urls.Count, 1);
+            Assert.AreEqual(item.Urls[0], "/movie/the-master/details");
+            Assert.IsTrue(result);
+        }
+
+        [Test]
         public void TestMovieScrape()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -112,6 +128,22 @@ namespace MetacriticScraper.Tests
             bool result = item.FilterValidUrls();
 
             Assert.AreEqual(item.Urls.Count, 1);
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void TestAlbumFilterValidUrlsWithDetails()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData\album_lemonade.txt");
+            var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
+
+            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "", "details");
+            item.AutoResult = completeData.AutoComplete.Results;
+            bool result = item.FilterValidUrls();
+
+            Assert.AreEqual(item.Urls.Count, 1);
+            Assert.AreEqual(item.Urls[0], "/music/lemondade/beyonce/details");
             Assert.IsTrue(result);
         }
 
@@ -166,6 +198,22 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        public void TestTvShowFilterValidUrlsWithDetails()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep.txt");
+            var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
+
+            TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "details");
+            item.AutoResult = completeData.AutoComplete.Results;
+            bool result = item.FilterValidUrls();
+
+            Assert.AreEqual(item.Urls.Count, 1);
+            Assert.AreEqual(item.Urls[0], "/tv/veep/details");
+            Assert.IsTrue(result);
+        }
+
+        [Test]
         public void TestTvShowScrape()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -196,6 +244,24 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(mItem.Title, "Veep");
             Assert.AreEqual(mItem.Rating.CriticRating, 88);
             Assert.AreEqual(mItem.Rating.CriticReviewCount, 15);
+        }
+
+
+        [Test]
+        public void TestTvShowParseWithDetails()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData_2016 = File.ReadAllText(dir + @"\TestData\tvshow_veep_details.txt");
+
+            TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "details");
+            MediaItem mItem = item.Parse(testData_2016);
+
+            Assert.AreEqual(mItem.Title, null);
+            Assert.AreEqual(mItem.Details.Count, 12);
+            CollectionAssert.Contains(mItem.Details, new Detail("Julia Louis-Dreyfus",
+                "Vice President Selina Meyer"));
+            CollectionAssert.Contains(mItem.Details, new Detail("Creators",
+                "Armando Iannucci"));
         }
 
     }

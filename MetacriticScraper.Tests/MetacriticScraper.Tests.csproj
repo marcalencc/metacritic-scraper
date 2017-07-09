@@ -73,6 +73,9 @@
     <Content Include="TestData\tvshow_veep.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\tvshow_veep_details.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\veep_6_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
