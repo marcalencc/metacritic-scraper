@@ -10,12 +10,14 @@ namespace MetacriticScraper.RequestData
 {
     public class MovieRequestItem : RequestItem
     {
-        public MovieRequestItem(string id, string title) : base(id, title)
+        public MovieRequestItem(string id, string title, string thirdLevelReq) :
+            base(id, title, thirdLevelReq)
         {
             MediaType = Constants.MovieTypeId;
         }
 
-        public MovieRequestItem(string id, string title, string releaseYear) : base(id, title, releaseYear)
+        public MovieRequestItem(string id, string title, string releaseYear, string thirdLevelReq) :
+            base(id, title, releaseYear, thirdLevelReq)
         {
             MediaType = Constants.MovieTypeId;
         }

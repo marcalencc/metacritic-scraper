@@ -8,6 +8,6 @@ namespace MetacriticScraper.MediaData
     public class Credit
     {
         private string m_credit;
-        private Person m_person;
+        private string m_person;
     }
 }
