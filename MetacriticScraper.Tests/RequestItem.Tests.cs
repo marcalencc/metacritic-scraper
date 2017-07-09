@@ -40,7 +40,7 @@ namespace MetacriticScraper.Tests
             webUtils.Setup(p => p.HttpPost(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
                 It.IsAny<int>())).Returns(Task.FromResult(testData));
 
-            MovieRequestItem item = new MovieRequestItem("1", "the master");
+            MovieRequestItem item = new MovieRequestItem("1", "the master", "");
             item.WebUtils = webUtils.Object;
             bool result = await item.AutoSearch();
 
@@ -54,7 +54,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\movie_the_master.txt");
             var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
 
-            MovieRequestItem item = new MovieRequestItem("1", "the master");
+            MovieRequestItem item = new MovieRequestItem("1", "the master", "");
             item.AutoResult = completeData.AutoComplete.Results;
             bool result = item.FilterValidUrls();
 
@@ -74,7 +74,7 @@ namespace MetacriticScraper.Tests
                 It.IsAny<int>())).Returns(Task.FromResult(testData_2005)).
                 Returns(Task.FromResult(testData_2016));
 
-            MovieRequestItem item = new MovieRequestItem("1", "moonlight");
+            MovieRequestItem item = new MovieRequestItem("1", "moonlight", "");
             item.Urls = new List<string>();
             item.Urls.Add(@"/movie/moonlight");
             item.Urls.Add(@"/movie/moonlight-2016");
@@ -90,7 +90,7 @@ namespace MetacriticScraper.Tests
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData_2016 = File.ReadAllText(dir + @"\TestData\moonlight_2016_scraped.txt");
 
-            MovieRequestItem item = new MovieRequestItem("1", "moonlight");
+            MovieRequestItem item = new MovieRequestItem("1", "moonlight", "");
             MediaItem mItem = item.Parse(testData_2016);
 
             Assert.AreEqual(mItem.Title, "Moonlight");
@@ -107,7 +107,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\album_lemonade.txt");
             var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
 
-            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade");
+            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
             item.AutoResult = completeData.AutoComplete.Results;
             bool result = item.FilterValidUrls();
 
@@ -125,7 +125,7 @@ namespace MetacriticScraper.Tests
             webUtils.Setup(p => p.HttpGet(It.IsAny<string>(), It.IsAny<string>(),
                 It.IsAny<int>())).Returns(Task.FromResult(testData));
 
-            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade");
+            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
             item.Urls = new List<string>();
             item.Urls.Add(@"/music/lemonade/beyonce");
             item.WebUtils = webUtils.Object;
@@ -140,7 +140,7 @@ namespace MetacriticScraper.Tests
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData_2016 = File.ReadAllText(dir + @"\TestData\lemonade_2016_scraped.txt");
 
-            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade");
+            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
             MediaItem mItem = item.Parse(testData_2016);
 
             Assert.AreEqual(mItem.Title, "Lemonade");

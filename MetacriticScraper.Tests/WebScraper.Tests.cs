@@ -32,10 +32,12 @@ namespace MetacriticScraper.Tests
             string dummyKeyword;
             string dummyTitle;
             string dummyYear;
+            string thirdLevelReq;
             parser.Setup(p => p.ParseRequestUrl(It.IsAny<string>(), It.IsAny<string>(), out dummyKeyword,
-                out dummyTitle, out dummyYear)).Throws(new InvalidUrlException("Invalid year or season value"));
+                out dummyTitle, out dummyYear, out thirdLevelReq)).Throws(new InvalidUrlException("Invalid year or season value"));
             parser.Setup(p => p.CreateRequestItem(It.IsAny<string>(), It.IsAny<string>(),
-                It.IsAny<string>(), It.IsAny<string>())).Returns(new MovieRequestItem("id", "title"));
+                It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(
+                new MovieRequestItem("id", "title", ""));
 
             IScraper scraper = new WebScraper(null, 10); 
             scraper.UrlParser = parser.Object;
@@ -53,10 +55,11 @@ namespace MetacriticScraper.Tests
             string dummyKeyword;
             string dummyTitle;
             string dummyYear = "2012";
+            string thirdLevelReq;
             parser.Setup(p => p.ParseRequestUrl(It.IsAny<string>(), It.IsAny<string>(), out dummyKeyword,
-                out dummyTitle, out dummyYear)).Returns(true);
+                out dummyTitle, out dummyYear, out thirdLevelReq)).Returns(true);
             parser.Setup(p => p.CreateRequestItem(It.IsAny<string>(), It.IsAny<string>(),
-                It.IsAny<string>(), It.IsAny<string>())).
+                It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).
                 Throws(new InvalidUrlException("Invalid year or season value"));
 
             IScraper scraper = new WebScraper(null, 10);
@@ -75,10 +78,12 @@ namespace MetacriticScraper.Tests
             string dummyKeyword;
             string dummyTitle;
             string dummyYear = "2012";
+            string thirdLevelReq;
             parser.Setup(p => p.ParseRequestUrl(It.IsAny<string>(), It.IsAny<string>(), out dummyKeyword,
-                out dummyTitle, out dummyYear)).Returns(true);
+                out dummyTitle, out dummyYear, out thirdLevelReq)).Returns(true);
             parser.Setup(p => p.CreateRequestItem(It.IsAny<string>(), It.IsAny<string>(),
-                It.IsAny<string>(), It.IsAny<string>())).Returns(new MovieRequestItem("id", "title"));
+                It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(
+                new MovieRequestItem("id", "title", ""));
 
             IScraper scraper = new WebScraper(null, 10);
             scraper.UrlParser = parser.Object;
