@@ -240,7 +240,7 @@ namespace MetacriticScraper.Tests
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData_2016 = File.ReadAllText(dir + @"\TestData\veep_6_scraped.txt");
 
-            TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6");
+            TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "");
             MediaItem mItem = item.Parse(testData_2016);
 
             Assert.AreEqual(mItem.Title, "Veep");

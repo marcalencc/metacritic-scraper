@@ -81,7 +81,7 @@ namespace MetacriticScraper.RequestData
             {
                 string name = obj.Name.Split('-')[0].Trim();
                 result = string.Equals(Name, name, StringComparison.OrdinalIgnoreCase);
-                if (result && ItemDate != null)
+                if (result && !String.IsNullOrEmpty(ItemDate))
                 {
                     result = string.Equals(ItemDate, obj.ItemDate);
                 }

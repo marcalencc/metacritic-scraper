@@ -96,7 +96,7 @@ namespace MetacriticScraper.RequestData
             if (base.Equals(obj))
             {
                 result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase);
-                if (result && ItemDate != null)
+                if (result && !String.IsNullOrEmpty(ItemDate))
                 {
                     result = string.Equals(ItemDate, obj.ItemDate);
                 }

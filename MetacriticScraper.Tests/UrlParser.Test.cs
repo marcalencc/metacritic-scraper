@@ -88,7 +88,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidTvShowUrlWithSeasonDetails()
+        public void ParseValidTvShowUrlWithSeasonAndDetails()
         {
             string url = "/tvshow/veep/3/details";
             string keyword;
