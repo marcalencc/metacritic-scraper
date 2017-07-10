@@ -38,7 +38,16 @@ namespace MetacriticScraper.RequestData
 
         public override bool FilterValidUrls()
         {
-            Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url + "/season-" + m_season).ToList();
+            if (!String.IsNullOrEmpty(m_season))
+            {
+                Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url + "/season-" + m_season).ToList();
+            }
+            else
+            {
+                Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url).ToList();
+            }
+
+            SetThirdLevelRequest();
             Logger.Info("{0} urls filtered for {1}", Urls.Count, SearchString);
             return Urls.Count > 0;
         }
@@ -46,25 +55,54 @@ namespace MetacriticScraper.RequestData
         public override MediaItem Parse(string html)
         {
             TVShow tvShow = new TVShow();
-            tvShow.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
-            tvShow.Season = Int32.Parse(ParseItem(ref html, @"Season ", @"</span>"));
 
-            tvShow.Studio = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
-
-            short criticRating = 0;
-            short criticRatingCount = 0;
-            if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out criticRating))
+            if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
-                criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
-            }
-            tvShow.Rating = new Rating(criticRating, criticRatingCount);
+                tvShow.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
+                tvShow.Season = Int32.Parse(ParseItem(ref html, @"Season ", @"</span>"));
 
-            string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""startDate"">", @"</span>");
-            DateTime releaseDate;
-            if (DateTime.TryParse(releaseDateStr, out releaseDate))
-            {
-                tvShow.ReleaseDate = releaseDate;
+                tvShow.Studio = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
+
+                short criticRating = 0;
+                short criticRatingCount = 0;
+                if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out criticRating))
+                {
+                    criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
+                }
+                tvShow.Rating = new Rating(criticRating, criticRatingCount);
+
+                string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""startDate"">", @"</span>");
+                DateTime releaseDate;
+                if (DateTime.TryParse(releaseDateStr, out releaseDate))
+                {
+                    tvShow.ReleaseDate = releaseDate;
+                }
             }
+            else if (m_thirdLevelRequest == "details")
+            {
+                while (html.Contains(@"<th scope=""row"">"))
+                {
+                    string desc = ParseItem(ref html, @"<th scope=""row"">", @":</th>");
+                    string value = ParseItem(ref html, @"<td>", @"</td>");
+                    if (value.Contains("</a>"))
+                    {
+                        value = ParseItem(ref value, @""">", @"</a>");
+                    }
+                    Detail detail = new Detail(desc, value);
+                    tvShow.Details.Add(detail);
+                }
+
+                while (html.Contains(@"<td class=""person"">"))
+                {
+                    html = html.Substring(html.IndexOf(@"<td class=""person"">") +
+                        @"<td class=""person"">".Length);
+                    string desc = ParseItem(ref html, @""">", @"</a>");
+                    string value = ParseItem(ref html, @"<td class=""role"">", @"</td>");
+                    Detail detail = new Detail(desc, value);
+                    tvShow.Details.Add(detail);
+                }
+            }
+
             return tvShow;
         }
 

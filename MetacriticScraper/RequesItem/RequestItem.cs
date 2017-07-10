@@ -81,7 +81,7 @@ namespace MetacriticScraper.RequestData
             }
         }
 
-        private string m_thirdLevelRequest;
+        protected string m_thirdLevelRequest;
         public string ThirdLevelRequest
         {
             get
@@ -122,6 +122,11 @@ namespace MetacriticScraper.RequestData
             }
 
             return m_autoResult != null;
+        }
+
+        protected void SetThirdLevelRequest()
+        {
+            Urls = Urls.Select(u => u + "/" + m_thirdLevelRequest).ToList();
         }
 
         #region IResult

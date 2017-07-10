@@ -10,8 +10,13 @@ namespace MetacriticScraper.MediaData
     public class MediaItem
     {
         public string Title { get; set; }
-        public List<Credit> Credits { get; set; }
+        public List<Detail> Details { get; set; }
         public DateTime ReleaseDate { get; set; }
         public Rating Rating { get; set; }
+
+        public MediaItem()
+        {
+            Details = new List<Detail>();
+        }
     }
 }
