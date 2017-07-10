@@ -123,22 +123,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\album_lemonade.txt");
             var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
 
-            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
-            item.AutoResult = completeData.AutoComplete.Results;
-            bool result = item.FilterValidUrls();
-
-            Assert.AreEqual(item.Urls.Count, 1);
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void TestAlbumFilterValidUrlsWithDetails()
-        {
-            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData = File.ReadAllText(dir + @"\TestData\album_lemonade.txt");
-            var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
-
-            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "", "details");
+            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade");
             item.AutoResult = completeData.AutoComplete.Results;
             bool result = item.FilterValidUrls();
 
