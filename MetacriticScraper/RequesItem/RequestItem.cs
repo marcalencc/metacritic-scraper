@@ -81,7 +81,7 @@ namespace MetacriticScraper.RequestData
             }
         }
 
-        private string m_thirdLevelRequest;
+        protected string m_thirdLevelRequest;
         public string ThirdLevelRequest
         {
             get
@@ -126,10 +126,7 @@ namespace MetacriticScraper.RequestData
 
         protected void SetThirdLevelRequest()
         {
-            if (m_thirdLevelRequest == "credits")
-            {
-                Urls = Urls.Select(u => u + "/details").ToList();
-            }
+            Urls = Urls.Select(u => u + "/" + m_thirdLevelRequest).ToList();
         }
 
         #region IResult

@@ -12,7 +12,7 @@ namespace MetacriticScraper.Scraper
     public class UrlParser : IParser
     {
         private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/" };
-        private string[] OTHER_KEYWORDS = new string[] { "credits" };
+        private string[] OTHER_KEYWORDS = new string[] { "details" };
 
         public bool ParseRequestUrl(string id, string url, out string keyword, out string title,
             out string yearOrSeason, out string thirdLevelReq)
