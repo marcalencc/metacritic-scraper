@@ -123,12 +123,12 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\album_lemonade.txt");
             var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
 
-            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade");
+            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
             item.AutoResult = completeData.AutoComplete.Results;
             bool result = item.FilterValidUrls();
 
             Assert.AreEqual(item.Urls.Count, 1);
-            Assert.AreEqual(item.Urls[0], "/music/lemondade/beyonce/details");
+            Assert.AreEqual(item.Urls[0], "/music/lemonade/beyonce");
             Assert.IsTrue(result);
         }
 
@@ -189,12 +189,29 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep.txt");
             var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
 
-            TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "details");
+            TVShowRequestItem item = new TVShowRequestItem("1", "veep", "", "details");
             item.AutoResult = completeData.AutoComplete.Results;
             bool result = item.FilterValidUrls();
 
             Assert.AreEqual(item.Urls.Count, 1);
             Assert.AreEqual(item.Urls[0], "/tv/veep/details");
+            Assert.IsTrue(result);
+        }
+
+
+        [Test]
+        public void TestTvShowFilterValidUrlsWithSeasonAndDetails()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep.txt");
+            var completeData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(testData);
+
+            TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "details");
+            item.AutoResult = completeData.AutoComplete.Results;
+            bool result = item.FilterValidUrls();
+
+            Assert.AreEqual(item.Urls.Count, 1);
+            Assert.AreEqual(item.Urls[0], "/tv/veep/season-6/details");
             Assert.IsTrue(result);
         }
 

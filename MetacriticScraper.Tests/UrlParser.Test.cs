@@ -30,7 +30,7 @@ namespace MetacriticScraper.Tests
         [Test]
         public void ParseInvalidYearOrSeason()
         {
-            string url = "/tvshow/veep/yolo/credits";
+            string url = "/tvshow/veep/yolo/details";
             string keyword;
             string title;
             string yearOrSeason;
@@ -44,7 +44,7 @@ namespace MetacriticScraper.Tests
 
         public void ParseInvalidThirdLevelRequest()
         {
-            string url = "/tvshow/veep/creditor";
+            string url = "/tvshow/veep/detailor";
             string keyword;
             string title;
             string yearOrSeason;
@@ -53,12 +53,12 @@ namespace MetacriticScraper.Tests
             Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq), Throws.Exception.TypeOf<InvalidUrlException>().
                 With.Property("Message").
-                EqualTo("Invalid parameter: creditor"));
+                EqualTo("Invalid parameter: detailor"));
         }
 
         public void ParseInvalidThirdLevelRequestWithSeason()
         {
-            string url = "/tvshow/veep/3/creditor";
+            string url = "/tvshow/veep/3/detailor";
             string keyword;
             string title;
             string yearOrSeason;
@@ -67,7 +67,7 @@ namespace MetacriticScraper.Tests
             Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq), Throws.Exception.TypeOf<InvalidUrlException>().
                 With.Property("Message").
-                EqualTo("Invalid parameter: creditor"));
+                EqualTo("Invalid parameter: detailor"));
         }
 
         [Test]
@@ -88,9 +88,9 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidTvShowUrlWithSeasonCredits()
+        public void ParseValidTvShowUrlWithSeasonDetails()
         {
-            string url = "/tvshow/veep/3/credits";
+            string url = "/tvshow/veep/3/details";
             string keyword;
             string title;
             string yearOrSeason;
@@ -102,14 +102,14 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(keyword, "/tvshow/");
             Assert.AreEqual(title, "veep");
             Assert.AreEqual(yearOrSeason, "3");
-            Assert.AreEqual(thirdLevelReq, "credits");
+            Assert.AreEqual(thirdLevelReq, "details");
         }
 
 
         [Test]
-        public void ParseValidTvShowUrlWithCredits()
+        public void ParseValidTvShowUrlWithDetails()
         {
-            string url = "/tvshow/veep/credits";
+            string url = "/tvshow/veep/details";
             string keyword;
             string title;
             string yearOrSeason;
@@ -121,7 +121,7 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(keyword, "/tvshow/");
             Assert.AreEqual(title, "veep");
             Assert.AreEqual(yearOrSeason, "");
-            Assert.AreEqual(thirdLevelReq, "credits");
+            Assert.AreEqual(thirdLevelReq, "details");
         }
 
         [Test]
@@ -159,9 +159,9 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidMovieUrlWithCredits()
+        public void ParseValidMovieUrlWithDetails()
         {
-            string url = "/movie/the-master/credits";
+            string url = "/movie/the-master/details";
             string keyword;
             string title;
             string yearOrSeason;
@@ -173,14 +173,14 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(keyword, "/movie/");
             Assert.AreEqual(title, "the-master");
             Assert.AreEqual(yearOrSeason, "");
-            Assert.AreEqual(thirdLevelReq, "credits");
+            Assert.AreEqual(thirdLevelReq, "details");
         }
 
 
         [Test]
-        public void ParseValidMovieUrlWithYearAndCredits()
+        public void ParseValidMovieUrlWithYearAndDetails()
         {
-            string url = "/movie/the-master/2012/credits";
+            string url = "/movie/the-master/2012/details";
             string keyword;
             string title;
             string yearOrSeason;
@@ -192,7 +192,7 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(keyword, "/movie/");
             Assert.AreEqual(title, "the-master");
             Assert.AreEqual(yearOrSeason, "2012");
-            Assert.AreEqual(thirdLevelReq, "credits");
+            Assert.AreEqual(thirdLevelReq, "details");
         }
 
         [Test]
@@ -230,9 +230,9 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidAlbumUrlWithYearAndCredits()
+        public void ParseValidAlbumUrlWithYearAndDetails()
         {
-            string url = "/album/to-pimp-a-butterfly/2015/credits";
+            string url = "/album/to-pimp-a-butterfly/2015/details";
             string keyword;
             string title;
             string yearOrSeason;
@@ -244,13 +244,13 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(keyword, "/album/");
             Assert.AreEqual(title, "to-pimp-a-butterfly");
             Assert.AreEqual(yearOrSeason, "2015");
-            Assert.AreEqual(thirdLevelReq, "credits");
+            Assert.AreEqual(thirdLevelReq, "details");
         }
 
         [Test]
-        public void ParseValidAlbumUrlWithCredits()
+        public void ParseValidAlbumUrlWithDetails()
         {
-            string url = "/album/to-pimp-a-butterfly/credits";
+            string url = "/album/to-pimp-a-butterfly/details";
             string keyword;
             string title;
             string yearOrSeason;
@@ -262,7 +262,7 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(keyword, "/album/");
             Assert.AreEqual(title, "to-pimp-a-butterfly");
             Assert.AreEqual(yearOrSeason, "");
-            Assert.AreEqual(thirdLevelReq, "credits");
+            Assert.AreEqual(thirdLevelReq, "details");
         }
 
         [Test]
@@ -321,7 +321,7 @@ namespace MetacriticScraper.Tests
             string keyword = "/movie/";
             string title = "la-la-land";
             string yearOrSeason = "2016";
-            string thirdLevelRequest = "credits";
+            string thirdLevelRequest = "details";
 
             RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason,
                 thirdLevelRequest);
@@ -332,7 +332,7 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(item.RequestId, "1");
             Assert.AreEqual(item.Name, "la la land");
             Assert.AreEqual(item.ItemDate, "2016");
-            Assert.AreEqual(item.ThirdLevelRequest, "credits");
+            Assert.AreEqual(item.ThirdLevelRequest, "details");
         }
 
         [Test]
@@ -391,7 +391,7 @@ namespace MetacriticScraper.Tests
             string keyword = "/album/";
             string title = "melodrama";
             string yearOrSeason = "2017";
-            string thirdLevelRequest = "credits";
+            string thirdLevelRequest = "details";
 
             RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason,
                 thirdLevelRequest);
@@ -402,7 +402,7 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(item.RequestId, "1");
             Assert.AreEqual(item.Name, "melodrama");
             Assert.AreEqual(item.ItemDate, "2017");
-            Assert.AreEqual(item.ThirdLevelRequest, "credits");
+            Assert.AreEqual(item.ThirdLevelRequest, "details");
         }
 
         [Test]
@@ -411,7 +411,7 @@ namespace MetacriticScraper.Tests
             string keyword = "/tvshow/";
             string title = "olive-kitteridge";
             string yearOrSeason = ""; ;
-            string thirdLevelReq = "credits";
+            string thirdLevelReq = "details";
 
             RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason,
                 thirdLevelReq);
@@ -421,7 +421,7 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(item.RefTypeId, Constants.TvShowTypeId);
             Assert.AreEqual(item.RequestId, "1");
             Assert.AreEqual(item.Name, "olive kitteridge");
-            Assert.AreEqual(item.ThirdLevelRequest, "credits");
+            Assert.AreEqual(item.ThirdLevelRequest, "details");
         }
 
         [Test]

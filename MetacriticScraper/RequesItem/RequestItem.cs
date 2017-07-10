@@ -126,7 +126,10 @@ namespace MetacriticScraper.RequestData
 
         protected void SetThirdLevelRequest()
         {
-            Urls = Urls.Select(u => u + "/" + m_thirdLevelRequest).ToList();
+            if (!String.IsNullOrEmpty(m_thirdLevelRequest))
+            {
+                Urls = Urls.Select(u => u + "/" + m_thirdLevelRequest).ToList();
+            }
         }
 
         #region IResult
