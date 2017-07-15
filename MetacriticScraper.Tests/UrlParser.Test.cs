@@ -28,7 +28,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseInvalidYearOrSeason()
+        public void Test_UrlParser_ParseInvalidYearOrSeason()
         {
             string url = "/tvshow/veep/yolo/details";
             string keyword;
@@ -42,7 +42,7 @@ namespace MetacriticScraper.Tests
                 EqualTo("Invalid year or season value"));
         }
 
-        public void ParseInvalidThirdLevelRequest()
+        public void Test_UrlParser_ParseInvalidThirdLevelRequest()
         {
             string url = "/tvshow/veep/detailor";
             string keyword;
@@ -56,7 +56,7 @@ namespace MetacriticScraper.Tests
                 EqualTo("Invalid parameter: detailor"));
         }
 
-        public void ParseInvalidThirdLevelRequestWithSeason()
+        public void Test_UrlParser_ParseInvalidThirdLevelRequestWithSeason()
         {
             string url = "/tvshow/veep/3/detailor";
             string keyword;
@@ -71,7 +71,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseInvalidKeyword()
+        public void Test_UrlParser_ParseInvalidKeyword()
         {
             string url = "/tvguide/veep/5";
             string keyword;
@@ -88,7 +88,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidTvShowUrlWithSeasonAndDetails()
+        public void Test_UrlParser_ParseValidTvShowUrlWithSeasonAndDetails()
         {
             string url = "/tvshow/veep/3/details";
             string keyword;
@@ -105,9 +105,8 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(thirdLevelReq, "details");
         }
 
-
         [Test]
-        public void ParseValidTvShowUrlWithDetails()
+        public void Test_UrlParser_ParseValidTvShowUrlWithDetails()
         {
             string url = "/tvshow/veep/details";
             string keyword;
@@ -125,7 +124,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidTvShowUrlWithSeason()
+        public void Test_UrlParser_ParseValidTvShowUrlWithSeason()
         {
             string url = "/tvshow/veep/5";
             string keyword;
@@ -142,7 +141,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidTvShowUrl()
+        public void Test_UrlParser_ParseValidTvShowUrl()
         {
             string url = "/tvshow/game-of-thrones";
             string keyword;
@@ -159,7 +158,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidMovieUrlWithDetails()
+        public void Test_UrlParser_ParseValidMovieUrlWithDetails()
         {
             string url = "/movie/the-master/details";
             string keyword;
@@ -178,7 +177,7 @@ namespace MetacriticScraper.Tests
 
 
         [Test]
-        public void ParseValidMovieUrlWithYearAndDetails()
+        public void Test_UrlParser_ParseValidMovieUrlWithYearAndDetails()
         {
             string url = "/movie/the-master/2012/details";
             string keyword;
@@ -196,7 +195,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidMovieUrlWithYear()
+        public void Test_UrlParser_ParseValidMovieUrlWithYear()
         {
             string url = "/movie/the-master/2012";
             string keyword;
@@ -213,7 +212,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidMovieUrl()
+        public void Test_UrlParser_ParseValidMovieUrl()
         {
             string url = "/movie/guardians-of-the-galaxy";
             string keyword;
@@ -230,7 +229,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidAlbumUrlWithYearAndDetails()
+        public void Test_UrlParser_ParseValidAlbumUrlWithYearAndDetails()
         {
             string url = "/album/to-pimp-a-butterfly/2015/details";
             string keyword;
@@ -248,7 +247,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidAlbumUrlWithDetails()
+        public void Test_UrlParser_ParseValidAlbumUrlWithDetails()
         {
             string url = "/album/to-pimp-a-butterfly/details";
             string keyword;
@@ -266,7 +265,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidAlbumUrlWithYear()
+        public void Test_UrlParser_ParseValidAlbumUrlWithYear()
         {
             string url = "/album/to-pimp-a-butterfly/2015";
             string keyword;
@@ -283,7 +282,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void ParseValidAlbumUrl()
+        public void Test_UrlParser_ParseValidAlbumUrl()
         {
             string url = "/album/the-suburbs";
             string keyword;
@@ -300,7 +299,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieItemCreationNoThirdLevelRequest()
+        public void Test_UrlParser_MovieItemCreationNoThirdLevelRequest()
         {
             string keyword = "/movie/";
             string title = "die-another-day";
@@ -316,7 +315,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieItemCreationWithYearAndThirdLevelRequest()
+        public void Test_UrlParser_MovieItemCreationWithYearAndThirdLevelRequest()
         {
             string keyword = "/movie/";
             string title = "la-la-land";
@@ -336,7 +335,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieItemCreationWithYearNoThirdLevelRequest()
+        public void Test_UrlParser_MovieItemCreationWithYearNoThirdLevelRequest()
         {
             string keyword = "/movie/";
             string title = "la-la-land";
@@ -353,7 +352,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestAlbumItemCreationNoThirdLevelRequest()
+        public void Test_UrlParser_AlbumItemCreationNoThirdLevelRequest()
         {
             string keyword = "/album/";
             string title = "views";
@@ -369,7 +368,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestAlbumItemCreationWithYearNoThirdLevelRequest()
+        public void Test_UrlParser_AlbumItemCreationWithYearNoThirdLevelRequest()
         {
             string keyword = "/album/";
             string title = "melodrama";
@@ -386,7 +385,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestAlbumItemCreationWithYearAndThirdLevelRequest()
+        public void Test_UrlParser_AlbumItemCreationWithYearAndThirdLevelRequest()
         {
             string keyword = "/album/";
             string title = "melodrama";
@@ -406,7 +405,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestTvShowItemCreationWithThirdLevelRequest()
+        public void Test_UrlParser_TvShowItemCreationWithThirdLevelRequest()
         {
             string keyword = "/tvshow/";
             string title = "olive-kitteridge";
@@ -425,7 +424,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestTvShowItemCreationNoThirdLevelRequest()
+        public void Test_UrlParser_TvShowItemCreationNoThirdLevelRequest()
         {
             string keyword = "/tvshow/";
             string title = "olive-kitteridge";
@@ -441,7 +440,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestInvalidKeyword()
+        public void Test_UrlParser_InvalidKeyword()
         {
             string keyword = "/magazine/";
             string title = "2-broke-girls";

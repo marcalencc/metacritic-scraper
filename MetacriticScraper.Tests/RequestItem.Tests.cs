@@ -31,7 +31,7 @@ namespace MetacriticScraper.Tests
 
 
         [Test]
-        public async Task TestAutoSearch()
+        public async Task Test_RequestItem_AutoSearch()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\movie_the_master.txt");
@@ -48,7 +48,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieFilterValidUrls()
+        public void Test_RequestItem_MovieFilterValidUrls()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\movie_the_master.txt");
@@ -63,7 +63,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieFilterValidUrlsWithDetails()
+        public void Test_RequestItem_MovieFilterValidUrlsWithDetails()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\movie_the_master.txt");
@@ -79,7 +79,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieScrape()
+        public void Test_RequestItem_MovieScrape()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData_2005 = File.ReadAllText(dir + @"\TestData\moonlight_2005_scraped.txt");
@@ -101,7 +101,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestMovieParse()
+        public void Test_RequestItem_MovieParse()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData_2016 = File.ReadAllText(dir + @"\TestData\moonlight_2016_scraped.txt");
@@ -117,7 +117,7 @@ namespace MetacriticScraper.Tests
         // Album
 
         [Test]
-        public void TestAlbumFilterValidUrls()
+        public void Test_RequestItem_AlbumFilterValidUrls()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\album_lemonade.txt");
@@ -133,7 +133,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestAlbumScrape()
+        public void Test_RequestItem_AlbumScrape()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\lemonade_2016_scraped.txt");
@@ -152,7 +152,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestAlbumParse()
+        public void Test_RequestItem_AlbumParse()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData_2016 = File.ReadAllText(dir + @"\TestData\lemonade_2016_scraped.txt");
@@ -168,7 +168,7 @@ namespace MetacriticScraper.Tests
         // TV Show
 
         [Test]
-        public void TestTvShowFilterValidUrls()
+        public void Test_RequestItem_TvShowFilterValidUrls()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep.txt");
@@ -183,7 +183,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestTvShowFilterValidUrlsWithDetails()
+        public void Test_RequestItem_TvShowFilterValidUrlsWithDetails()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep.txt");
@@ -200,7 +200,7 @@ namespace MetacriticScraper.Tests
 
 
         [Test]
-        public void TestTvShowFilterValidUrlsWithSeasonAndDetails()
+        public void Test_RequestItem_TvShowFilterValidUrlsWithSeasonAndDetails()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep.txt");
@@ -216,7 +216,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestTvShowScrape()
+        public void Test_RequestItem_TvShowScrape()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData = File.ReadAllText(dir + @"\TestData\veep_6_scraped.txt");
@@ -235,7 +235,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestTvShowParse()
+        public void Test_RequestItem_TvShowParse()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData_2016 = File.ReadAllText(dir + @"\TestData\veep_6_scraped.txt");
@@ -250,7 +250,7 @@ namespace MetacriticScraper.Tests
 
 
         [Test]
-        public void TestTvShowParseWithDetails()
+        public void Test_RequestItem_TvShowParseWithDetails()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string testData_2016 = File.ReadAllText(dir + @"\TestData\tvshow_veep_details.txt");

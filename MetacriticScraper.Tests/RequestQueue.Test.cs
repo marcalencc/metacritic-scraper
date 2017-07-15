@@ -27,7 +27,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestEnqueuing()
+        public void Test_RequestQueue_Enqueuing()
         {
             queue.Enqueue(new object());
 
@@ -35,7 +35,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestDequeuing()
+        public void Test_RequestQueue_Dequeuing()
         {
             queue.Enqueue(new object());
             queue.Enqueue(new object());
@@ -46,7 +46,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestQueueLimit()
+        public void Test_RequestQueue_QueueLimit()
         {
             queue.Enqueue(new object());
             queue.Enqueue(new object());

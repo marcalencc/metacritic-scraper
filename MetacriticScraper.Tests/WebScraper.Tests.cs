@@ -26,7 +26,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestErrorWhenParsingUrl()
+        public void Test_WebScraper_ErrorWhenParsingUrl()
         {
             var parser = new Mock<IParser>();
             string dummyKeyword;
@@ -49,7 +49,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestErrorWhenCreatingRequestData()
+        public void Test_WebScraper_ErrorWhenCreatingRequestData()
         {
             var parser = new Mock<IParser>();
             string dummyKeyword;
@@ -72,7 +72,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestSuccessfulAddProcess()
+        public void Test_WebScraper_SuccessfulAddProcess()
         {
             var parser = new Mock<IParser>();
             string dummyKeyword;
@@ -92,7 +92,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void TestSystemBusy()
+        public void Test_WebScraper_SystemBusy()
         {
             string id = "1";
             string url = "/tvshow/30-rock/6";
