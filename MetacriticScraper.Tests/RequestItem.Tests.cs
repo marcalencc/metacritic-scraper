@@ -114,6 +114,27 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(mItem.Rating.CriticReviewCount, 51);
         }
 
+        [Test]
+        public void Test_RequestItem_MovieParseWithDetails()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData_2016 = File.ReadAllText(dir + @"\TestData\movie_zerodarkthirty_details.txt");
+
+            MovieRequestItem item = new MovieRequestItem("1", "zero dark thirty", "", "details");
+            MediaItem mItem = item.Parse(testData_2016);
+
+            Assert.AreEqual(mItem.Title, null);
+            Assert.AreEqual(mItem.Details.Count, 60);
+            CollectionAssert.Contains(mItem.Details, new Detail("Runtime",
+                "157 min"));
+            CollectionAssert.Contains(mItem.Details, new Detail("Jessica Chastain",
+                "Maya"));
+            CollectionAssert.Contains(mItem.Details, new Detail("Nabil Elouahabi",
+                "Detainee On Monitor"));
+            CollectionAssert.Contains(mItem.Details, new Detail("Jonathan Leven",
+                "Co-Producer"));
+        }
+
         // Album
 
         [Test]
@@ -163,6 +184,24 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(mItem.Title, "Lemonade");
             Assert.AreEqual(mItem.Rating.CriticRating, 92);
             Assert.AreEqual(mItem.Rating.CriticReviewCount, 33);
+        }
+
+        [Test]
+        public void Test_RequestItem_AlbumParseWithDetails()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData_2016 = File.ReadAllText(dir + @"\TestData\album_teensofdenial_details.txt");
+
+            AlbumRequestItem item = new AlbumRequestItem("1", "teens of denial", "", "details");
+            MediaItem mItem = item.Parse(testData_2016);
+
+            Assert.AreEqual(mItem.Title, null);
+            Assert.AreEqual(mItem.Details.Count, 4);
+            CollectionAssert.Contains(mItem.Details, new Detail("Record Label", "Matador"));
+            CollectionAssert.Contains(mItem.Details, new Detail("Genre(s)",
+                "Pop/Rock, Alternative/Indie Rock"));
+            CollectionAssert.Contains(mItem.Details, new Detail("Name",
+                "Car Seat Headrest"));
         }
 
         // TV Show
