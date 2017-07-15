@@ -66,10 +66,16 @@
     <Content Include="TestData\moonlight_2005_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\album_teensofdenial_details.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="UrlParser.Test.cs" />
     <Compile Include="WebScraper.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestQueue.Test.cs" />
+    <Content Include="TestData\movie_zerodarkthirty_details.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\tvshow_veep.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
