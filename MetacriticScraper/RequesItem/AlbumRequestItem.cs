@@ -46,23 +46,57 @@ namespace MetacriticScraper.RequestData
         public override MediaItem Parse(string html)
         {
             Album album = new Album();
-            album.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
-            album.PrimaryArtist = ParseItem(ref html, @"<span class=""band_name"" itemprop=""name"">", @"</span>");
-            string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""datePublished"">", @"</span>");
-            DateTime releaseDate;
-            if (DateTime.TryParse(releaseDateStr, out releaseDate))
+            if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
-                album.ReleaseDate = releaseDate;
+                album.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
+                album.PrimaryArtist = ParseItem(ref html, @"<span class=""band_name"" itemprop=""name"">", @"</span>");
+                string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""datePublished"">", @"</span>");
+                DateTime releaseDate;
+                if (DateTime.TryParse(releaseDateStr, out releaseDate))
+                {
+                    album.ReleaseDate = releaseDate;
+                }
+
+                short criticRating = 0;
+                short criticRatingCount = 0;
+                if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out criticRating))
+                {
+                    criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
+                }
+
+                album.Rating = new Rating(criticRating, criticRatingCount);
+            }
+            else if (m_thirdLevelRequest == "details")
+            {
+                html = html.Substring(html.IndexOf(@"""new_details"""));
+                while (html.Contains(@"span class=""label"">"))
+                {
+                    string desc = ParseItem(ref html, @"span class=""label"">", @":</span>");
+                    string value = string.Empty;
+
+                    int nextIdx;
+                    int valueIdx;
+                    do
+                    {
+                        if (string.IsNullOrEmpty(value))
+                        {
+                            value = ParseItem(ref html, @"span class=""data"">", @"</span>");
+                        }
+                        else
+                        {
+                            value = string.Format("{0}, {1}", value,
+                                ParseItem(ref html, @"span class=""data"">", @"</span>"));
+                        }
+
+                        nextIdx = html.IndexOf(@"<span class=""label"">");
+                        valueIdx = html.IndexOf(@"span class=""data"">");
+                    } while (nextIdx != -1 && valueIdx < nextIdx);
+
+                        Detail detail = new Detail(desc, value);
+                    album.Details.Add(detail);
+                }
             }
 
-            short criticRating = 0;
-            short criticRatingCount = 0;
-            if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out criticRating))
-            {
-                criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
-            }
-
-            album.Rating = new Rating(criticRating, criticRatingCount);
             return album;
         }
 

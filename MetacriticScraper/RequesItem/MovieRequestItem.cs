@@ -45,41 +45,82 @@ namespace MetacriticScraper.RequestData
 
         public override MediaItem Parse(string html)
         {
-            int startIndex = html.IndexOf(@"<script type=""application/ld+json"">");
-            if (startIndex != -1)
+            Movie movie = new Movie();
+            if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
-                string infoString = html.Substring(startIndex);
-                int endIndex = infoString.IndexOf(@"</script>");
-                if (endIndex != -1)
+                int startIndex = html.IndexOf(@"<script type=""application/ld+json"">");
+                if (startIndex != -1)
                 {
-                    Movie movie = new Movie();
-                    infoString = infoString.Substring(0, endIndex);
-
-                    movie.Title = ParseItem(ref infoString, @"""name"" : """, @"""");
-
-                    string releaseDateStr = ParseItem(ref infoString, @"""datePublished"" : """, @"""");
-                    DateTime releaseDate;
-                    if (DateTime.TryParse(releaseDateStr, out releaseDate))
+                    string infoString = html.Substring(startIndex);
+                    int endIndex = infoString.IndexOf(@"</script>");
+                    if (endIndex != -1)
                     {
-                        movie.ReleaseDate = releaseDate;
+                        infoString = infoString.Substring(0, endIndex);
+                        movie.Title = ParseItem(ref infoString, @"""name"" : """, @"""");
+
+                        string releaseDateStr = ParseItem(ref infoString, @"""datePublished"" : """, @"""");
+                        DateTime releaseDate;
+                        if (DateTime.TryParse(releaseDateStr, out releaseDate))
+                        {
+                            movie.ReleaseDate = releaseDate;
+                        }
+
+                        short criticRating = 0;
+                        short criticRatingCount = 0;
+                        if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out criticRating))
+                        {
+                            criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
+                        }
+                        movie.Rating = new Rating(criticRating, criticRatingCount);
+
+                        infoString = infoString.Substring(infoString.IndexOf(@"""director"""));
+                        movie.Director = ParseItem(ref infoString, @"""name"": """, @"""");
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (m_thirdLevelRequest == "details")
+            {
+                while (html.Contains(@"<td class=""label"">"))
+                {
+                    string desc = ParseItem(ref html, @"<td class=""label"">", @":</td>");
+                    string value = ParseItem(ref html, @"<td class=""data"">", @"</td>");
+                    if (value.Contains("</a>"))
+                    {
+                        value = ParseItem(ref value, @""">", @"</a>");
+                    }
+                    if (value.Contains("<span>"))
+                    {
+                        value = value.Replace("<span>", "").Replace("</span>", "");
                     }
 
-                    short criticRating = 0;
-                    short criticRatingCount = 0;
-                    if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out criticRating))
+                    Detail detail = new Detail(desc, value);
+                    movie.Details.Add(detail);
+                }
+
+                while (html.Contains(@"<td class=""person"">"))
+                {
+                    string desc = ParseItem(ref html, @"<td class=""person"">", @"</td>");
+                    if (desc.Contains("</a>"))
                     {
-                        criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
+                        desc = ParseItem(ref desc, @""">", @"</a>");
                     }
-                    movie.Rating = new Rating(criticRating, criticRatingCount);
 
-                    infoString = infoString.Substring(infoString.IndexOf(@"""director"""));
-                    movie.Director = ParseItem(ref infoString, @"""name"": """, @"""");
+                    string value = ParseItem(ref html, @"<td class=""role"">", @"</td>");
 
-                    return movie;
+                    Detail detail = new Detail(desc, value);
+                    movie.Details.Add(detail);
                 }
             }
 
-            return null;
+            return movie;
         }
 
         private string ParseItem(ref string infoStr, string startPos, string endPos)
