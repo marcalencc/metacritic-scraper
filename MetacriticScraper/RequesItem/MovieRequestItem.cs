@@ -71,7 +71,22 @@ namespace MetacriticScraper.RequestData
                         {
                             criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
                         }
-                        movie.Rating = new Rating(criticRating, criticRatingCount);
+
+                        // Critic
+                        html = html.Substring(html.IndexOf("Critics</span>"));
+                        // User
+                        html = html.Substring(html.IndexOf("based on "));
+
+                        float userRating = 0;
+                        short userRatingCount = 0;
+                        if (short.TryParse(ParseItem(ref html, @"based on ", " Ratings"), out userRatingCount))
+                        {
+                            html = html.Substring(html.IndexOf("metascore_w user"));
+                            userRating = float.Parse(ParseItem(ref html, @">", @"</span>"));
+                        }
+
+                        movie.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
+
 
                         infoString = infoString.Substring(infoString.IndexOf(@"""director"""));
                         movie.Director = ParseItem(ref infoString, @"""name"": """, @"""");

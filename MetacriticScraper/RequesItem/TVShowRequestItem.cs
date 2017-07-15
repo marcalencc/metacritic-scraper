@@ -69,7 +69,16 @@ namespace MetacriticScraper.RequestData
                 {
                     criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
                 }
-                tvShow.Rating = new Rating(criticRating, criticRatingCount);
+
+                float userRating = 0;
+                short userRatingCount = 0;
+                html = html.Substring(html.IndexOf("metascore_w user large"));
+                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out userRating))
+                {
+                    userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
+                }
+
+                tvShow.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
 
                 string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""startDate"">", @"</span>");
                 DateTime releaseDate;

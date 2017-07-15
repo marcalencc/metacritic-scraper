@@ -64,7 +64,15 @@ namespace MetacriticScraper.RequestData
                     criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
                 }
 
-                album.Rating = new Rating(criticRating, criticRatingCount);
+                float userRating = 0;
+                short userRatingCount = 0;
+                html = html.Substring(html.IndexOf("metascore_w user large"));
+                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out userRating))
+                {
+                    userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
+                }
+
+                album.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
             }
             else if (m_thirdLevelRequest == "details")
             {

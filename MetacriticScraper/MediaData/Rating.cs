@@ -8,7 +8,7 @@ namespace MetacriticScraper.MediaData
 {
     public class Rating
     {
-        public Rating(short criticRating, short userRating,
+        public Rating(short criticRating, float userRating,
             short criticReviewCount, short userReviewCount)
         {
             CriticRating = criticRating;
@@ -23,7 +23,7 @@ namespace MetacriticScraper.MediaData
 
         public short CriticRating { get; set; }
         public short CriticReviewCount { get; set; }
-        public short UserRating { get; set; }
+        public float UserRating { get; set; }
         public short UserReviewCount { get; set; }
     }
 }
