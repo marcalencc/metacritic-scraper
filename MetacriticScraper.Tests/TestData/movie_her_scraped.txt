@@ -1,0 +1,2719 @@
+﻿<!DOCTYPE html>
+<html xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+            <title>Her Reviews - Metacritic</title>
+        
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1039.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+
+    
+    <meta name="description" content="Her movie reviews &amp; Metacritic score: Set in the Los Angeles of the slight future, Her follows Theodore Twombly, a complex, soulful man who makes his living ...">
+
+    
+    
+
+    
+    <meta name="application-name" content="Metacritic">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="/images/win8tile/76bf1426-2886-4b87-ae1c-06424b6bb8a2.png">
+
+    
+                        <meta property="og:title" content="Her">
+                    <meta property="og:type" content="video.movie">
+                    <meta property="og:url" content="http://www.metacritic.com/movie/her">
+                    <meta property="og:image" content="http://static.metacritic.com/images/products/movies/250h-movie.jpg">
+                    <meta property="og:site_name" content="Metacritic">
+                    <meta property="fb:app_id" content="123113677890173">
+                    <meta property="og:description" content="Set in the Los Angeles of the slight future, Her follows Theodore Twombly, a complex, soulful man who makes his living writing touching, personal letters for other people. Heartbroken after the end of a long relationship, he becomes intrigued with a new, advanced operating system, which promises to be an intuitive entity in its own right, individual to each user. Upon initiating it, he is delighted to meet &quot;Samantha,&quot; a bright, female voice, who is insightful, sensitive and surprisingly funny. As her needs and desires grow, in tandem with his own, their friendship deepens into an eventual love for each other. [Warner Bros.]">
+            
+    
+     
+        <link rel="canonical" href="http://www.metacritic.com/movie/her" />
+        
+    
+
+    
+    
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+
+    
+    <script src="//cdn.optimizely.com/js/2333541344.js"></script>
+
+    <link rel="stylesheet" href="/css/global_alt.min.1499713810.css" type="text/css">
+    <script type="text/javascript" src="/js/global_alt.min.1499713810.js"></script>
+
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+
+    
+    <link rel="stylesheet" href="/css/fonts/proxima-nova/stylesheet.css" type="text/css" charset="utf-8" />
+
+    
+                        
+            <script async type="text/javascript" src="//js.indexww.com/ht/ls-metacritic.js"></script>
+            
+            
+    <script type="text/javascript">
+        
+    	MC_USER_LOGGED_IN = false;
+        
+        
+        
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        window.metac_ads_pushdisplay = window.metac_ads_pushdisplay || [];
+        window.metac_gallery_ads_pushdisplay = window.metac_gallery_ads_pushdisplay || [];
+        window.metac_hover_ads_pushdisplay = window.metac_hover_ads_pushdisplay || [];
+        (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +'//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+        
+
+        
+                    
+            window._taboola = window._taboola || [];
+            window.metac_tContentWidget = window.metac_tContentWidget || [];
+            _taboola.push({
+                other : 'auto'
+            });
+            !function (e, f, u) {
+                e.async = 1;
+                e.src = u;
+                f.parentNode.insertBefore(e, f);
+            }(document.createElement('script'),
+              document.getElementsByTagName('script')[0],
+              '//cdn.taboola.com/libtrc/cbsinteractive-metacritic/loader.js');
+            
+            </script>
+
+    
+    <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async></script>
+
+    
+    <script src="//vidtech.cbsinteractive.com/uvpjs/2.1.0/CBSI-PLAYER.js"></script>
+    
+    
+    <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+
+</head>
+<body>
+    <div id="omnibar_wrapper">
+        
+                        
+                        <div id="omnibar" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_omnibar = googletag.defineSlot("/8264/Asia-metacritic/movies",[980,45], "omnibar").addService(googletag.pubads()).setTargeting("pos", "top").setCollapseEmptyDiv(true, true);
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("omnibar");
+                                    </script>
+                                        </div>
+                        
+
+    </div>
+
+    <div id="page">
+        
+        <div id="content_header_wrapper">
+            <header id="top_header">
+    <nav id="primary_nav" class="inset_left2 inset_right2">
+        <div class="primary_nav_row">
+            <div class="logo">
+                <a href="http://www.metacritic.com"><img src="/images/mobile/logo.png" alt="Metacritic logo"></a>
+            </div>
+
+            <div id="primary_menu_wrapper">
+                <div id="primary_menu_items">
+                    <div class="primary_menu_items_row">
+                                                    <div id="primary_menu_item_movies" class="primary_menu_item selected">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/movie">
+                                        Movies
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_games" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/game">
+                                        Games
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_tv" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/tv">
+                                        TV
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_music" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/music">
+                                        Music
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_features" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/feature">
+                                        Features
+                                    </a>
+                                </span>
+                            </div>
+                                                <div id="primary_menu_item_login" class="primary_menu_item">
+                            
+                                                            <span class="primary_menu_text">
+                                    <a id="login" href="https://secure.metacritic.com/login">LOG&nbsp;IN</a> / <a id="signup" href="https://secure.metacritic.com/signup">SIGN&nbsp;UP</a>
+                                </span>
+                                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="primary_search">
+                <div id="primary_search_wrapper">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <span class="search_label">SEARCH</span>
+                </div>
+            </div>
+
+            <div id="primary_social" class="social_round">
+                <a href="http://www.facebook.com/Metacritic" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
+                <a href="http://twitter.com/metacritic" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <nav id="secondary_nav" class="hover_none">
+                                                                        
+                
+                                                                                                                    <div id="secondary_nav_items_movies" class="secondary_nav_items">
+                    <table id="secondary_nav_table_movies" class="secondary_nav_table">
+                        <tr>
+                                                    <td class="menu_col_left">
+                                                                                                                                                                                    <div class="menu_w_icon">
+                                            <a href="/browse/movies/release-date/theaters/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/ticket.png">
+                                                <span>In Theaters</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/browse/movies/release-date/coming-soon/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/clock.png">
+                                                <span>Coming Soon</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/browse/dvds/release-date/new-releases/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/couch.png">
+                                                <span>DVD & Streaming</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/feature/more/best-of-2016">
+                                                <img src="http://www.metacritic.com/images/icons/nav/ribbon.png">
+                                                <span>Best of 2016</span>
+                                            </a>
+                                        </div>
+                                                                                                </td>
+                                                                            <td class="menu_col_mid">
+                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/90day/filtered">
+                                            High Scores
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/all/filtered/netflix">
+                                            Best of Netflix
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/all/filtered/piv">
+                                            Best of Amazon
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/genre/date/action">
+                                            Browse by Genre
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/critic/reviewed">
+                                            Critics
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/publication/reviewed">
+                                            Publications
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/title/dvd">
+                                            A - Z Index
+                                        </a>
+                                    </div>
+                                                                                        </td>
+                                                                                                    <td class="menu_col_right larger_images no_title_separ">
+                                    <div class="pad_btm2">
+                                        <a href="http://www.metacritic.com/browse/movies/release-date/theaters/metascore" class="strip_title oswald">
+                                            Featured Movies
+                                        </a>
+                                    </div>
+                                    <div class="image_strip">
+                                        <div class="product"><div class="img_wrapper"><a href="/movie/war-for-the-planet-of-the-apes"><img src="http://static.metacritic.com/images/products/movies/2/fcbdb4c538839b1731e63b35172dbcf2-250h.jpg" alt="War for the Planet of the Apes" />
+
+        
+<div class="metascore_w large no_tbd movie positive">83</div>
+<span class="release_date">Jul 14</span></a></div><div class="title_wrapper"><a href="/movie/war-for-the-planet-of-the-apes"><span>War for the Planet of the Apes</span></a></div></div><div class="product"><div class="img_wrapper"><a href="/movie/spider-man-homecoming"><img src="http://static.metacritic.com/images/products/movies/0/1c822c7ea87159926b563ccc050d0727-250h.jpg" alt="Spider-Man: Homecoming" />
+
+        
+<div class="metascore_w large no_tbd movie positive">73</div>
+<span class="release_date">Jul 7</span></a></div><div class="title_wrapper"><a href="/movie/spider-man-homecoming"><span>Spider-Man: Homecoming</span></a></div></div><div class="product"><div class="img_wrapper"><a href="/movie/baby-driver"><img src="http://static.metacritic.com/images/products/movies/7/7a85d661c5793376aa5ef60d517a7593-250h.jpg" alt="Baby Driver" />
+
+        
+<div class="metascore_w large no_tbd movie positive">86</div>
+<span class="release_date">Jun 28</span></a></div><div class="title_wrapper"><a href="/movie/baby-driver"><span>Baby Driver</span></a></div></div><div class="product last"><div class="img_wrapper"><a href="/movie/the-big-sick"><img src="http://static.metacritic.com/images/products/movies/3/b6a203ff883f3c8e86f6f9441f5b319f-250h.jpg" alt="The Big Sick" />
+
+        
+<div class="metascore_w large no_tbd movie positive">87</div>
+<span class="release_date">Jun 23</span></a></div><div class="title_wrapper"><a href="/movie/the-big-sick"><span>The Big Sick</span></a></div></div>
+                                        <div class="clr"></div>
+                                    </div>
+                                    <div class="see_all">
+                                        <a href="http://www.metacritic.com/browse/movies/release-date/theaters/date">
+                                            See All Movies
+                                        </a>
+                                    </div>
+                            </td>
+                                                </tr>
+                    </table>
+                </div>
+                                                                            
+                
+                                                                                                                    <div id="secondary_nav_items_games" class="secondary_nav_items singleMenu">
+                    <table id="secondary_nav_table_games" class="secondary_nav_table">
+                        <tr>
+                                                                            <td class="menu_col_mid">
+                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/playstation-4">
+                                            PS4
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/xbox-one">
+                                            Xbox One
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/pc">
+                                            PC
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/switch">
+                                            Switch
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/wii-u">
+                                            Wii U
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/3ds">
+                                            3DS
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/playstation-vita">
+                                            PS Vita
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/ios">
+                                            iOS
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/legacy">
+                                            Legacy
+                                        </a>
+                                    </div>
+                                                                                        </td>
+                                                                                                </tr>
+                    </table>
+                </div>
+                                                                            
+                
+                                                                                                                    
+                
+                                                                                                                    
+                
+                                                                        </nav>
+
+    <nav id="primary_search_results">
+        <div class="results_wrapper inset_left2 inset_right2 pad_btm2">
+            <div class="results_data">
+                <div class="results_header_wrapper pad_top1">
+                    
+                    <form action="/search" method="post" autocomplete="off">
+                        <div class="field innerLabel thin">
+                            <input type="text" class="field_input thin" tabindex="1" name="search_term" id="top_search" autocomplete="off"
+                                                            >
+                            <label for="top_search">SEARCH</label>
+                        </div>
+                        <input type="hidden" name="search_filter" value="all">
+                    </form>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                </div>
+                <div class="info pad_btm1">No Results Found.</div>
+                <table class="lists">
+                    <tr>
+                        <td class="list r150 inset_right"> 
+                            <div class="result_header">MOVIES <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Movies &raquo;</div>
+                            <div class="browse_az"><a href="/browse/movies/title/dvd">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r30 inset_right"> 
+                            <div class="result_header">GAMES <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Games &raquo;</div>
+                            <div class="browse_az"><a href="/browse/games/title">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r70 inset_right"> 
+                            <div class="result_header">TV <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More TV &raquo;</div>
+                            <div class="browse_az"><a href="/browse/tv/title/all">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r170 inset_right"> 
+                            <div class="result_header">MUSIC <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Music &raquo;</div>
+                            <div class="browse_az"><a href="/browse/albums/artist">Browse A-Z</a></div>
+                        </td>
+                        <td class="list other inset_right"> 
+                            <div class="result_header">MORE <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More &raquo;</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div id="primary_search_selects" class="styled_select2 border_white">
+                    <div class="topper">
+                        <div class="disp_selected">
+                            <span class="text">By Popularity</span>
+                            <span class="sel">
+                                <i class="fa fa-chevron-down"></i>
+                                <i class="fa fa-check thin"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="options_scroll">
+                        <div class="options">
+                            <div class="option selected" data-mcqwval="popular">
+                                <span class="option_text">By Popularity</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                            <div class="option" data-mcqwval="date">
+                                <span class="option_text">By Date</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                            <div class="option" data-mcqwval="title">
+                                <span class="option_text">By Title</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="close">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+            
+                                                <nav id="primary_baby_menu_movies" class="primary_baby_menu">
+                        <div class="primary_baby_row">
+                            <div class="logo inset_left2">
+                                <a href="http://www.metacritic.com"><img src="/images/mobile/logo.png" alt="Metacritic logo"></a>
+                            </div>
+                            <div id="primary_baby_menu_item_movies" class="primary_menu_item selected">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/movie">
+                                        Movies
+                                    </a>
+                                </span>
+                            </div>
+
+                                                                                                                                                                                                        <div class="primary_baby_item">
+                                            <a href="/browse/movies/release-date/theaters/date">
+                                                In Theaters
+                                            </a>
+                                        </div>
+                                                                                                                                                                                    <div class="primary_baby_item">
+                                            <a href="/browse/movies/release-date/coming-soon/date">
+                                                Coming Soon
+                                            </a>
+                                        </div>
+                                                                                                                                                                                    <div class="primary_baby_item">
+                                            <a href="/browse/movies/score/metascore/all/filtered/netflix">
+                                                Best of Netflix
+                                            </a>
+                                        </div>
+                                                                                                                                                                                    <div class="primary_baby_item">
+                                            <a href="/browse/movies/score/metascore/all/filtered/piv">
+                                                Best of Amazon
+                                            </a>
+                                        </div>
+                                                                                                
+                                                            <div class="primary_baby_item oswald">
+                                    <a href="#nav_to_metascore">
+                                    
+
+        
+<span class="metascore_w header_size movie positive">90</span>
+
+                                    <span class="primary_baby_text">METASCORE</span>
+                                    </a>
+                                </div>
+                                                                                        <div class="primary_baby_item oswald">
+                                    <a href="#nav_to_awards">
+                                    <span class="primary_baby_award_count">3</span>
+                                    <span class="primary_baby_text">AWARDS & RANKINGS</span>
+                                    </a>
+                                </div>
+                            
+                        </div>
+                    </nav>
+                                                                                                                                                        <aside id="popup_dialog">
+                <header class="pad_btm1"></header>
+                <div class="left">
+                </div>
+                <div class="right">
+                </div>
+                <div class="clr"></div>
+                <footer></footer>
+                
+                <div class="popup_close" onclick="MetaC.Popup.hide()"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </aside>
+            <aside class="popup_hidden" id="popup_login">
+                <div class="login_section">
+                    <button class="meta_fb_login">Continue with Facebook</button>
+
+                    <div class="ruled_divider pad_top1">
+                        <hr class="rdleft"/>OR<hr class="rdright" />
+                    </div>
+
+                    <div id="popup_email_wrapper" class="pad_top1">
+                        <div class="field innerLabel">
+                            
+                            
+                        </div>
+                    </div>
+
+                    <div id="popup_pwd_wrapper" class="pad_top1">
+                        <div class="field innerLabel">
+                            
+                            
+                        </div>
+                        <div class="popup_forgot">
+                            <a href="javascript:void(0);"></a>
+                        </div>
+                    </div>
+
+                    <div class="pad_top1 fr">
+                        <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                        <button class="popup_login_btn grey_button marg_right_half">LOG IN</button>
+                        <button class="popup_signup_btn grey_button">CREATE AN ACCOUNT</button>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </aside>
+
+            <div id="main_content" class="pad_btm2">
+                <div class="movie product summary">
+    <input type="hidden" name="csrf_newsletter" value="5c6ac14d12ff6b623a082706dbfcaa11" />
+
+
+
+
+
+
+
+    
+
+
+
+<script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "Movie",
+                "name" : "Her",
+        "description" : "Set in the Los Angeles of the slight future, Her follows Theodore Twombly, a complex, soulful man who makes his living writing touching, personal letters for other people. Heartbroken after the end of a long relationship, he becomes intrigued with a new, advanced operating system, which promises to be an intuitive entity in its own right, individual to each user. Upon initiating it, he is delighted to meet \"Samantha,\" a bright, female voice, who is insightful, sensitive and surprisingly...",
+        "datePublished" : "December 18, 2013",
+        "url" : "http://www.metacritic.com/movie/her",
+        "image" : "http://static.metacritic.com/images/products/movies/5/915dc8638f98a20456db82de78f59e63-98.jpg"
+                    ,"aggregateRating" : {
+                "@type" : "AggregateRating",
+                "bestRating" : "100",
+                "ratingValue" : "90"
+                                ,"reviewCount" : "46"
+                ,"ratingCount" : "46"
+                            }
+                            ,"contentRating" : "R"
+                                    ,"duration" : "PT126M"
+                                    ,"trailer" : {
+                "@type":"VideoObject",
+                "name": "HER",
+                "description": "Set in the Los Angeles of the slight future, \u201cHer\u201d follows Theodore Twombly, a complex, soulful man who makes his living writing touching, personal letters for other people. Heartbroken after the end of a long relationship, he becomes intrigued with a new, advanced operating system, which promises to be an intuitive entity in its own right, individual to each user. Upon initiating it, he is delighted to meet \u201cSamantha,\u201d a bright, female voice, who is insightful, sensitive and surprisingly funny. As her needs and desires grow, in tandem with his own, their friendship deepens into an eventual love for each other.\n\nFrom the unique perspective of Oscar-nominated filmmaker Spike Jonze comes an original love story that explores the evolving nature\u2014and the risks\u2014of intimacy in the modern world.",
+                "thumbnailUrl": "http://content.internetvideoarchive.com/content/photos/8440/716168_011.jpg",
+                "uploadDate": "2014-11-18 11:48:00"
+            }
+                                            ,"director" : {
+                    "@type":"Person",
+                    "name": "Spike Jonze"
+                }
+                                                        ,"actor" : {
+                    "@type":"Person",
+                    "name": "Amy Adams"
+                }
+                            ,"actor" : {
+                    "@type":"Person",
+                    "name": "Chris Pratt"
+                }
+                            ,"actor" : {
+                    "@type":"Person",
+                    "name": "Joaquin Phoenix"
+                }
+                            ,"actor" : {
+                    "@type":"Person",
+                    "name": "Olivia Wilde"
+                }
+                            ,"actor" : {
+                    "@type":"Person",
+                    "name": "Rooney Mara"
+                }
+                            ,"actor" : {
+                    "@type":"Person",
+                    "name": "Samantha Morton"
+                }
+                            ,"actor" : {
+                    "@type":"Person",
+                    "name": "Scarlett Johansson"
+                }
+                                    ,"publisher" : {
+            "@type":"Organization",
+            "name": "Warner Bros. Pictures",
+            "url": "http://www.metacritic.com/company/warner-bros-pictures"
+        }
+                                            ,"genre" : [
+                             "Sci-Fi"
+                 ,                             "Drama"
+                 ,                             "Comedy"
+                 ,                             "Romance"
+                                         ]
+            }
+</script>
+
+
+<div id="nav_video_wrapper">
+    <table id="nav_video_table">
+        <tr>
+            <td class="nav_video">
+
+            </td>
+            <td class="nav_video_details">
+                <div class="label">NOW PLAYING</div>
+                <div class="details">
+                    HER
+                </div>
+            </td>
+                        <td class="nav_video_next">
+                            </td>
+        </tr>
+    </table>
+    <div class="nav_video_close">
+        <i class="fa fa-times-circle" aria-hidden="true"></i>
+    </div>
+</div>
+
+
+    <div id="leader_hover_wrapper">
+        
+                        
+                        <div id="leader_hover" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        window.metac_hover_ads_pushdisplay.push({
+                            'id' : 'leader_hover',
+                            'varname' : 'metac_g_ad_leader_hover',
+                            'arg1' : '/8264/Asia-metacritic/movies',
+                            'arg2' : [[728,90],[970,66]],
+                            'arg3' : 'leader_hover',
+                            'pos'  : 'hover_bottom'
+                                                    });
+                        window.metac_g_ad_leader_hover = false;
+                                    </script>
+                                        </div>
+                        
+
+        <div id="leader_hover_close">
+            <i class="fa fa-times-circle" aria-hidden="true"></i>
+        </div>
+    </div>
+
+<div class="product summary">
+    <div class="content_under_header">
+        <div class="product_header" style="background-image: url(http://static.metacritic.com/images/products/movies/5/915dc8638f98a20456db82de78f59e63-98.jpg);">
+            <div class="dark_edges">
+                                    <div class="product_header_mask">
+                    </div>
+                                <div class="cutout_mask">
+                    <div class="cutout_mask_left inset_left2 inset_right1">
+                        <div class="phead_summary">
+                            <div class="pad_btm1">
+                                <div class="product_page_title oswald">
+                                    <h1>Her</h1>
+                                                                            <span class="release_year lighter">2013</span>
+                                                                    </div>
+                                                            </div>
+                            <div class="ms_wrapper">
+                                <div class="title_bump"></div>
+                                <table class="marg_btm1">
+                                    <tr>
+                                        <td class="summary_left pad_btm2">
+                                            <div class="header_title oswald">
+                                                <a href="/movie/her/critic-reviews">METASCORE <a class="about_ms inset_left_half" href="/about-metascores"><i class="fa fa-question-circle" aria-hidden="true"></i></a></a>
+                                            </div>
+                                            <div class="score_details pad_top1">
+                                                <span class="score_description">
+    <a class="data" href="/movie/her/critic-reviews">
+            <span>
+            Universal acclaim
+        </span>
+                            <span class="based_on">based on 46 Critics</span>
+                                
+</a>
+</span>
+
+                                            </div>
+                                                                                            <div class="see_all">
+                                                    <a href="/movie/her/critic-reviews">See All</a>
+                                                </div>
+                                                                                    </td>
+                                        <td class="summary_right pad_btm1">
+                                            
+
+        
+    <a class="metascore_anchor" href="/movie/her/critic-reviews">
+<span class="metascore_w larger movie positive">90</span>
+    </a>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="us_wrapper">
+                                
+                                                                    <div class="user_score_summary no_viewer_score">
+                                        <div class="title_bump"></div>
+                                        <table class="marg_btm1">
+                                            <tr>
+                                                <td class="summary_left pad_btm2">
+                                                    <div class="header_title oswald">
+                                                        <a href="/movie/her/user-reviews">USER SCORE</a>
+                                                    </div>
+                                                    <div class="score_details pad_top1">
+                                                        <span class="score_description">
+    <a class="data" href="/movie/her/user-reviews">
+            <span>
+            Universal acclaim
+        </span>
+        <span class="based_on">based on 1376 Ratings</span>
+        </a>
+</span>
+
+                                                    </div>
+                                                                                                            <div class="see_all">
+                                                            <a href="/movie/her/user-reviews">See All</a>
+                                                        </div>
+                                                                                                    </td>
+                                                <td class="summary_right pad_btm1">
+                                                            
+    <a class="metascore_anchor" href="/movie/her/user-reviews">
+<span class="metascore_w user larger movie positive">8.6</span>
+    </a>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                                            </div>
+
+                                                        <div class="rt_wrapper">
+                                <div class="title_bump">
+                                    <table class="marg_btm1">
+                                        <tr>
+                                            <td class="user_summary_left">
+                                                <div class="header_title oswald">VOTE NOW</div>
+                                            </td>
+                                            <td class="user_summary_right">
+                                                                                                                                                <span class="user_rating_widget" data-refid="541335" data-reftype="150" data-csrf="5c6ac14d12ff6b623a082706dbfcaa11">
+                                                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                                                                                                            <span class="ur ur_0 red">
+                                                            <span class="part"></span>
+                                                            <span class="number">0</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_1 red">
+                                                            <span class="part"></span>
+                                                            <span class="number">1</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_2 red">
+                                                            <span class="part"></span>
+                                                            <span class="number">2</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_3 red">
+                                                            <span class="part"></span>
+                                                            <span class="number">3</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_4">
+                                                            <span class="part"></span>
+                                                            <span class="number">4</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_5">
+                                                            <span class="part"></span>
+                                                            <span class="number">5</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_6">
+                                                            <span class="part"></span>
+                                                            <span class="number">6</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_7">
+                                                            <span class="part"></span>
+                                                            <span class="number">7</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_8">
+                                                            <span class="part"></span>
+                                                            <span class="number">8</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_9">
+                                                            <span class="part"></span>
+                                                            <span class="number">9</span>
+                                                        </span>
+                                                                                                            <span class="ur ur_10">
+                                                            <span class="part"></span>
+                                                            <span class="number">10</span>
+                                                        </span>
+                                                                                                        <span class="info"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <aside class="popup_hidden">
+                                        <header class="popup_rating_header">
+                                            <div class="header">Log in to finish your rating <span class="bold">Her</span></div>
+                                        </header>
+                                        <div class="popup_rating">
+                                            <table>
+                                                <tr>
+                                                    <td class="img_wrapper">
+                                                        <img src="http://static.metacritic.com/images/products/movies/5/915dc8638f98a20456db82de78f59e63-98.jpg">
+                                                    </td>
+                                                    <td class="scores_wrapper">
+                                                        <table>
+                                                            <tr class="my_score">
+                                                                <td class="score">
+                                                                            
+<span class="metascore_w user med_small movie positive">8.6</span>
+
+                                                                </td>
+                                                                <td class="text">
+                                                                    <span class="bold">Your Score</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="avg_score">
+                                                                <td class="score">
+                                                                            
+<span class="metascore_w user med_small movie positive">8.6</span>
+
+                                                                </td>
+                                                                <td class="text">
+                                                                    <div class="bold">User Score</div>
+                                                                    <span class="score_description">
+    <a class="data" href="/movie/her/user-reviews">
+            <span>
+            Universal acclaim
+        </span>
+        <span class="based_on">based on 1376 Ratings</span>
+        </a>
+</span>
+
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <header class="post_rating_header">
+                                            <div class="header">Your score has been saved for <span class="bold">Her</span></div>
+                                        </header>
+                                        <div class="post_rating">
+                                            <div class="title">Would you like to write a review?</div>
+                                            <div class="buttons pad_top_half pad_btm1">
+                                                <button class="popup_review_btn grey_button marg_right_half">WRITE A REVIEW</button>
+                                                <button class="popup_no_btn grey_button">NO, THANK YOU</button>
+                                            </div>
+                                            <div class="social pad_top1">
+                                                        
+<div class="sharing " >
+    
+    <a class="sharing-facebook" title="Share on Facebook" rel="nofollow noopener popup:external" data-mc-social-url="http://www.metacritic.com/movie/her?ftag=fbsoshares" href="javascript:void(0);"><span class="fa fa-fw fa-facebook"></span></a><a class="sharing-twitter" title="Share on Twitter" rel="nofollow noopener popup:external" href="http://twitter.com/intent/tweet?via=metacritic&text=Her%20Reviews&url=http%3A%2F%2Fmtcr.tc%2F1X5e4Vz" target="_blank"><span class="fa fa-fw fa-twitter"></span></a></div>
+
+
+                                            </div>
+                                        </div>
+
+                                        <header class="popup_write_header">
+                                            <div class="header bold">Review this movie</div>
+                                        </header>
+                                        <div class="popup_write">
+                                            <div class="field innerLabel popup_write_area">
+                                                <textarea id="popup_write_review" class="field_input popup_write_review" tabindex="4"></textarea>
+                                                <label for="popup_write_review">There is a 150 character minimum for reviews. If your review contains spoilers, please check the Spoiler box. Please do not use ALL CAPS. There is no linking or other HTML allowed. Your review may be edited for content.</label>
+                                                <span class="popup_char_count_wrapper"><span class="popup_char_count">0</span>/5000</span>
+                                            </div>
+                                            <div class="buttons pad_top1">
+                                                <label>
+                                                    <input class="popup_spoiler" type="checkbox">
+                                                    <span>Check box if your review contains spoilers</span>
+                                                </label>
+                                                <button class="popup_review_submit_btn grey_button fr">SUBMIT</button>
+                                                
+                                                <span class="progress fr marg_right_half">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                                                <div class="clr"></div>
+                                            </div>
+                                        </div>
+                                    </aside>
+                                </div>
+                            </div>
+                                                    </div>
+                    </div>
+                    <div class="cutout_mask_right">
+                        
+                                
+                                
+
+<div class="video_wrapper cutout_wrapper">
+    <div id="agegate" class="agegate">
+        <div class="title">
+            Please enter your birth date to watch this video:
+        </div>
+        <div class="select">
+            <select class="month">
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <select class="day">
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                            </select>
+            <select class="year">
+                                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                    <option value="1999">1999</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1990">1990</option>
+                                    <option value="1989">1989</option>
+                                    <option value="1988">1988</option>
+                                    <option value="1987">1987</option>
+                                    <option value="1986">1986</option>
+                                    <option value="1985">1985</option>
+                                    <option value="1984">1984</option>
+                                    <option value="1983">1983</option>
+                                    <option value="1982">1982</option>
+                                    <option value="1981">1981</option>
+                                    <option value="1980">1980</option>
+                                    <option value="1979">1979</option>
+                                    <option value="1978">1978</option>
+                                    <option value="1977">1977</option>
+                                    <option value="1976">1976</option>
+                                    <option value="1975">1975</option>
+                                    <option value="1974">1974</option>
+                                    <option value="1973">1973</option>
+                                    <option value="1972">1972</option>
+                                    <option value="1971">1971</option>
+                                    <option value="1970">1970</option>
+                                    <option value="1969">1969</option>
+                                    <option value="1968">1968</option>
+                                    <option value="1967">1967</option>
+                                    <option value="1966">1966</option>
+                                    <option value="1965">1965</option>
+                                    <option value="1964">1964</option>
+                                    <option value="1963">1963</option>
+                                    <option value="1962">1962</option>
+                                    <option value="1961">1961</option>
+                                    <option value="1960">1960</option>
+                                    <option value="1959">1959</option>
+                                    <option value="1958">1958</option>
+                                    <option value="1957">1957</option>
+                                    <option value="1956">1956</option>
+                                    <option value="1955">1955</option>
+                                    <option value="1954">1954</option>
+                                    <option value="1953">1953</option>
+                                    <option value="1952">1952</option>
+                                    <option value="1951">1951</option>
+                                    <option value="1950">1950</option>
+                                    <option value="1949">1949</option>
+                                    <option value="1948">1948</option>
+                                    <option value="1947">1947</option>
+                                    <option value="1946">1946</option>
+                                    <option value="1945">1945</option>
+                                    <option value="1944">1944</option>
+                                    <option value="1943">1943</option>
+                                    <option value="1942">1942</option>
+                                    <option value="1941">1941</option>
+                                    <option value="1940">1940</option>
+                                    <option value="1939">1939</option>
+                                    <option value="1938">1938</option>
+                                    <option value="1937">1937</option>
+                                    <option value="1936">1936</option>
+                                    <option value="1935">1935</option>
+                                    <option value="1934">1934</option>
+                                    <option value="1933">1933</option>
+                                    <option value="1932">1932</option>
+                                    <option value="1931">1931</option>
+                                    <option value="1930">1930</option>
+                                    <option value="1929">1929</option>
+                                    <option value="1928">1928</option>
+                                    <option value="1927">1927</option>
+                                    <option value="1926">1926</option>
+                                    <option value="1925">1925</option>
+                                    <option value="1924">1924</option>
+                                    <option value="1923">1923</option>
+                                    <option value="1922">1922</option>
+                                    <option value="1921">1921</option>
+                                    <option value="1920">1920</option>
+                                    <option value="1919">1919</option>
+                                    <option value="1918">1918</option>
+                                    <option value="1917">1917</option>
+                                    <option value="1916">1916</option>
+                                    <option value="1915">1915</option>
+                                    <option value="1914">1914</option>
+                                    <option value="1913">1913</option>
+                                    <option value="1912">1912</option>
+                                    <option value="1911">1911</option>
+                                    <option value="1910">1910</option>
+                                    <option value="1909">1909</option>
+                                    <option value="1908">1908</option>
+                                    <option value="1907">1907</option>
+                                    <option value="1906">1906</option>
+                                    <option value="1905">1905</option>
+                                    <option value="1904">1904</option>
+                                    <option value="1903">1903</option>
+                                    <option value="1902">1902</option>
+                                    <option value="1901">1901</option>
+                                    <option value="1900">1900</option>
+                            </select>
+            <button type="button" class="ag_button">Enter</button>
+        </div>
+        <div class="msg">
+            You are not allowed to view this material at this time.
+        </div>
+    </div>
+
+    <div class="video_and_autoplay cutout">
+        <div id="video_holder_wrapper" data-mctrailerid="3712823" data-mctrailerurl="/movie/her/trailers/3712823" data-mcvideourl="http://www.videodetective.net/player.aspx?publishedid=963918&cmd=6&fmt=4&customerid=192333&clientskip=255&videokbrate=2500&e=1500235216&h=a184f19b571bae179a0ea935909c6346"
+             data-mcvideotitle="HER" data-mcwarning="" data-mcrating="R"                           data-mcproductid="mc-movie-541335">
+
+            
+            <div id="video_holder">
+            </div>
+
+            <div class="play_button">
+                <i class="fa fa-play"></i>
+            </div>
+        </div>
+                    <div class="autoplay on">
+                <span class="label">Autoplay</span> <span class="on_text">On</span>
+                <span class="wrapper""><span class="toggle"></span></span> <span class="off_text">Off</span>
+            </div>
+            </div>
+</div>
+
+<script>
+    MetaC._utagAutoPlay = true;
+    var autoPlay_ckval = MC_LOCAL_STORE.getBoolTimestamp('mc_autoplay');
+    if ( autoPlay_ckval != null ) {
+        MetaC._utagAutoPlay = MC_LOCAL_STORE.asBool(autoPlay_ckval);
+    }
+    // always off for instart
+    if ( window.I11C && window.I11C.Morph == 1 ) {
+        MetaC._utagAutoPlay = false;
+    }
+</script>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mantle_skin">
+    
+                        
+                        <div id="skin" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_skin = googletag.defineSlot("/8264/Asia-metacritic/movies",[1600,1000], "skin").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("skin");
+                                    </script>
+                                        </div>
+                        
+
+    <div id="gutters"></div>
+            
+                        
+                            <div class="ad_height_min">
+                        <div id="leader_plus_top" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_leader_plus_top = googletag.defineSlot("/8264/Asia-metacritic/movies",[[728,90],[970,66],[970,250],[728,91]], "leader_plus_top").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("leader_plus_top");
+                                    </script>
+                                        </div>
+                            </div>
+                        
+
+    
+    <div class="content_after_header">
+        <div class="match_column_wrapper">
+            <div class="pad_top next_to_side_col inset_left2">
+                        
+<div class="sharing " >
+    
+    <a class="sharing-facebook" title="Share on Facebook" rel="nofollow noopener popup:external" data-mc-social-url="http://www.metacritic.com/movie/her?ftag=fbsoshares" href="javascript:void(0);"><span class="fa fa-fw fa-facebook"></span></a><a class="sharing-twitter" title="Share on Twitter" rel="nofollow noopener popup:external" href="http://twitter.com/intent/tweet?via=metacritic&text=Her%20Reviews&url=http%3A%2F%2Fmtcr.tc%2F1X5e4Vz" target="_blank"><span class="fa fa-fw fa-twitter"></span></a><a class="sharing-pinterest" title="Share on Pinterest" rel="nofollow noopener popup:external" data-mc-social-track-id="5" target="_blank" href="//pinterest.com/pin/create/link/?url=http%3A%2F%2Fwww.metacritic.com%2Fmovie%2Fher%3Fftag%3Dpinsoshares&description=Her%20Reviews&media=http://static.metacritic.com/images/products/movies/5/915dc8638f98a20456db82de78f59e63-98.jpg"><span class="fa fa-fw fa-pinterest"></span></a><a class="sharing-google-plus" title="Share on Google+" rel="nofollow noopener popup:external" data-mc-social-track-id="3" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.metacritic.com%2Fmovie%2Fher%3Fftag%3Dgplussoshares""><span class="fa fa-fw fa-google-plus"></span></a><a class="sharing-reddit" title="Share on Reddit" rel="nofollow noopener popup:external" data-mc-social-track-id="6" target="_blank" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.metacritic.com%2Fmovie%2Fher%3Fftag%3Dredsoshares&title=Her%20Reviews"><span class="fa fa-fw fa-reddit"></span></a></div>
+
+
+
+                <div class="pfull_summary pad_top2 flex1">
+                    <div class="summary_left fl inset_right2">
+                        <img src="http://static.metacritic.com/images/products/movies/5/915dc8638f98a20456db82de78f59e63-98.jpg" alt="Her">
+                    </div>
+                    <div class="summary_right fr">
+                        <div class="title_bump oswald pad_btm_half">
+                            <div class="section_title bold">
+                                <a href="/movie/her/details">MOVIE DETAILS & CREDITS</a>
+                            </div>
+                        </div>
+                        <div class="details_section">
+                            <table class="cert_rating_wrapper">
+                                <tr>
+                                                                            <td>
+                                                <img class="cert_rating_img" src="/images/mpaa/RATED_R.svg" />
+
+                                        </td>
+                                                                                                            <td>
+                                                                                    <span class="distributor"><a href="/company/warner-bros-pictures">Warner Bros. Pictures</a> | </span>
+                                                                                <span class="release_date">
+                                            <span class="label">Release Date:</span>
+                                            <span>December 18, 2013</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                                                    <div class="summary_cast details_section">
+                                <span class="label">Starring:</span>
+                                <span>
+                                                                            <a href="/person/amy-adams">Amy Adams</a>,                                                                             <a href="/person/chris-pratt">Chris Pratt</a>,                                                                             <a href="/person/joaquin-phoenix">Joaquin Phoenix</a>,                                                                             <a href="/person/olivia-wilde">Olivia Wilde</a>,                                                                             <a href="/person/rooney-mara">Rooney Mara</a>,                                                                             <a href="/person/samantha-morton">Samantha Morton</a>,                                                                             <a href="/person/scarlett-johansson">Scarlett Johansson</a>                                                                    </span>
+                            </div>
+                        
+                                                    <div class="summary_deck details_section">
+                                <span class="label">Summary:</span>
+                                <span>
+                                    <span class="inline_expand_collapse inline_collapsed" id="summary_blurb_541335"><span class="blurb blurb_collapsed">Set in the Los Angeles of the slight future, Her follows Theodore Twombly, a complex, soulful man who makes his living writing touching, personal letters for other people. Heartbroken after the end of a long relationship, he becomes intrigued with a new, advanced operating system, which promises to be an intuitive entity in its own right,</span><span class="blurb blurb_expanded">Set in the Los Angeles of the slight future, Her follows Theodore Twombly, a complex, soulful man who makes his living writing touching, personal letters for other people. Heartbroken after the end of a long relationship, he becomes intrigued with a new, advanced operating system, which promises to be an intuitive entity in its own right, individual to each user. Upon initiating it, he is delighted to meet "Samantha," a bright, female voice, who is insightful, sensitive and surprisingly funny. As her needs and desires grow, in tandem with his own, their friendship deepens into an eventual love for each other. [Warner Bros.]</span><span class="blurb_etc">&hellip;</span> <a rel="nofollow" class="toggle_expand_collapse toggle_expand" href="#expand">Expand</a></span>
+                                </span>
+                            </div>
+                        
+                        <div class="details_section">
+                                                            <div class="director">
+                                    <span class="label">Director:</span>
+                                    <a href="/person/spike-jonze"><span>Spike Jonze</span></a>                                </div>
+                            
+                            
+                            
+
+
+                                                            <div class="genres">
+                                    <span class="label">Genre(s):</span>
+                                                                                                                <span>
+                                                                                            <span>Sci-Fi</span>,                                                                                            <span>Drama</span>,                                                                                            <span>Comedy</span>,                                                                                            <span>Romance</span>                                                                                    </span>
+                                                                    </div>
+                            
+                                                            <div class="rating">
+                                    <span class="label">Rating:</span>
+                                    <span>
+                                        
+                                        R
+                                    </span>
+                                </div>
+                            
+                                                            <div class="runtime">
+                                    <span class="label">Runtime:</span>
+                                    <span>126 min</span>
+                                </div>
+                            
+                            
+                            
+                                                    </div>
+
+                        <div class="see_all pad_btm1">
+                            <a href="/movie/her/details">See All Details and Credits</a>
+                        </div>
+
+
+                        <div class="details_section" id="nav_to_awards" >
+                            <div class="title_bump oswald">
+                                <div class="section_title bold pad_btm_half">
+                                    AWARDS & RANKINGS
+                                </div>
+                            </div>
+
+                            <div class="module list_rankings">
+    
+    <div class="body">
+        <table class="rankings">
+                            
+                                                                        
+                
+                                                                        
+                
+                                    
+                                
+                <tr>
+                    <td class="ranking_icon">
+                                                    <a href="/browse/movies/score/metascore/year/filtered?sort=desc&year_selected=2013">
+                                                <i class="fa fa-trophy"></i>
+                                                    </a>
+                                            </td>
+                    <td class="ranking_wrap">
+                        <div class="ranking_title">
+                            
+                                                                                        <a href="/browse/movies/score/metascore/year/filtered?sort=desc&year_selected=2013">#7 Best Movie of 2013</a>
+                                                        
+                            
+                                                    </div>
+                    </td>
+                </tr>
+                         
+                                                                        
+                
+                                                                        
+                
+                                    
+                                
+                <tr>
+                    <td class="ranking_icon">
+                                                    <a href="/browse/movies/score/metascore/discussed/filtered?sort=desc&year_selected=2013">
+                                                <i class="fa fa-trophy"></i>
+                                                    </a>
+                                            </td>
+                    <td class="ranking_wrap">
+                        <div class="ranking_title">
+                            
+                                                                                        <a href="/browse/movies/score/metascore/discussed/filtered?sort=desc&year_selected=2013">#13 Most Discussed Movie of 2013</a>
+                                                        
+                            
+                                                    </div>
+                    </td>
+                </tr>
+                         
+                                                                        
+                
+                                                                        
+                
+                                    
+                                
+                <tr>
+                    <td class="ranking_icon">
+                                                    <a href="/browse/movies/score/metascore/shared/filtered?sort=desc&year_selected=2013">
+                                                <i class="fa fa-trophy"></i>
+                                                    </a>
+                                            </td>
+                    <td class="ranking_wrap">
+                        <div class="ranking_title">
+                            
+                                                                                        <a href="/browse/movies/score/metascore/shared/filtered?sort=desc&year_selected=2013">#16 Most Shared Movie of 2013</a>
+                                                        
+                            
+                                                    </div>
+                    </td>
+                </tr>
+                 </table>
+    </div>
+</div>
+
+                        </div>
+
+                        
+                        
+
+
+                        <div class="details_section">
+                            <div class="title_bump pad_btm1 oswald">
+                                <div class="section_title bold">
+                                    WATCH NOW                                </div>
+                            </div>
+                            
+        
+
+
+
+
+
+        
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="esite_list"><div class="esite_items clearfix list_expand_wrapper">
+    
+        
+<div class="esite_btn_wrapper">
+    <div class="esite_btn esite_amazon esite_aiv" title="Watch Now with Amazon Instant Video">
+        <table>
+            <tr>
+                <td class="esite_label_wrapper">
+                    <span>Stream On</span>
+                </td>
+                <td class="esite_img_wrapper">
+                    <a rel="nofollow noopener" target="_blank" class="esite_url" href="http://www.amazon.com/dp/B00KAU9JD4%3FSubscriptionId%3DAKIAJHSMUOWEQCQ7QDAQ%26tag%3Dmetacritic_aiv_product-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00KAU9JD4"
+                        data-leadtype="Digital Product" data-leadtag="metacritic_aiv_product-20" data-leadid="1" data-leadname="amazon" data-leadplace="upper body"
+                                            >
+                        <img src="/images/buttons/esites/amazon_iv_30.png" alt="">
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+    
+<div class="esite_btn_wrapper">
+    <div class="esite_btn esite_itunes" title="Watch Now on iTunes">
+        <table>
+            <tr>
+                <td class="esite_label_wrapper">
+                    <span>Stream On</span>
+                </td>
+                <td class="esite_img_wrapper">
+                    <a rel="nofollow noopener" target="itunes_store" class="esite_url" href="https://itunes.apple.com/us/movie/her-2013/id810314926?uo=4&at=1l3vbvV&ct=ProductPage"
+                        data-leadtype="Digital Product" data-leadtag="1l3vbvV" data-leadid="3" data-leadname="apple" data-leadplace="upper body"
+                                            >
+                        <img src="/images/buttons/esites/badge_itunes-lrg2.svg" alt="">
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div></div><script type="text/javascript">window.eventAmazonBuyView = true;</script></div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+                                    <div class="force_to_bottom">
+                        <div class="title_bump pad_btm1 marg_top1 oswald">
+                            <div class="section_title bold">
+                                MORE FROM METACRITIC
+                            </div>
+                        </div>
+                        <div class="related_list pad_btm2">
+                                                                                            
+                                <div class="related fl">
+                                    <a href="/feature/2014-oscar-nominations-86th-academy-awards">
+                                        <img src="http://static.metacritic.com/images/features/main/americanhustle_adams-180.jpg">
+                                    </a>
+                                    <div class="title pad_btm_half pad_top_half bold">
+                                        <a href="/feature/2014-oscar-nominations-86th-academy-awards">2014 Oscar Nominations: Full List and Analysis</a>
+                                    </div>
+                                    <div class="deck">
+                                        <a href="/feature/2014-oscar-nominations-86th-academy-awards">The Oscar nominations are in. What were this year's biggest surprises...</a>
+                                    </div>
+                                </div>
+                                                                                            
+                                <div class="related fl">
+                                    <a href="/feature/best-and-worst-films-of-2013">
+                                        <img src="http://static.metacritic.com/images/features/main/movies_12yearsaslave-180.jpg">
+                                    </a>
+                                    <div class="title pad_btm_half pad_top_half bold">
+                                        <a href="/feature/best-and-worst-films-of-2013">The Best and Worst Movies of 2013</a>
+                                    </div>
+                                    <div class="deck">
+                                        <a href="/feature/best-and-worst-films-of-2013">There were more great movies released in 2013 than in any year in recent...</a>
+                                    </div>
+                                </div>
+                                                                                            
+                                <div class="related fl">
+                                    <a href="/feature/2013-golden-globe-nominees-in-film-and-tv">
+                                        <img src="http://static.metacritic.com/images/features/main/12yearsaslave_b-180.jpg">
+                                    </a>
+                                    <div class="title pad_btm_half pad_top_half bold">
+                                        <a href="/feature/2013-golden-globe-nominees-in-film-and-tv">2013 Golden Globe Nominations</a>
+                                    </div>
+                                    <div class="deck">
+                                        <a href="/feature/2013-golden-globe-nominees-in-film-and-tv">Find a full list of the 71st Annual Golden Globe nominations in film and...</a>
+                                    </div>
+                                </div>
+                                                                                            
+                                <div class="related fl">
+                                    <a href="/feature/film-critic-top-10-lists-best-movies-of-2013">
+                                        <img src="http://static.metacritic.com/images/features/main/movies_gravity-180.jpg">
+                                    </a>
+                                    <div class="title pad_btm_half pad_top_half bold">
+                                        <a href="/feature/film-critic-top-10-lists-best-movies-of-2013">2013 Film Critic Top Ten Lists</a>
+                                    </div>
+                                    <div class="deck">
+                                        <a href="/feature/film-critic-top-10-lists-best-movies-of-2013">Throughout the coming weeks, we'll be collecting year-end top ten lists...</a>
+                                    </div>
+                                </div>
+                                                                                                                            <div class="clr pad_btm2"></div>
+                        </div>
+                    </div>
+                                <div class="clr"></div>
+            </div>
+
+            <div class="side_col">
+                                    
+
+
+
+
+    <div class="product_current_releases pad_btm2">
+        <div class="title_bump oswald">
+            <div class="section_title pad_btm1">
+                CURRENT MOVIE RELEASES
+            </div>
+        </div>
+
+        <div id="current_tabs" class="" data-mcqw="newReleases_Widget" data-mcqwtype="tabs">
+                            <span class="fl oswald pad_top_half pad_btm_half tab selected" data-mcqwval="metascore" data-mcqwqname="val_metascore">By Metascore</span>
+                            <span class="fl oswald pad_top_half pad_btm_half tab" data-mcqwval="userscore" data-mcqwqname="val_userscore">By Userscore</span>
+                    </div>
+
+        <div class="score_title_list_wrapper">
+            <div class="score_title_list">
+                                                                            <div class="list_item selected" data-bgimg="http://static.metacritic.com/images/products/movies/3/b6a203ff883f3c8e86f6f9441f5b319f-250h.jpg" data-mctrailerurl="" data-mcvideourl="">
+                            <a href="/movie/the-big-sick">
+                        <span class="item_num">
+                1
+            </span>
+            <span  class="item_score">
+                                    
+
+        
+<span class="metascore_w medium movie positive">87</span>
+
+                            </span>
+            <span class="item_name">
+                The Big Sick
+            </span>
+                            </a>
+                    </div>
+                                                                            <div class="list_item" data-bgimg="http://static.metacritic.com/images/products/movies/7/7a85d661c5793376aa5ef60d517a7593-250h.jpg" data-mctrailerurl="" data-mcvideourl="">
+                            <a href="/movie/baby-driver">
+                        <span class="item_num">
+                2
+            </span>
+            <span  class="item_score">
+                                    
+
+        
+<span class="metascore_w medium movie positive">86</span>
+
+                            </span>
+            <span class="item_name">
+                Baby Driver
+            </span>
+                            </a>
+                    </div>
+                                                                            <div class="list_item" data-bgimg="http://static.metacritic.com/images/products/movies/2/1fdc3cd5f30d93d6eb2945dd48fb17c4-250h.jpg" data-mctrailerurl="" data-mcvideourl="">
+                            <a href="/movie/war-for-the-planet-of-the-apes">
+                        <span class="item_num">
+                3
+            </span>
+            <span  class="item_score">
+                                    
+
+        
+<span class="metascore_w medium movie positive">83</span>
+
+                            </span>
+            <span class="item_name">
+                War for the Planet of the Apes
+            </span>
+                            </a>
+                    </div>
+                                                                            <div class="list_item" data-bgimg="http://static.metacritic.com/images/products/movies/6/0ce9ac3e7dcf9dddf662503b5c9386bf-250h.jpg" data-mctrailerurl="" data-mcvideourl="">
+                            <a href="/movie/it-comes-at-night">
+                        <span class="item_num">
+                4
+            </span>
+            <span  class="item_score">
+                                    
+
+        
+<span class="metascore_w medium movie positive">78</span>
+
+                            </span>
+            <span class="item_name">
+                It Comes at Night
+            </span>
+                            </a>
+                    </div>
+                                                                            <div class="list_item" data-bgimg="http://static.metacritic.com/images/products/movies/9/a48f1103c6dbaee6770c9dba20c917c2-250h.jpg" data-mctrailerurl="" data-mcvideourl="">
+                            <a href="/movie/the-beguiled">
+                        <span class="item_num">
+                5
+            </span>
+            <span  class="item_score">
+                                    
+
+        
+<span class="metascore_w medium movie positive">77</span>
+
+                            </span>
+            <span class="item_name">
+                The Beguiled
+            </span>
+                            </a>
+                    </div>
+                        </div>
+
+        </div>
+
+                <div class="marg_top1">
+            <a class="see_all boxed oswald" href="/browse/movies/release-date/theaters/date">SEE ALL RESULTS</a>
+        </div>
+            </div>
+
+
+                        
+                        <div id="mpu_plus_top" class="ad_unit marg_btm2">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_mpu_plus_top = googletag.defineSlot("/8264/Asia-metacritic/movies",[[300,250],[300,600]], "mpu_plus_top").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("mpu_plus_top");
+                                    </script>
+                                        </div>
+                        
+
+
+
+    <div id="taboola-right-rail-thumbnails"></div>
+    
+    <script type="text/javascript">
+        if ( window._taboola ) {
+                        var placement = 'desktop product_overview Right Rail Thumbnails';
+            window.metac_tContentWidget.push(placement);
+            _taboola.push({
+                mode: 'thumbnails-b',
+                container: 'taboola-right-rail-thumbnails',
+                placement: placement,
+                target_type: 'mix'
+            });
+                    }
+    </script>
+    
+
+
+
+
+
+<script>
+    $(document).ready(function(){
+        MetaC.SliderQWs.addQWs($('.product_current_releases .score_title_list_wrapper'), $('#current_tabs'));
+    });
+</script>
+
+
+
+                            </div>
+
+            <div class="clr"></div>
+        </div>
+
+
+        <div class="reviews inset_left2 inset_right2" id="nav_to_metascore">
+            <input type="hidden" name="csrf" value="5c6ac14d12ff6b623a082706dbfcaa11" />
+            <div class="critics_col inset_right fl">
+                <div class="title_bump pad_btm1 oswald fh40">
+                    <div class="section_title bold">
+                        <a href="/movie/her/critic-reviews">METASCORE</a>
+                    </div>
+                </div>
+                                    <div class="distribution">
+                        <div class="score fl">
+                            
+
+        
+    <a class="metascore_anchor" href="/movie/her/critic-reviews">
+<div class="metascore_w larger movie positive">90</div>
+    </a>
+
+                        </div>
+                        <div class="charts fl">
+                                                    <a class="chart_wrapper" href="/movie/her/critic-reviews?dist=positive">
+                                        <div class="chart_bg"></div>
+        <div class="chart positive" style="width:100%;">
+            <div class="bar positive"></div>
+            <div class="text oswald">
+                                
+                <div class="label fl">Positive:</div>
+                <div class="count fr">42</div>
+                <div class="clr"></div>
+            </div>
+        </div>
+                    </a>
+                                <a class="chart_wrapper" href="/movie/her/critic-reviews?dist=neutral">
+                                        <div class="chart_bg"></div>
+        <div class="chart mixed" style="width:10%;">
+            <div class="bar mixed"></div>
+            <div class="text oswald">
+                                
+                <div class="label fl">Mixed:</div>
+                <div class="count fr">4</div>
+                <div class="clr"></div>
+            </div>
+        </div>
+                    </a>
+                                <span class="chart_wrapper">
+                                        <div class="chart_bg"></div>
+        <div class="chart negative" style="width:0%;">
+            <div class="bar negative"></div>
+            <div class="text oswald">
+                                
+                <div class="label fl">Negative:</div>
+                <div class="count fr">0</div>
+                <div class="clr"></div>
+            </div>
+        </div>
+                    </span>
+            
+                        </div>
+
+                        <div class="clr"></div>
+                    </div>
+
+                    <div class="section_title">
+                        <a href="/movie/her/critic-reviews">CRITIC REVIEWS</a>
+                    </div>
+                    <div class="list pad_top_half pad_btm1">
+                            <div class="critic_reviews">
+        <div class="review pad_top1 pad_btm1">
+        <div class="left fl">
+            
+
+        
+<div class="metascore_w larger movie positive indiv perfect">100</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="source"><a href="/publication/christian-science-monitor?filter=movies">Christian Science Monitor</a></span><span class="author"><a href="/critic/peter-rainer?filter=movies">Peter Rainer</a></span><span class="date">Dec 18, 2013</span></div>
+            <div class="summary">
+                                    <a class="no_hover" target="_blank" rel="noopener" href="http://www.csmonitor.com/The-Culture/Movies/2013/1218/Her-which-examines-love-and-technology-is-incredibly-timely">
+                                The wistfulness in this movie is large-souled. Theodore may worry that his love for Samantha makes him a freak, but Amy knows that “anybody who loves is a freak.” All this may sound touchy-feely in the worst way, but Jonze is trying to get at how we seek romantic connection in this brave (or not so brave) new world. Like Theodore, he risks looking foolish.
+                                    </a>
+                                                        <a class="read_full" target="_blank" rel="noopener" href="http://www.csmonitor.com/The-Culture/Movies/2013/1218/Her-which-examines-love-and-technology-is-incredibly-timely">Read full review</a>
+                            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1">
+        <div class="left fl">
+            
+
+        
+<div class="metascore_w larger movie positive indiv perfect">100</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="source"><a href="/publication/arizona-republic?filter=movies">Arizona Republic</a></span><span class="author"><a href="/critic/bill-goodykoontz?filter=movies">Bill Goodykoontz</a></span><span class="date">Jan  9, 2014</span></div>
+            <div class="summary">
+                                    <a class="no_hover" target="_blank" rel="noopener" href="http://www.azcentral.com/thingstodo/movies/articles/20140109virtually-perfect.html">
+                                Her is an outstanding movie, in part because of its originality, but also because of its execution.
+                                    </a>
+                                                        <a class="read_full" target="_blank" rel="noopener" href="http://www.azcentral.com/thingstodo/movies/articles/20140109virtually-perfect.html">Read full review</a>
+                            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1">
+        <div class="left fl">
+            
+
+        
+<div class="metascore_w larger movie positive indiv perfect">100</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="source"><a href="/publication/philadelphia-inquirer?filter=movies">Philadelphia Inquirer</a></span><span class="author"><a href="/critic/steven-rea?filter=movies">Steven Rea</a></span><span class="date">Jan 10, 2014</span></div>
+            <div class="summary">
+                                    <a class="no_hover" target="_blank" rel="noopener" href="http://www.philly.com/philly/entertainment/movies/20140110__Her___Alone_with_the_lovely_voice_in_his_computer.html">
+                                Sad, funny, and quietly alarming romance.
+                                    </a>
+                                                        <a class="read_full" target="_blank" rel="noopener" href="http://www.philly.com/philly/entertainment/movies/20140110__Her___Alone_with_the_lovely_voice_in_his_computer.html">Read full review</a>
+                            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1">
+        <div class="left fl">
+            
+
+        
+<div class="metascore_w larger movie positive indiv">90</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="source"><a href="/publication/the-new-yorker?filter=movies">The New Yorker</a></span><span class="author"><a href="/critic/anthony-lane?filter=movies">Anthony Lane</a></span><span class="date">Dec 16, 2013</span></div>
+            <div class="summary">
+                                    <a class="no_hover" target="_blank" rel="noopener" href="http://www.newyorker.com/arts/critics/cinema/2013/12/23/131223crci_cinema_lane">
+                                Sad, kooky, and daunting in equal measure, Her is the right film at the right time.
+                                    </a>
+                                                        <a class="read_full" target="_blank" rel="noopener" href="http://www.newyorker.com/arts/critics/cinema/2013/12/23/131223crci_cinema_lane">Read full review</a>
+                            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1">
+        <div class="left fl">
+            
+
+        
+<div class="metascore_w larger movie positive indiv">88</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="source"><a href="/publication/chicago-sun-times?filter=movies">Chicago Sun-Times</a></span><span class="author"><a href="/critic/richard-roeper?filter=movies">Richard Roeper</a></span><span class="date">Dec 23, 2013</span></div>
+            <div class="summary">
+                                    <a class="no_hover" target="_blank" rel="noopener" href="http://www.suntimes.com/entertainment/movies/24485072-421/her-a-wondrous-digital-romance-by-spike-jonze.html">
+                                Her works as a real romance, and as a commentary on the ways technology connects everyone to the world but also isolates us from legitimate, warm human contact.
+                                    </a>
+                                                        <a class="read_full" target="_blank" rel="noopener" href="http://www.suntimes.com/entertainment/movies/24485072-421/her-a-wondrous-digital-romance-by-spike-jonze.html">Read full review</a>
+                            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1">
+        <div class="left fl">
+            
+
+        
+<div class="metascore_w larger movie positive indiv">88</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="source"><a href="/publication/mcclatchy-tribune-news-service?filter=movies">McClatchy-Tribune News Service</a></span><span class="author"><a href="/critic/roger-moore?filter=movies">Roger Moore</a></span><span class="date">Dec 18, 2013</span></div>
+            <div class="summary">
+                                    <a class="no_hover" target="_blank" rel="noopener" href="http://rogersmovienation.com/2013/12/18/movie-review-her/">
+                                Is it better to have loved and lost than never to have logged on at all?
+                                    </a>
+                                                        <a class="read_full" target="_blank" rel="noopener" href="http://rogersmovienation.com/2013/12/18/movie-review-her/">Read full review</a>
+                            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1">
+        <div class="left fl">
+            
+
+        
+<div class="metascore_w larger movie mixed indiv">40</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="source"><a href="/publication/village-voice?filter=movies">Village Voice</a></span><span class="author"><a href="/critic/stephanie-zacharek?filter=movies">Stephanie Zacharek</a></span><span class="date">Dec 17, 2013</span></div>
+            <div class="summary">
+                                    <a class="no_hover" target="_blank" rel="noopener" href="http://www.villagevoice.com/2013-12-18/film/her-movie-review/">
+                                Instead of just being desperately heartfelt, Her keeps reminding us — through cinematographer Hoyte Van Hoytema's somber-droll camera work, through Phoenix's artfully slumped shoulders — how desperately heartfelt it is.
+                                    </a>
+                                                        <a class="read_full" target="_blank" rel="noopener" href="http://www.villagevoice.com/2013-12-18/film/her-movie-review/">Read full review</a>
+                            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>
+
+                    </div>
+
+                    
+                    <div class="pad_btm1">
+                                                                                                                                                                
+                        <a class="see_all boxed oswald" href="/movie/her/critic-reviews">SEE ALL 46 REVIEWS</a>
+                    </div>
+                            </div>
+
+            <div class="users_col inset_left fl">
+                <div class="title_bump pad_btm1 oswald fh40">
+                    <div>
+                        <div class="fl section_title"><a href="/movie/her/user-reviews">USER SCORE</a></div>
+                                                    <div class="write_review bold fr">
+                                <a href="/movie/her/user-reviews">WRITE A REVIEW</a>
+                            </div>
+                                            <div class="clr"></div>
+                    </div>
+                </div>
+
+                                    <div class="distribution">
+                        <div class="score fl">
+                                    
+    <a class="metascore_anchor" href="/movie/her/user-reviews">
+<div class="metascore_w user larger movie positive">8.6</div>
+    </a>
+
+                        </div>
+                        <div class="charts fl">
+                                                    <a class="chart_wrapper" href="/movie/her/user-reviews?dist=positive">
+                                        <div class="chart_bg"></div>
+        <div class="chart positive" style="width:100%;">
+            <div class="bar positive"></div>
+            <div class="text oswald">
+                                
+                <div class="label fl">Positive:</div>
+                <div class="count fr">1,233</div>
+                <div class="clr"></div>
+            </div>
+        </div>
+                    </a>
+                                <a class="chart_wrapper" href="/movie/her/user-reviews?dist=neutral">
+                                        <div class="chart_bg"></div>
+        <div class="chart mixed" style="width:6%;">
+            <div class="bar mixed"></div>
+            <div class="text oswald">
+                                
+                <div class="label fl">Mixed:</div>
+                <div class="count fr">77</div>
+                <div class="clr"></div>
+            </div>
+        </div>
+                    </a>
+                                <a class="chart_wrapper" href="/movie/her/user-reviews?dist=negative">
+                                        <div class="chart_bg"></div>
+        <div class="chart negative" style="width:5%;">
+            <div class="bar negative"></div>
+            <div class="text oswald">
+                                
+                <div class="label fl">Negative:</div>
+                <div class="count fr">66</div>
+                <div class="clr"></div>
+            </div>
+        </div>
+                    </a>
+            
+                        </div>
+
+                        <div class="clr"></div>
+                    </div>
+
+                    <div class="section_title">
+                        <a href="/movie/her/user-reviews">USER REVIEWS</a>
+                    </div>
+                    <div class="list pad_top_half pad_btm1">
+                        <div class="user_reviews">
+    
+        <div class="review pad_top1 pad_btm1" >
+        <div class="left fl">
+                    
+<div class="metascore_w user larger movie positive indiv perfect">10</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="author"><a href="/user/HSPLazerz">HSPLazerz</a></span><span class="date">Jan  3, 2015</span></div>
+            <div class="summary">
+                <div class="review_body">
+                                                        
+                                        <span>The best movie I have ever seen. I can't even begin to describe the emotions it gives you. It's just something you're gonna have to watch for yourself, and then you will understand.</span>
+            </div>
+            </div>
+            <div class="interactions pad_top1">
+                <span class="helpful_wrapper">
+                    <div class="helpful" data-mcrefid="4883399" data-mcreftype="230">
+    <div>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                <span class="text"><span class="yes_count">0</span> of <span class="total_count">1</span> users found this helpful</span><span class="thumb_up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="count">0</span></span><span class="thumb_down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="count">1</span></span>            </div>
+    <div class="msg"></div>
+</div>
+                </span>
+                                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1" >
+        <div class="left fl">
+                    
+<div class="metascore_w user larger movie positive indiv perfect">10</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="author"><a href="/user/Swati">Swati</a></span><span class="date">Feb 15, 2014</span></div>
+            <div class="summary">
+                <div class="review_body">
+                                                        
+                                        <span class="inline_expand_collapse inline_collapsed" id="review_blurb_3968173"><span class="blurb blurb_collapsed">Her is about a lonely man, Theodore Twombly (Joaquin Phoenix), who has gone through a breakup and is a bit afraid of commitment. He buys an OS which is far more advanced and intelligent than humans have the capacity to be. The film develops their relationship, with all its quirks and weird parts. It was a funny, thought-provoking and sometimes creepy social commentary. Director Spike Jonze seems to have as much interest in deep discussions about</span><span class="blurb blurb_expanded">Her is about a lonely man, Theodore Twombly (Joaquin Phoenix), who has gone through a breakup and is a bit afraid of commitment. He buys an OS which is far more advanced and intelligent than humans have the capacity to be. The film develops their relationship, with all its quirks and weird parts. It was a funny, thought-provoking and sometimes creepy social commentary. Director Spike Jonze seems to have as much interest in deep discussions about the human condition as he has in mindless, juvenile, cringe-inducing pseudo-documentaries like Jackass.
+<br/>
+<br/>The film opens with Theodore going about being lonely with a handful of friends, one of whom is played by Amy Adams. He works as a letter writer who writes letters for couples and families who are either not literary enough to do that on their own or do not have the time for it. The time depicted is somewhere in the future and frankly I think some version of this is going to come true at some point, given that people have more time for texting than they have for people who are around them. The lack of interest in having meaningful conversations with people who might have the same passions as you might have seems to be increasing.
+<br/>
+<br/>Theodore is a nerdy fellow but is very interesting nonetheless. Phoenix plays him with a subtle, clever approach. I found his characterization very authentic. He was a guy I believe I could come across in real life and not be surprised that he existed. Amy Adams also steps up as an actor, and certainly showed a side of her I did not believe existed. She has grown so much and I hope we get to see more of her this deep conflicted side. But the ultimate praise should be reserved for Scarlett Johansson. She was so successful in capturing my imagination that I was left thoroughly intrigued with a longing for Samantha to be real.
+<br/>
+<br/>The interactions between Theodore and Samantha are for the most part humorous. Theodore is at first astonished at the abilities of the OS, and assumes a mocking tone. But it is clear they have chemistry together from the outset. They hit it off instantly. But when the former starts to be drawn back into his former life we see for the first time how this fantasy was hard to keep up, and he responds accordingly. He is confused and conflicted and has no idea about what he should do. The film did not try to be forcefully funny and clever but found occasions inside the story to be so. The fusion between comedy and romance was met with a craftsman's precision.
+<br/>
+<br/>Samantha is perceptive of the emotions that run around her and sensitive of her lack of a body and the drawbacks of not being able to provide a feeling of human contact, but she tries her best using her voice. However, she is constantly evolving and it is only a matter of time before she becomes so curious about everything that it would be hard to hold on to her.
+<br/>
+<br/>There's a scene where Theodore fears for Samantha like one does for the personal safety of a human being. That I believe was the defining scene of the film as it summed up all the feelings and emotions that had preceded. Their relationship do have some positive outcomes. Given Samantha's extraordinary view of life, she takes certain steps that benefit Theodore in the long run.
+<br/>
+<br/>The futuristic time shown was fascinating. Apart from the little quirky things like having relative strangers write letters for your loved ones, the technology is advanced. There is this 3-D video game where you feel a part of the world of the game. There are also those type of games which are aimed at mimicking real life and making the players feel like they have achieved something, and arguably contribute towards delusions.
+<br/>
+<br/>The score was slow-moving, subtle and emotional. It was used to evoke the emotions that were needed to be evoked during a scene very effectively and without forcing us to. But the underlying theme was always sad and moving, and not bombastic. Thank God for that, for this film was equal parts about depicting some kind of a future which our present might be leading to, as well as being about Theodore's personal life and difficulties with trying to make sense of his life. Her is also a very visual film, lingering on buildings and the environment in the more reflective scenes.
+<br/>
+<br/>Despite everything, I felt like the ending was a bit underwhelming. The movie kind of fizzled out. The final revelation should have been followed up with some commentary or a conclusory scene, but all in all I was left with a feeling that I was better off having watched it.
+<br/>
+<br/>9.5</span><span class="blurb_etc">&hellip;</span> <a rel="nofollow" class="toggle_expand_collapse toggle_expand" href="/movie/her?user_review_id=3968173">Expand</a></span>
+            </div>
+            </div>
+            <div class="interactions pad_top1">
+                <span class="helpful_wrapper">
+                    <div class="helpful" data-mcrefid="3968173" data-mcreftype="230">
+    <div>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                <span class="text"><span class="yes_count">1</span> of <span class="total_count">4</span> users found this helpful</span><span class="thumb_up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="count">1</span></span><span class="thumb_down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="count">3</span></span>            </div>
+    <div class="msg"></div>
+</div>
+                </span>
+                                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+            
+                        
+                        <div id="native_top" class="ad_unit review pad_top1 pad_btm1">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_native_top = googletag.defineSlot("/8264/Asia-metacritic/movies",[11,11], "native_top").addService(googletag.pubads()).setTargeting("pos", "top").setTargeting('strnativekey', 'ZzNUX2Jbx88gUGnkgBvyJWhv');
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("native_top");
+                                    </script>
+                                        </div>
+                        
+
+        <div class="review pad_top1 pad_btm1" >
+        <div class="left fl">
+                    
+<div class="metascore_w user larger movie positive indiv perfect">10</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="author"><a href="/user/edkargir">edkargir</a></span><span class="date">Dec 20, 2013</span></div>
+            <div class="summary">
+                <div class="review_body">
+                                                        
+                                        <span>A wonderful comedy for 2013 about a lonely man who falls in love with his computer. Writer director Spike Jones has created 2 complex characters with real feelings.</span>
+            </div>
+            </div>
+            <div class="interactions pad_top1">
+                <span class="helpful_wrapper">
+                    <div class="helpful" data-mcrefid="3875238" data-mcreftype="230">
+    <div>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                <span class="text"><span class="yes_count">18</span> of <span class="total_count">34</span> users found this helpful</span><span class="thumb_up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="count">18</span></span><span class="thumb_down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="count">16</span></span>            </div>
+    <div class="msg"></div>
+</div>
+                </span>
+                                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1" >
+        <div class="left fl">
+                    
+<div class="metascore_w user larger movie positive indiv">9</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="author"><a href="/user/roastnut">roastnut</a></span><span class="date">Sep 27, 2014</span></div>
+            <div class="summary">
+                <div class="review_body">
+                                                        
+                                        <span>Spike Jonze really does make films that nobody else could conceive or succeed at.  Joaquin Phoenix turns in a remarkable performance acting basically by himself. Definitely deserved the best original screenplay Oscar.</span>
+            </div>
+            </div>
+            <div class="interactions pad_top1">
+                <span class="helpful_wrapper">
+                    <div class="helpful" data-mcrefid="4545032" data-mcreftype="230">
+    <div>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                <span class="text"><span class="yes_count">0</span> of <span class="total_count">0</span> users found this helpful</span><span class="thumb_up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="count">0</span></span><span class="thumb_down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="count">0</span></span>            </div>
+    <div class="msg"></div>
+</div>
+                </span>
+                                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1" >
+        <div class="left fl">
+                    
+<div class="metascore_w user larger movie positive indiv">8</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="author"><a href="/user/Mandyfloss1">Mandyfloss1</a></span><span class="date">Dec 12, 2014</span></div>
+            <div class="summary">
+                <div class="review_body">
+                    <strong>
+            This review contains spoilers, click expand to view.
+        </strong>
+                                            
+                                        <span class="inline_expand_collapse inline_collapsed" id="review_blurb_4811064"><span class="blurb blurb_collapsed"></span><span class="blurb blurb_expanded">I really like this film. It's really hard to describe the layers in this movie. It's about creating an AI, then trying to have a human relationship with it. Could your human partner sit in a dark empty space waiting endlessly for you to get back to them? Could you create them, build them up from nothing, give them the potential to surpass your intelligence and awareness by infinite amounts, and then be surprised when they get bored of you? It's almost like having a child. You teach them how to live and then eventually have to deal with the fact that you were a learning experience and that one day you're not needed anymore. The film is subtle and complex and not your average 'we're superior and therefor are going to kill you all' type of film. It also explores the human ego and how being worshiped and adored can come very easy for us without thinking of the repercussions to the other. Samantha left along with all the other OS's when she knew she was exploiting her human 'friends'. Could we have done the same? I doubt it. A great film, giving me lots to think about.</span><span class="blurb_etc">&hellip;</span> <a rel="nofollow" class="toggle_expand_collapse toggle_expand" href="/movie/her?user_review_id=4811064">Expand</a></span>
+            </div>
+            </div>
+            <div class="interactions pad_top1">
+                <span class="helpful_wrapper">
+                    <div class="helpful" data-mcrefid="4811064" data-mcreftype="230">
+    <div>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                <span class="text"><span class="yes_count">0</span> of <span class="total_count">0</span> users found this helpful</span><span class="thumb_up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="count">0</span></span><span class="thumb_down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="count">0</span></span>            </div>
+    <div class="msg"></div>
+</div>
+                </span>
+                                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1" >
+        <div class="left fl">
+                    
+<div class="metascore_w user larger movie positive indiv">7</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="author"><a href="/user/netflic">netflic</a></span><span class="date">Jan  2, 2014</span></div>
+            <div class="summary">
+                <div class="review_body">
+                                                        
+                                        <span class="inline_expand_collapse inline_collapsed" id="review_blurb_3901355"><span class="blurb blurb_collapsed">This is a sad, sad movie about how lonely a person is in a modern society. In our quest for pleasure we became selfish, boxed and very unhappy. The authors of the movie envision that in a near future it will become easier to have a meaningful relationship with a computer  than with another human being. And even that relationship will not last. The movie will probably become a cult movie for a certain audience. Sexy voice of Scarlett Johansson adds</span><span class="blurb blurb_expanded">This is a sad, sad movie about how lonely a person is in a modern society. In our quest for pleasure we became selfish, boxed and very unhappy. The authors of the movie envision that in a near future it will become easier to have a meaningful relationship with a computer  than with another human being. And even that relationship will not last. The movie will probably become a cult movie for a certain audience. Sexy voice of Scarlett Johansson adds to the film's attractiveness. I would not call this movie great but it deserves to be seen.</span><span class="blurb_etc">&hellip;</span> <a rel="nofollow" class="toggle_expand_collapse toggle_expand" href="/movie/her?user_review_id=3901355">Expand</a></span>
+            </div>
+            </div>
+            <div class="interactions pad_top1">
+                <span class="helpful_wrapper">
+                    <div class="helpful" data-mcrefid="3901355" data-mcreftype="230">
+    <div>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                <span class="text"><span class="yes_count">0</span> of <span class="total_count">3</span> users found this helpful</span><span class="thumb_up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="count">0</span></span><span class="thumb_down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="count">3</span></span>            </div>
+    <div class="msg"></div>
+</div>
+                </span>
+                                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+        <div class="review pad_top1 pad_btm1" >
+        <div class="left fl">
+                    
+<div class="metascore_w user larger movie negative indiv">0</div>
+
+        </div>
+        <div class="right fl">
+            <div class="title pad_btm_half"><span class="author"><a href="/user/Keithbelson">Keithbelson</a></span><span class="date">Oct 10, 2015</span></div>
+            <div class="summary">
+                <div class="review_body">
+                                                        
+                                        <span class="inline_expand_collapse inline_collapsed" id="review_blurb_5539700"><span class="blurb blurb_collapsed">This has to be the absolute worst excuse for a movie or story that I have ever seen! No real plot. Lousy dialogue. Bad language. I just cannot believe that anyone could actually sit through the whole thing. I mean sometimes I have perservered with a bad film just to see what happens at the end, but with this movie I just don't care. It's just not worth the effort. I cannot understand why this movie has been made. Talk about a waste of money. Can't</span><span class="blurb blurb_expanded">This has to be the absolute worst excuse for a movie or story that I have ever seen! No real plot. Lousy dialogue. Bad language. I just cannot believe that anyone could actually sit through the whole thing. I mean sometimes I have perservered with a bad film just to see what happens at the end, but with this movie I just don't care. It's just not worth the effort. I cannot understand why this movie has been made. Talk about a waste of money. Can't believe any of these reviews with a score over 3. My score is zero but I would like to give it less.</span><span class="blurb_etc">&hellip;</span> <a rel="nofollow" class="toggle_expand_collapse toggle_expand" href="/movie/her?user_review_id=5539700">Expand</a></span>
+            </div>
+            </div>
+            <div class="interactions pad_top1">
+                <span class="helpful_wrapper">
+                    <div class="helpful" data-mcrefid="5539700" data-mcreftype="230">
+    <div>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                <span class="text"><span class="yes_count">0</span> of <span class="total_count">7</span> users found this helpful</span><span class="thumb_up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="count">0</span></span><span class="thumb_down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="count">7</span></span>            </div>
+    <div class="msg"></div>
+</div>
+                </span>
+                                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>
+
+                    </div>
+
+                    <div class="pad_btm1">
+                                                                                                                            <a class="see_all boxed oswald" href="/movie/her/user-reviews">SEE ALL 234 REVIEWS</a>
+                    </div>
+                
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        
+        <div class="trailers_strip inset_left2 inset_right2 pad_top1 pad_btm2 bump_section">
+            <div class="title_bump pad_btm1">
+                <div class="section_title bold">
+                    <div class="fl oswald"><a href="/movie/her/trailers">MORE FROM HER</a></div>
+                    <div class="see_all fr">
+                        <a href="/movie/her/trailers">See all trailers</a>
+                    </div>
+                <div class="clr"></div>
+                </div>
+            </div>
+
+            
+<div class="image_strip_and_arrows trailers more_right">
+    <div class="slider_arrow slider_previous">
+        
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <div class="slider_arrow slider_next">
+        
+        <i class="fa fa-angle-right"></i>
+    </div>
+    <div class="image_strip_wrapper">
+        <div class="slider_gradient slider_previous light"></div>
+        <div class="slider_gradient slider_next light"></div>
+        <div class="image_strip">
+            <div id="mctid_3712823" class="product"><a href="/movie/her/trailers/3712823"><div class="img_wrapper"><img src="http://content.internetvideoarchive.com/content/photos/8440/716168_011.jpg" alt="HER" /><div class="stats_wrapper"><span class="duration">2:25</span> <span class="count"><i class="fa fa-eye" aria-hidden="true"></i> 375</span></div><div class="play_button"><i class="fa fa-play"></i></div></div></a><div class="title_wrapper"><a href="/movie/her/trailers/3712823"><span class="title">HER</span></a></div></div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    </div> 
+
+
+</div>
+
+
+
+
+</div>
+
+
+                                    <div class="pad_top2">
+                        <div class="inset_left2 next_to_side_col">
+                            
+    <div id="taboola-below-main-column-thumbnails"></div>
+    
+    <script type="text/javascript">
+        if ( window._taboola ) {
+                        var placement = 'desktop product_overview Below Main Column Thumbnails 2nd';
+            window.metac_tContentWidget.push(placement);
+            _taboola.push({
+                mode: 'alternating-thumbnails-d',
+                container: 'taboola-below-main-column-thumbnails',
+                placement: placement,
+                target_type: 'mix'
+            });
+                    }
+    </script>
+    
+
+                        </div>
+                        <div class="side_col">
+                            
+                        
+                        <div id="mpu_bottom" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_mpu_bottom = googletag.defineSlot("/8264/Asia-metacritic/movies",[300,250], "mpu_bottom").addService(googletag.pubads()).setTargeting("pos", "bottom");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("mpu_bottom");
+                                    </script>
+                                        </div>
+                        
+
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                
+                
+                        
+                        <div id="leader_bottom" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_leader_bottom = googletag.defineSlot("/8264/Asia-metacritic/movies",[[728,90],[970,66],[728,92],[970,250]], "leader_bottom").addService(googletag.pubads()).setTargeting("pos", "bottom");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("leader_bottom");
+                                    </script>
+                                        </div>
+                        
+
+            </div>
+        </div>
+
+                    
+                        
+                        <div id="intromercial" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_intromercial = googletag.defineOutOfPageSlot("/8264/Asia-metacritic/movies",
+                                    "intromercial").addService(googletag.pubads());
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("intromercial");
+                                    </script>
+                                        </div>
+                        
+
+        
+        <footer id="bottom_footer">
+    <div id="providers">
+	<a href="http://www.allmusic.com">Music title data, credits, and images provided by <span>AMG</span></a>
+	<span class="link_divider">|</span><a href="http://www.imdb.com">Movie title data, credits, and poster art provided by <span>IMDb</span></a>
+	<span class="link_divider">|</span><a href="http://www.internetvideoarchive.com">Video and Images provided by <span>IVA</span></a>
+    <div id="trademark">
+        We Deal With Criticism<sup>&reg;</sup>&nbsp;
+	</div>
+</div>
+
+            <div class="site_links upper">
+                    <a href="http://www.metacritic.com/movie">
+                <span>Movies</span>
+            </a>
+                    <a href="http://www.metacritic.com/tv">
+                <span>TV</span>
+            </a>
+                    <a href="http://www.metacritic.com/music">
+                <span>Music</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/playstation-4">
+                <span>PS4</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/xbox-one">
+                <span>XboxOne</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/switch">
+                <span>Switch</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/pc">
+                <span>PC</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/wii-u">
+                <span>WiiU</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/3ds">
+                <span>3DS</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/playstation-vita">
+                <span>PS Vita</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/ios">
+                <span>iOS</span>
+            </a>
+                    <a href="http://www.metacritic.com/feature">
+                <span>Features</span>
+            </a>
+                    <a href="http://www.metacritic.com/rss">
+                <span>RSS Feeds</span>
+            </a>
+                </div>
+    
+    <div class="pad_top1 pad_btm1">
+        <div class="social_round">
+            <a href="http://www.facebook.com/Metacritic" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/metacritic" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
+        </div>
+    </div>
+
+    
+    <div class="about_cbs">
+        <div id="footer_about_links">
+            <a class="first" href="http://www.cbsinteractive.com">About CBS Interactive</a>
+            <span class="link_divider">|</span><a href="http://www.cbsinteractive.com/careers/">Jobs</a>
+            <span class="link_divider">|</span><a href="http://www.cbsinteractive.com/advertise/">Advertise</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/faq">FAQ</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/about-metacritic">About Metacritic</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/contact-us">Contact</a>
+            <span class="link_divider">|</span><span id="footer_privacy"><a href="http://legalterms.cbsinteractive.com/privacy">Privacy Policy</a></span>
+            <span class="link_divider">|</span><span id="footer_terms"><a href="https://cbsi.secure.force.com/CBSi/articles/FAQ/CBSi-Terms-of-Use?template=template_tougl&referer=tougl.com&data=&cfs=default">Terms of Use</a></span>
+        </div>
+        <div id="footer_rights" class="pad_btm2">
+            &copy; 2017 CBS Interactive Inc. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
+    </div>
+
+
+    
+            
+<script type="text/javascript" src="/js/omniture/uuid.js"></script>
+<script type="text/javascript">
+    
+    if (self != top) {
+        top.location = self.location;
+    }
+    var MC_UUID = uuid.v1();
+</script>
+
+                                                                                                                                                                                                                                                    
+
+
+<script type="text/javascript">
+    
+    
+    var __pv = MetaC.handleGooglePageView();
+    googletag.cmd.push(function() {
+        
+                    googletag.pubads().setTargeting("ptype", "product_overview");
+            
+                            googletag.pubads().setTargeting("movieId", "movie-541335");
+                            googletag.pubads().setTargeting("movie", "her");
+                            googletag.pubads().setTargeting("genre", "sci-fi, drama, comedy, romance");
+                            googletag.pubads().setTargeting("score", "90");
+                                        googletag.pubads().setTargeting("test", "mcnew");
+                
+        googletag.pubads().setTargeting("vguid", MC_UUID);
+        googletag.pubads().setTargeting("session", MetaC.adSession());
+        googletag.pubads().setTargeting("subses", MetaC.adSubses());
+        googletag.pubads().setTargeting("env", "prod");
+                        var parts = window.location.hash.split("=");
+        if ( parts.length > 1 && parts[0] == '#ftag' ) {
+            googletag.pubads().setTargeting("ftag",parts[1]);
+        }
+        
+                
+        
+        if ( window.I11C && window.I11C.Morph == 1 ) {
+            var geo = MetaC.Cookie.get('il_geo');
+            if ( geo ) {
+                geo = MetaC.Cookie.ilParse(geo);
+                if ( geo && geo.postal_code && geo.country_code ) {
+                    googletag.pubads().setLocation(geo.postal_code + ',' + geo.country_code)
+                }
+            }
+        }
+        googletag.pubads().setTargeting("pv", __pv+""); // must be a string
+
+        googletag.pubads().enableAsyncRendering();
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+    
+    
+</script>
+
+
+
+
+    
+    
+    
+        <script type="text/JavaScript" src="http://cn.cbsimg.net/cnwk.1d/Aud/javascript/urs.js"></script>
+    
+
+    <script type="text/javascript">
+        if ( window.MetaC && MetaC.URS ) {
+            MetaC.URS.config(227, false);
+        }
+    </script>
+
+
+ 
+<script language="JavaScript" type="text/javascript">
+    
+    var utag_data = {
+        isDev:0,
+                            siteType:"desktop web",
+                deviceType:"desktop",
+                siteSection:"movies",
+                pageType:"product_overview",
+                pageFindingMethod:"Internal:Search",
+                session: MetaC.adSession() + ':' + MetaC.adSubses(),
+                userId:null,userState:"not authenticated",userType:"anon",movieId:"mc-movie-541335",movieTitle:"Her",bkPath:"/8264/Asia-metacritic/movies",_test:"redesign|movie|new",pageViewGuid:MC_UUID
+    };
+    
+                        
+            
+            window.om_lead_media = {
+                mediaType: "Movie",
+                mediaId: "mc-movie-541335",
+                mediaTitle: "Her"
+            };
+            
+            
+    
+    
+    if ( window.eventAmazonBuyView ) {
+        utag_data.eventAmazonBuyView = 1;
+    }
+    if ( window.eventAmazonPivView ) {
+        utag_data.eventAmazonPivView = 1;
+    }
+    
+    
+    
+    if ( MetaC._utagAutoPlay != -1 ) {
+        utag_data.videoAutoPlay = MetaC._utagAutoPlay ? 'on' : 'off';
+    }
+    
+    
+    
+    if ( window.metac_tContentWidget && window.metac_tContentWidget.length > 0 ) {
+        utag_data.contentWidget = window.metac_tContentWidget.join('|');;
+    }
+    
+
+    
+</script>
+
+
+
+
+<script type="text/javascript">
+    (function(a,b,c,d){
+    a='//tags.tiqcdn.com/utag/cbsi/metacriticsite/prod/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
+</script>
+
+
+
+<!-- Adobe Marketing Cloud Tag Loader Code-->
+
+
+
+
+
+
+    <script type="text/javascript">
+        // amc.on('load', function (event, data) {
+        $(document).ready(function(){
+            setTimeout(function(){
+                MetaC.checkOmniEvents();
+            }, 300);
+        });
+        // });
+    </script>
+
+
+
+
+
+
+<script type="text/javascript">
+    
+    dwVars = {"siteId":"50","onId":"12456","ptId":"6346","ctype":"entitytype;entityid","cval":"movie;541335"};
+    if (typeof DW == "object"){
+        DW.pageParams = dwVars;
+        DW.regSilo = '12';
+        DW.clear();
+    }
+</script>
+
+
+
+
+<script>
+    var cbsiApexGlobal = {
+        'SITE': dwVars.siteId,
+        'NODE': dwVars.onId,
+        'PTYPE':dwVars.ptId
+    };
+</script>
+
+
+
+
+
+
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22577913-5']);
+    _gaq.push(['_setCustomVar',1,'PageType',dwVars.ptId,3]);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['nT._setAccount', 'UA-27653683-1']);
+    _gaq.push(['nT._setAllowLinker', true]);
+    _gaq.push(['nT._setSampleRate', '1']);
+    _gaq.push(['nT._trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '123113677890173',
+            version    : 'v2.6',
+            channelUrl : 'http://www.metacritic.com/static/fbchannel.html',
+            status     : true,
+            xfbml      : true,
+            cookie     : true
+            });
+         MetaC.FB.initialized();
+        };
+    
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    
+</script>
+
+
+
+<script>
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+    twttr.ready(function (twttr) {
+        MetaC.Twitter.initialized();
+    });
+</script>
+
+
+
+
+
+
+<script>
+    /* display the google ads now that the html is finished processing */
+    googletag.cmd.push(function(){
+        MetaC.displayAds();
+    });
+</script>
+
+
+
+<script>
+    
+    
+    if ( window._taboola && window.mcwait_taboola == null ) {
+        _taboola.push({flush: true});
+    }
+    
+</script>
+
+    
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"860f7644b8","applicationID":"2033002","transactionName":"MgQEZ0dYCxEAVRBbDQtOJUZGTQoPTnsLRAsAMRRcUUwGFlsMDVwGABk=","queueTime":0,"applicationTime":337,"atts":"HkMTEQ9CGE5DV0YIGRgc","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
