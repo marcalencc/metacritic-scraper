@@ -232,5 +232,19 @@ namespace MetacriticScraper.Tests
             CollectionAssert.AllItemsAreInstancesOfType(((Person)mItem).CreditMediaPairItems.
                 Select(c => c.Item), typeof(MediaItem));
         }
+
+        [Test]
+        public void Test_PersonRequestItem_AlbumParse2()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData\person_woodyallen_tvshow_100_scraped.txt");
+
+            PersonRequestItem item = new PersonRequestItem("1", "woody allen", "album");
+            MetacriticData mItem = item.Parse(testData);
+
+            Assert.AreEqual(((Person)mItem).Name, "Woody Allen");
+            Assert.AreEqual(((Person)mItem).RatingsSummary, default(Person.PersonRatingSummary));
+            Assert.AreEqual(((Person)mItem).CreditMediaPairItems, null);
+        }
     }
 }
