@@ -57,13 +57,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RequestItem.Tests.cs" />
-    <Content Include="TestData\album_lemonade.txt">
+    <Content Include="TestData\album_aseatatthetable_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\lemonade_2016_scraped.txt">
+    <Content Include="TestData\album_lemonade_autosearch.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\moonlight_2005_scraped.txt">
+    <Content Include="TestData\album_lemonade_2016_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\album_melodrama_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\movie_her_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\movie_moonlight_2005_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\album_teensofdenial_details.txt">
@@ -73,16 +82,25 @@
     <Compile Include="WebScraper.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestQueue.Test.cs" />
+    <Content Include="TestData\movie_thewolfofwallstreet_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\movie_zerodarkthirty_details.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\tvshow_veep.txt">
+    <Content Include="TestData\tvshow_arrested_development_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\tvshow_curbyourenthusiasm_7_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\tvshow_veep_autosearch.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\tvshow_veep_details.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\veep_6_scraped.txt">
+    <Content Include="TestData\tvshow_veep_6_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -101,13 +119,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestData\moonlight_2016_scraped.txt">
+    <Content Include="TestData\movie_moonlight_2016_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\movie_the_master.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\movie_moonlight.txt">
+    <Content Include="TestData\movie_the_master_autosearch.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
