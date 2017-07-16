@@ -299,6 +299,55 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        public void Test_UrlParser_ParseValidPersonUrl()
+        {
+            string url = "/person/martin-scorsese/album";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(keyword, "/person/");
+            Assert.AreEqual(title, "martin-scorsese");
+            Assert.AreEqual(yearOrSeason, "");
+            Assert.AreEqual(thirdLevelReq, "album");
+        }
+
+        [Test]
+        public void Test_UrlParser_ParseValidPersonUrlNoThirdLevelRequest()
+        {
+            string url = "/person/martin-scorsese";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq), Throws.Exception.TypeOf<InvalidUrlException>().
+                With.Property("Message").
+                EqualTo(@"Category required for ""person"" request"));
+        }
+
+        [Test]
+        public void Test_UrlParser_ParseValidPersonUrlnvalidThirdLevelRequest()
+        {
+            string url = "/person/martin-scorsese/1945";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq), Throws.Exception.TypeOf<InvalidUrlException>().
+                With.Property("Message").
+                EqualTo("Invalid parameter: 1945"));
+        }
+
+
+        [Test]
         public void Test_UrlParser_MovieItemCreationNoThirdLevelRequest()
         {
             string keyword = "/movie/";
@@ -437,6 +486,36 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(item.RefTypeId, Constants.TvShowTypeId);
             Assert.AreEqual(item.RequestId, "1");
             Assert.AreEqual(item.Name, "olive kitteridge");
+        }
+
+        [Test]
+        public void Test_UrlParser_PersonItemCreationNoThirdLevelRequest()
+        {
+            string keyword = "/person/";
+            string title = "lorde";
+            string yearOrSeason = "";
+
+            Assert.That(() => m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason, ""),
+                Throws.Exception.TypeOf<InvalidUrlException>().
+                With.Property("Message").
+                EqualTo(@"Category required for ""person"" request"));
+        }
+
+        [Test]
+        public void Test_UrlParser_PersonItemCreation()
+        {
+            string keyword = "/person/";
+            string title = "justin-bieber";
+            string thirdLevelReq = "album";
+
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, "", thirdLevelReq);
+
+            Assert.IsNotNull(item);
+            Assert.IsInstanceOf(typeof(PersonRequestItem), item);
+            Assert.AreEqual(item.RefTypeId, Constants.PersonTypeId);
+            Assert.AreEqual(item.RequestId, "1");
+            Assert.AreEqual(item.Name, "justin bieber");
+            Assert.AreEqual(item.ThirdLevelRequest, "album");
         }
 
         [Test]

@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PersonRequestItem.Tests.cs" />
     <Compile Include="RequestItem.Tests.cs" />
     <Content Include="TestData\album_aseatatthetable_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -86,6 +87,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\movie_zerodarkthirty_details.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\person_kanyewest_album_100_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\person_kanyewest_movie_100_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\person_kanyewest_tvshow_100_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\person_woodyallen_autosearch.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\person_woodyallen_movie_100_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\person_woodyallen_tvshow_100_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\tvshow_arrested_development_scraped.txt">

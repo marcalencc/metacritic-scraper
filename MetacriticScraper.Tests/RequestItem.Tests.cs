@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using NUnit.Framework;
-using MetacriticScraper.Scraper;
-using MetacriticScraper.Errors;
 using MetacriticScraper.Interfaces;
 using MetacriticScraper.RequestData;
 using MetacriticScraper.JSONObjects;
@@ -121,10 +117,10 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_MovieParse2()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\movie_her_scraped.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\movie_her_scraped.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "moonlight", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
             Assert.AreEqual(((Movie) mItem).Title, "Her");
             Assert.AreEqual(((Movie) mItem).Director, "Spike Jonze");
@@ -139,10 +135,10 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_MovieParse3()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\movie_thewolfofwallstreet_scraped.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\movie_thewolfofwallstreet_scraped.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "the wolf of wall street", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
             Assert.AreEqual(((Movie) mItem).Title, "The Wolf of Wall Street");
             Assert.AreEqual(((Movie) mItem).Director, "Martin Scorsese");
@@ -156,21 +152,20 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_MovieParseWithDetails()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\movie_zerodarkthirty_details.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\movie_zerodarkthirty_details.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "zero dark thirty", "", "details");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
-            Assert.AreEqual(((Movie) mItem).Title, null);
-            Assert.AreEqual(((Movie) mItem).Details.Count, 60);
-            CollectionAssert.Contains(((Movie) mItem).Details, new Detail("Runtime",
-                "157 min"));
-            CollectionAssert.Contains(((Movie) mItem).Details, new Detail("Jessica Chastain",
-                "Maya"));
-            CollectionAssert.Contains(((Movie) mItem).Details, new Detail("Nabil Elouahabi",
-                "Detainee On Monitor"));
-            CollectionAssert.Contains(((Movie) mItem).Details, new Detail("Jonathan Leven",
-                "Co-Producer"));
+            Assert.AreEqual(((MediaDetail) mItem).Details.Count, 60);
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Runtime", "157 min"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Jessica Chastain", "Maya"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Nabil Elouahabi", "Detainee On Monitor"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Jonathan Leven", "Co-Producer"));
         }
 
         // Album
@@ -214,10 +209,10 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_AlbumParse()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\album_lemonade_2016_scraped.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\album_lemonade_2016_scraped.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
             Assert.AreEqual(((Album) mItem).Title, "Lemonade");
             Assert.AreEqual(((Album) mItem).Rating.CriticRating, 92);
@@ -230,10 +225,10 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_AlbumParse2()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\album_melodrama_scraped.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\album_melodrama_scraped.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "melodrama", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
             Assert.AreEqual(((Album) mItem).Title, "Melodrama");
             Assert.AreEqual(((Album) mItem).PrimaryArtist, "Lorde");
@@ -247,10 +242,10 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_AlbumParse3()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\album_aseatatthetable_scraped.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\album_aseatatthetable_scraped.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "a seat at the table", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
             Assert.AreEqual(((Album) mItem).Title, "A Seat at the Table");
             Assert.AreEqual(((Album) mItem).PrimaryArtist, "Solange");
@@ -264,18 +259,18 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_AlbumParseWithDetails()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\album_teensofdenial_details.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\album_teensofdenial_details.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "teens of denial", "", "details");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
-            Assert.AreEqual(((Album) mItem).Title, null);
-            Assert.AreEqual(((Album) mItem).Details.Count, 4);
-            CollectionAssert.Contains(((Album) mItem).Details, new Detail("Record Label", "Matador"));
-            CollectionAssert.Contains(((Album) mItem).Details, new Detail("Genre(s)",
-                "Pop/Rock, Alternative/Indie Rock"));
-            CollectionAssert.Contains(((Album) mItem).Details, new Detail("Name",
-                "Car Seat Headrest"));
+            Assert.AreEqual(((MediaDetail) mItem).Details.Count, 4);
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Record Label", "Matador"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Genre(s)", "Pop/Rock, Alternative/Indie Rock"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Name", "Car Seat Headrest"));
         }
 
         // TV Show
@@ -351,10 +346,10 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_TvShowParse()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\tvshow_veep_6_scraped.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep_6_scraped.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
             Assert.AreEqual(((TVShow) mItem).Title, "Veep");
             Assert.AreEqual(((TVShow) mItem).Rating.CriticRating, 88);
@@ -367,10 +362,10 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_TvShowParse2()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\tvshow_curbyourenthusiasm_7_scraped.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\tvshow_curbyourenthusiasm_7_scraped.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "curb your enthusiasm", "7", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
             Assert.AreEqual(((TVShow) mItem).Title, "Curb Your Enthusiasm");
             Assert.AreEqual(((TVShow) mItem).Rating.CriticRating, 81);
@@ -383,10 +378,10 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_TvShowParse3()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\tvshow_arrested_development_scraped.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\tvshow_arrested_development_scraped.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "arrested development", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
             Assert.AreEqual(((TVShow) mItem).Title, "Arrested Development");
             Assert.AreEqual(((TVShow) mItem).Rating.CriticRating, 89);
@@ -399,17 +394,16 @@ namespace MetacriticScraper.Tests
         public void Test_RequestItem_TvShowParseWithDetails()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string testData_2016 = File.ReadAllText(dir + @"\TestData\tvshow_veep_details.txt");
+            string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep_details.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "details");
-            MetacriticData mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData);
 
-            Assert.AreEqual(((TVShow) mItem).Title, null);
-            Assert.AreEqual(((TVShow) mItem).Details.Count, 12);
-            CollectionAssert.Contains(((TVShow) mItem).Details, new Detail("Julia Louis-Dreyfus",
-                "Vice President Selina Meyer"));
-            CollectionAssert.Contains(((TVShow) mItem).Details, new Detail("Creators",
-                "Armando Iannucci"));
+            Assert.AreEqual(((MediaDetail) mItem).Details.Count, 12);
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Julia Louis-Dreyfus", "Vice President Selina Meyer"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Details,
+                new DetailItem("Creators", "Armando Iannucci"));
         }
 
     }

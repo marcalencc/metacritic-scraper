@@ -1,0 +1,2157 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+        	<title>Woody Allen Movies Profile - Metacritic</title>
+	
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1039.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+
+    
+    <meta name="description" content="Reviews and scores for Movies involving Woody Allen.">
+
+    
+    
+    <meta name="viewport" content="width=1024">
+
+
+    
+    
+
+    
+    <meta name="application-name" content="Metacritic">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="/images/win8tile/76bf1426-2886-4b87-ae1c-06424b6bb8a2.png">
+
+    
+                        <meta property="og:title" content="Woody Allen">
+                    <meta property="og:type" content="profile">
+                    <meta property="og:url" content="http://www.metacritic.com/person/woody-allen">
+                    <meta property="og:image" content="http://static.metacritic.com/images/icons/mc_fb_og.png">
+                    <meta property="og:site_name" content="Metacritic">
+                    <meta property="fb:app_id" content="123113677890173">
+                    <meta property="og:description" content="Woody Allen was born on December 1, 1935, as Allen Stewart Konigsberg, in Brooklyn, New York. At the age of 15, he started selling one-liners to gossip columns. After working a while as a stand up comedian, he was hired to write What&#039;s New, Pussycat (1965). He directed his first film a year later, What&#039;s Up, Tiger Lily? (1966).">
+            
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="/css/fonts/proxima-nova/stylesheet.css" type="text/css" charset="utf-8" />
+    
+    <link rel="stylesheet" href="/css/global.min.1499713810.css" type="text/css">
+<link rel="stylesheet" href="/css/profile/base.min.1499713742.css" type="text/css">
+<link rel="stylesheet" href="/css/profile/person.min.1499713742.css" type="text/css">
+
+
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+
+    
+     
+        <link rel="canonical" href="http://www.metacritic.com/person/woody-allen?filter-options=movies" />
+        
+    
+    
+    
+			
+				    
+    
+    
+    
+    <script type="text/javascript" src="/js/global.min.1499713810.js"></script>
+
+
+    
+    <script src="//cdn.optimizely.com/js/2333541344.js"></script>
+
+    
+                        
+            <script async type="text/javascript" src="//js.indexww.com/ht/ls-metacritic.js"></script>
+            
+            
+    <script type="text/javascript">
+        
+        
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        window.metac_ads_pushdisplay = window.metac_ads_pushdisplay || [];
+        window.metac_gallery_ads_pushdisplay = window.metac_gallery_ads_pushdisplay || [];
+        window.metac_hover_ads_pushdisplay = window.metac_hover_ads_pushdisplay || [];
+        (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +'//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+        
+    </script>
+
+    <script type="text/javascript">
+        
+    	MC_USER_LOGGED_IN = false;
+        
+        
+                    
+            window._taboola = window._taboola || [];
+            window.metac_tContentWidget = window.metac_tContentWidget || [];
+            _taboola.push({
+                other : 'auto'
+            });
+            !function (e, f, u) {
+                e.async = 1;
+                e.src = u;
+                f.parentNode.insertBefore(e, f);
+            }(document.createElement('script'),
+              document.getElementsByTagName('script')[0],
+              '//cdn.taboola.com/libtrc/cbsinteractive-metacritic/loader.js');
+            
+            </script>
+
+    
+    
+
+    
+    <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async></script>
+
+    
+    <script src="//vidtech.cbsinteractive.com/uvpjs/2.1.0/CBSI-PLAYER.js"></script>
+    <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+
+</head>
+<body>
+
+
+
+<div id="site_layout">
+    <div id="masthead">
+        
+
+                    <div id="omnibar_wrapper">
+                
+                        
+                        <div id="omnibar" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_omnibar = googletag.defineSlot("/8264/Asia-metacritic/person",[980,45], "omnibar").addService(googletag.pubads()).setTargeting("pos", "top").setCollapseEmptyDiv(true, true);
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("omnibar");
+                                    </script>
+                                        </div>
+                        
+
+
+            </div>
+        
+        <div id="content_header_wrapper">
+            <header id="top_header">
+    <nav id="primary_nav" class="inset_left2 inset_right2">
+        <div class="primary_nav_row">
+            <div class="logo">
+                <a href="http://www.metacritic.com"><img src="/images/mobile/logo.png" alt="Metacritic logo"></a>
+            </div>
+
+            <div id="primary_menu_wrapper">
+                <div id="primary_menu_items">
+                    <div class="primary_menu_items_row">
+                                                    <div id="primary_menu_item_movies" class="primary_menu_item selected">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/movie">
+                                        Movies
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_games" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/game">
+                                        Games
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_tv" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/tv">
+                                        TV
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_music" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/music">
+                                        Music
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_features" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/feature">
+                                        Features
+                                    </a>
+                                </span>
+                            </div>
+                                                <div id="primary_menu_item_login" class="primary_menu_item">
+                            
+                                                            <span class="primary_menu_text">
+                                    <a id="login" href="https://secure.metacritic.com/login">LOG&nbsp;IN</a> / <a id="signup" href="https://secure.metacritic.com/signup">SIGN&nbsp;UP</a>
+                                </span>
+                                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="primary_search">
+                <div id="primary_search_wrapper">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <span class="search_label">SEARCH</span>
+                </div>
+            </div>
+
+            <div id="primary_social" class="social_round">
+                <a href="http://www.facebook.com/Metacritic" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
+                <a href="http://twitter.com/metacritic" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <nav id="secondary_nav" class="hover_none">
+                                                                        
+                
+                                                                                                                    <div id="secondary_nav_items_movies" class="secondary_nav_items">
+                    <table id="secondary_nav_table_movies" class="secondary_nav_table">
+                        <tr>
+                                                    <td class="menu_col_left">
+                                                                                                                                                                                    <div class="menu_w_icon">
+                                            <a href="/browse/movies/release-date/theaters/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/ticket.png">
+                                                <span>In Theaters</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/browse/movies/release-date/coming-soon/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/clock.png">
+                                                <span>Coming Soon</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/browse/dvds/release-date/new-releases/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/couch.png">
+                                                <span>DVD & Streaming</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/feature/more/best-of-2016">
+                                                <img src="http://www.metacritic.com/images/icons/nav/ribbon.png">
+                                                <span>Best of 2016</span>
+                                            </a>
+                                        </div>
+                                                                                                </td>
+                                                                            <td class="menu_col_mid">
+                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/90day/filtered">
+                                            High Scores
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/all/filtered/netflix">
+                                            Best of Netflix
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/all/filtered/piv">
+                                            Best of Amazon
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/genre/date/action">
+                                            Browse by Genre
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/critic/reviewed">
+                                            Critics
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/publication/reviewed">
+                                            Publications
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/title/dvd">
+                                            A - Z Index
+                                        </a>
+                                    </div>
+                                                                                        </td>
+                                                                                                    <td class="menu_col_right larger_images no_title_separ">
+                                    <div class="pad_btm2">
+                                        <a href="http://www.metacritic.com/browse/movies/release-date/theaters/metascore" class="strip_title oswald">
+                                            Featured Movies
+                                        </a>
+                                    </div>
+                                    <div class="image_strip">
+                                        <div class="product"><div class="img_wrapper"><a href="/movie/war-for-the-planet-of-the-apes"><img src="http://static.metacritic.com/images/products/movies/2/fcbdb4c538839b1731e63b35172dbcf2-250h.jpg" alt="War for the Planet of the Apes" />
+
+        
+<div class="metascore_w large no_tbd movie positive">83</div>
+<span class="release_date">Jul 14</span></a></div><div class="title_wrapper"><a href="/movie/war-for-the-planet-of-the-apes"><span>War for the Planet of the Apes</span></a></div></div><div class="product"><div class="img_wrapper"><a href="/movie/spider-man-homecoming"><img src="http://static.metacritic.com/images/products/movies/0/1c822c7ea87159926b563ccc050d0727-250h.jpg" alt="Spider-Man: Homecoming" />
+
+        
+<div class="metascore_w large no_tbd movie positive">73</div>
+<span class="release_date">Jul 7</span></a></div><div class="title_wrapper"><a href="/movie/spider-man-homecoming"><span>Spider-Man: Homecoming</span></a></div></div><div class="product"><div class="img_wrapper"><a href="/movie/baby-driver"><img src="http://static.metacritic.com/images/products/movies/7/7a85d661c5793376aa5ef60d517a7593-250h.jpg" alt="Baby Driver" />
+
+        
+<div class="metascore_w large no_tbd movie positive">86</div>
+<span class="release_date">Jun 28</span></a></div><div class="title_wrapper"><a href="/movie/baby-driver"><span>Baby Driver</span></a></div></div><div class="product last"><div class="img_wrapper"><a href="/movie/the-big-sick"><img src="http://static.metacritic.com/images/products/movies/3/b6a203ff883f3c8e86f6f9441f5b319f-250h.jpg" alt="The Big Sick" />
+
+        
+<div class="metascore_w large no_tbd movie positive">87</div>
+<span class="release_date">Jun 23</span></a></div><div class="title_wrapper"><a href="/movie/the-big-sick"><span>The Big Sick</span></a></div></div>
+                                        <div class="clr"></div>
+                                    </div>
+                                    <div class="see_all">
+                                        <a href="http://www.metacritic.com/browse/movies/release-date/theaters/date">
+                                            See All Movies
+                                        </a>
+                                    </div>
+                            </td>
+                                                </tr>
+                    </table>
+                </div>
+                                                                            
+                
+                                                                                                                    <div id="secondary_nav_items_games" class="secondary_nav_items singleMenu">
+                    <table id="secondary_nav_table_games" class="secondary_nav_table">
+                        <tr>
+                                                                            <td class="menu_col_mid">
+                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/playstation-4">
+                                            PS4
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/xbox-one">
+                                            Xbox One
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/pc">
+                                            PC
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/switch">
+                                            Switch
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/wii-u">
+                                            Wii U
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/3ds">
+                                            3DS
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/playstation-vita">
+                                            PS Vita
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/ios">
+                                            iOS
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/legacy">
+                                            Legacy
+                                        </a>
+                                    </div>
+                                                                                        </td>
+                                                                                                </tr>
+                    </table>
+                </div>
+                                                                            
+                
+                                                                                                                    
+                
+                                                                                                                    
+                
+                                                                        </nav>
+
+    <nav id="primary_search_results">
+        <div class="results_wrapper inset_left2 inset_right2 pad_btm2">
+            <div class="results_data">
+                <div class="results_header_wrapper pad_top1">
+                    
+                    <form action="/search" method="post" autocomplete="off">
+                        <div class="field innerLabel thin">
+                            <input type="text" class="field_input thin" tabindex="1" name="search_term" id="top_search" autocomplete="off"
+                                                            >
+                            <label for="top_search">SEARCH</label>
+                        </div>
+                        <input type="hidden" name="search_filter" value="all">
+                    </form>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                </div>
+                <div class="info pad_btm1">No Results Found.</div>
+                <table class="lists">
+                    <tr>
+                        <td class="list r150 inset_right"> 
+                            <div class="result_header">MOVIES <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Movies &raquo;</div>
+                            <div class="browse_az"><a href="/browse/movies/title/dvd">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r30 inset_right"> 
+                            <div class="result_header">GAMES <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Games &raquo;</div>
+                            <div class="browse_az"><a href="/browse/games/title">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r70 inset_right"> 
+                            <div class="result_header">TV <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More TV &raquo;</div>
+                            <div class="browse_az"><a href="/browse/tv/title/all">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r170 inset_right"> 
+                            <div class="result_header">MUSIC <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Music &raquo;</div>
+                            <div class="browse_az"><a href="/browse/albums/artist">Browse A-Z</a></div>
+                        </td>
+                        <td class="list other inset_right"> 
+                            <div class="result_header">MORE <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More &raquo;</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div id="primary_search_selects" class="styled_select2 border_white">
+                    <div class="topper">
+                        <div class="disp_selected">
+                            <span class="text">By Popularity</span>
+                            <span class="sel">
+                                <i class="fa fa-chevron-down"></i>
+                                <i class="fa fa-check thin"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="options_scroll">
+                        <div class="options">
+                            <div class="option selected" data-mcqwval="popular">
+                                <span class="option_text">By Popularity</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                            <div class="option" data-mcqwval="date">
+                                <span class="option_text">By Date</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                            <div class="option" data-mcqwval="title">
+                                <span class="option_text">By Title</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="close">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+            <div id="nav_obar">
+<table>
+    <tr>
+                    <td class="nav_item thin">
+                <span class="nav_item_text">
+                                                                                    <a href="/browse/movies/release-date/theaters/date">New Releases</a>
+                </span>
+            </td>
+                    <td class="nav_item thin">
+                <span class="nav_item_text">
+                                                                                    <a href="/browse/movies/release-date/coming-soon/date">Coming Soon</a>
+                </span>
+            </td>
+                    <td class="nav_item thin">
+                <span class="nav_item_text">
+                                                                                    <a href="/browse/movies/score/metascore/90day/filtered">High Scores</a>
+                </span>
+            </td>
+                    <td class="nav_item thin">
+                <span class="nav_item_text">
+                                                                                    <a href="/browse/movies/title/dvd">Browse A-Z</a>
+                </span>
+            </td>
+                    <td class="nav_item thin">
+                <span class="nav_item_text">
+                                                                                    <a href="/browse/movies/publication/reviewed">Publications</a>
+                </span>
+            </td>
+                    <td class="nav_item thin">
+                <span class="nav_item_text">
+                                                                                    <a href="/browse/movies/critic/reviewed">Critics</a>
+                </span>
+            </td>
+                    <td class="nav_item thin">
+                <span class="nav_item_text">
+                                                                                    <a href="/browse/movies/people/reviewed">People</a>
+                </span>
+            </td>
+                    <td class="nav_item thin">
+                <span class="nav_item_text">
+                                                                                    <a href="/browse/movies/trailers/date">Trailers</a>
+                </span>
+            </td>
+            </tr>
+</table>
+</div>
+
+        </div>
+    </div>
+    
+                        <div id="mantle_skin" class="site_gutters">
+                
+                        
+                        <div id="skin" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_skin = googletag.defineSlot("/8264/Asia-metacritic/person",[1600,1000], "skin").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("skin");
+                                    </script>
+                                        </div>
+                        
+
+
+        <div id="gutters" class="site_gutters">
+                    <div id="superleader">
+                        
+                            <div class="ad_height_min">
+                        <div id="leader_plus_top" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_leader_plus_top = googletag.defineSlot("/8264/Asia-metacritic/person",[[728,90],[970,66],[970,250],[728,91]], "leader_plus_top").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("leader_plus_top");
+                                    </script>
+                                        </div>
+                            </div>
+                        
+
+</div>
+                <div id="gutters_mid" class="site_gutters">
+            <div id="gutters_btm" class="site_gutters">
+                <div id="gutters_top" class="site_gutters">
+                    <div id="container">
+
+<div id="col_layout" class="col_layout">
+        <div id="main_content" class="content_section mpu_layout">
+                <div class="layout">
+                        
+            
+                        <div id="main" class="col main_col">
+                <div class="person_header">
+                    
+                        
+            
+<div class="sharing " >
+    
+    <a class="sharing-facebook" title="Share on Facebook" rel="nofollow noopener popup:external" data-mc-social-url="http://www.metacritic.com/person/woody-allen?ftag=fbsoshares" href="javascript:void(0);"><span class="fa fa-fw fa-facebook"></span></a><a class="sharing-twitter" title="Share on Twitter" rel="nofollow noopener popup:external" href="http://twitter.com/intent/tweet?via=metacritic&text=Woody%20Allen%20Movies%20Profile&url=http%3A%2F%2Fmtcr.tc%2F1ICJN7T" target="_blank"><span class="fa fa-fw fa-twitter"></span></a><a class="sharing-pinterest" title="Share on Pinterest" rel="nofollow noopener popup:external" data-mc-social-track-id="5" target="_blank" href="//pinterest.com/pin/create/link/?url=http%3A%2F%2Fwww.metacritic.com%2Fperson%2Fwoody-allen%3Fftag%3Dpinsoshares&description=Woody%20Allen%20Movies%20Profile&media=http://static.metacritic.com/images/icons/mc_fb_og.png"><span class="fa fa-fw fa-pinterest"></span></a><a class="sharing-google-plus" title="Share on Google+" rel="nofollow noopener popup:external" data-mc-social-track-id="3" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.metacritic.com%2Fperson%2Fwoody-allen%3Fftag%3Dgplussoshares""><span class="fa fa-fw fa-google-plus"></span></a><a class="sharing-reddit" title="Share on Reddit" rel="nofollow noopener popup:external" data-mc-social-track-id="6" target="_blank" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.metacritic.com%2Fperson%2Fwoody-allen%3Fftag%3Dredsoshares&title=Woody%20Allen%20Movies%20Profile"><span class="fa fa-fw fa-reddit"></span></a></div>
+
+
+            <h1 class="person_title">
+        Woody Allen
+    </h1>
+				<p class="bio"><strong>Biography:</strong>
+                            
+                        <span>Woody Allen was born on December 1, 1935, as Allen Stewart Konigsberg, in Brooklyn, New York. At the age of 15, he started selling one-liners to gossip columns. After working a while as a stand up comedian, he was hired to write What's New, Pussycat (1965). He directed his first film a year later, What's Up, Tiger Lily? (1966).</span>
+            		</p>
+</div>
+
+
+ <div class="module credits_module person_credits_module">
+    <div class="head head_type_1"><div class="head_wrap"><h2 class="module_title">Woody Allen's Scores</h2>                            <ul class="tabs tabs_type_1">            <li class="tab tab_type_1 tab_movies first">
+                                    <span class="active"><span>Movies</span></span>
+                            </li>
+                                                        <li class="tab tab_type_1 tab_tv last">
+                                                        <a  href="/person/woody-allen?filter-options=tv&sort_options=date&num_items=100"><span>TV</span></a>
+                            </li>
+            </ul>            
+    
+    
+    
+    
+</div></div>
+
+		<div class="score_details personscore_details">
+    <div class="score_details_wrap">
+        <div class="profile_score_summary personscore_summary">
+            <table class="profile_score_summary personscore_summary" summary=" Review Score Summaries">
+                <tr class="review_average">
+                                            <th scope="row" class="summary_label">Average career score:</th>
+                        <td class="summary_score" colspan="2">
+                                                                    <span class="data textscore textscore_favorable">62</span>
+
+                                                    </td>
+                                    </tr>
+                                    <tr class="highest_review">
+                        <th scope="row" class="summary_label">Highest Metascore:</th>
+                        <td class="summary_score">
+                            
+
+        
+<span class="metascore_w small movie positive indiv">90</span>
+
+                        </td>
+                        <td class="summary_data">
+                            <span class="product_title">
+                                <a href="/movie/hannah-and-her-sisters">Hannah and Her Sisters</a>
+                            </span>
+                        </td>
+                    </tr>
+                                                    <tr class="lowest_review last">
+                        <th scope="row" class="summary_label">Lowest Metascore:</th>
+                        <td class="summary_score">
+                            
+
+        
+<span class="metascore_w small movie negative indiv">32</span>
+
+                        </td>
+                        <td class="summary_data">
+                            <span class="product_title">
+                                <a href="/movie/the-unbelievers">The Unbelievers</a>
+                            </span>
+                        </td>
+                    </tr>
+                            </table>
+        </div>
+        <div class="score_distribution">
+    <div class="distribution_wrap">
+        <div class="distribution_title">Score distribution:</div>
+        <ol class="score_counts hover_none">
+                        <li class="score_count">
+                <div class="count_wrap">
+                    <span class="label">Positive:</span>
+                    <span class="data">
+                        <a href="/person/woody-allen?filter-options=movies&sort_options=date&dist=positive&num_items=100">                            <span class="total" style="width:100%;">
+                                <span class="count">19</span>
+                                <span class="distribution positive"> out of 36</span>
+                            </span>
+                        </a>                    </span>
+                </div>
+            </li>
+                        <li class="score_count">
+                <div class="count_wrap">
+                    <span class="label">Mixed:</span>
+                    <span class="data">
+                        <a href="/person/woody-allen?filter-options=movies&sort_options=date&dist=neutral&num_items=100">                            <span class="total" style="width:84%;">
+                                <span class="count">16</span>
+                                <span class="distribution mixed"> out of 36</span>
+                            </span>
+                        </a>                    </span>
+                </div>
+            </li>
+                        <li class="score_count">
+                <div class="count_wrap">
+                    <span class="label">Negative:</span>
+                    <span class="data">
+                        <a href="/person/woody-allen?filter-options=movies&sort_options=date&dist=negative&num_items=100">                            <span class="total" style="width:5%;">
+                                <span class="count">1</span>
+                                <span class="distribution negative"> out of 36</span>
+                            </span>
+                        </a>                    </span>
+                </div>
+            </li>
+                    </ol>
+		            <div class="reviews_total">
+                <span class="count">
+                                    
+                                					<a href="/person/woody-allen">36</a> 
+				                </span>
+                                    <span>movie reviews</span>
+                            </div>
+		    </div>
+</div>
+
+    </div>
+</div>
+
+    <div class="body">
+                            <div class="tabs ">
+        <div class="tab_wrap">
+                            <ul class="tabs tabs_type_1">            <li class="tab tab_type_1 tab_date first">
+                                    <span class="active"><span>By date</span></span>
+                            </li>
+                                                        <li class="tab tab_type_1 tab_metascore">
+                                                        <a  href="/person/woody-allen?filter-options=movies&sort_options=metascore&num_items=100"><span>By Metascore</span></a>
+                            </li>
+                                                        <li class="tab tab_type_1 tab_user_score last">
+                                                        <a  href="/person/woody-allen?filter-options=movies&sort_options=user_score&num_items=100"><span>By user score</span></a>
+                            </li>
+            </ul>            
+            <div class="tab_options_wrap">
+                            <div class="page_nav_options">
+    <div class="options_wrap">
+        <div class="label">view</div>
+        <div class="options">
+            <ul class="options">
+                <li class="option">
+                                                                <a href="/person/woody-allen?filter-options=movies&sort_options=date&num_items=30"><span>30</span></a>
+                                    </li>
+                <li class="option">
+                                                                <span>100</span>
+                                    </li>
+            </ul>
+        </div>
+        <div class="desc">per page</div>
+    </div>
+</div>
+
+                                </div>
+    
+    
+            </div>
+    </div>
+    
+    
+
+        		            <table class="credits person_credits">
+                <colgroup>
+                    <col class="credit_title" />
+                    <col class="credit_year" />
+                                            <col class="credit_role" />
+                                        <col class="credit_userscore" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="credit_title">Title:</th>
+                        <th class="credit_year">Year:</th>
+                                                    <th class="credit_role">Credit:</th>
+                                                <th class="credit_userscore">User score:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie tbd">tbd</span>
+
+                            <a href="/movie/wonder-wheel">Wonder Wheel</a>
+                        </td>
+                        <td class="year">
+                                                            Dec 1, 2017
+                                                    </td>
+                                                    <td class="role">Director / Writer</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_tbd">tbd</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">64</span>
+
+                            <a href="/movie/cafe-society">Café Society</a>
+                        </td>
+                        <td class="year">
+                                                            Jul 15, 2016
+                                                    </td>
+                                                    <td class="role">Director / Writer / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.6</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">53</span>
+
+                            <a href="/movie/irrational-man">Irrational Man</a>
+                        </td>
+                        <td class="year">
+                                                            Jul 17, 2015
+                                                    </td>
+                                                    <td class="role">Director / Writer</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.9</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">54</span>
+
+                            <a href="/movie/magic-in-the-moonlight">Magic in the Moonlight</a>
+                        </td>
+                        <td class="year">
+                                                            Jul 25, 2014
+                                                    </td>
+                                                    <td class="role">Director / Writer / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.5</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">58</span>
+
+                            <a href="/movie/fading-gigolo">Fading Gigolo</a>
+                        </td>
+                        <td class="year">
+                                                            Apr 18, 2014
+                                                    </td>
+                                                    <td class="role">Murray / Murray</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_mixed">5.9</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie negative">32</span>
+
+                            <a href="/movie/the-unbelievers">The Unbelievers</a>
+                        </td>
+                        <td class="year">
+                                                            Nov 29, 2013
+                                                    </td>
+                                                    <td class="role">Himself</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.3</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">78</span>
+
+                            <a href="/movie/blue-jasmine">Blue Jasmine</a>
+                        </td>
+                        <td class="year">
+                                                            Jul 26, 2013
+                                                    </td>
+                                                    <td class="role">Director / Writer / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">7.7</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">70</span>
+
+                            <a href="/movie/casting-by">Casting By</a>
+                        </td>
+                        <td class="year">
+                                                            Jul 26, 2013
+                                                    </td>
+                                                    <td class="role">Himself</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.3</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">54</span>
+
+                            <a href="/movie/nero-fiddled">To Rome with Love</a>
+                        </td>
+                        <td class="year">
+                                                            Jun 22, 2012
+                                                    </td>
+                                                    <td class="role">Director / Writer / Written By / Cast / Jerry</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.2</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">81</span>
+
+                            <a href="/movie/midnight-in-paris">Midnight in Paris</a>
+                        </td>
+                        <td class="year">
+                                                            May 20, 2011
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.0</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">51</span>
+
+                            <a href="/movie/you-will-meet-a-tall-dark-stranger">You Will Meet a Tall Dark Stranger</a>
+                        </td>
+                        <td class="year">
+                                                            Sep 22, 2010
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.2</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">45</span>
+
+                            <a href="/movie/whatever-works">Whatever Works</a>
+                        </td>
+                        <td class="year">
+                                                            Jun 19, 2009
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.4</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">70</span>
+
+                            <a href="/movie/vicky-cristina-barcelona">Vicky Cristina Barcelona</a>
+                        </td>
+                        <td class="year">
+                                                            Aug 15, 2008
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">7.0</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">55</span>
+
+                            <a href="/movie/glass-a-portrait-of-philip-in-twelve-parts">Glass: A Portrait of Philip in Twelve Parts</a>
+                        </td>
+                        <td class="year">
+                                                            Apr 18, 2008
+                                                    </td>
+                                                    <td class="role">Himself</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.3</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">49</span>
+
+                            <a href="/movie/cassandras-dream">Cassandra's Dream</a>
+                        </td>
+                        <td class="year">
+                                                            Jan 18, 2008
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">7.9</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">48</span>
+
+                            <a href="/movie/scoop">Scoop</a>
+                        </td>
+                        <td class="year">
+                                                            Jul 28, 2006
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.6</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">64</span>
+
+                            <a href="/movie/the-outsider">The Outsider</a>
+                        </td>
+                        <td class="year">
+                                                            Apr 7, 2006
+                                                    </td>
+                                                    <td class="role">Himself</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.5</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">72</span>
+
+                            <a href="/movie/match-point">Match Point</a>
+                        </td>
+                        <td class="year">
+                                                            Dec 28, 2005
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.4</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">54</span>
+
+                            <a href="/movie/melinda-and-melinda">Melinda and Melinda</a>
+                        </td>
+                        <td class="year">
+                                                            Mar 18, 2005
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_mixed">6.0</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">80</span>
+
+                            <a href="/movie/charlie-the-life-and-art-of-charles-chaplin">Charlie: The Life and Art of Charles Chaplin</a>
+                        </td>
+                        <td class="year">
+                                                            Feb 13, 2004
+                                                    </td>
+                                                    <td class="role">Himself</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">7.9</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">43</span>
+
+                            <a href="/movie/anything-else">Anything Else</a>
+                        </td>
+                        <td class="year">
+                                                            Sep 19, 2003
+                                                    </td>
+                                                    <td class="role">Director / Written By / David Dobel</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.3</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">46</span>
+
+                            <a href="/movie/hollywood-ending">Hollywood Ending</a>
+                        </td>
+                        <td class="year">
+                                                            May 3, 2002
+                                                    </td>
+                                                    <td class="role">Director / Written By / Val</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.5</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">52</span>
+
+                            <a href="/movie/the-curse-of-the-jade-scorpion">The Curse of the Jade Scorpion</a>
+                        </td>
+                        <td class="year">
+                                                            Aug 24, 2001
+                                                    </td>
+                                                    <td class="role">Director / Written By / CW Briggs</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.4</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">55</span>
+
+                            <a href="/movie/cyberworld">CyberWorld</a>
+                        </td>
+                        <td class="year">
+                                                            Oct 6, 2000
+                                                    </td>
+                                                    <td class="role">Z-4195</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.4</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">69</span>
+
+                            <a href="/movie/small-time-crooks">Small Time Crooks</a>
+                        </td>
+                        <td class="year">
+                                                            May 19, 2000
+                                                    </td>
+                                                    <td class="role">Director / Written By / Ray</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_favorable">6.5</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">70</span>
+
+                            <a href="/movie/sweet-and-lowdown">Sweet and Lowdown</a>
+                        </td>
+                        <td class="year">
+                                                            Dec 3, 1999
+                                                    </td>
+                                                    <td class="role">Director / Written By / Himself</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.2</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">41</span>
+
+                            <a href="/movie/celebrity">Celebrity</a>
+                        </td>
+                        <td class="year">
+                                                            Nov 20, 1998
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_mixed">5.7</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">72</span>
+
+                            <a href="/movie/antz">Antz</a>
+                        </td>
+                        <td class="year">
+                                                            Oct 2, 1998
+                                                    </td>
+                                                    <td class="role">Z</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.2</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">61</span>
+
+                            <a href="/movie/deconstructing-harry">Deconstructing Harry</a>
+                        </td>
+                        <td class="year">
+                                                            Dec 12, 1997
+                                                    </td>
+                                                    <td class="role">Director / Written By / Harry Block</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">7.4</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie mixed">59</span>
+
+                            <a href="/movie/mighty-aphrodite">Mighty Aphrodite</a>
+                        </td>
+                        <td class="year">
+                                                            Nov 3, 1995
+                                                    </td>
+                                                    <td class="role">Director / Written By / Lenny</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.7</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">77</span>
+
+                            <a href="/movie/crimes-and-misdemeanors">Crimes and Misdemeanors</a>
+                        </td>
+                        <td class="year">
+                                                            Oct 13, 1989
+                                                    </td>
+                                                    <td class="role">Director / Written By / Cliff Stern</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.5</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">90</span>
+
+                            <a href="/movie/hannah-and-her-sisters">Hannah and Her Sisters</a>
+                        </td>
+                        <td class="year">
+                                                            Feb 1, 1986
+                                                    </td>
+                                                    <td class="role">Director / Written By / Mickey</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">7.9</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">75</span>
+
+                            <a href="/movie/the-purple-rose-of-cairo">The Purple Rose of Cairo</a>
+                        </td>
+                        <td class="year">
+                                                            May 2, 1985
+                                                    </td>
+                                                    <td class="role">Director / Written By</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.7</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">83</span>
+
+                            <a href="/movie/manhattan">Manhattan</a>
+                        </td>
+                        <td class="year">
+                                                            Mar 14, 1979
+                                                    </td>
+                                                    <td class="role">Director / Written By / Isaac</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_outstanding">8.2</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">77</span>
+
+                            <a href="/movie/sleeper">Sleeper</a>
+                        </td>
+                        <td class="year">
+                                                            Dec 17, 1973
+                                                    </td>
+                                                    <td class="role">Director / Written By / Miles Monroe</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_tbd">tbd</span>
+
+                        </td>
+                    </tr>
+                                    <tr class="alt">
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">66</span>
+
+                            <a href="/movie/everything-you-always-wanted-to-know-about-sex-but-were-afraid-to-ask">Everything You Always Wanted to Know About Sex * But Were Afraid to Ask</a>
+                        </td>
+                        <td class="year">
+                                                            Aug 6, 1972
+                                                    </td>
+                                                    <td class="role">Director / Written For The Screen By / Victor/Fabrizio/The Fool/Sperm</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_tbd">tbd</span>
+
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td class="title brief_metascore">
+                             
+
+        
+<span class="metascore_w small movie positive">67</span>
+
+                            <a href="/movie/bananas">Bananas</a>
+                        </td>
+                        <td class="year">
+                                                            Apr 28, 1971
+                                                    </td>
+                                                    <td class="role">Director / Written By / Fielding Mellish</td>
+                                                <td class="score">
+                                    <span class="data textscore textscore_tbd">tbd</span>
+
+                        </td>
+                    </tr>
+                                </tbody>
+            </table>
+                    
+    </div>
+</div>
+
+
+                                                            <div class="mc_obbtm">
+                            
+        
+        
+
+        
+
+
+        <div id="taboola-below-content-thumbnails"></div>
+        
+        <script type="text/javascript">
+            var placement = 'desktop about Below Content Thumbnails';
+            window.metac_tContentWidget.push(placement);
+            window._taboola = window._taboola || [];
+                _taboola.push({
+                mode: 'alternating-thumbnails-a',
+                container: 'taboola-below-content-thumbnails',
+                placement: placement,
+                target_type: 'mix'
+            });
+        </script>
+        
+
+
+            
+
+                        </div>
+                                                </div>
+                            <div id="side" class="col side_col">
+                    
+                        
+                        <div id="mpu_plus_top" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_mpu_plus_top = googletag.defineSlot("/8264/Asia-metacritic/person",[[300,250],[300,600]], "mpu_plus_top").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("mpu_plus_top");
+                                    </script>
+                                        </div>
+                        
+
+
+
+    <div class="module supplements_module" id="supplementary-nav">
+    <div class="head head_type_1"><div class="head_wrap"><h2 class="module_title">Essential Links</h2></div></div>
+    <div class="body">
+        <div class="body_wrap">
+                        <div id="supplementary-items" class="supplements supplement_links">
+                <ol class="supplements supplement_links">
+                                                                                                    <li class="supplement supplement_link">
+                                <a class="section dw_tag {'tag':'supplementary-nav;item;1'}" href="http://www.metacritic.com/browse/movies/release-date/theaters/date">New Releases in Theaters</a>
+                            </li>
+                                                                                                                            <li class="supplement supplement_link">
+                                <a class="section dw_tag {'tag':'supplementary-nav;item;2'}" href="http://www.metacritic.com/browse/movies/release-date/coming-soon/date?view=condensed">Coming Soon to Theaters</a>
+                            </li>
+                                                                                                                            <li class="supplement supplement_link">
+                                <a class="section dw_tag {'tag':'supplementary-nav;item;3'}" href="http://www.metacritic.com/feature/now-streaming-on-amazon-instant-video">New on Amazon Instant Video</a>
+                            </li>
+                                                                                                                            <li class="supplement supplement_link">
+                                <a class="section dw_tag {'tag':'supplementary-nav;item;4'}" href="http://www.metacritic.com/feature/now-streaming-on-netflix">New on Netflix</a>
+                            </li>
+                                                                                                                            <li class="supplement supplement_link">
+                                <a class="section dw_tag {'tag':'supplementary-nav;item;5'}" href="http://www.metacritic.com/browse/dvds/release-date/new-releases/date">New on DVD/Blu-ray</a>
+                            </li>
+                                                                                                                            <li class="supplement supplement_link">
+                                <a class="section dw_tag {'tag':'supplementary-nav;item;6'}" href="http://www.metacritic.com/feature/dvd-blu-ray-release-calendar-july-2017">Coming Soon to DVD/Blu-ray</a>
+                            </li>
+                                                                                                                            <li class="supplement supplement_link">
+                                <a class="section dw_tag {'tag':'supplementary-nav;item;7'}" href="http://www.metacritic.com/browse/movies/score/metascore/all?sort=desc ">All-Time High Scores </a>
+                            </li>
+                                                                                                                            <li class="supplement supplement_link">
+                                <a class="section dw_tag {'tag':'supplementary-nav;item;8'}" href="http://www.metacritic.com/browse/movies/score/metascore/year/filtered?sort=desc&year_selected=2017">2017 High Scores</a>
+                            </li>
+                                                            </ol>
+            </div>
+                                    <div id="supplementary-articles" class="supplements supplement_articles">
+                <ol class="supplements supplement_articles">
+                                                                                                    <li class="supplement supplement_link">
+                                <a class="dw_tag {'tag':'supplementary-nav;article;1'}" href="http://www.metacritic.com/feature/2016-film-awards-and-nominations-scorecard">Best of 2016: Film Awards Scorecard</a>
+                            </li>
+                                                                                                                            <li class="supplement supplement_link">
+                                <a class="dw_tag {'tag':'supplementary-nav;article;2'}" href="http://www.metacritic.com/feature/preview-of-this-weekends-new-movies">What Movie Should I See This Weekend?</a>
+                            </li>
+                                                                                                        </ol>
+                <div class="more_supplements more_articles">
+                    
+                    <a class="dw_tag {'tag':'supplementary-nav;more-articles'}" href="/feature">More articles &raquo;</a>
+                </div>
+            </div>
+                    </div>
+    </div>
+</div>
+
+
+    
+
+    <div id="taboola-right-rail-thumbnails"></div>
+    
+    <script type="text/javascript">
+        if ( window._taboola ) {
+                        var placement = 'desktop about Right Rail Thumbnails';
+            window.metac_tContentWidget.push(placement);
+            _taboola.push({
+                mode: 'alternating-thumbnails-rr',
+                container: 'taboola-right-rail-thumbnails',
+                placement: placement,
+                target_type: 'mix'
+            });
+                    }
+    </script>
+    
+
+
+
+
+
+
+                <div class="module stories_module">
+    <div class="module_wrap">
+        <div class="head head_type_1"><div class="head_wrap"><h2 class="module_title">Related Articles</h2></div></div>
+        <div class="body">
+            <div class="stories">
+                
+<ol class="stories stories_titles">
+                                                                                                        <li class="story first_story">
+            <div class="story_wrap has_story_img">
+                <div class="story_head">
+                    <div class="story_title">
+                        <a href="/feature/2011-film-awards-and-nominations">                                                            <span class="story_label">2011 Film Awards and Nominations</span>
+                                                    </a>
+                    </div>
+                </div>
+                                    <div class="story_image">
+                        <a class="story_image" href="/feature/2011-film-awards-and-nominations"><img class="story_image" src="http://static.metacritic.com/images/features/main/bestof2011_movies_1-50.jpg" alt="2011 Film Awards and Nominations Image"></a>
+                    </div>
+                                                    <div class="story_details">
+                                                    <div class="date">
+                                <span class="label">Published: </span>
+                                <span class="data">December  5, 2011</span>
+                            </div>
+                                                                    </div>
+                            </div>
+        </li>
+                                                                                                        <li class="story last_story">
+            <div class="story_wrap has_story_img">
+                <div class="story_head">
+                    <div class="story_title">
+                        <a href="/feature/best-and-worst-movies-directed-by-actors">                                                            <span class="story_label">Ranked: </span>
+                                                                                                                Best and Worst Movies Directed by Their Stars
+                                                    </a>
+                    </div>
+                </div>
+                                    <div class="story_image">
+                        <a class="story_image" href="/feature/best-and-worst-movies-directed-by-actors"><img class="story_image" src="http://static.metacritic.com/images/features/main/moviesdirectedbyactors-50.jpg" alt="Ranked: Best and Worst Movies Directed by Their Stars Image"></a>
+                    </div>
+                                                    <div class="story_details">
+                                                    <div class="date">
+                                <span class="label">Published: </span>
+                                <span class="data">June 28, 2011</span>
+                            </div>
+                                                                    </div>
+                            </div>
+        </li>
+    </ol>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="module list_trailers">
+    <div class="head head_type_2"><div class="head_wrap"><h2 class="module_title"><a href="/browse/movies/trailers/date">Top Trailers</a></h2><div class="more"><span class="more_item"><a href="/browse/movies/trailers/date">See all &raquo;</a></span></div></div></div>
+    <div class="body">
+                <ul class="trailers">
+                                            <li class="trailer">
+                    <div class="trailer_wrap">
+                        <div class="trailer_title">
+                            <h3 class="trailer_title"><a href="/movie/hell-or-high-water/trailers/6690470">Hell Or High Water</a></h3>
+                                                    </div>
+                        <div class="details">
+                            <div class="thumb video_thumb">
+                                <a href="/movie/hell-or-high-water/trailers/6690470">
+                                    <span class="play_button">Play Video</span>                                    <img src="http://content.internetvideoarchive.com/content/photos/10698/151940_139.jpg" alt="Hell Or High Water" />
+                                </a>
+                            </div>
+                            <div class="trailer_stats">
+                                <ul class="trailer_stats">
+                                    
+                                    <li class="trailer_stat duration">1:45</li>                                    <li class="trailer_stat count views">(29108 views)</li>                                                                    </ul>
+                            </div>
+                            <div class="trailer_actions">
+                                <div class="action">
+                                    <span class="now_playing">now playing</span>
+                                    <span class="play_action">
+                                        <span><a href="/movie/hell-or-high-water/trailers/6690470">play now</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                                                            <li class="trailer alt">
+                    <div class="trailer_wrap">
+                        <div class="trailer_title">
+                            <h3 class="trailer_title"><a href="/movie/dont-breathe/trailers/6656547">Don't Breathe</a></h3>
+                                                    </div>
+                        <div class="details">
+                            <div class="thumb video_thumb">
+                                <a href="/movie/dont-breathe/trailers/6656547">
+                                    <span class="play_button">Play Video</span>                                    <img src="http://content.internetvideoarchive.com/content/photos/10763/643072_039.jpg" alt="Don't Breathe" />
+                                </a>
+                            </div>
+                            <div class="trailer_stats">
+                                <ul class="trailer_stats">
+                                    
+                                    <li class="trailer_stat duration">2:29</li>                                    <li class="trailer_stat count views">(22564 views)</li>                                                                    </ul>
+                            </div>
+                            <div class="trailer_actions">
+                                <div class="action">
+                                    <span class="now_playing">now playing</span>
+                                    <span class="play_action">
+                                        <span><a href="/movie/dont-breathe/trailers/6656547">play now</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                                                            <li class="trailer">
+                    <div class="trailer_wrap">
+                        <div class="trailer_title">
+                            <h3 class="trailer_title"><a href="/movie/arrival/trailers/7220602">Arrival</a></h3>
+                                                    </div>
+                        <div class="details">
+                            <div class="thumb video_thumb">
+                                <a href="/movie/arrival/trailers/7220602">
+                                    <span class="play_button">Play Video</span>                                    <img src="/images/products/movies/120w-movie.jpg" alt="Arrival" />
+                                </a>
+                            </div>
+                            <div class="trailer_stats">
+                                <ul class="trailer_stats">
+                                    
+                                    <li class="trailer_stat duration">2:03</li>                                    <li class="trailer_stat count views">(18448 views)</li>                                                                    </ul>
+                            </div>
+                            <div class="trailer_actions">
+                                <div class="action">
+                                    <span class="now_playing">now playing</span>
+                                    <span class="play_action">
+                                        <span><a href="/movie/arrival/trailers/7220602">play now</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                                    </ul>
+    </div>
+	    <div class="foot">
+        <div class="foot_wrap">
+                    
+            <div class="more">
+                <span class="more_item"><a href="/browse/movies/trailers/date">See all trailers &raquo;</a></span>
+            </div>
+                </div>
+    </div>
+
+</div>
+
+
+
+
+                        
+                        <div id="mpu_bottom" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_mpu_bottom = googletag.defineSlot("/8264/Asia-metacritic/person",[300,250], "mpu_bottom").addService(googletag.pubads()).setTargeting("pos", "bottom");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("mpu_bottom");
+                                    </script>
+                                        </div>
+                        
+
+
+
+
+
+                </div>
+                    </div>
+    </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+                        
+                        <div id="leader_bottom" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_leader_bottom = googletag.defineSlot("/8264/Asia-metacritic/person",[[728,90],[970,66],[728,92],[970,250]], "leader_bottom").addService(googletag.pubads()).setTargeting("pos", "bottom");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("leader_bottom");
+                                    </script>
+                                        </div>
+                        
+
+
+            </div>
+                        </div>
+            
+                        
+                        
+                        <div id="intromercial" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_intromercial = googletag.defineOutOfPageSlot("/8264/Asia-metacritic/person",
+                                    "intromercial").addService(googletag.pubads());
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("intromercial");
+                                    </script>
+                                        </div>
+                        
+
+
+            
+    
+    <div id="mastfoot">
+        
+        
+        <footer id="bottom_footer">
+    <div id="providers">
+	<a href="http://www.allmusic.com">Music title data, credits, and images provided by <span>AMG</span></a>
+	<span class="link_divider">|</span><a href="http://www.imdb.com">Movie title data, credits, and poster art provided by <span>IMDb</span></a>
+	<span class="link_divider">|</span><a href="http://www.internetvideoarchive.com">Video and Images provided by <span>IVA</span></a>
+    <div id="trademark">
+        We Deal With Criticism<sup>&reg;</sup>&nbsp;
+	</div>
+</div>
+
+            <div class="site_links upper">
+                    <a href="http://www.metacritic.com/movie">
+                <span>Movies</span>
+            </a>
+                    <a href="http://www.metacritic.com/tv">
+                <span>TV</span>
+            </a>
+                    <a href="http://www.metacritic.com/music">
+                <span>Music</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/playstation-4">
+                <span>PS4</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/xbox-one">
+                <span>XboxOne</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/switch">
+                <span>Switch</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/pc">
+                <span>PC</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/wii-u">
+                <span>WiiU</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/3ds">
+                <span>3DS</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/playstation-vita">
+                <span>PS Vita</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/ios">
+                <span>iOS</span>
+            </a>
+                    <a href="http://www.metacritic.com/feature">
+                <span>Features</span>
+            </a>
+                    <a href="http://www.metacritic.com/rss">
+                <span>RSS Feeds</span>
+            </a>
+                </div>
+    
+    <div class="pad_top1 pad_btm1">
+        <div class="social_round">
+            <a href="http://www.facebook.com/Metacritic" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/metacritic" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
+        </div>
+    </div>
+
+    
+    <div class="about_cbs">
+        <div id="footer_about_links">
+            <a class="first" href="http://www.cbsinteractive.com">About CBS Interactive</a>
+            <span class="link_divider">|</span><a href="http://www.cbsinteractive.com/careers/">Jobs</a>
+            <span class="link_divider">|</span><a href="http://www.cbsinteractive.com/advertise/">Advertise</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/faq">FAQ</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/about-metacritic">About Metacritic</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/contact-us">Contact</a>
+            <span class="link_divider">|</span><span id="footer_privacy"><a href="http://legalterms.cbsinteractive.com/privacy">Privacy Policy</a></span>
+            <span class="link_divider">|</span><span id="footer_terms"><a href="https://cbsi.secure.force.com/CBSi/articles/FAQ/CBSi-Terms-of-Use?template=template_tougl&referer=tougl.com&data=&cfs=default">Terms of Use</a></span>
+        </div>
+        <div id="footer_rights" class="pad_btm2">
+            &copy; 2017 CBS Interactive Inc. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+    </div>
+</div>
+
+<div id="site_scripts" class="dw_tracking">
+     
+<script type="text/javascript" src="/js/omniture/uuid.js"></script>
+<script type="text/javascript">
+    
+    if (self != top) {
+        top.location = self.location;
+    }
+    var MC_UUID = uuid.v1();
+</script>
+
+                        
+
+
+<script type="text/javascript">
+    
+    
+    var __pv = MetaC.handleGooglePageView();
+    googletag.cmd.push(function() {
+        
+                    googletag.pubads().setTargeting("ptype", "about");
+            
+                                        googletag.pubads().setTargeting("test", "mcold");
+                
+        googletag.pubads().setTargeting("vguid", MC_UUID);
+        googletag.pubads().setTargeting("session", MetaC.adSession());
+        googletag.pubads().setTargeting("subses", MetaC.adSubses());
+        googletag.pubads().setTargeting("env", "prod");
+                        var parts = window.location.hash.split("=");
+        if ( parts.length > 1 && parts[0] == '#ftag' ) {
+            googletag.pubads().setTargeting("ftag",parts[1]);
+        }
+        
+                
+        
+        if ( window.I11C && window.I11C.Morph == 1 ) {
+            var geo = MetaC.Cookie.get('il_geo');
+            if ( geo ) {
+                geo = MetaC.Cookie.ilParse(geo);
+                if ( geo && geo.postal_code && geo.country_code ) {
+                    googletag.pubads().setLocation(geo.postal_code + ',' + geo.country_code)
+                }
+            }
+        }
+        googletag.pubads().setTargeting("pv", __pv+""); // must be a string
+
+        googletag.pubads().enableAsyncRendering();
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+    
+    
+</script>
+
+
+
+
+    
+    
+    
+        <script type="text/JavaScript" src="http://cn.cbsimg.net/cnwk.1d/Aud/javascript/urs.js"></script>
+    
+
+    <script type="text/javascript">
+        if ( window.MetaC && MetaC.URS ) {
+            MetaC.URS.config(227, false);
+        }
+    </script>
+
+
+ 
+<script language="JavaScript" type="text/javascript">
+    
+    var utag_data = {
+        isDev:0,
+                            siteType:"desktop web",
+                deviceType:"desktop",
+                siteSection:"person",
+                pageType:"about",
+                pageFindingMethod:"External",
+                session: MetaC.adSession() + ':' + MetaC.adSubses(),
+                userId:null,userState:"not authenticated",userType:"anon",personId:"mc-person-177330",personName:"Woody Allen",bkPath:"/8264/Asia-metacritic/person",_test:"",pageViewGuid:MC_UUID
+    };
+    
+                
+    
+    
+    if ( window.eventAmazonBuyView ) {
+        utag_data.eventAmazonBuyView = 1;
+    }
+    if ( window.eventAmazonPivView ) {
+        utag_data.eventAmazonPivView = 1;
+    }
+    
+    
+    
+    if ( MetaC._utagAutoPlay != -1 ) {
+        utag_data.videoAutoPlay = MetaC._utagAutoPlay ? 'on' : 'off';
+    }
+    
+    
+    
+    if ( window.metac_tContentWidget && window.metac_tContentWidget.length > 0 ) {
+        utag_data.contentWidget = window.metac_tContentWidget.join('|');;
+    }
+    
+
+    
+</script>
+
+
+
+
+<script type="text/javascript">
+    (function(a,b,c,d){
+    a='//tags.tiqcdn.com/utag/cbsi/metacriticsite/prod/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
+</script>
+
+
+
+<!-- Adobe Marketing Cloud Tag Loader Code-->
+
+
+
+
+
+
+    <script type="text/javascript">
+        // amc.on('load', function (event, data) {
+        $(document).ready(function(){
+            setTimeout(function(){
+                MetaC.checkOmniEvents();
+            }, 300);
+        });
+        // });
+    </script>
+
+
+
+
+
+
+<script type="text/javascript">
+    
+    dwVars = {"siteId":"50","onId":"12456","ptId":"9564","ctype":"entitytype;entityid","cval":"person;177330"};
+    if (typeof DW == "object"){
+        DW.pageParams = dwVars;
+        DW.regSilo = '12';
+        DW.clear();
+    }
+</script>
+
+
+
+
+<script>
+    var cbsiApexGlobal = {
+        'SITE': dwVars.siteId,
+        'NODE': dwVars.onId,
+        'PTYPE':dwVars.ptId
+    };
+</script>
+
+
+
+
+
+
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22577913-5']);
+    _gaq.push(['_setCustomVar',1,'PageType',dwVars.ptId,3]);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['nT._setAccount', 'UA-27653683-1']);
+    _gaq.push(['nT._setAllowLinker', true]);
+    _gaq.push(['nT._setSampleRate', '1']);
+    _gaq.push(['nT._trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '123113677890173',
+            version    : 'v2.6',
+            channelUrl : 'http://www.metacritic.com/static/fbchannel.html',
+            status     : true,
+            xfbml      : true,
+            cookie     : true
+            });
+         MetaC.FB.initialized();
+        };
+    
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    
+</script>
+
+
+
+<script>
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+    twttr.ready(function (twttr) {
+        MetaC.Twitter.initialized();
+    });
+</script>
+
+
+
+
+
+
+<script>
+    /* display the google ads now that the html is finished processing */
+    googletag.cmd.push(function(){
+        MetaC.displayAds();
+    });
+</script>
+
+
+
+<script>
+    
+    
+    if ( window._taboola && window.mcwait_taboola == null ) {
+        _taboola.push({flush: true});
+    }
+    
+</script>
+
+
+
+    
+    
+    <script>
+    	if (typeof cbsiLoadOffer == "function"){
+                cbsiLoadOffer(cbsiApexGlobal,1000);
+        }
+    </script>
+    
+</div>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"860f7644b8","applicationID":"2033002","transactionName":"MgQEZ0dYCxEAVRBbDQtOJUZGTQoPTmYBQBEKDzZBWl8MDgQMXlsMAQQe","queueTime":0,"applicationTime":632,"atts":"HkMTEQ9CGE5DV0YIGRgc","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+
