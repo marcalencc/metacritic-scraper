@@ -107,11 +107,11 @@ namespace MetacriticScraper.Tests
             string testData_2016 = File.ReadAllText(dir + @"\TestData\moonlight_2016_scraped.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "moonlight", "");
-            MediaItem mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData_2016);
 
-            Assert.AreEqual(mItem.Title, "Moonlight");
-            Assert.AreEqual(mItem.Rating.CriticRating, 99);
-            Assert.AreEqual(mItem.Rating.CriticReviewCount, 51);
+            Assert.AreEqual(((Movie) mItem).Title, "Moonlight");
+            Assert.AreEqual(((Movie) mItem).Rating.CriticRating, 99);
+            Assert.AreEqual(((Movie) mItem).Rating.CriticReviewCount, 51);
         }
 
         [Test]
@@ -121,17 +121,17 @@ namespace MetacriticScraper.Tests
             string testData_2016 = File.ReadAllText(dir + @"\TestData\movie_zerodarkthirty_details.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "zero dark thirty", "", "details");
-            MediaItem mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData_2016);
 
-            Assert.AreEqual(mItem.Title, null);
-            Assert.AreEqual(mItem.Details.Count, 60);
-            CollectionAssert.Contains(mItem.Details, new Detail("Runtime",
+            Assert.AreEqual(((Movie) mItem).Title, null);
+            Assert.AreEqual(((Movie) mItem).Details.Count, 60);
+            CollectionAssert.Contains(((Movie) mItem).Details, new Detail("Runtime",
                 "157 min"));
-            CollectionAssert.Contains(mItem.Details, new Detail("Jessica Chastain",
+            CollectionAssert.Contains(((Movie) mItem).Details, new Detail("Jessica Chastain",
                 "Maya"));
-            CollectionAssert.Contains(mItem.Details, new Detail("Nabil Elouahabi",
+            CollectionAssert.Contains(((Movie) mItem).Details, new Detail("Nabil Elouahabi",
                 "Detainee On Monitor"));
-            CollectionAssert.Contains(mItem.Details, new Detail("Jonathan Leven",
+            CollectionAssert.Contains(((Movie) mItem).Details, new Detail("Jonathan Leven",
                 "Co-Producer"));
         }
 
@@ -179,11 +179,11 @@ namespace MetacriticScraper.Tests
             string testData_2016 = File.ReadAllText(dir + @"\TestData\lemonade_2016_scraped.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
-            MediaItem mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData_2016);
 
-            Assert.AreEqual(mItem.Title, "Lemonade");
-            Assert.AreEqual(mItem.Rating.CriticRating, 92);
-            Assert.AreEqual(mItem.Rating.CriticReviewCount, 33);
+            Assert.AreEqual(((Album) mItem).Title, "Lemonade");
+            Assert.AreEqual(((Album) mItem).Rating.CriticRating, 92);
+            Assert.AreEqual(((Album) mItem).Rating.CriticReviewCount, 33);
         }
 
         [Test]
@@ -193,14 +193,14 @@ namespace MetacriticScraper.Tests
             string testData_2016 = File.ReadAllText(dir + @"\TestData\album_teensofdenial_details.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "teens of denial", "", "details");
-            MediaItem mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData_2016);
 
-            Assert.AreEqual(mItem.Title, null);
-            Assert.AreEqual(mItem.Details.Count, 4);
-            CollectionAssert.Contains(mItem.Details, new Detail("Record Label", "Matador"));
-            CollectionAssert.Contains(mItem.Details, new Detail("Genre(s)",
+            Assert.AreEqual(((Album) mItem).Title, null);
+            Assert.AreEqual(((Album) mItem).Details.Count, 4);
+            CollectionAssert.Contains(((Album) mItem).Details, new Detail("Record Label", "Matador"));
+            CollectionAssert.Contains(((Album) mItem).Details, new Detail("Genre(s)",
                 "Pop/Rock, Alternative/Indie Rock"));
-            CollectionAssert.Contains(mItem.Details, new Detail("Name",
+            CollectionAssert.Contains(((Album) mItem).Details, new Detail("Name",
                 "Car Seat Headrest"));
         }
 
@@ -280,11 +280,11 @@ namespace MetacriticScraper.Tests
             string testData_2016 = File.ReadAllText(dir + @"\TestData\veep_6_scraped.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "");
-            MediaItem mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData_2016);
 
-            Assert.AreEqual(mItem.Title, "Veep");
-            Assert.AreEqual(mItem.Rating.CriticRating, 88);
-            Assert.AreEqual(mItem.Rating.CriticReviewCount, 15);
+            Assert.AreEqual(((TVShow) mItem).Title, "Veep");
+            Assert.AreEqual(((TVShow) mItem).Rating.CriticRating, 88);
+            Assert.AreEqual(((TVShow) mItem).Rating.CriticReviewCount, 15);
         }
 
 
@@ -295,13 +295,13 @@ namespace MetacriticScraper.Tests
             string testData_2016 = File.ReadAllText(dir + @"\TestData\tvshow_veep_details.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "details");
-            MediaItem mItem = item.Parse(testData_2016);
+            MetacriticData mItem = item.Parse(testData_2016);
 
-            Assert.AreEqual(mItem.Title, null);
-            Assert.AreEqual(mItem.Details.Count, 12);
-            CollectionAssert.Contains(mItem.Details, new Detail("Julia Louis-Dreyfus",
+            Assert.AreEqual(((TVShow)mItem).Title, null);
+            Assert.AreEqual(((TVShow)mItem).Details.Count, 12);
+            CollectionAssert.Contains(((TVShow)mItem).Details, new Detail("Julia Louis-Dreyfus",
                 "Vice President Selina Meyer"));
-            CollectionAssert.Contains(mItem.Details, new Detail("Creators",
+            CollectionAssert.Contains(((TVShow)mItem).Details, new Detail("Creators",
                 "Armando Iannucci"));
         }
 
