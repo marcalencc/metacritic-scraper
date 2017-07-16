@@ -87,7 +87,7 @@
     <Compile Include="MediaData\Rating.cs" />
     <Compile Include="Interfaces\IScrapable.cs" />
     <Compile Include="MediaData\Album.cs" />
-    <Compile Include="MediaData\Credit.cs" />
+    <Compile Include="MediaData\Detail.cs" />
     <Compile Include="MediaData\Movie.cs" />
     <Compile Include="MediaData\Person.cs" />
     <Compile Include="MediaData\TVShow.cs" />

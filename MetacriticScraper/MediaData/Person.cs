@@ -6,17 +6,55 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class Person
+    public class Person : MetacriticData
     {
         private string m_name;
-        private List<MediaItem> m_mediaItems;
-        private PersonRatingSummary m_ratingsSummary;
+        public string Name
+        {
+            get
+            {
+                return m_name;
+            }
+        }
 
-        public Person (string name, List<MediaItem> mediaItems)
+        private List<CreditMediaItemPair> m_creditMediaPairItems;
+        public List<CreditMediaItemPair> CreditMediaPairItems
+        {
+            get
+            {
+                return m_creditMediaPairItems;
+            }
+            set
+            {
+                m_creditMediaPairItems = value;
+                if (m_creditMediaPairItems.Count > 0)
+                {
+                    m_ratingsSummary = PersonRatingSummary.GetRatingSummary(
+                        m_creditMediaPairItems.Select(m => m.Item));
+                }
+            }
+        }
+
+        private PersonRatingSummary m_ratingsSummary;
+        public PersonRatingSummary RatingsSummary
+        {
+            get
+            {
+                return m_ratingsSummary;
+            }
+        }
+
+        public Person (string name)
         {
             m_name = name;
-            m_mediaItems = mediaItems;
-            m_ratingsSummary = PersonRatingSummary.GetRatingSummary(mediaItems);
+        }
+
+        public Person (string name, List<CreditMediaItemPair> creditMediaPairItems)
+        {
+            m_name = name;
+            m_creditMediaPairItems = creditMediaPairItems;
+            m_ratingsSummary = PersonRatingSummary.GetRatingSummary(
+                creditMediaPairItems.Select(m => m.Item));
         }
 
         public string Scrape()
@@ -29,24 +67,45 @@ namespace MetacriticScraper.MediaData
             return null;
         }
 
-        private struct PersonRatingSummary
+        public struct PersonRatingSummary
         {
             public double HighestRating;
             public double AverageRating;
             public double LowestRating;
             public int ReviewCount;
 
-            private PersonRatingSummary (List<MediaItem> mediaItemList)
+            private PersonRatingSummary (IEnumerable<MediaItem> mediaItemList)
             {
-                this.HighestRating = mediaItemList.Max(x => x.Rating.CriticRating);
-                this.AverageRating = mediaItemList.Average(x => x.Rating.CriticRating);
-                this.LowestRating = mediaItemList.Min(x => x.Rating.CriticRating);
-                this.ReviewCount = mediaItemList.Count();
+                HighestRating = 0;
+                AverageRating = 0;
+                LowestRating = 0;
+                ReviewCount = 0;
+
+                List<MediaItem> filtered = mediaItemList.Where(x => x.Rating.CriticRating >= 0).ToList();
+                if (filtered.Count > 0)
+                {
+                    HighestRating = mediaItemList.Max(x => x.Rating.CriticRating);
+                    AverageRating = filtered.Average(x => x.Rating.CriticRating);
+                    LowestRating = filtered.Min(x => x.Rating.CriticRating);
+                    ReviewCount = filtered.Count();
+                }
             }
 
-            public static PersonRatingSummary GetRatingSummary(List<MediaItem> mediaItemList)
+            public static PersonRatingSummary GetRatingSummary(IEnumerable<MediaItem> mediaItemList)
             {
                 return new PersonRatingSummary(mediaItemList);
+            }
+        }
+
+        public struct CreditMediaItemPair
+        {
+            public string Credit;
+            public MediaItem Item;
+
+            public CreditMediaItemPair(string credit, MediaItem item)
+            {
+                Credit = credit;
+                Item = item;
             }
         }
     }

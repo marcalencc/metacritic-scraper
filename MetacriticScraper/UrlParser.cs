@@ -11,8 +11,9 @@ namespace MetacriticScraper.Scraper
 {
     public class UrlParser : IParser
     {
-        private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/" };
+        private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/", "/person/" };
         private string[] OTHER_KEYWORDS = new string[] { "details" };
+        private string[] PERSON_PARAMS = new string[] {"movie", "album", "tvshow"};
 
         public bool ParseRequestUrl(string id, string url, out string keyword, out string title,
             out string yearOrSeason, out string thirdLevelReq)
@@ -48,10 +49,9 @@ namespace MetacriticScraper.Scraper
                             // There is only either year or third level request
                             if (slashIdx < 0)
                             {
-                                int param;
-                                if (!int.TryParse(url, out param))
+                                if (keyword.Contains("person"))
                                 {
-                                    if (OTHER_KEYWORDS.Contains(url))
+                                    if (PERSON_PARAMS.Contains(url))
                                     {
                                         thirdLevelReq = url;
                                     }
@@ -62,7 +62,22 @@ namespace MetacriticScraper.Scraper
                                 }
                                 else
                                 {
-                                    yearOrSeason = param.ToString();
+                                    int param;
+                                    if (!int.TryParse(url, out param))
+                                    {
+                                        if (OTHER_KEYWORDS.Contains(url))
+                                        {
+                                            thirdLevelReq = url;
+                                        }
+                                        else
+                                        {
+                                            throw new InvalidUrlException("Invalid parameter: " + url);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        yearOrSeason = param.ToString();
+                                    }
                                 }
                             }
                             else
@@ -88,6 +103,10 @@ namespace MetacriticScraper.Scraper
                                 }
                             }
                             return true;
+                        }
+                        else if (keyword.Contains("person"))
+                        {
+                            throw new InvalidUrlException(@"Category required for ""person"" request");
                         }
                     }
                 }
@@ -137,6 +156,17 @@ namespace MetacriticScraper.Scraper
                 else
                 {
                     return new TVShowRequestItem(id, title, thirdLevelReq);
+                }
+            }
+            else if (keyword == "/person/")
+            {
+                if (string.IsNullOrEmpty(thirdLevelReq))
+                {
+                    throw new InvalidUrlException(@"Category required for ""person"" request");
+                }
+                else
+                {
+                    return new PersonRequestItem(id, title, thirdLevelReq);
                 }
             }
 

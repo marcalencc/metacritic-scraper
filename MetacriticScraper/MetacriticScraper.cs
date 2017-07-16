@@ -229,21 +229,13 @@ namespace MetacriticScraper.Scraper
             var task = request.AutoSearch();
             if (task.Result)
             {
-                try
+                if (request.FilterValidUrls())
                 {
-                    if (request.FilterValidUrls())
-                    {
-                        m_dataFetchQueue.Enqueue(request);
-                    }
-                    else
-                    {
-                        Logger.Info("No valid urls matching the request");
-                    }
+                    m_dataFetchQueue.Enqueue(request);
                 }
-                catch (InvalidUrlException ex)
+                else
                 {
-                    Logger.Error("Invalid url.");
-                    throw ex;
+                    Logger.Info("No valid urls matching the request");
                 }
             }
             else

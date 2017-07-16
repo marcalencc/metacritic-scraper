@@ -44,9 +44,9 @@ namespace MetacriticScraper.RequestData
 
         public override MetacriticData Parse(string html)
         {
-            Album album = new Album();
             if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
+                Album album = new Album();
                 album.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
                 album.PrimaryArtist = ParseItem(ref html, @"<span class=""band_name"" itemprop=""name"">", @"</span>");
                 string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""datePublished"">", @"</span>");
@@ -72,9 +72,12 @@ namespace MetacriticScraper.RequestData
                 }
 
                 album.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
+
+                return album;
             }
             else if (m_thirdLevelRequest == "details")
             {
+                MediaDetail mediaDetail = new MediaDetail();
                 html = html.Substring(html.IndexOf(@"""new_details"""));
                 while (html.Contains(@"span class=""label"">"))
                 {
@@ -99,12 +102,14 @@ namespace MetacriticScraper.RequestData
                         valueIdx = html.IndexOf(@"span class=""data"">");
                     } while (nextIdx != -1 && valueIdx < nextIdx);
 
-                        Detail detail = new Detail(desc, value);
-                    album.Details.Add(detail);
+                    DetailItem detail = new DetailItem(desc, value);
+                    mediaDetail.Details.Add(detail);
                 }
+
+                return mediaDetail;
             }
 
-            return album;
+            return null;
         }
 
         private string ParseItem(ref string infoStr, string startPos, string endPos)

@@ -17,7 +17,13 @@ namespace MetacriticScraper.MediaData
             UserReviewCount = userReviewCount;
         }
 
-        public Rating (short criticRating, short criticReviewCount): this (criticRating, -1, criticReviewCount, -1)
+        public Rating (short criticRating, short criticReviewCount):
+            this (criticRating, -1, criticReviewCount, -1)
+        {
+        }
+
+        public Rating(short criticRating, float userRating) :
+            this(criticRating, userRating, -1, -1)
         {
         }
 

@@ -5,9 +5,26 @@ using System.Web;
 
 namespace MetacriticScraper.MediaData
 {
-    public class Detail : IEquatable<Detail>
+    public class MediaDetail : MetacriticData
     {
-        public Detail(string description, string value)
+        private List<DetailItem> m_details;
+        public List<DetailItem> Details
+        {
+            get
+            {
+                return m_details;
+            }
+        }
+
+        public MediaDetail()
+        {
+            m_details = new List<DetailItem>();
+        }
+    }
+
+    public class DetailItem : IEquatable<DetailItem>
+    {
+        public DetailItem(string description, string value)
         {
             m_description = description.Trim();
             m_value = value.Trim();
@@ -31,7 +48,7 @@ namespace MetacriticScraper.MediaData
             }
         }
 
-        public bool Equals(Detail other)
+        public bool Equals(DetailItem other)
         {
             return m_description == other.m_description &&
                 m_value == other.m_value;

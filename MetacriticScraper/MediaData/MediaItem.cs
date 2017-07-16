@@ -7,16 +7,16 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class MediaItem : MetacriticData
+    public class MediaItem : MetacriticData, IEquatable<MediaItem>
     {
         public string Title { get; set; }
-        public List<Detail> Details { get; set; }
         public DateTime ReleaseDate { get; set; }
         public Rating Rating { get; set; }
 
-        public MediaItem()
+        public bool Equals(MediaItem other)
         {
-            Details = new List<Detail>();
+            return Title == other.Title &&
+                ReleaseDate == other.ReleaseDate;
         }
     }
 }

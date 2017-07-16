@@ -45,9 +45,9 @@ namespace MetacriticScraper.RequestData
 
         public override MetacriticData Parse(string html)
         {
-            Movie movie = new Movie();
             if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
+                Movie movie = new Movie();
                 int startIndex = html.IndexOf(@"<script type=""application/ld+json"">");
                 if (startIndex != -1)
                 {
@@ -91,18 +91,13 @@ namespace MetacriticScraper.RequestData
                         infoString = infoString.Substring(infoString.IndexOf(@"""director"""));
                         movie.Director = ParseItem(ref infoString, @"""name"": """, @"""");
                     }
-                    else
-                    {
-                        return null;
-                    }
                 }
-                else
-                {
-                    return null;
-                }
+
+                return movie;
             }
             else if (m_thirdLevelRequest == "details")
             {
+                MediaDetail mediaDetail = new MediaDetail();
                 while (html.Contains(@"<td class=""label"">"))
                 {
                     string desc = ParseItem(ref html, @"<td class=""label"">", @":</td>");
@@ -116,8 +111,8 @@ namespace MetacriticScraper.RequestData
                         value = value.Replace("<span>", "").Replace("</span>", "");
                     }
 
-                    Detail detail = new Detail(desc, value);
-                    movie.Details.Add(detail);
+                    DetailItem detail = new DetailItem(desc, value);
+                    mediaDetail.Details.Add(detail);
                 }
 
                 while (html.Contains(@"<td class=""person"">"))
@@ -130,12 +125,14 @@ namespace MetacriticScraper.RequestData
 
                     string value = ParseItem(ref html, @"<td class=""role"">", @"</td>");
 
-                    Detail detail = new Detail(desc, value);
-                    movie.Details.Add(detail);
+                    DetailItem detail = new DetailItem(desc, value);
+                    mediaDetail.Details.Add(detail);
                 }
+
+                return mediaDetail;
             }
 
-            return movie;
+            return null;
         }
 
         private string ParseItem(ref string infoStr, string startPos, string endPos)

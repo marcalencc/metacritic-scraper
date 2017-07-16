@@ -54,10 +54,9 @@ namespace MetacriticScraper.RequestData
 
         public override MetacriticData Parse(string html)
         {
-            TVShow tvShow = new TVShow();
-
             if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
+                TVShow tvShow = new TVShow();
                 tvShow.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
                 tvShow.Season = Int32.Parse(ParseItem(ref html, @"Season ", @"</span>"));
 
@@ -86,9 +85,13 @@ namespace MetacriticScraper.RequestData
                 {
                     tvShow.ReleaseDate = releaseDate;
                 }
+
+                return tvShow;
             }
             else if (m_thirdLevelRequest == "details")
             {
+                MediaDetail mediaDetails = new MediaDetail();
+
                 while (html.Contains(@"<th scope=""row"">"))
                 {
                     string desc = ParseItem(ref html, @"<th scope=""row"">", @":</th>");
@@ -97,8 +100,8 @@ namespace MetacriticScraper.RequestData
                     {
                         value = ParseItem(ref value, @""">", @"</a>");
                     }
-                    Detail detail = new Detail(desc, value);
-                    tvShow.Details.Add(detail);
+                    DetailItem detail = new DetailItem(desc, value);
+                    mediaDetails.Details.Add(detail);
                 }
 
                 while (html.Contains(@"<td class=""person"">"))
@@ -107,12 +110,14 @@ namespace MetacriticScraper.RequestData
                         @"<td class=""person"">".Length);
                     string desc = ParseItem(ref html, @""">", @"</a>");
                     string value = ParseItem(ref html, @"<td class=""role"">", @"</td>");
-                    Detail detail = new Detail(desc, value);
-                    tvShow.Details.Add(detail);
+                    DetailItem detail = new DetailItem(desc, value);
+                    mediaDetails.Details.Add(detail);
                 }
+
+                return mediaDetails;
             }
 
-            return tvShow;
+            return null;
         }
 
         private string ParseItem(ref string infoStr, string startPos, string endPos)
