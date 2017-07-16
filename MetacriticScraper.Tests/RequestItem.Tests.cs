@@ -8,7 +8,9 @@ using MetacriticScraper.Interfaces;
 using MetacriticScraper.RequestData;
 using MetacriticScraper.JSONObjects;
 using MetacriticScraper.MediaData;
+using MetacriticScraper.Scraper;
 using Moq;
+using Newtonsoft.Json;
 
 namespace MetacriticScraper.Tests
 {
@@ -91,7 +93,7 @@ namespace MetacriticScraper.Tests
             item.Urls.Add(@"/movie/moonlight");
             item.Urls.Add(@"/movie/moonlight-2016");
             item.WebUtils = webUtils.Object;
-            List <string> resp = item.Scrape();
+            List <UrlResponsePair> resp = item.Scrape();
 
             Assert.AreEqual(resp.Count, 2);
         }
@@ -103,7 +105,9 @@ namespace MetacriticScraper.Tests
             string testData_2016 = File.ReadAllText(dir + @"\TestData\movie_moonlight_2016_scraped.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "moonlight", "");
-            MetacriticData mItem = item.Parse(testData_2016);
+            item.UrlImagePath = new Dictionary<string, string>();
+            item.UrlImagePath.Add(@"\movie\moonlight", "tempmovie.jpg");
+            IMetacriticData mItem = item.Parse(new UrlResponsePair(@"\movie\moonlight", testData_2016));
 
             Assert.AreEqual(((Movie) mItem).Title, "Moonlight");
             Assert.AreEqual(((Movie) mItem).Director, "Barry Jenkins");
@@ -111,6 +115,7 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(((Movie) mItem).Rating.CriticReviewCount, 51);
             Assert.AreEqual(((Movie) mItem).Rating.UserRating, 7.2f);
             Assert.AreEqual(((Movie) mItem).Rating.UserReviewCount, 994);
+            Assert.AreEqual(((Movie) mItem).ImageUrl, "tempmovie.jpg");
         }
 
         [Test]
@@ -120,7 +125,8 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\movie_her_scraped.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "moonlight", "");
-            MetacriticData mItem = item.Parse(testData);
+            item.UrlImagePath = new Dictionary<string, string>();
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Movie) mItem).Title, "Her");
             Assert.AreEqual(((Movie) mItem).Director, "Spike Jonze");
@@ -138,7 +144,8 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\movie_thewolfofwallstreet_scraped.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "the wolf of wall street", "");
-            MetacriticData mItem = item.Parse(testData);
+            item.UrlImagePath = new Dictionary<string, string>();
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Movie) mItem).Title, "The Wolf of Wall Street");
             Assert.AreEqual(((Movie) mItem).Director, "Martin Scorsese");
@@ -155,7 +162,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\movie_zerodarkthirty_details.txt");
 
             MovieRequestItem item = new MovieRequestItem("1", "zero dark thirty", "", "details");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((MediaDetail) mItem).Details.Count, 60);
             CollectionAssert.Contains(((MediaDetail) mItem).Details,
@@ -200,7 +207,7 @@ namespace MetacriticScraper.Tests
             item.Urls = new List<string>();
             item.Urls.Add(@"/music/lemonade/beyonce");
             item.WebUtils = webUtils.Object;
-            List<string> resp = item.Scrape();
+            List<UrlResponsePair> resp = item.Scrape();
 
             Assert.AreEqual(resp.Count, 1);
         }
@@ -212,13 +219,16 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\album_lemonade_2016_scraped.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
-            MetacriticData mItem = item.Parse(testData);
+            item.UrlImagePath = new Dictionary<string, string>();
+            item.UrlImagePath.Add(@"\album\lemonade", "tempalbum.jpg");
+            IMetacriticData mItem = item.Parse(new UrlResponsePair(@"\album\lemonade", testData));
 
             Assert.AreEqual(((Album) mItem).Title, "Lemonade");
             Assert.AreEqual(((Album) mItem).Rating.CriticRating, 92);
             Assert.AreEqual(((Album) mItem).Rating.CriticReviewCount, 33);
             Assert.AreEqual(((Album) mItem).Rating.UserRating, 7.7f);
             Assert.AreEqual(((Album) mItem).Rating.UserReviewCount, 2518);
+            Assert.AreEqual(((Album) mItem).ImageUrl, "tempalbum.jpg");
         }
 
         [Test]
@@ -228,7 +238,8 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\album_melodrama_scraped.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "melodrama", "");
-            MetacriticData mItem = item.Parse(testData);
+            item.UrlImagePath = new Dictionary<string, string>();
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Album) mItem).Title, "Melodrama");
             Assert.AreEqual(((Album) mItem).PrimaryArtist, "Lorde");
@@ -245,7 +256,8 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\album_aseatatthetable_scraped.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "a seat at the table", "");
-            MetacriticData mItem = item.Parse(testData);
+            item.UrlImagePath = new Dictionary<string, string>();
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Album) mItem).Title, "A Seat at the Table");
             Assert.AreEqual(((Album) mItem).PrimaryArtist, "Solange");
@@ -262,7 +274,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\album_teensofdenial_details.txt");
 
             AlbumRequestItem item = new AlbumRequestItem("1", "teens of denial", "", "details");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((MediaDetail) mItem).Details.Count, 4);
             CollectionAssert.Contains(((MediaDetail) mItem).Details,
@@ -337,7 +349,7 @@ namespace MetacriticScraper.Tests
             item.Urls = new List<string>();
             item.Urls.Add(@"/tv/veep/season-6");
             item.WebUtils = webUtils.Object;
-            List<string> resp = item.Scrape();
+            List<UrlResponsePair> resp = item.Scrape();
 
             Assert.AreEqual(resp.Count, 1);
         }
@@ -349,13 +361,16 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep_6_scraped.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "");
-            MetacriticData mItem = item.Parse(testData);
+            item.UrlImagePath = new Dictionary<string, string>();
+            item.UrlImagePath.Add(@"\tv\veep", "temptv.jpg");
+            IMetacriticData mItem = item.Parse(new UrlResponsePair(@"\tv\veep", testData));
 
             Assert.AreEqual(((TVShow) mItem).Title, "Veep");
             Assert.AreEqual(((TVShow) mItem).Rating.CriticRating, 88);
             Assert.AreEqual(((TVShow) mItem).Rating.CriticReviewCount, 15);
             Assert.AreEqual(((TVShow) mItem).Rating.UserRating, 8.1f);
             Assert.AreEqual(((TVShow) mItem).Rating.UserReviewCount, 36);
+            Assert.AreEqual(((TVShow) mItem).ImageUrl, "temptv.jpg");
         }
 
         [Test]
@@ -365,7 +380,8 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\tvshow_curbyourenthusiasm_7_scraped.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "curb your enthusiasm", "7", "");
-            MetacriticData mItem = item.Parse(testData);
+            item.UrlImagePath = new Dictionary<string, string>();
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((TVShow) mItem).Title, "Curb Your Enthusiasm");
             Assert.AreEqual(((TVShow) mItem).Rating.CriticRating, 81);
@@ -381,7 +397,8 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\tvshow_arrested_development_scraped.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "arrested development", "");
-            MetacriticData mItem = item.Parse(testData);
+            item.UrlImagePath = new Dictionary<string, string>();
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((TVShow) mItem).Title, "Arrested Development");
             Assert.AreEqual(((TVShow) mItem).Rating.CriticRating, 89);
@@ -397,7 +414,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep_details.txt");
 
             TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "details");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((MediaDetail) mItem).Details.Count, 12);
             CollectionAssert.Contains(((MediaDetail) mItem).Details,
@@ -405,6 +422,52 @@ namespace MetacriticScraper.Tests
             CollectionAssert.Contains(((MediaDetail) mItem).Details,
                 new DetailItem("Creators", "Armando Iannucci"));
         }
+
+        [Test]
+        public void Test_RequestItem_RetrieveImagePath()
+        {
+            MovieRequestItem item = new MovieRequestItem("1", "moonlight", "");
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData\movie_moonlight_autosearch.txt");
+
+            item.AutoResult = JsonConvert.DeserializeObject<RootObject>(testData).AutoComplete.Results;
+            item.FilterValidUrls();
+            item.RetrieveImagePath();
+
+            Assert.AreEqual(item.UrlImagePath["/movie/moonlight"],
+                @"http://static.metacritic.com/images/products/movies/5/f297a665fd50e664244005952493fbd0-98.jpg");
+        }
+
+        [Test]
+        public void Test_RequestItem_RetrieveImagePath2()
+        {
+            AlbumRequestItem item = new AlbumRequestItem("1", "lemonade", "");
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData\album_lemonade_autosearch.txt");
+
+            item.AutoResult = JsonConvert.DeserializeObject<RootObject>(testData).AutoComplete.Results;
+            item.FilterValidUrls();
+            item.RetrieveImagePath();
+
+            Assert.AreEqual(item.UrlImagePath["/music/lemonade/beyonce"],
+                @"http://static.metacritic.com/images/products/music/9/db45c5f14e2271eda363d1dcc264f384-98.jpg");
+        }
+
+        [Test]
+        public void Test_RequestItem_RetrieveImagePath3()
+        {
+            TVShowRequestItem item = new TVShowRequestItem("1", "veep", "");
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData\tvshow_veep_autosearch.txt");
+
+            item.AutoResult = JsonConvert.DeserializeObject<RootObject>(testData).AutoComplete.Results;
+            item.FilterValidUrls();
+            item.RetrieveImagePath();
+
+            Assert.AreEqual(item.UrlImagePath["/tv/veep"],
+                @"http://static.metacritic.com/images/products/tv/6/760dff15565dd81e02be67f0c9d29730-98.jpg");
+        }
+
 
     }
 }

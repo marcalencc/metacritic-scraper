@@ -83,6 +83,9 @@
     <Compile Include="WebScraper.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestQueue.Test.cs" />
+    <Content Include="TestData\movie_moonlight_autosearch.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\movie_thewolfofwallstreet_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -6,6 +6,7 @@ using System.Linq;
 using NUnit.Framework;
 using MetacriticScraper.Interfaces;
 using MetacriticScraper.Errors;
+using MetacriticScraper.Scraper;
 using MetacriticScraper.RequestData;
 using MetacriticScraper.JSONObjects;
 using MetacriticScraper.MediaData;
@@ -104,7 +105,7 @@ namespace MetacriticScraper.Tests
             item.Urls = new List<string>();
             item.Urls.Add(@"/person/woody-allen?filter-options=movies&sort_options=date&num_items=100");
             item.WebUtils = webUtils.Object;
-            List<string> resp = item.Scrape();
+            List<UrlResponsePair> resp = item.Scrape();
 
             Assert.AreEqual(resp.Count, 1);
         }
@@ -116,7 +117,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\person_woodyallen_movie_100_scraped.txt");
 
             PersonRequestItem item = new PersonRequestItem("1", "woody allen", "movie");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Person)mItem).Name, "Woody Allen");
             Assert.AreEqual(((Person)mItem).RatingsSummary.HighestRating, 90);
@@ -138,7 +139,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\person_kanyewest_movie_100_scraped.txt");
 
             PersonRequestItem item = new PersonRequestItem("1", "kanye west", "movie");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Person)mItem).Name, "Kanye West");
             Assert.AreEqual(((Person)mItem).RatingsSummary.HighestRating, 81);
@@ -163,7 +164,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\person_woodyallen_tvshow_100_scraped.txt");
 
             PersonRequestItem item = new PersonRequestItem("1", "woody allen", "tvshow");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Person)mItem).Name, "Woody Allen");
             Assert.AreEqual(((Person)mItem).RatingsSummary.HighestRating, 0);
@@ -188,7 +189,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\person_kanyewest_tvshow_100_scraped.txt");
 
             PersonRequestItem item = new PersonRequestItem("1", "kanye west", "tvshow");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Person)mItem).Name, "Kanye West");
             Assert.AreEqual(((Person)mItem).RatingsSummary.HighestRating, 0);
@@ -213,7 +214,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\person_kanyewest_album_100_scraped.txt");
 
             PersonRequestItem item = new PersonRequestItem("1", "kanye west", "album");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Person)mItem).Name, "Kanye West");
             Assert.AreEqual(((Person)mItem).RatingsSummary.HighestRating, 94);
@@ -240,7 +241,7 @@ namespace MetacriticScraper.Tests
             string testData = File.ReadAllText(dir + @"\TestData\person_woodyallen_tvshow_100_scraped.txt");
 
             PersonRequestItem item = new PersonRequestItem("1", "woody allen", "album");
-            MetacriticData mItem = item.Parse(testData);
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
             Assert.AreEqual(((Person)mItem).Name, "Woody Allen");
             Assert.AreEqual(((Person)mItem).RatingsSummary, default(Person.PersonRatingSummary));
