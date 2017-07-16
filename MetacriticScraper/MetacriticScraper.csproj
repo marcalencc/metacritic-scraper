@@ -74,10 +74,11 @@
     <Compile Include="Errors\InvalidUrlException.cs" />
     <Compile Include="Errors\SystemBusyException.cs" />
     <Compile Include="Errors\TimeoutElapsedException.cs" />
+    <Compile Include="Interfaces\IMetacriticData.cs" />
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Interfaces\IScraper.cs" />
     <Compile Include="Interfaces\IWebUtils.cs" />
-    <Compile Include="MediaData\MetacriticData.cs" />
+    <Compile Include="UrlResponsePair.cs" />
     <Compile Include="RequesItem\PersonRequestItem.cs" />
     <Compile Include="UrlParser.cs" />
     <Compile Include="Utilities.cs" />

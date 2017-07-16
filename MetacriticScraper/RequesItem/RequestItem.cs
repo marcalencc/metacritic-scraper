@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using MetacriticScraper.MediaData;
+using MetacriticScraper.Scraper;
 using Newtonsoft.Json;
 using MetacriticScraper.JSONObjects;
 using MetacriticScraper.Interfaces;
@@ -12,7 +11,7 @@ using NLog;
 
 namespace MetacriticScraper.RequestData
 {
-    public abstract class RequestItem : IScrapable<MetacriticData>, IResult, IEquatable<IResult>
+    public abstract class RequestItem : IScrapable<IMetacriticData>, IResult, IEquatable<IResult>
     {
         protected static Logger Logger = LogManager.GetCurrentClassLogger();
 
@@ -56,8 +55,9 @@ namespace MetacriticScraper.RequestData
             }
         }
 
-        private List<MetacriticData> m_result;
+        private List<IMetacriticData> m_result;
         public List<string> Urls { get; set; }
+        public Dictionary<string, string> UrlImagePath;
 
         protected static IWebUtils m_webUtils;
         public IWebUtils WebUtils
@@ -105,9 +105,19 @@ namespace MetacriticScraper.RequestData
             m_releaseYear = releaseYear;
         }
 
-        public abstract List<string> Scrape();
-        public abstract MetacriticData Parse(string html);
+        public abstract List<UrlResponsePair> Scrape();
+        public abstract IMetacriticData Parse(UrlResponsePair urlResponsePair);
         public abstract bool FilterValidUrls();
+
+        public void RetrieveImagePath()
+        {
+            foreach (string url in Urls)
+            {
+                UrlImagePath = m_autoResult.Where(r => url == r.Url).Select(r =>
+                    new KeyValuePair<string, string>(r.Url, r.ImagePath)).
+                    ToDictionary(r => r.Key, r => r.Value);
+            }
+        }
 
         public async Task<bool> AutoSearch()
         {
@@ -130,6 +140,14 @@ namespace MetacriticScraper.RequestData
             {
                 Urls = Urls.Select(u => u + "/" + m_thirdLevelRequest).ToList();
             }
+        }
+
+        protected string ParseItem(ref string infoStr, string startPos, string endPos)
+        {
+            int startIndex = infoStr.IndexOf(startPos) + startPos.Length;
+            infoStr = infoStr.Substring(startIndex);
+            int endIndex = infoStr.IndexOf(endPos);
+            return infoStr.Substring(0, endIndex).Trim();
         }
 
         #region IResult

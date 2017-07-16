@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class MediaDetail : MetacriticData
+    public class MediaDetail : IMetacriticData
     {
         private List<DetailItem> m_details;
         public List<DetailItem> Details

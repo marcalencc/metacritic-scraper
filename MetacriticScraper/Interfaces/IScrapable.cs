@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MetacriticScraper.Scraper;
 
 namespace MetacriticScraper.Interfaces
 {
     public interface IScrapable<T>
     {
         List<string> Urls { get; set; }
-        List<string> Scrape();
-        T Parse(string html);
+        List<UrlResponsePair> Scrape();
+        T Parse(UrlResponsePair urlResponsePair);
         string RequestId { get; }
     }
 }

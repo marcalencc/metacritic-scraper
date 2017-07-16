@@ -6,7 +6,7 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class Person : MetacriticData
+    public class Person : IMetacriticData
     {
         private string m_name;
         public string Name

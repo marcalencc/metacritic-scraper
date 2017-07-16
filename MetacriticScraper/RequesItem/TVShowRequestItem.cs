@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MetacriticScraper.Scraper;
+using MetacriticScraper.Interfaces;
 using MetacriticScraper.MediaData;
 
 namespace MetacriticScraper.RequestData
@@ -23,17 +23,17 @@ namespace MetacriticScraper.RequestData
             m_season = season;
         }
 
-        public override List<string> Scrape()
+        public override List<UrlResponsePair> Scrape()
         {
             Logger.Info("Scraping {0} urls for {1}", Urls.Count, SearchString);
-            List<string> urls = new List<string>();
+            List<UrlResponsePair> responses = new List<UrlResponsePair>();
             foreach (string url in Urls)
             {
                 var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url, Constants.MetacriticURL, 30000);
-                urls.Add(task.Result);
+                responses.Add(new UrlResponsePair(url, task.Result));
             }
 
-            return urls;
+            return responses;
         }
 
         public override bool FilterValidUrls()
@@ -52,8 +52,9 @@ namespace MetacriticScraper.RequestData
             return Urls.Count > 0;
         }
 
-        public override MetacriticData Parse(string html)
+        public override IMetacriticData Parse(UrlResponsePair urlResponsePair)
         {
+            string html = urlResponsePair.Response;
             if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
                 TVShow tvShow = new TVShow();
@@ -84,6 +85,12 @@ namespace MetacriticScraper.RequestData
                 if (DateTime.TryParse(releaseDateStr, out releaseDate))
                 {
                     tvShow.ReleaseDate = releaseDate;
+                }
+
+                string imgPath;
+                if (UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                {
+                    tvShow.ImageUrl = imgPath;
                 }
 
                 return tvShow;
@@ -118,14 +125,6 @@ namespace MetacriticScraper.RequestData
             }
 
             return null;
-        }
-
-        private string ParseItem(ref string infoStr, string startPos, string endPos)
-        {
-            int startIndex = infoStr.IndexOf(startPos) + startPos.Length;
-            infoStr = infoStr.Substring(startIndex);
-            int endIndex = infoStr.IndexOf(endPos);
-            return infoStr.Substring(0, endIndex).Trim();
         }
 
         public override bool Equals(IResult obj)

@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MetacriticScraper.MediaData
+namespace MetacriticScraper.Interfaces
 {
-    public abstract class MetacriticData
-    {
-    }
+    public interface IMetacriticData { }
 }

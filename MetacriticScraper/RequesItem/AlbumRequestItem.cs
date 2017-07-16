@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MetacriticScraper.Scraper;
 using MetacriticScraper.MediaData;
+using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.RequestData
 {
@@ -21,17 +21,17 @@ namespace MetacriticScraper.RequestData
             MediaType = Constants.AlbumTypeId;
         }
 
-        public override List<string> Scrape()
+        public override List<UrlResponsePair> Scrape()
         {
             Logger.Info("Scraping {0} urls for {1}", Urls.Count, SearchString);
-            List<string> urls = new List<string>();
+            List<UrlResponsePair> responses = new List<UrlResponsePair>();
             foreach (string url in Urls)
             {
                 var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url, Constants.MetacriticURL, 30000);
-                urls.Add(task.Result);
+                responses.Add(new UrlResponsePair(url, task.Result));
             }
 
-            return urls;
+            return responses;
         }
 
         public override bool FilterValidUrls()
@@ -42,8 +42,9 @@ namespace MetacriticScraper.RequestData
             return Urls.Count > 0;
         }
 
-        public override MetacriticData Parse(string html)
+        public override IMetacriticData Parse(UrlResponsePair urlResponsePair)
         {
+            string html = urlResponsePair.Response;
             if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
                 Album album = new Album();
@@ -72,6 +73,12 @@ namespace MetacriticScraper.RequestData
                 }
 
                 album.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
+
+                string imgPath;
+                if(UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                {
+                    album.ImageUrl = imgPath;
+                }
 
                 return album;
             }
@@ -112,13 +119,6 @@ namespace MetacriticScraper.RequestData
             return null;
         }
 
-        private string ParseItem(ref string infoStr, string startPos, string endPos)
-        {
-            int startIndex = infoStr.IndexOf(startPos) + startPos.Length;
-            infoStr = infoStr.Substring(startIndex);
-            int endIndex = infoStr.IndexOf(endPos);
-            return infoStr.Substring(0, endIndex).Trim();
-        }
 
         public override bool Equals(IResult obj)
         {

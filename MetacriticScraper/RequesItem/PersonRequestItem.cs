@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MetacriticScraper.Scraper;
 using MetacriticScraper.MediaData;
 using MetacriticScraper.Errors;
+using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.RequestData
 {
@@ -16,17 +16,17 @@ namespace MetacriticScraper.RequestData
             MediaType = Constants.PersonTypeId;
         }
 
-        public override List<string> Scrape()
+        public override List<UrlResponsePair> Scrape()
         {
             Logger.Info("Scraping {0} urls for {1}", Urls.Count, SearchString);
-            List<string> urls = new List<string>();
+            List<UrlResponsePair> responses = new List<UrlResponsePair>();
             foreach (string url in Urls)
             {
                 var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url, Constants.MetacriticURL, 30000);
-                urls.Add(task.Result);
+                responses.Add(new UrlResponsePair(url, task.Result));
             }
 
-            return urls;
+            return responses;
         }
 
         public override bool FilterValidUrls()
@@ -61,8 +61,9 @@ namespace MetacriticScraper.RequestData
             Urls = Urls.Select(u => u + "?" + param).ToList();
         }
 
-        public override MetacriticData Parse(string html)
+        public override IMetacriticData Parse(UrlResponsePair urlResponsePair)
         {
+            string html = urlResponsePair.Response;
             string name = ParseItem(ref html, @"""og:title"" content=""", @""">");
             Person person = new Person(name);
 
@@ -133,14 +134,6 @@ namespace MetacriticScraper.RequestData
             }
 
             return false;
-        }
-
-        private string ParseItem(ref string infoStr, string startPos, string endPos)
-        {
-            int startIndex = infoStr.IndexOf(startPos) + startPos.Length;
-            infoStr = infoStr.Substring(startIndex);
-            int endIndex = infoStr.IndexOf(endPos);
-            return infoStr.Substring(0, endIndex).Trim();
         }
 
         public override bool Equals(IResult obj)

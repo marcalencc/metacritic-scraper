@@ -96,7 +96,7 @@ namespace MetacriticScraper.Scraper
         private RequestQueue<RequestItem> m_requestQueue;
         private Thread m_requestThread;
 
-        private RequestQueue<IScrapable<MetacriticData>> m_dataFetchQueue;
+        private RequestQueue<IScrapable<IMetacriticData>> m_dataFetchQueue;
         private Thread m_dataFetchThread;
 
         private Action<string, string> m_responseChannel;
@@ -121,7 +121,7 @@ namespace MetacriticScraper.Scraper
             m_requestQueue = new RequestQueue<RequestItem>(limit);
             m_requestThread = new Thread(RequestThreadProc);
 
-            m_dataFetchQueue = new RequestQueue<IScrapable<MetacriticData>>(limit);
+            m_dataFetchQueue = new RequestQueue<IScrapable<IMetacriticData>>(limit);
             m_dataFetchThread = new Thread(DataFetchThreadProc);
 
             m_requestTracker = new List<RequestTrackerItem>();
@@ -231,6 +231,7 @@ namespace MetacriticScraper.Scraper
             {
                 if (request.FilterValidUrls())
                 {
+                    request.RetrieveImagePath();
                     m_dataFetchQueue.Enqueue(request);
                 }
                 else
@@ -248,7 +249,7 @@ namespace MetacriticScraper.Scraper
         {
             while (m_isRunning)
             {
-                IScrapable<MetacriticData> item = m_dataFetchQueue.Dequeue();
+                IScrapable<IMetacriticData> item = m_dataFetchQueue.Dequeue();
                 if (item != null)
                 {
                     FetchResults(item);
@@ -264,10 +265,10 @@ namespace MetacriticScraper.Scraper
             }
         }
 
-        private async void FetchResults(IScrapable<MetacriticData> item)
+        private async void FetchResults(IScrapable<IMetacriticData> item)
         {
-            List<string> htmlResponses = item.Scrape();
-            var tasks = htmlResponses.Select(html => Task.Run(() => item.Parse(html)));
+            List<UrlResponsePair> urlResponsePairs = item.Scrape();
+            var tasks = urlResponsePairs.Select(pairs => Task.Run(() => item.Parse(pairs)));
 
             RequestTrackerItem tItem;
             lock (m_requestTrackerLock)
@@ -284,7 +285,7 @@ namespace MetacriticScraper.Scraper
                 string resp;
                 try
                 {
-                    MetacriticData[] htmlResp = await Task.WhenAll(tasks);
+                    IMetacriticData[] htmlResp = await Task.WhenAll(tasks);
                     if (htmlResp != null && htmlResp.Length > 0)
                     {
                         resp = JsonConvert.SerializeObject(htmlResp);
