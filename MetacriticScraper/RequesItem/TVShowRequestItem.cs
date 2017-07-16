@@ -52,7 +52,7 @@ namespace MetacriticScraper.RequestData
             return Urls.Count > 0;
         }
 
-        public override MediaItem Parse(string html)
+        public override MetacriticData Parse(string html)
         {
             TVShow tvShow = new TVShow();
 

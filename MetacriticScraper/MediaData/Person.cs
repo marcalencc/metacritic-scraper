@@ -9,23 +9,14 @@ namespace MetacriticScraper.MediaData
     public class Person
     {
         private string m_name;
-        private List<MediaItem> m_tvShows;
-        private List<MediaItem> m_films;
-        private List<MediaItem> m_albums;
-        private PersonRatingSummary m_tvShowRatingsSummary;
-        private PersonRatingSummary m_filmRatingsSummary;
-        private PersonRatingSummary m_albumRatingsSummary;
+        private List<MediaItem> m_mediaItems;
+        private PersonRatingSummary m_ratingsSummary;
 
-        public Person (string name, List<MediaItem> tvShows, List<MediaItem> films,
-            List<MediaItem> albums)
+        public Person (string name, List<MediaItem> mediaItems)
         {
             m_name = name;
-            m_tvShows = tvShows;
-            m_films = films;
-            m_albums = albums;
-            m_tvShowRatingsSummary = PersonRatingSummary.GetRatingSummary(tvShows);
-            m_filmRatingsSummary = PersonRatingSummary.GetRatingSummary(films);
-            m_albumRatingsSummary = PersonRatingSummary.GetRatingSummary(albums);
+            m_mediaItems = mediaItems;
+            m_ratingsSummary = PersonRatingSummary.GetRatingSummary(mediaItems);
         }
 
         public string Scrape()

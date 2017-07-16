@@ -96,7 +96,7 @@ namespace MetacriticScraper.Scraper
         private RequestQueue<RequestItem> m_requestQueue;
         private Thread m_requestThread;
 
-        private RequestQueue<IScrapable<MediaItem>> m_dataFetchQueue;
+        private RequestQueue<IScrapable<MetacriticData>> m_dataFetchQueue;
         private Thread m_dataFetchThread;
 
         private Action<string, string> m_responseChannel;
@@ -121,7 +121,7 @@ namespace MetacriticScraper.Scraper
             m_requestQueue = new RequestQueue<RequestItem>(limit);
             m_requestThread = new Thread(RequestThreadProc);
 
-            m_dataFetchQueue = new RequestQueue<IScrapable<MediaItem>>(limit);
+            m_dataFetchQueue = new RequestQueue<IScrapable<MetacriticData>>(limit);
             m_dataFetchThread = new Thread(DataFetchThreadProc);
 
             m_requestTracker = new List<RequestTrackerItem>();
@@ -229,13 +229,21 @@ namespace MetacriticScraper.Scraper
             var task = request.AutoSearch();
             if (task.Result)
             {
-                if (request.FilterValidUrls())
+                try
                 {
-                    m_dataFetchQueue.Enqueue(request);
+                    if (request.FilterValidUrls())
+                    {
+                        m_dataFetchQueue.Enqueue(request);
+                    }
+                    else
+                    {
+                        Logger.Info("No valid urls matching the request");
+                    }
                 }
-                else
+                catch (InvalidUrlException ex)
                 {
-                    Logger.Info("No valid urls matching the request");
+                    Logger.Error("Invalid url.");
+                    throw ex;
                 }
             }
             else
@@ -248,7 +256,7 @@ namespace MetacriticScraper.Scraper
         {
             while (m_isRunning)
             {
-                IScrapable<MediaItem> item = m_dataFetchQueue.Dequeue();
+                IScrapable<MetacriticData> item = m_dataFetchQueue.Dequeue();
                 if (item != null)
                 {
                     FetchResults(item);
@@ -264,7 +272,7 @@ namespace MetacriticScraper.Scraper
             }
         }
 
-        private async void FetchResults(IScrapable<MediaItem> item)
+        private async void FetchResults(IScrapable<MetacriticData> item)
         {
             List<string> htmlResponses = item.Scrape();
             var tasks = htmlResponses.Select(html => Task.Run(() => item.Parse(html)));
@@ -284,7 +292,7 @@ namespace MetacriticScraper.Scraper
                 string resp;
                 try
                 {
-                    MediaItem[] htmlResp = await Task.WhenAll(tasks);
+                    MetacriticData[] htmlResp = await Task.WhenAll(tasks);
                     if (htmlResp != null && htmlResp.Length > 0)
                     {
                         resp = JsonConvert.SerializeObject(htmlResp);

@@ -43,7 +43,7 @@ namespace MetacriticScraper.RequestData
             return Urls.Count > 0;
         }
 
-        public override MediaItem Parse(string html)
+        public override MetacriticData Parse(string html)
         {
             Movie movie = new Movie();
             if (String.IsNullOrEmpty(m_thirdLevelRequest))

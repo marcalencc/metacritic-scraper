@@ -12,7 +12,7 @@ using NLog;
 
 namespace MetacriticScraper.RequestData
 {
-    public abstract class RequestItem : IScrapable<MediaItem>, IResult, IEquatable<IResult>
+    public abstract class RequestItem : IScrapable<MetacriticData>, IResult, IEquatable<IResult>
     {
         protected static Logger Logger = LogManager.GetCurrentClassLogger();
 
@@ -56,7 +56,7 @@ namespace MetacriticScraper.RequestData
             }
         }
 
-        private List<MediaItem> m_result;
+        private List<MetacriticData> m_result;
         public List<string> Urls { get; set; }
 
         protected static IWebUtils m_webUtils;
@@ -106,7 +106,7 @@ namespace MetacriticScraper.RequestData
         }
 
         public abstract List<string> Scrape();
-        public abstract MediaItem Parse(string html);
+        public abstract MetacriticData Parse(string html);
         public abstract bool FilterValidUrls();
 
         public async Task<bool> AutoSearch()
@@ -124,7 +124,7 @@ namespace MetacriticScraper.RequestData
             return m_autoResult != null;
         }
 
-        protected void SetThirdLevelRequest()
+        protected virtual void SetThirdLevelRequest()
         {
             if (!String.IsNullOrEmpty(m_thirdLevelRequest))
             {

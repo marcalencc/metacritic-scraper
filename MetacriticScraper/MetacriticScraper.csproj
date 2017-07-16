@@ -77,6 +77,8 @@
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Interfaces\IScraper.cs" />
     <Compile Include="Interfaces\IWebUtils.cs" />
+    <Compile Include="MediaData\MetacriticData.cs" />
+    <Compile Include="RequesItem\PersonRequestItem.cs" />
     <Compile Include="UrlParser.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="JSONObjects\AutoComplete.cs" />

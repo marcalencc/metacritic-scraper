@@ -7,7 +7,7 @@ using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.MediaData
 {
-    public class MediaItem
+    public class MediaItem : MetacriticData
     {
         public string Title { get; set; }
         public List<Detail> Details { get; set; }
