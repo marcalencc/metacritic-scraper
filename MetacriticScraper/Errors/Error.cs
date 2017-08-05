@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetacriticScraper.Interfaces;
 
 namespace MetacriticScraper.Errors
 {
-    public class Error
+    public class Error: IMetacriticData
     {
         public Error (Exception exception)
         {

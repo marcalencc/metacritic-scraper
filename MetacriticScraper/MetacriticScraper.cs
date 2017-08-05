@@ -5,10 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MetacriticScraper.RequestData;
-using MetacriticScraper.MediaData;
 using MetacriticScraper.Interfaces;
 using MetacriticScraper.Errors;
-using Newtonsoft.Json;
 using NLog;
 
 namespace MetacriticScraper.Scraper
@@ -99,7 +97,7 @@ namespace MetacriticScraper.Scraper
         private RequestQueue<IScrapable<IMetacriticData>> m_dataFetchQueue;
         private Thread m_dataFetchThread;
 
-        private Action<string, string> m_responseChannel;
+        private Action<string, IMetacriticData[]> m_responseChannel;
         private object m_requestTrackerLock;
         private List<RequestTrackerItem> m_requestTracker;
         private System.Threading.Timer m_requestTrackerTimer;
@@ -116,7 +114,7 @@ namespace MetacriticScraper.Scraper
             }
         }
 
-        public WebScraper(Action<string, string> responseChannel, int limit)
+        public WebScraper(Action<string, IMetacriticData[]> responseChannel, int limit)
         {
             m_requestQueue = new RequestQueue<RequestItem>(limit);
             m_requestThread = new Thread(RequestThreadProc);
@@ -150,9 +148,10 @@ namespace MetacriticScraper.Scraper
                     catch (TimeoutElapsedException ex)
                     {
                         Logger.Error("Request took too long to be processed => {0}", m_requestTracker[idx].RequestId);
-                        Error error = new Error(ex);
-                        string resp = JsonConvert.SerializeObject(error);
-                        PublishResult(m_requestTracker[idx].RequestId, resp);
+                        Error[] error = new Error[1];
+                        Error err = new Error(ex);
+                        error[0] = err;
+                        PublishResult(m_requestTracker[idx].RequestId, error);
                         m_requestTracker.RemoveAt(idx--);
                     }
                 }
@@ -288,21 +287,21 @@ namespace MetacriticScraper.Scraper
                     IMetacriticData[] htmlResp = await Task.WhenAll(tasks);
                     if (htmlResp != null && htmlResp.Length > 0)
                     {
-                        resp = JsonConvert.SerializeObject(htmlResp);
+                        PublishResult(tItem.RequestId, htmlResp);
                     }
                     else
                     {
                         throw new Errors.EmptyResponseException("Empty response");
                     }
 
-                    PublishResult(tItem.RequestId, resp);
                 }
                 catch (EmptyResponseException ex)
                 {
                     Logger.Error("No response received");
-                    Error error = new Error(ex);
-                    resp = JsonConvert.SerializeObject(error);
-                    PublishResult(tItem.RequestId, resp);
+                    Error[] error = new Error[1];
+                    Error err = new Error(ex);
+                    error[0] = err;
+                    PublishResult(tItem.RequestId, error);
                 }
                 catch (Exception)
                 {
@@ -320,7 +319,7 @@ namespace MetacriticScraper.Scraper
             }
         }
 
-        private void PublishResult(string requestId, string result)
+        private void PublishResult(string requestId, IMetacriticData[] result)
         {
             if (m_responseChannel == null)
             {
