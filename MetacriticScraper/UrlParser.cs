@@ -108,6 +108,7 @@ namespace MetacriticScraper.Scraper
                         {
                             throw new InvalidUrlException(@"Category required for ""person"" request");
                         }
+                        return true;
                     }
                 }
             }

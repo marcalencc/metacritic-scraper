@@ -21,7 +21,7 @@ namespace MetacriticScraper.Scraper
                 return m_requestId;
             }
         }
-    
+
         DateTime m_dateAdded;
 
         public bool IsExpired()
@@ -81,7 +81,6 @@ namespace MetacriticScraper.Scraper
 
         public bool WaitOnEmpty(int ms)
         {
-            m_requestSignal.WaitOne(ms);
             return m_requestSignal.WaitOne(ms);
         }
     }
@@ -164,7 +163,7 @@ namespace MetacriticScraper.Scraper
             m_requestThread.Start();
             m_dataFetchThread.Start();
 
-            Logger.Info("Metacritic Sccraper Started...");
+            Logger.Info("Metacritic Scraper Started...");
         }
 
         // Url - no domain name

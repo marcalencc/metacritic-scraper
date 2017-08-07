@@ -79,9 +79,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, false);
             Assert.AreEqual(keyword, "");
             Assert.AreEqual(title, "");
             Assert.AreEqual(yearOrSeason, "");
@@ -96,9 +97,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/tvshow/");
             Assert.AreEqual(title, "veep");
             Assert.AreEqual(yearOrSeason, "3");
@@ -114,9 +116,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/tvshow/");
             Assert.AreEqual(title, "veep");
             Assert.AreEqual(yearOrSeason, "");
@@ -132,9 +135,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/tvshow/");
             Assert.AreEqual(title, "veep");
             Assert.AreEqual(yearOrSeason, "5");
@@ -149,9 +153,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/tvshow/");
             Assert.AreEqual(title, "game-of-thrones");
             Assert.AreEqual(yearOrSeason, "");
@@ -166,9 +171,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/movie/");
             Assert.AreEqual(title, "the-master");
             Assert.AreEqual(yearOrSeason, "");
@@ -185,9 +191,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/movie/");
             Assert.AreEqual(title, "the-master");
             Assert.AreEqual(yearOrSeason, "2012");
@@ -203,9 +210,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/movie/");
             Assert.AreEqual(title, "the-master");
             Assert.AreEqual(yearOrSeason, "2012");
@@ -220,9 +228,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/movie/");
             Assert.AreEqual(title, "guardians-of-the-galaxy");
             Assert.AreEqual(yearOrSeason, "");
@@ -237,9 +246,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/album/");
             Assert.AreEqual(title, "to-pimp-a-butterfly");
             Assert.AreEqual(yearOrSeason, "2015");
@@ -255,9 +265,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/album/");
             Assert.AreEqual(title, "to-pimp-a-butterfly");
             Assert.AreEqual(yearOrSeason, "");
@@ -273,9 +284,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/album/");
             Assert.AreEqual(title, "to-pimp-a-butterfly");
             Assert.AreEqual(yearOrSeason, "2015");
@@ -290,9 +302,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/album/");
             Assert.AreEqual(title, "the-suburbs");
             Assert.AreEqual(yearOrSeason, "");
@@ -307,9 +320,10 @@ namespace MetacriticScraper.Tests
             string yearOrSeason;
             string thirdLevelReq;
 
-            m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq);
 
+            Assert.AreEqual(ret, true);
             Assert.AreEqual(keyword, "/person/");
             Assert.AreEqual(title, "martin-scorsese");
             Assert.AreEqual(yearOrSeason, "");
@@ -317,7 +331,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
-        public void Test_UrlParser_ParseValidPersonUrlNoThirdLevelRequest()
+        public void Test_UrlParser_ParseInvalidPersonUrlNoThirdLevelRequest()
         {
             string url = "/person/martin-scorsese";
             string keyword;
