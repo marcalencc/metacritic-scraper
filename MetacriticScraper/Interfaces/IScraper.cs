@@ -9,7 +9,6 @@ namespace MetacriticScraper.Interfaces
 {
     public interface IScraper
     {
-        void Initialize();
         bool AddItem(string id, string url);
         IParser UrlParser { get; set; }
     }

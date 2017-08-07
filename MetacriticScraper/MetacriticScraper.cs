@@ -128,7 +128,11 @@ namespace MetacriticScraper.Scraper
 
             m_urlParser = new UrlParser();
 
-            Logger.Info("Metacritic Sccraper Initialized...");
+            m_isRunning = true;
+            m_requestThread.Start();
+            m_dataFetchThread.Start();
+
+            Logger.Info("Metacritic Scraper Initialized...");
         }
 
         private void RequestTrackerChecker(object state)
@@ -155,15 +159,6 @@ namespace MetacriticScraper.Scraper
                     }
                 }
             }
-        }
-
-        public void Initialize()
-        {
-            m_isRunning = true;
-            m_requestThread.Start();
-            m_dataFetchThread.Start();
-
-            Logger.Info("Metacritic Scraper Started...");
         }
 
         // Url - no domain name
