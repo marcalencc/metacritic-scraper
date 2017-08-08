@@ -213,28 +213,46 @@ namespace MetacriticScraper.Scraper
                         Logger.Info("RequestThreadProc woke up after ten seconds.");
                     }
                 }
+
                 Thread.Sleep(10);
             }
         }
 
         private void ProcessAutoSearch(RequestItem request)
         {
-            var task = request.AutoSearch();
-            if (task.Result)
+            Task<bool> task = request.AutoSearch();
+            try
             {
-                if (request.FilterValidUrls())
+                if (task.Result)
                 {
-                    request.RetrieveImagePath();
-                    m_dataFetchQueue.Enqueue(request);
+                    if (request.FilterValidUrls())
+                    {
+                        request.RetrieveImagePath();
+                        m_dataFetchQueue.Enqueue(request);
+                    }
+                    else
+                    {
+                        Logger.Info("No valid urls matching the request");
+                        throw new Errors.EmptyResponseException("No matching data found.");
+                    }
                 }
                 else
                 {
-                    Logger.Info("No valid urls matching the request");
+                    Logger.Info("No valid matches when autosearching");
+                    throw new Errors.EmptyResponseException("No matching data found.");
                 }
             }
-            else
+            catch (EmptyResponseException ex)
             {
-                Logger.Info("No valid matches when autosearching");
+                Logger.Error("No response received");
+                Error[] error = new Error[1];
+                Error err = new Error(ex);
+                error[0] = err;
+                PublishResult(request.RequestId, error);
+            }
+            catch (Exception)
+            {
+                Logger.Error("Encountered exception while parsing: {0}", task.Exception.ToString());
             }
         }
 
@@ -275,7 +293,6 @@ namespace MetacriticScraper.Scraper
 
             if (!EqualityComparer<RequestTrackerItem>.Default.Equals(tItem, default(RequestTrackerItem)))
             {
-                string resp;
                 try
                 {
                     IMetacriticData[] htmlResp = await Task.WhenAll(tasks);
