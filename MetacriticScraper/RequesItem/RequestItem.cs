@@ -111,12 +111,9 @@ namespace MetacriticScraper.RequestData
 
         public void RetrieveImagePath()
         {
-            foreach (string url in Urls)
-            {
-                UrlImagePath = m_autoResult.Where(r => url == r.Url).Select(r =>
-                    new KeyValuePair<string, string>(r.Url, r.ImagePath)).
-                    ToDictionary(r => r.Key, r => r.Value);
-            }
+            UrlImagePath = m_autoResult.Where(r => Urls.Contains(r.Url)).Select(r =>
+                new KeyValuePair<string, string>(r.Url, r.ImagePath)).
+                ToDictionary(r => r.Key, r => r.Value);
         }
 
         public async Task<bool> AutoSearch()
