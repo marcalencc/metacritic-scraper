@@ -87,10 +87,14 @@ namespace MetacriticScraper.RequestData
                     tvShow.ReleaseDate = releaseDate;
                 }
 
-                string imgPath;
-                if (UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                string key = UrlImagePath.Keys.FirstOrDefault(k => urlResponsePair.Url.Contains(k));
+                if (key != null)
                 {
-                    tvShow.ImageUrl = imgPath;
+                    string imgPath;
+                    if (UrlImagePath.TryGetValue(key, out imgPath))
+                    {
+                        tvShow.ImageUrl = imgPath;
+                    }
                 }
 
                 return tvShow;
@@ -107,6 +111,12 @@ namespace MetacriticScraper.RequestData
                     {
                         value = ParseItem(ref value, @""">", @"</a>");
                     }
+
+                    if (desc == "Seasons")
+                    {
+                        value = value.Replace(" ", String.Empty);
+                    }
+
                     DetailItem detail = new DetailItem(desc, value);
                     mediaDetails.Details.Add(detail);
                 }
@@ -125,6 +135,13 @@ namespace MetacriticScraper.RequestData
             }
 
             return null;
+        }
+
+        public override void RetrieveImagePath()
+        {
+            UrlImagePath = m_autoResult.Where(r => Urls.Any(u => u.Contains(r.Url))).Select(r =>
+                new KeyValuePair<string, string>(r.Url, r.ImagePath)).
+                ToDictionary(r => r.Key, r => r.Value);
         }
 
         public override bool Equals(IResult obj)

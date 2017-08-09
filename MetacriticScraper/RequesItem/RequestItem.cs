@@ -109,7 +109,7 @@ namespace MetacriticScraper.RequestData
         public abstract IMetacriticData Parse(UrlResponsePair urlResponsePair);
         public abstract bool FilterValidUrls();
 
-        public void RetrieveImagePath()
+        public virtual void RetrieveImagePath()
         {
             UrlImagePath = m_autoResult.Where(r => Urls.Contains(r.Url)).Select(r =>
                 new KeyValuePair<string, string>(r.Url, r.ImagePath)).
