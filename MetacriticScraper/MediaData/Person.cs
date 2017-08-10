@@ -70,14 +70,25 @@ namespace MetacriticScraper.MediaData
         public struct PersonRatingSummary
         {
             public double? HighestRating;
-            public double? AverageRating;
+            private double? m_averageRating;
+            public double? AverageRating
+            {
+                get
+                {
+                    return Math.Round((double) m_averageRating, 2);
+                }
+                set
+                {
+                    m_averageRating = value;
+                }
+            }
             public double? LowestRating;
             public int ReviewCount;
 
             private PersonRatingSummary (IEnumerable<MediaItem> mediaItemList)
             {
                 HighestRating = 0;
-                AverageRating = 0;
+                m_averageRating = 0;
                 LowestRating = 0;
                 ReviewCount = 0;
 
@@ -85,7 +96,7 @@ namespace MetacriticScraper.MediaData
                 if (filtered.Count > 0)
                 {
                     HighestRating = mediaItemList.Max(x => x.Rating.CriticRating);
-                    AverageRating = filtered.Average(x => x.Rating.CriticRating);
+                    m_averageRating = filtered.Average(x => x.Rating.CriticRating);
                     LowestRating = filtered.Min(x => x.Rating.CriticRating);
                     ReviewCount = filtered.Count();
                 }

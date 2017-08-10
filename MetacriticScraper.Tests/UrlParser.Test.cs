@@ -533,6 +533,23 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        public void Test_UrlParser_ItemCreationWithDash()
+        {
+            string keyword = "/movie/";
+            string title = @"i-am-e~-mo~-tion~-al-sometimes";
+            string yearOrSeason = "2012";
+
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason, "");
+
+            Assert.IsNotNull(item);
+            Assert.IsInstanceOf(typeof(MovieRequestItem), item);
+            Assert.AreEqual(item.RefTypeId, Constants.MovieTypeId);
+            Assert.AreEqual(item.RequestId, "1");
+            Assert.AreEqual(item.Name, "i am e-mo-tion-al sometimes");
+            Assert.AreEqual(item.ItemDate, "2012");
+        }
+
+        [Test]
         public void Test_UrlParser_InvalidKeyword()
         {
             string keyword = "/magazine/";

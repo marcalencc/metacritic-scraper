@@ -249,10 +249,18 @@ namespace MetacriticScraper.Scraper
                 Error err = new Error(ex);
                 error[0] = err;
                 PublishResult(request.RequestId, error);
+                RequestTrackerItem item = m_requestTracker.FirstOrDefault(r => r.RequestId == request.RequestId);
+                m_requestTracker.Remove(item);
             }
             catch (Exception)
             {
-                Logger.Error("Encountered exception while parsing: {0}", task.Exception.ToString());
+                Logger.Error("Encountered exception while parsing: {0}", task.Exception.InnerException.ToString());
+                Error[] error = new Error[1];
+                Error err = new Error(task.Exception.InnerException);
+                error[0] = err;
+                PublishResult(request.RequestId, error);
+                RequestTrackerItem item = m_requestTracker.FirstOrDefault(r => r.RequestId == request.RequestId);
+                m_requestTracker.Remove(item);
             }
         }
 
@@ -313,6 +321,8 @@ namespace MetacriticScraper.Scraper
                     Error err = new Error(ex);
                     error[0] = err;
                     PublishResult(tItem.RequestId, error);
+                    RequestTrackerItem reqItem = m_requestTracker.FirstOrDefault(r => r.RequestId == tItem.RequestId);
+                    m_requestTracker.Remove(reqItem);
                 }
                 catch (Exception)
                 {

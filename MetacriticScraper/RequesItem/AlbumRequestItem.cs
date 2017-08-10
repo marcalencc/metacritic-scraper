@@ -127,7 +127,7 @@ namespace MetacriticScraper.RequestData
             bool result = false;
             if (base.Equals(obj))
             {
-                string name = obj.Name.Split('-')[0].Trim();
+                string name = obj.Name.Split(new string[] { " - " }, StringSplitOptions.None)[0].Trim();
                 result = string.Equals(Name, name, StringComparison.OrdinalIgnoreCase);
                 if (result && !String.IsNullOrEmpty(ItemDate))
                 {

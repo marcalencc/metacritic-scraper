@@ -55,7 +55,6 @@ namespace MetacriticScraper.RequestData
             }
         }
 
-        private List<IMetacriticData> m_result;
         public List<string> Urls { get; set; }
         public Dictionary<string, string> UrlImagePath;
 
@@ -92,7 +91,7 @@ namespace MetacriticScraper.RequestData
 
         protected RequestItem(string id, string searchString, string thirdLevelReq)
         {
-            m_searchString = searchString.Replace("-", " ");
+            m_searchString = searchString.Replace("-", " ").Replace(@"~ ", "-");
             m_requestId = id;
             Logger = LogManager.GetLogger(GetType().FullName);
             m_webUtils = new WebUtils();

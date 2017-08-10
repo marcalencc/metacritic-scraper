@@ -60,10 +60,11 @@ namespace MetacriticScraper.Web
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url);
 
-            StringContent postData = new StringContent(strPostData, Encoding.UTF8);
-            postData.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded");
-            postData.Headers.ContentLength = strPostData.Length;
-            request.Content = postData;
+            byte[] postData = Encoding.UTF8.GetBytes(strPostData);
+            ByteArrayContent content = new ByteArrayContent(postData);
+            content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded");
+            content.Headers.ContentLength = postData.Length;
+            request.Content = content;
 
             request.Headers.Add("Accept-Language", "en-us,en;q=0.8");
             request.Headers.Add("Accept-Encoding", "gzip, deflate");
