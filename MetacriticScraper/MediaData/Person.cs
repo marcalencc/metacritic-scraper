@@ -17,6 +17,15 @@ namespace MetacriticScraper.MediaData
             }
         }
 
+        private PersonRatingSummary m_ratingsSummary;
+        public PersonRatingSummary RatingsSummary
+        {
+            get
+            {
+                return m_ratingsSummary;
+            }
+        }
+
         private List<CreditMediaItemPair> m_creditMediaPairItems;
         public List<CreditMediaItemPair> CreditMediaPairItems
         {
@@ -32,15 +41,6 @@ namespace MetacriticScraper.MediaData
                     m_ratingsSummary = PersonRatingSummary.GetRatingSummary(
                         m_creditMediaPairItems.Select(m => m.Item));
                 }
-            }
-        }
-
-        private PersonRatingSummary m_ratingsSummary;
-        public PersonRatingSummary RatingsSummary
-        {
-            get
-            {
-                return m_ratingsSummary;
             }
         }
 
@@ -69,9 +69,9 @@ namespace MetacriticScraper.MediaData
 
         public struct PersonRatingSummary
         {
-            public double HighestRating;
-            public double AverageRating;
-            public double LowestRating;
+            public double? HighestRating;
+            public double? AverageRating;
+            public double? LowestRating;
             public int ReviewCount;
 
             private PersonRatingSummary (IEnumerable<MediaItem> mediaItemList)

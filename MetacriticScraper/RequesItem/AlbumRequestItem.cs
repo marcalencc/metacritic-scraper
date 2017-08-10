@@ -54,21 +54,23 @@ namespace MetacriticScraper.RequestData
                 DateTime releaseDate;
                 if (DateTime.TryParse(releaseDateStr, out releaseDate))
                 {
-                    album.ReleaseDate = releaseDate;
+                    album.ReleaseDate = releaseDate.ToString("MM/dd/yyyy");
                 }
 
-                short criticRating = 0;
-                short criticRatingCount = 0;
-                if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out criticRating))
+                short? criticRating = null;
+                short? criticRatingCount = null;
+                if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out short tempCriticRating))
                 {
+                    criticRating = tempCriticRating;
                     criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
                 }
 
-                float userRating = 0;
-                short userRatingCount = 0;
+                float? userRating = null;
+                short? userRatingCount = null;
                 html = html.Substring(html.IndexOf("metascore_w user large"));
-                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out userRating))
+                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float tempUserRating))
                 {
+                    userRating = tempUserRating;
                     userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
                 }
 

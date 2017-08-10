@@ -76,10 +76,10 @@ namespace MetacriticScraper.RequestData
                     html = html.Substring(html.IndexOf(@"class=""title brief_metascore""") +
                         @"class=""title brief_metascore""".Length);
 
-                    short criticScore; 
-                    if (!short.TryParse(ParseItem(ref html, @""">", "</span>"), out criticScore))
+                    short? criticScore = null; 
+                    if (short.TryParse(ParseItem(ref html, @""">", "</span>"), out short tempCriticScore))
                     {
-                        criticScore = -2;
+                        criticScore = tempCriticScore;
                     }
 
                     string title = ParseItem(ref html, @""">", "</a>");
@@ -95,17 +95,17 @@ namespace MetacriticScraper.RequestData
 
                     html = html.Substring(html.IndexOf(@"class=""score"">") +
                         @"class=""score"">".Length);
-                    float userScore;
-                    if (!float.TryParse(ParseItem(ref html, @""">", "</span>"), out userScore))
+                    float? userScore = null;
+                    if (float.TryParse(ParseItem(ref html, @""">", "</span>"), out float tempUserScore))
                     {
-                        userScore = -2f;
+                        userScore = tempUserScore;
                     }
 
                     Rating rating = new Rating(criticScore, userScore);
                     MediaItem item = new MediaItem()
                     {
                         Title = title,
-                        ReleaseDate = releaseDate,
+                        ReleaseDate = releaseDate.ToString("MM/dd/yyyy"),
                         Rating = rating
                     };
 

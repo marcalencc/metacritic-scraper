@@ -10,7 +10,7 @@ namespace MetacriticScraper.MediaData
     public class MediaItem : IMetacriticData, IEquatable<MediaItem>
     {
         public string Title { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
         public Rating Rating { get; set; }
         public string ImageUrl { get; set; }
 

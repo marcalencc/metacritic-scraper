@@ -62,13 +62,14 @@ namespace MetacriticScraper.RequestData
                         DateTime releaseDate;
                         if (DateTime.TryParse(releaseDateStr, out releaseDate))
                         {
-                            movie.ReleaseDate = releaseDate;
+                            movie.ReleaseDate = releaseDate.ToString("MM/dd/yyyy"); ;
                         }
 
-                        short criticRating = 0;
-                        short criticRatingCount = 0;
-                        if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out criticRating))
+                        short? criticRating = null;
+                        short? criticRatingCount = null;
+                        if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out short tempCriticRating))
                         {
+                            criticRating = tempCriticRating;
                             criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
                         }
 
@@ -77,10 +78,11 @@ namespace MetacriticScraper.RequestData
                         // User
                         html = html.Substring(html.IndexOf("based on "));
 
-                        float userRating = 0;
-                        short userRatingCount = 0;
-                        if (short.TryParse(ParseItem(ref html, @"based on ", " Ratings"), out userRatingCount))
+                        float? userRating = 0;
+                        short? userRatingCount = 0;
+                        if (short.TryParse(ParseItem(ref html, @"based on ", " Ratings"), out short tempUserRatingCount))
                         {
+                            userRatingCount = tempUserRatingCount;
                             html = html.Substring(html.IndexOf("metascore_w user"));
                             userRating = float.Parse(ParseItem(ref html, @">", @"</span>"));
                         }

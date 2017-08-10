@@ -127,7 +127,7 @@ namespace MetacriticScraper.Tests
             CollectionAssert.Contains(((Person)mItem).CreditMediaPairItems.
                 Select(c => c.Item),
                 new MediaItem() { Title = "Hannah and Her Sisters",
-                    ReleaseDate = new System.DateTime(1986, 2, 1) } );
+                    ReleaseDate = "02/01/1986" } );
             CollectionAssert.AllItemsAreInstancesOfType(((Person)mItem).CreditMediaPairItems.
                 Select(c => c.Item), typeof(MediaItem));
         }
@@ -151,7 +151,7 @@ namespace MetacriticScraper.Tests
                 new MediaItem()
                 {
                     Title = "Made in America",
-                    ReleaseDate = new System.DateTime(2014, 7, 11)
+                    ReleaseDate = "07/11/2014"
                 });
             CollectionAssert.AllItemsAreInstancesOfType(((Person)mItem).CreditMediaPairItems.
                 Select(c => c.Item), typeof(MediaItem));
@@ -176,7 +176,7 @@ namespace MetacriticScraper.Tests
                 new MediaItem()
                 {
                     Title = "The Ed Sullivan Show: Season 22",
-                    ReleaseDate = new System.DateTime(1969, 9, 28)
+                    ReleaseDate = "09/28/1969"
                 });
             CollectionAssert.AllItemsAreInstancesOfType(((Person)mItem).CreditMediaPairItems.
                 Select(c => c.Item), typeof(MediaItem));
@@ -201,7 +201,7 @@ namespace MetacriticScraper.Tests
                 new MediaItem()
                 {
                     Title = "Kourtney and Kim Take New York: Season 1",
-                    ReleaseDate = new System.DateTime(2011, 1, 23)
+                    ReleaseDate = "01/23/2011"
                 });
             CollectionAssert.AllItemsAreInstancesOfType(((Person)mItem).CreditMediaPairItems.
                 Select(c => c.Item), typeof(MediaItem));
@@ -227,7 +227,7 @@ namespace MetacriticScraper.Tests
             new MediaItem()
             {
                 Title = "My Beautiful Dark Twisted Fantasy",
-                ReleaseDate = new System.DateTime(2010, 11, 22)
+                ReleaseDate = "11/22/2010"
             });
 
             CollectionAssert.AllItemsAreInstancesOfType(((Person)mItem).CreditMediaPairItems.

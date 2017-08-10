@@ -63,18 +63,20 @@ namespace MetacriticScraper.RequestData
 
                 tvShow.Studio = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
 
-                short criticRating = 0;
-                short criticRatingCount = 0;
-                if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out criticRating))
+                short? criticRating = null;
+                short? criticRatingCount = null;
+                if (short.TryParse(ParseItem(ref html, @"<span itemprop=""ratingValue"">", @"</span>"), out short tempCriticRating))
                 {
+                    criticRating = tempCriticRating;
                     criticRatingCount = Int16.Parse(ParseItem(ref html, @"<span itemprop=""reviewCount"">", @"</span>"));
                 }
 
-                float userRating = 0;
-                short userRatingCount = 0;
+                float? userRating = null;
+                short? userRatingCount = null;
                 html = html.Substring(html.IndexOf("metascore_w user large"));
-                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out userRating))
+                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float temUserRating))
                 {
+                    userRating = temUserRating;
                     userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
                 }
 
@@ -84,7 +86,7 @@ namespace MetacriticScraper.RequestData
                 DateTime releaseDate;
                 if (DateTime.TryParse(releaseDateStr, out releaseDate))
                 {
-                    tvShow.ReleaseDate = releaseDate;
+                    tvShow.ReleaseDate = releaseDate.ToString("MM/dd/yyyy");
                 }
 
                 string key = UrlImagePath.Keys.FirstOrDefault(k => urlResponsePair.Url.Contains(k));
