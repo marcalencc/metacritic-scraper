@@ -3,6 +3,9 @@ Metacritic Scraper is a library that scrapes data about albums, tv shows, movies
 
 This project is built using the .Net Framework v 4.6.1
 
+# NuGet
+* > https://www.nuget.org/packages/MetacriticScraper
+
 # How to Use
 Create an instance of WebScraper class
 
