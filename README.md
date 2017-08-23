@@ -3,6 +3,9 @@ Metacritic Scraper is a library that scrapes data about albums, tv shows, movies
 
 This project is built using the .Net Framework v 4.6.1
 
+# API
+Check the API built using this library at https://github.com/marcalencc/metacritic-api/blob/master/README.md
+
 # NuGet
 * > https://www.nuget.org/packages/MetacriticScraper
 
@@ -60,4 +63,4 @@ All responses will be routed to the callback set during instantiation.
 # Sample Implementation
 For a complete sample implementation, check <br/> https://github.com/marcalencc/metacritic-api/blob/master/MetacriticAPI/Services/MetacriticService.cs <br/>
 
-This is from an API that I am building using this project.
+This is from an API that I built using this project.
