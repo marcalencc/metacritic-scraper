@@ -208,10 +208,7 @@ namespace MetacriticScraper.Scraper
                 }
                 else
                 {
-                    if (!m_requestQueue.WaitOnEmpty(10000))
-                    {
-                        Logger.Info("RequestThreadProc woke up after ten seconds.");
-                    }
+                    m_requestQueue.WaitOnEmpty(10000);
                 }
 
                 Thread.Sleep(10);
@@ -275,10 +272,7 @@ namespace MetacriticScraper.Scraper
                 }
                 else
                 {
-                    if (!m_dataFetchQueue.WaitOnEmpty(10000))
-                    {
-                        Logger.Info("DataFetchThreadProc woke up after ten seconds.");
-                    }
+                    m_dataFetchQueue.WaitOnEmpty(10000);
                 }
                 Thread.Sleep(10);
             }
