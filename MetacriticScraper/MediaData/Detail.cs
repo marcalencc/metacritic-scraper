@@ -17,9 +17,62 @@ namespace MetacriticScraper.MediaData
             }
         }
 
+        public bool ShouldSerializeDetails()
+        {
+            return m_details.Count > 0;
+        }
+
+        private List<MediaCredit> m_credits;
+        public List<MediaCredit> Credits
+        {
+            get
+            {
+                return m_credits;
+            }
+        }
+
+        public bool ShouldSerializeCredits()
+        {
+            return m_credits.Count > 0;
+        }
+
         public MediaDetail()
         {
             m_details = new List<DetailItem>();
+            m_credits = new List<MediaCredit>();
+        }
+    }
+
+    public class MediaCredit : IEquatable<MediaCredit>
+    {
+        public MediaCredit(string name, string credit)
+        {
+            m_name = name.Trim();
+            m_credit = credit.Trim();
+        }
+
+        private string m_name;
+        public string Name
+        {
+            get
+            {
+                return m_name;
+            }
+        }
+
+        private string m_credit;
+        public string Credit
+        {
+            get
+            {
+                return m_credit;
+            }
+        }
+
+        public bool Equals(MediaCredit other)
+        {
+            return m_name == other.m_name &&
+                m_credit == other.m_credit;
         }
     }
 

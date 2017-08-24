@@ -125,16 +125,16 @@ namespace MetacriticScraper.RequestData
 
                 while (html.Contains(@"<td class=""person"">"))
                 {
-                    string desc = ParseItem(ref html, @"<td class=""person"">", @"</td>");
-                    if (desc.Contains("</a>"))
+                    string name = ParseItem(ref html, @"<td class=""person"">", @"</td>");
+                    if (name.Contains("</a>"))
                     {
-                        desc = ParseItem(ref desc, @""">", @"</a>");
+                        name = ParseItem(ref name, @""">", @"</a>");
                     }
 
-                    string value = ParseItem(ref html, @"<td class=""role"">", @"</td>");
+                    string role = ParseItem(ref html, @"<td class=""role"">", @"</td>");
 
-                    DetailItem detail = new DetailItem(desc, value);
-                    mediaDetail.Details.Add(detail);
+                    MediaCredit credit = new MediaCredit(name, role);
+                    mediaDetail.Credits.Add(credit);
                 }
 
                 return mediaDetail;

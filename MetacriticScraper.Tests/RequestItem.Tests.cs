@@ -164,15 +164,15 @@ namespace MetacriticScraper.Tests
             MovieRequestItem item = new MovieRequestItem("1", "zero dark thirty", "", "details");
             IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
-            Assert.AreEqual(((MediaDetail) mItem).Details.Count, 60);
+            Assert.AreEqual(((MediaDetail) mItem).Details.Count, 8);
             CollectionAssert.Contains(((MediaDetail) mItem).Details,
                 new DetailItem("Runtime", "157 min"));
-            CollectionAssert.Contains(((MediaDetail) mItem).Details,
-                new DetailItem("Jessica Chastain", "Maya"));
-            CollectionAssert.Contains(((MediaDetail) mItem).Details,
-                new DetailItem("Nabil Elouahabi", "Detainee On Monitor"));
-            CollectionAssert.Contains(((MediaDetail) mItem).Details,
-                new DetailItem("Jonathan Leven", "Co-Producer"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Credits,
+                new MediaCredit("Jessica Chastain", "Maya"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Credits,
+                new MediaCredit("Nabil Elouahabi", "Detainee On Monitor"));
+            CollectionAssert.Contains(((MediaDetail) mItem).Credits,
+                new MediaCredit("Jonathan Leven", "Co-Producer"));
         }
 
         // Album
@@ -416,9 +416,9 @@ namespace MetacriticScraper.Tests
             TVShowRequestItem item = new TVShowRequestItem("1", "veep", "6", "details");
             IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
 
-            Assert.AreEqual(((MediaDetail) mItem).Details.Count, 12);
-            CollectionAssert.Contains(((MediaDetail) mItem).Details,
-                new DetailItem("Julia Louis-Dreyfus", "Vice President Selina Meyer"));
+            Assert.AreEqual(((MediaDetail) mItem).Details.Count, 4);
+            CollectionAssert.Contains(((MediaDetail) mItem).Credits,
+                new MediaCredit("Julia Louis-Dreyfus", "Vice President Selina Meyer"));
             CollectionAssert.Contains(((MediaDetail) mItem).Details,
                 new DetailItem("Creators", "Armando Iannucci"));
         }

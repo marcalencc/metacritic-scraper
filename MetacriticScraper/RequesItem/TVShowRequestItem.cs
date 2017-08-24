@@ -127,10 +127,10 @@ namespace MetacriticScraper.RequestData
                 {
                     html = html.Substring(html.IndexOf(@"<td class=""person"">") +
                         @"<td class=""person"">".Length);
-                    string desc = ParseItem(ref html, @""">", @"</a>");
-                    string value = ParseItem(ref html, @"<td class=""role"">", @"</td>");
-                    DetailItem detail = new DetailItem(desc, value);
-                    mediaDetails.Details.Add(detail);
+                    string name = ParseItem(ref html, @""">", @"</a>");
+                    string role = ParseItem(ref html, @"<td class=""role"">", @"</td>");
+                    MediaCredit credit = new MediaCredit(name, role);
+                    mediaDetails.Credits.Add(credit);
                 }
 
                 return mediaDetails;
