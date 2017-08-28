@@ -78,6 +78,7 @@
     <Content Include="TestData\album_teensofdenial_details.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Compile Include="UrlParser.Search.Tests.cs" />
     <Compile Include="UrlParser.Test.cs" />
     <Compile Include="WebScraper.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -83,6 +83,7 @@
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Interfaces\IScraper.cs" />
     <Compile Include="Interfaces\IWebUtils.cs" />
+    <Compile Include="RequesItem\SearchRequestItem.cs" />
     <Compile Include="UrlResponsePair.cs" />
     <Compile Include="RequesItem\PersonRequestItem.cs" />
     <Compile Include="UrlParser.cs" />
