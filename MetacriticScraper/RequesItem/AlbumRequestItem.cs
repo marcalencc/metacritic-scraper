@@ -67,11 +67,15 @@ namespace MetacriticScraper.RequestData
 
                 float? userRating = null;
                 short? userRatingCount = null;
-                html = html.Substring(html.IndexOf("metascore_w user large"));
-                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float tempUserRating))
+                int userRatingIdx = html.IndexOf("metascore_w user large");
+                if (userRatingIdx != -1)
                 {
-                    userRating = tempUserRating;
-                    userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
+                    html = html.Substring(userRatingIdx);
+                    if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float tempUserRating))
+                    {
+                        userRating = tempUserRating;
+                        userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
+                    }
                 }
 
                 album.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
