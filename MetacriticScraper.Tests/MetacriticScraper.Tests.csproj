@@ -55,7 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PersonRequestItem.Tests.cs" />
+    <Compile Include="Parameter.Test.cs" />
+    <Compile Include="RequestItem.Person.Tests.cs" />
+    <Compile Include="RequestItem.Search.Tests.cs" />
     <Compile Include="RequestItem.Tests.cs" />
     <Content Include="TestData\album_aseatatthetable_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

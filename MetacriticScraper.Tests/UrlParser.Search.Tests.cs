@@ -53,7 +53,7 @@ namespace MetacriticScraper.Tests
             string title;
             string yearOrSeason;
             string thirdLevelReq;
-            string[] param = null;
+            string param = null;
 
             bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq, ref param);
@@ -62,7 +62,7 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(keyword, "/search/");
             Assert.AreEqual(title, "lover");
             Assert.AreEqual(thirdLevelReq, "movie");
-            Assert.AreEqual(param, new string[] { "offset=3", "limit=1", "sort=relevancy" });
+            Assert.AreEqual(param, "offset=3&limit=1&sort=relevancy" );
         }
 
         [Test]
@@ -73,7 +73,7 @@ namespace MetacriticScraper.Tests
             string title;
             string yearOrSeason;
             string thirdLevelReq;
-            string[] param = null;
+            string param = null;
 
             Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq, ref param), Throws.Exception.TypeOf<InvalidUrlException>().
@@ -89,7 +89,7 @@ namespace MetacriticScraper.Tests
             string title;
             string yearOrSeason;
             string thirdLevelReq;
-            string[] param = null;
+            string param = null;
 
             Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq, ref param), Throws.Exception.TypeOf<InvalidUrlException>().
@@ -105,12 +105,59 @@ namespace MetacriticScraper.Tests
             string title;
             string yearOrSeason;
             string thirdLevelReq;
-            string[] param = null;
+            string param = null;
 
             Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
                 out thirdLevelReq, ref param), Throws.Exception.TypeOf<InvalidUrlException>().
                 With.Property("Message").
                 EqualTo(@"Invalid parameter: dvr?offset=3&limit=1&sort=relevancy"));
+        }
+
+        [Test]
+        public void Test_UrlParser_SearchItemCreationNoThirdLevelRequest()
+        {
+            string keyword = "/search/";
+            string title = "lover";
+            string yearOrSeason = "";
+
+            Assert.That(() => m_urlParser.CreateRequestItem("1", keyword, title, yearOrSeason, ""),
+                Throws.Exception.TypeOf<InvalidUrlException>().
+                With.Property("Message").
+                EqualTo(@"Category required for ""search"" request"));
+        }
+
+        [Test]
+        public void Test_UrlParser_SearchItemCreation()
+        {
+            string keyword = "/search/";
+            string title = "love-game";
+            string thirdLevelReq = "album";
+
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, "", thirdLevelReq);
+
+            Assert.IsNotNull(item);
+            Assert.IsInstanceOf(typeof(SearchRequestItem), item);
+            Assert.AreEqual(item.RequestId, "1");
+            Assert.AreEqual(item.Name, "love game");
+            Assert.AreEqual(item.ThirdLevelRequest, "album");
+        }
+
+        [Test]
+        public void Test_UrlParser_ItemCreationWithParameters()
+        {
+            string keyword = "/search/";
+            string title = @"game";
+            string thirdLevelReq = "album";
+            string parameter = "offset=3&limit=1&sort=relevancy";
+
+            RequestItem item = m_urlParser.CreateRequestItem("1", keyword, title, "",
+                thirdLevelReq, parameter);
+
+            Assert.IsNotNull(item);
+            Assert.IsInstanceOf(typeof(SearchRequestItem), item);
+            Assert.AreEqual(item.RequestId, "1");
+            Assert.AreEqual(((SearchRequestItem)item).ParameterData.ParameterString,
+                "offset=3&limit=1&sort=relevancy");
         }
     }
 }

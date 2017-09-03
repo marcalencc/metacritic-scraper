@@ -19,13 +19,13 @@ namespace MetacriticScraper.Scraper
         public bool ParseRequestUrl(string id, string url, out string keyword, out string title,
             out string yearOrSeason, out string thirdLevelReq)
         {
-            string[] parameters = null;
+            string parameters = null;
             return ParseRequestUrl(id, url, out keyword, out title, out yearOrSeason, out thirdLevelReq,
                 ref parameters);
         }
 
         public bool ParseRequestUrl(string id, string url, out string keyword, out string title,
-            out string yearOrSeason, out string thirdLevelReq, ref string[] parameters)
+            out string yearOrSeason, out string thirdLevelReq, ref string parameters)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace MetacriticScraper.Scraper
                                     if (SEARCH_TYPES.Contains(thirdLevelReq))
                                     {
                                         url = url.Replace(thirdLevelReq + "?", "");
-                                        parameters = url.Split('&');
+                                        parameters = url;
                                     }
                                     else
                                     {
@@ -163,7 +163,7 @@ namespace MetacriticScraper.Scraper
         }
 
         public RequestItem CreateRequestItem(string id, string keyword, string title, string yearOrSeason,
-            string thirdLevelReq, string[] parameters)
+            string thirdLevelReq, string parameterString)
         {
             if (keyword == "/movie/")
             {
@@ -217,7 +217,7 @@ namespace MetacriticScraper.Scraper
                 }
                 else
                 {
-                    return new SearchRequestItem(id, title, thirdLevelReq, parameters);
+                    return new SearchRequestItem(id, title, thirdLevelReq, parameterString);
                 }
             }
             return null;

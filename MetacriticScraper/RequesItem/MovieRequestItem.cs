@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using MetacriticScraper.Scraper;
 using MetacriticScraper.Interfaces;
 using MetacriticScraper.MediaData;
@@ -114,9 +115,16 @@ namespace MetacriticScraper.RequestData
                     {
                         value = ParseItem(ref value, @""">", @"</a>");
                     }
+
                     if (value.Contains("<span>"))
                     {
                         value = value.Replace("<span>", "").Replace("</span>", "");
+                    }
+
+                    if (desc == "Genres")
+                    {
+                        Regex rgx = new Regex("\\s+");
+                        value = rgx.Replace(value, " ");
                     }
 
                     DetailItem detail = new DetailItem(desc, value);

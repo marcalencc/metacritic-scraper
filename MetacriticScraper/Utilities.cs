@@ -22,4 +22,17 @@ namespace MetacriticScraper
         int RefTypeId { get; }
         string ItemDate { get; }
     }
+
+    public class CaseInsensitiveComparer : IEqualityComparer<string>
+    {
+        public bool Equals(string x, string y)
+        {
+            return string.Equals(x, y, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public int GetHashCode(string x)
+        {
+            return x.GetHashCode();
+        }
+    }
 }

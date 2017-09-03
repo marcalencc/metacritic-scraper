@@ -172,7 +172,7 @@ namespace MetacriticScraper.Scraper
                 string title;
                 string yearOrSeason;
                 string thirdLevelReq;
-                string[] param = null;
+                string param = null;
                 bool valid = m_urlParser.ParseRequestUrl(id, url, out keyword, out title, out yearOrSeason,
                     out thirdLevelReq, ref param);
                 if (valid)
