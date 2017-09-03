@@ -52,10 +52,7 @@ namespace MetacriticScraper.RequestData
             }
 
             string offsetStr = m_parameterData.GetParameterValue("offset");
-            if (!int.TryParse(offsetStr, out int offset))
-            {
-                offset = 0;
-            }
+            int.TryParse(offsetStr, out int offset);
 
             int lowerLimit = (offset - 1) / 20;
             int remainder = 0;
@@ -107,10 +104,41 @@ namespace MetacriticScraper.RequestData
         {
             Logger.Info("Scraping {0} urls for {1}", Urls.Count, SearchString);
             List<UrlResponsePair> responses = new List<UrlResponsePair>();
-            foreach (string url in Urls)
+
+            int remainder = 0;
+            string limitStr = m_parameterData.GetParameterValue("limit");
+            if (!int.TryParse(limitStr, out int limit))
             {
-                var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url, Constants.MetacriticURL, 30000);
-                responses.Add(new UrlResponsePair(url, task.Result));
+                limit = 20;
+            }
+            string offsetStr = m_parameterData.GetParameterValue("offset");
+            int.TryParse(offsetStr, out int offset);
+
+            for (int idx = 0; idx < Urls.Count; ++idx)
+            {
+                string url = Urls[idx];
+                int included = 20;
+
+                if (idx == 0)
+                {
+                    if (offset != 0)
+                    {
+                        included = 20 - ((offset - 1) % 20);
+                    }
+                    remainder = included;
+                }
+                else if (idx == Urls.Count - 1)
+                {
+                    included = (limit - remainder) % 20;
+                    if(included == 0)
+                    {
+                        included = 20;
+                    }
+                }
+
+                var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url,
+                    Constants.MetacriticURL + "/search/popular", 30000);
+                responses.Add(new UrlResponsePair(url, task.Result, idx + 1, included));
             }
 
             return responses;
@@ -120,31 +148,54 @@ namespace MetacriticScraper.RequestData
         {
             SearchData data = new SearchData();
             string response = urlResponsePair.Response;
+
             if (!string.IsNullOrEmpty(response))
             {
+                int lowerBound = 1;
+                int upperBound = 20;
+
+                if (Urls.Count > 1)
+                {
+                    // First in sequence
+                    if (urlResponsePair.SequenceNo == 1)
+                    {
+                        lowerBound = 20 - urlResponsePair.SearchItemCount - 1;
+                    }
+                    // Last in sequence
+                    else if (urlResponsePair.SequenceNo == Urls.Count)
+                    {
+                        upperBound = urlResponsePair.SearchItemCount;
+                    }
+                }
+
                 int startIdx = response.IndexOf(@"class=""search_results""");
                 if (startIdx != -1)
                 {
                     response = response.Substring(startIdx);
-                    while (response.Contains(@"class=""result_wrap"""))
+                    int idx = 1;
+                    while (response.Contains(@"class=""result_wrap""") && idx <= upperBound)
                     {
-                        SearchData.SearchItem item = new SearchData.SearchItem();
-                        item.Id = ParseItem(ref response, @"href=""", @""">");
-                        item.Title = ParseItem(ref response, @""">", "</a>");
-                        string criticScoreStr = ParseItem(ref response, @""">", "</span>");
-                        short.TryParse(criticScoreStr, out short criticScore);
-                        item.Rating = new Rating(criticScore);
-                        item.ReleaseDate = ParseItem(ref response, @"<span class=""data"">", "</span>");
-
-                        if (response.Contains(@"class=""stat genre"""))
+                        if (idx >= lowerBound)
                         {
-                            response = response.Substring(response.IndexOf(@"class=""stat genre"""));
-                            string genre = ParseItem(ref response, @"<span class=""data"">", "</span>");
-                            Regex rgx = new Regex("\\s+");
-                            item.Genre = rgx.Replace(genre, " ");
-                        }
+                            SearchData.SearchItem item = new SearchData.SearchItem();
+                            item.Id = ParseItem(ref response, @"href=""", @""">");
+                            item.Title = ParseItem(ref response, @""">", "</a>");
+                            string criticScoreStr = ParseItem(ref response, @""">", "</span>");
+                            short.TryParse(criticScoreStr, out short criticScore);
+                            item.Rating = new Rating(criticScore);
+                            item.ReleaseDate = ParseItem(ref response, @"<span class=""data"">", "</span>");
 
-                        data.AddItem(item);
+                            if (response.Contains(@"class=""stat genre"""))
+                            {
+                                response = response.Substring(response.IndexOf(@"class=""stat genre"""));
+                                string genre = ParseItem(ref response, @"<span class=""data"">", "</span>");
+                                Regex rgx = new Regex("\\s+");
+                                item.Genre = rgx.Replace(genre, " ");
+                            }
+
+                            data.AddItem(item);
+                        }
+                        idx++;
                     }
                 }
             }
