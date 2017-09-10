@@ -151,7 +151,7 @@ namespace MetacriticScraper.RequestData
 
             if (!string.IsNullOrEmpty(response))
             {
-                int lowerBound = 0;
+                int lowerBound = 1;
                 int upperBound = 20;
 
                 if (Urls.Count > 1)
@@ -159,7 +159,7 @@ namespace MetacriticScraper.RequestData
                     // First in sequence
                     if (urlResponsePair.SequenceNo == 1)
                     {
-                        lowerBound = 20 - urlResponsePair.SearchItemCount;
+                        lowerBound = 20 - urlResponsePair.SearchItemCount - 1;
                     }
                     // Last in sequence
                     else if (urlResponsePair.SequenceNo == Urls.Count)
@@ -168,61 +168,39 @@ namespace MetacriticScraper.RequestData
                     }
                 }
 
-                if (urlResponsePair.SequenceNo == 1)
-                {
-                    int idx = response.IndexOf(@"class=""query_results""");
-                    response = response.Substring(idx);
-                    data.TotalResultCount = int.Parse(ParseItem(ref response, @" of ", @" results"));
-                }
-
-                int startIdx = response.IndexOf(@"class=""search_results");
+                int startIdx = response.IndexOf(@"class=""search_results""");
                 if (startIdx != -1)
                 {
                     response = response.Substring(startIdx);
                     int idx = 1;
                     while (response.Contains(@"class=""result_wrap""") && idx <= upperBound)
                     {
-                        SearchData.SearchItem item = new SearchData.SearchItem();
-                        string id = ParseItem(ref response, @"href=""", @""">");
-
-                        // Album url has different format
-                        string[] parts = id.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
-                        if (parts.Length > 0 && parts[0] == "music")
+                        if (idx >= lowerBound)
                         {
-                            id = TrimAlbumUrl(id);
-                        }
+                            SearchData.SearchItem item = new SearchData.SearchItem();
+                            item.Id = ParseItem(ref response, @"href=""", @""">");
+                            item.Title = ParseItem(ref response, @""">", "</a>");
+                            string criticScoreStr = ParseItem(ref response, @""">", "</span>");
+                            short.TryParse(criticScoreStr, out short criticScore);
+                            item.Rating = new Rating(criticScore);
+                            item.ReleaseDate = ParseItem(ref response, @"<span class=""data"">", "</span>");
 
-                        item.Id = id;
-                        item.Title = ParseItem(ref response, @""">", "</a>");
-                        string criticScoreStr = ParseItem(ref response, @""">", "</span>");
-                        short.TryParse(criticScoreStr, out short criticScore);
-                        item.Rating = new Rating(criticScore);
-                        item.ReleaseDate = ParseItem(ref response, @"<span class=""data"">", "</span>");
+                            if (response.Contains(@"class=""stat genre"""))
+                            {
+                                response = response.Substring(response.IndexOf(@"class=""stat genre"""));
+                                string genre = ParseItem(ref response, @"<span class=""data"">", "</span>");
+                                Regex rgx = new Regex("\\s+");
+                                item.Genre = rgx.Replace(genre, " ");
+                            }
 
-                        if (response.Contains(@"class=""stat genre"""))
-                        {
-                            response = response.Substring(response.IndexOf(@"class=""stat genre"""));
-                            string genre = ParseItem(ref response, @"<span class=""data"">", "</span>");
-                            Regex rgx = new Regex("\\s+");
-                            item.Genre = rgx.Replace(genre, " ");
-                        }
-
-                        if (idx > lowerBound)
-                        {
                             data.AddItem(item);
                         }
-
                         idx++;
                     }
                 }
             }
 
             return data;
-        }
-
-        private string TrimAlbumUrl(string url)
-        {
-            return url.Substring(0, url.LastIndexOf('/'));
         }
 
         public override bool Equals(IResult obj)
