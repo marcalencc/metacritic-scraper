@@ -9,6 +9,8 @@ namespace MetacriticScraper.MediaData
 {
     public class SearchData : IMetacriticData
     {
+        public int? TotalResultCount { get; set; }
+
         private List<SearchItem> m_searchItems;
         public List<SearchItem> SearchItems
         {
@@ -16,6 +18,11 @@ namespace MetacriticScraper.MediaData
             {
                 return m_searchItems;
             }
+        }
+
+        public SearchData ()
+        {
+            m_searchItems = new List<SearchItem>();
         }
 
         public void AddItem (SearchItem item)

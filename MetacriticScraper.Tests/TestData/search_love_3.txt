@@ -1,0 +1,2324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+        	<title>love - Reviews, Articles, People, Trailers and more at Metacritic - Page 4 - Metacritic</title>
+	
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1044.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+
+    
+    <meta name="description" content="Search results for love at Metacritic.com - Page 4">
+
+    
+    
+    <meta name="viewport" content="width=1024">
+
+
+    
+    <meta  name="robots" content="NOINDEX, FOLLOW">
+
+
+    
+    <meta name="application-name" content="Metacritic">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="/images/win8tile/76bf1426-2886-4b87-ae1c-06424b6bb8a2.png">
+
+    
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="/css/fonts/proxima-nova/stylesheet.css" type="text/css" charset="utf-8" />
+    
+    <link rel="stylesheet" href="/css/global.min.1504634451.css" type="text/css">
+<link rel="stylesheet" href="/css/search/base.min.1504634378.css" type="text/css">
+
+
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+
+    
+        
+    
+    
+    
+			
+					<link rel="prev" href="/search/movie/love/results?page=2"/>
+							<link rel="next" href="/search/movie/love/results?page=4"/>
+		    
+    
+    
+    
+    <script type="text/javascript" src="/js/global.min.1504634451.js"></script>
+
+
+    
+    <script src="//cdn.optimizely.com/js/2333541344.js"></script>
+
+    
+                        
+            <script async type="text/javascript" src="//js.indexww.com/ht/ls-metacritic.js"></script>
+            
+            
+    <script type="text/javascript">
+        
+        
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        window.metac_ads_pushdisplay = window.metac_ads_pushdisplay || [];
+        window.metac_gallery_ads_pushdisplay = window.metac_gallery_ads_pushdisplay || [];
+        window.metac_hover_ads_pushdisplay = window.metac_hover_ads_pushdisplay || [];
+        (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +'//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+        
+    </script>
+
+    <script type="text/javascript">
+        
+    	MC_USER_LOGGED_IN = false;
+        
+        
+            </script>
+
+    
+    
+
+    
+    <script type="text/javascript" src="//native.sharethrough.com/assets/tag.js" async></script>
+
+    
+    <script src="//vidtech.cbsinteractive.com/uvpjs/2.5.8/CBSI-PLAYER.js"></script>
+    <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+
+</head>
+<body>
+
+
+
+<div id="site_layout">
+    <div id="masthead">
+        
+
+                    <div id="omnibar_wrapper">
+                
+                        
+                        <div id="omnibar" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_omnibar = googletag.defineSlot("/8264/Asia-metacritic/search",[980,45], "omnibar").addService(googletag.pubads()).setTargeting("pos", "top").setCollapseEmptyDiv(true, true);
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("omnibar");
+                                    </script>
+                                        </div>
+                        
+
+
+            </div>
+        
+        <div id="content_header_wrapper">
+            <header id="top_header">
+    <nav id="primary_nav" class="inset_left2 inset_right2">
+        <div class="primary_nav_row">
+            <div class="logo">
+                <a href="http://www.metacritic.com"><img src="/images/mobile/logo.png" alt="Metacritic logo"></a>
+            </div>
+
+            <div id="primary_menu_wrapper">
+                <div id="primary_menu_items">
+                    <div class="primary_menu_items_row">
+                                                    <div id="primary_menu_item_movies" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/movie">
+                                        Movies
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_games" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/game">
+                                        Games
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_tv" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/tv">
+                                        TV
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_music" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/music">
+                                        Music
+                                    </a>
+                                </span>
+                            </div>
+                                                    <div id="primary_menu_item_features" class="primary_menu_item">
+                                <span class="primary_menu_text">
+                                    <a href="http://www.metacritic.com/feature">
+                                        Features
+                                    </a>
+                                </span>
+                            </div>
+                                                <div id="primary_menu_item_login" class="primary_menu_item">
+                            
+                                                            <span class="primary_menu_text">
+                                    <a id="login" href="https://secure.metacritic.com/login">LOG&nbsp;IN</a> / <a id="signup" href="https://secure.metacritic.com/signup">SIGN&nbsp;UP</a>
+                                </span>
+                                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="primary_search">
+                <div id="primary_search_wrapper">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <span class="search_label">SEARCH</span>
+                </div>
+            </div>
+
+            <div id="primary_social" class="social_round">
+                <a href="http://www.facebook.com/Metacritic" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
+                <a href="http://twitter.com/metacritic" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <nav id="secondary_nav" class="hover_none">
+                                                                        
+                
+                                                                                                                    <div id="secondary_nav_items_movies" class="secondary_nav_items">
+                    <table id="secondary_nav_table_movies" class="secondary_nav_table">
+                        <tr>
+                                                    <td class="menu_col_left">
+                                                                                                                                                                                    <div class="menu_w_icon">
+                                            <a href="/browse/movies/release-date/theaters/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/ticket.png">
+                                                <span>In Theaters</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/browse/movies/release-date/coming-soon/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/clock.png">
+                                                <span>Coming Soon</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/browse/dvds/release-date/new-releases/date">
+                                                <img src="http://www.metacritic.com/images/icons/nav/couch.png">
+                                                <span>DVD & Streaming</span>
+                                            </a>
+                                        </div>
+                                                                                                                                                                                                                        <div class="menu_w_icon">
+                                            <a href="/feature/more/best-of-2016">
+                                                <img src="http://www.metacritic.com/images/icons/nav/ribbon.png">
+                                                <span>Best of 2016</span>
+                                            </a>
+                                        </div>
+                                                                                                </td>
+                                                                            <td class="menu_col_mid">
+                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/90day/filtered">
+                                            High Scores
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/all/filtered/netflix">
+                                            Best of Netflix
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/score/metascore/all/filtered/piv">
+                                            Best of Amazon
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/genre/date/action">
+                                            Browse by Genre
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/critic/reviewed">
+                                            Critics
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/publication/reviewed">
+                                            Publications
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/browse/movies/title/dvd">
+                                            A - Z Index
+                                        </a>
+                                    </div>
+                                                                                        </td>
+                                                                                                    <td class="menu_col_right larger_images no_title_separ">
+                                    <div class="pad_btm2">
+                                        <a href="http://www.metacritic.com/browse/movies/release-date/theaters/metascore" class="strip_title oswald">
+                                            Featured Movies
+                                        </a>
+                                    </div>
+                                    <div class="image_strip">
+                                        <div class="product"><div class="img_wrapper"><a href="/movie/it"><img src="http://static.metacritic.com/images/products/movies/8/ae92ae06d681d7eb2b0374d47787f3f8-250h.jpg" alt="It" />
+
+        
+<div class="metascore_w large no_tbd movie positive">71</div>
+<span class="release_date">Sep 8</span></a></div><div class="title_wrapper"><a href="/movie/it"><span>It</span></a></div></div><div class="product"><div class="img_wrapper"><a href="/movie/home-again"><img src="http://static.metacritic.com/images/products/movies/8/99697de39dc51d610d2c4554636d140a-250h.jpg" alt="Home Again" />
+
+        
+<div class="metascore_w large no_tbd movie mixed">43</div>
+<span class="release_date">Sep 8</span></a></div><div class="title_wrapper"><a href="/movie/home-again"><span>Home Again</span></a></div></div><div class="product"><div class="img_wrapper"><a href="/movie/the-hitmans-bodyguard"><img src="http://static.metacritic.com/images/products/movies/5/25bd088c3c3a08f8126ba61d040d1dbe-250h.jpg" alt="The Hitman's Bodyguard" />
+
+        
+<div class="metascore_w large no_tbd movie mixed">47</div>
+<span class="release_date">Aug 18</span></a></div><div class="title_wrapper"><a href="/movie/the-hitmans-bodyguard"><span>The Hitman's Bodyguard</span></a></div></div><div class="product last"><div class="img_wrapper"><a href="/movie/leap!"><img src="http://static.metacritic.com/images/products/movies/0/b20b9b48552e1140fd8c3a997a28e94a-250h.jpg" alt="Leap!" />
+
+        
+<div class="metascore_w large no_tbd movie mixed">48</div>
+<span class="release_date">Aug 25</span></a></div><div class="title_wrapper"><a href="/movie/leap!"><span>Leap!</span></a></div></div>
+                                        <div class="clr"></div>
+                                    </div>
+                                    <div class="see_all">
+                                        <a href="http://www.metacritic.com/browse/movies/release-date/theaters/date">
+                                            See All Movies
+                                        </a>
+                                    </div>
+                            </td>
+                                                </tr>
+                    </table>
+                </div>
+                                                                            
+                
+                                                                                                                    <div id="secondary_nav_items_games" class="secondary_nav_items singleMenu">
+                    <table id="secondary_nav_table_games" class="secondary_nav_table">
+                        <tr>
+                                                                            <td class="menu_col_mid">
+                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/playstation-4">
+                                            PS4
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/xbox-one">
+                                            Xbox One
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/pc">
+                                            PC
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/switch">
+                                            Switch
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/wii-u">
+                                            Wii U
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/3ds">
+                                            3DS
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/playstation-vita">
+                                            PS Vita
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/ios">
+                                            iOS
+                                        </a>
+                                    </div>
+                                                                                                                                                                <div class="menu_ref">
+                                        <a href="/game/legacy">
+                                            Legacy
+                                        </a>
+                                    </div>
+                                                                                        </td>
+                                                                                                </tr>
+                    </table>
+                </div>
+                                                                            
+                
+                                                                                                                    
+                
+                                                                                                                    
+                
+                                                                        </nav>
+
+    <nav id="primary_search_results">
+        <div class="results_wrapper inset_left2 inset_right2 pad_btm2">
+            <div class="results_data">
+                <div class="results_header_wrapper pad_top1">
+                    
+                    <form action="/search" method="post" autocomplete="off">
+                        <div class="field innerLabel thin">
+                            <input type="text" class="field_input thin" tabindex="1" name="search_term" id="top_search" autocomplete="off"
+                                value="love"                            >
+                            <label for="top_search">SEARCH</label>
+                        </div>
+                        <input type="hidden" name="search_filter" value="all">
+                    </form>
+                    <span class="progress ">
+    <i class="fa fa-spinner"></i>
+</span>
+
+                </div>
+                <div class="info pad_btm1">No Results Found.</div>
+                <table class="lists">
+                    <tr>
+                        <td class="list r150 inset_right"> 
+                            <div class="result_header">MOVIES <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Movies &raquo;</div>
+                            <div class="browse_az"><a href="/browse/movies/title/dvd">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r30 inset_right"> 
+                            <div class="result_header">GAMES <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Games &raquo;</div>
+                            <div class="browse_az"><a href="/browse/games/title">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r70 inset_right"> 
+                            <div class="result_header">TV <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More TV &raquo;</div>
+                            <div class="browse_az"><a href="/browse/tv/title/all">Browse A-Z</a></div>
+                        </td>
+                        <td class="list r170 inset_right"> 
+                            <div class="result_header">MUSIC <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More Music &raquo;</div>
+                            <div class="browse_az"><a href="/browse/albums/artist">Browse A-Z</a></div>
+                        </td>
+                        <td class="list other inset_right"> 
+                            <div class="result_header">MORE <span class="count"></span></div>
+                            <div class="results"></div>
+                            <div class="see_all">Find More &raquo;</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div id="primary_search_selects" class="styled_select2 border_white">
+                    <div class="topper">
+                        <div class="disp_selected">
+                            <span class="text">By Popularity</span>
+                            <span class="sel">
+                                <i class="fa fa-chevron-down"></i>
+                                <i class="fa fa-check thin"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="options_scroll">
+                        <div class="options">
+                            <div class="option selected" data-mcqwval="popular">
+                                <span class="option_text">By Popularity</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                            <div class="option" data-mcqwval="date">
+                                <span class="option_text">By Date</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                            <div class="option" data-mcqwval="title">
+                                <span class="option_text">By Title</span>
+                                <span class="sel"><i class="fa fa-check thin"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="close">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+            
+        </div>
+    </div>
+    
+                        <div id="mantle_skin" class="site_gutters">
+                
+                        
+                        <div id="skin" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_skin = googletag.defineSlot("/8264/Asia-metacritic/search",[1600,1000], "skin").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("skin");
+                                    </script>
+                                        </div>
+                        
+
+
+        <div id="gutters" class="site_gutters">
+                    <div id="superleader">
+                        
+                            <div class="ad_height_min">
+                        <div id="leader_plus_top" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_leader_plus_top = googletag.defineSlot("/8264/Asia-metacritic/search",[[728,90],[970,66],[970,250],[728,91]], "leader_plus_top").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("leader_plus_top");
+                                    </script>
+                                        </div>
+                            </div>
+                        
+
+</div>
+                <div id="gutters_mid" class="site_gutters">
+            <div id="gutters_btm" class="site_gutters">
+                <div id="gutters_top" class="site_gutters">
+                    <div id="container">
+
+<div id="col_layout" class="col_layout">
+        <div id="main_content" class="content_section mpu_layout">
+                <div class="layout">
+                        
+            
+                        <div id="main" class="col main_col">
+                        <div class="module search_module">
+                <div class="search_filters">
+        <ol class="search_filters">
+                                <li class="search_filter filter_all first_filter">
+                <span class="filter_item">
+                    <span class="filter_item_wrap">
+                                                    <a rel="nofollow" class="all" href="/search/all/love/results">
+                                <span class="link_text">All Items</span>
+                            </a>
+                                            </span>
+                </span>
+            </li>
+                                <li class="search_filter filter_movie">
+                <span class="filter_item">
+                    <span class="filter_item_wrap">
+                                                    <span class="active"><span class="link_text">Movies</span></span>
+                                            </span>
+                </span>
+            </li>
+                                <li class="search_filter filter_game">
+                <span class="filter_item">
+                    <span class="filter_item_wrap">
+                                                    <a rel="nofollow" class="game" href="/search/game/love/results">
+                                <span class="link_text">Games</span>
+                            </a>
+                                            </span>
+                </span>
+            </li>
+                                <li class="search_filter filter_album">
+                <span class="filter_item">
+                    <span class="filter_item_wrap">
+                                                    <a rel="nofollow" class="album" href="/search/album/love/results">
+                                <span class="link_text">Albums</span>
+                            </a>
+                                            </span>
+                </span>
+            </li>
+                                <li class="search_filter filter_tv">
+                <span class="filter_item">
+                    <span class="filter_item_wrap">
+                                                    <a rel="nofollow" class="tv" href="/search/tv/love/results">
+                                <span class="link_text">TV Shows</span>
+                            </a>
+                                            </span>
+                </span>
+            </li>
+                                <li class="search_filter filter_person">
+                <span class="filter_item">
+                    <span class="filter_item_wrap">
+                                                    <a rel="nofollow" class="person" href="/search/person/love/results">
+                                <span class="link_text">Person</span>
+                            </a>
+                                            </span>
+                </span>
+            </li>
+                                <li class="search_filter filter_video">
+                <span class="filter_item">
+                    <span class="filter_item_wrap">
+                                                    <a rel="nofollow" class="video" href="/search/video/love/results">
+                                <span class="link_text">Trailers</span>
+                            </a>
+                                            </span>
+                </span>
+            </li>
+                                <li class="search_filter filter_company last_filter">
+                <span class="filter_item">
+                    <span class="filter_item_wrap">
+                                                    <a rel="nofollow" class="company" href="/search/company/love/results">
+                                <span class="link_text">Companies</span>
+                            </a>
+                                            </span>
+                </span>
+            </li>
+                </ol>
+    </div>
+
+        <div class="search basic_search has_adv_search_link">
+        <div class="search_section basic_search_section">
+            <form class="search" method="post" action="/search">
+                <fieldset>
+                    <legend>Basic Search Fields</legend>
+                    <div class="search_wrap">
+                        
+                        <ol class="fields search_fields">
+                            
+                            <li class="field search_field search_query">
+                                <div class="field_wrap">
+                                    <span class="field">
+                                        <input class="text" type="text" size="50" name="search_term" id="search_term" value="love" autocomplete="off" />
+                                    </span>
+                                    <span class="search_msg">
+                                        Search Metacritic
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="field search_field search_submit">
+                                <div class="submit"><div class="btn"><button class="submit" type="submit"><span>Search</span></button></div></div>
+                            </li>
+                            <li class="field hidden">
+                                <input type="hidden" name="search_filter" value="movie" />
+                            </li>
+                        </ol>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+		
+		
+		
+		
+
+		
+		
+		
+		
+    </div>
+    </div>
+
+
+            <div class="module search_results">
+                        <div class="body">
+                                    <div>
+                                                <p class="query_results">Showing 61 to 80 of 238 results</p>
+                        <a class="advanced_search_beta" href="/advanced-search">Advanced Search Beta &raquo;</a>
+                        <div class="clr"></div>
+                    </div>
+
+                                                    <div class="tabs ">
+        <div class="tab_wrap">
+                            <ul class="tabs tabs_type_1">            <li class="tab tab_type_1 tab_relevancy first">
+                                    <span class="active"><span>Relevancy</span></span>
+                            </li>
+                                                        <li class="tab tab_type_1 tab_score">
+                                                        <a  href="/search/movie/love/results?page=3&sort=score"><span>Score</span></a>
+                            </li>
+                                                        <li class="tab tab_type_1 tab_recent last">
+                                                        <a  href="/search/movie/love/results?page=3&sort=recent"><span>Most Recent</span></a>
+                            </li>
+            </ul>            
+    
+    
+            </div>
+    </div>
+    
+    
+
+                    
+                    
+                    <script type="text/javascript" charset="utf-8">
+                      (function(G,o,O,g,L,e){G[g]=G[g]||function(){(G[g]['q']=G[g]['q']||[]).push(
+                       arguments)},G[g]['t']=1*new Date;L=o.createElement(O),e=o.getElementsByTagName(
+                       O)[0];L.async=1;L.src='//www.google.com/adsense/search/async-ads.js';
+                      e.parentNode.insertBefore(L,e)})(window,document,'script','_googCsa');
+                    </script>
+
+                    <div id="adcontainer1" class="gsa_container"></div>
+
+                    <script type="text/javascript" charset="utf-8">
+                    var pageOptions = {
+                        'pubId': 'cnet-metacritic-search',
+                        'query': 'love',
+                        'channel': 'search',
+                        'hl': 'en',
+                        'adPage': 4,
+                        'adtest': 'off',
+                        'longerHeadlines': true,
+                        'sellerRatings': true,
+                        'plusOnes': true,
+                        'location':true
+                    };
+
+                    var adblock1 = {
+                      'container': 'adcontainer1',
+                      'maxTop': 3,
+                      'width': '625px',
+                      'lines': 3,
+                      'fontSizeTitle': 14,
+                      'noTitleUnderline': true
+                    };
+
+                    var adblock2 = {
+                      'container': 'adcontainer2',
+                      'number': 3,
+                      'width': '625px',
+                      'lines': 3,
+                      'fontSizeTitle': 14,
+                      'noTitleUnderline': true
+                    };
+
+                    _googCsa('ads', pageOptions, adblock1, adblock2);
+                    </script>
+                    
+        
+                    <ul class="search_results module">
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result first_result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/capitalism-a-love-story">Capitalism: A Love Story</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">61</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">September 23, 2009</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Michael Moore                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Documentary                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">6.7</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">127 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">Capitalism: A Love Story explores the root causes of the global economic meltdown and takes a comical look at the corporate and political shenanigans that culminated in what Moore has described as...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/all-the-boys-love-mandy-lane">All the Boys Love Mandy Lane</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie mixed">44</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">October 11, 2013</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Amber Heard,                                                             Anson Mount,                                                             Michael Welch,                                                             Whitney Able                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Mystery,                                                             Thriller,                                                             Horror,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">6.4</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">90 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">A group of high-schoolers invite Mandy Lane, a good girl who became quite hot over the summer, to a weekend party on a secluded ranch. While the festivities rage on, the number of revelers begins...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/a-lot-like-love">A Lot Like Love</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie mixed">48</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">April 22, 2005</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            PG-13
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Amanda Peet,                                                             Ashton Kutcher                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Comedy,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">7.1</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">107 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">It takes some people years to fall in love at first sight. A Lot Like Love is a romantic comedy about destiny, connection and the frequently fuzzy line between chance and friendships and happily...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/i-travel-because-i-have-to-i-come-back-because-i-love-you">I Travel Because I Have to, I Come Back Because I Love You</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">87</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">March 25, 2011</span>
+                        </li>
+                                                                                                        <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">7.7</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">75 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">José Renato, a 35 year old geologist, is sent on a fieldtrip to the scrublands of the Sertão, a semi-arid isolated region in the Northeast of Brazil. The goal of his survey is to assess possible...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/enduring-love">Enduring Love</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">61</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">October 29, 2004</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Daniel Craig,                                                             Rhys Ifans,                                                             Samantha Morton                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Thriller                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_outstanding">9.0</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">100 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">Based on the acclaimed novel by Ian McEwan, Enduring Love is a psychological suspense thriller about how fate shapes our relationships, how accidents can change our lives and how meaning is...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/love-is-all-you-need">Love Is All You Need</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie mixed">60</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">May 3, 2013</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Christiane Schaumburg-M,                                                             Kim Bodnia,                                                             Micky Skeel Hansen,                                                             Molly Blixt Egelind,                                                             Paprika Steen,                                                             Pierce Brosnan,                                                             Sebastian Jessen,                                                             Trine Dyrholm                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Comedy,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">7.3</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">116 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">A hairdresser who has recently recovered from cancer finds out her husband is having an affair.  But while she's on her way to Italy for her daughter's wedding, she meets a widower who also happens...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/love-happens">Love Happens</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie negative">33</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">September 18, 2009</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            PG-13
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Aaron Eckhart,                                                             Jennifer Aniston                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_mixed">5.6</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">109 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">Dr. Burke Ryan is on the precipice of a major multimedia deal, but the therapist who asks his patients to openly confront their pain is secretly unable to take his own advice. Eloise Chandler has...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/peace-love-misunderstanding">Peace, Love, & Misunderstanding</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie mixed">45</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">June 8, 2012</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Catherine Keener,                                                             Elizabeth Olsen,                                                             Jane Fonda,                                                             Nat Wolff                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Comedy                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">6.4</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">96 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">Peace, Love, & Misunderstanding is a comedy about an uptight New York City lawyer who takes her two spirited teenagers to her hippie mother's farmhouse in the countryside for a family vacation....                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/wristcutters-a-love-story">Wristcutters: A Love Story</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">62</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">October 19, 2007</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Patrick Fugit,                                                             Shea Whigham,                                                             Tom Waits                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Fantasy,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">7.4</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">88 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">From the moment Zia (in his late 20s) cuts his wrists and enters a bizarre afterlife reserved for suicides, this film becomes a strangely uplifting, comic tale about a journey through the...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/first-girl-i-loved">First Girl I Loved</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">61</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">October 18, 2016</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            Not Rated
+                                                    </span>
+                    </li>
+                                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_tbd">tbd</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">91 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">On assignment for her high-school yearbook, social-misfit Anne (Dylan Gelula) charmingly hits it off with the beautiful star of the softball team, Sasha (Brianna Hildebrand). But when Anne tells...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/love-exposure">Love Exposure</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">78</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">September 2, 2011</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            Not Rated
+                                                    </span>
+                    </li>
+                                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Action,                                                             Drama,                                                             Comedy,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_outstanding">8.7</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">237 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">Yu is the son of a widower turned priest who is having an affair with one of his followers.  When the affair ends, the priest begins pressuring his son to seek absolution for all his sins. The...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/lovely-amazing">Lovely & Amazing</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">75</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">June 28, 2002</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Brenda Blethyn,                                                             Catherine Keener                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Comedy                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_outstanding">8.3</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">91 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">This finely observed comedy is an intimate family portrait of four hapless but resilient women and the bittersweet lessons they learn in keeping up with the hectic demands of their individual...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/accidental-love">Accidental Love</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie negative">20</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">March 20, 2015</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            PG-13
+                                                    </span>
+                    </li>
+                                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Comedy,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_unfavorable">2.4</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">100 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">A small town waitress (Jessica Biel) gets a nail accidentally lodged in her head causing unpredictable behavior that leads her to Washington, DC, where sparks fly when she meets a clueless young...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/my-summer-of-love">My Summer of Love</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">82</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">June 17, 2005</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Emily Blunt,                                                             Natalie Press,                                                             Paddy Considine                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Thriller,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_outstanding">8.8</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">86 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">This film vibrantly charts the emotional and physical hothouse effects that bloon one summer for two young women.  (Focus Features)                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/love-and-death">Love and Death</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">89</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">August 28, 1975</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            PG
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Diane Keaton,                                                             Woody Allen                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Comedy,                                                             War                                                    </span>
+                    </li>
+                                                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">85 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">In czarist Russia, a neurotic soldier and his distant cousin formulate a plot to assassinate Napoleon.                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/ive-loved-you-so-long">I've Loved You So Long</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie positive">79</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">October 24, 2008</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            PG-13
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Elsa Zylberstein,                                                             Kristin Scott Thomas,                                                             Serge Hazanavicius                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Mystery                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">7.5</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">117 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">Lea and Juliette are sisters who are almost complete strangers. Juliette has just been released from prison after serving a long sentence. Lea contacted Juliette when she was released and suggested...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/for-love-of-the-game">For Love of the Game</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie mixed">43</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">September 17, 1999</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            PG-13
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Kelly Preston,                                                             Kevin Costner                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Sport,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">7.7</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">137 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">A provocative look into the professional and personal passions of a major league baseball player, who in the twilight of a successful career is forced to reconcile a lifetime of decisions that have...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/lovely-still">Lovely, Still</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie mixed">57</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">September 10, 2010</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            PG
+                                                    </span>
+                    </li>
+                                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_favorable">6.6</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">92 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">With the approach of Christmas causing him to feel lonely in life and love, Robert Malone braves the wintery snow to arrive home from his job at the grocery store only to find a stranger standing...                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/love-me-if-you-dare">Love Me If You Dare</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie mixed">45</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">May 21, 2004</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            R
+                                                    </span>
+                    </li>
+                                                    <li class="stat cast">
+                        <span class="label">Starring:</span>
+                        <span class="data">
+                                                            Guillaume Canet,                                                             Joséphine Lebas-Joly,                                                             Marion Cotillard,                                                             Thibault Verhaeghe                                                    </span>
+                    </li>
+                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Drama,                                                             Comedy,                                                             Romance                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_outstanding">8.1</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">93 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">A movie about love, games and the search for a never-ending childhood.  (Paramount Classics)                            </div>
+                        </li>
+                                            
+                                                                                                                                                                                                                                                                                                                
+                        <li class="result">
+                            <div class="result_type">
+                                <strong>Movie</strong>
+                                                            </div>
+        
+                            <div class="result_wrap">
+                                <div class="basic_stats has_score">
+                                    <div class="main_stats">
+                                        <h3 class="product_title basic_stat"><a href="/movie/love-the-coopers">Love the Coopers</a></h3>
+                                                                                                                
+
+        
+<span class="metascore_w medium movie negative">31</span>
+
+                                        
+                                                                        </div>
+                                                                                                                                        <div class="more_stats extended_stats">
+            <ul class="more_stats">
+                                                            <li class="stat release_date">
+                            <span class="label">Release Date:</span>
+                            <span class="data">November 13, 2015</span>
+                        </li>
+                                                                        <li class="stat rating">
+                        <span class="label">Rated:</span>
+                        <span class="data">
+                                                            PG-13
+                                                    </span>
+                    </li>
+                                                                    <li class="stat genre">
+                        <span class="label">Genre(s):</span>
+                        <span class="data">
+                                                            Comedy                                                    </span>
+                    </li>
+                                                                        <li class="stat product_avguserscore">
+                            <span class="label">User Score:</span>
+    <span class="data textscore textscore_mixed">5.0</span>
+
+                    </li>
+                                                                                        <li class="stat runtime">
+                        <span class="label">Runtime:</span>
+                        <span class="data">107 min</span>
+                    </li>
+                                                
+            </ul>
+
+                    </div>
+    
+                                                                                                            </div>
+                                <p class="deck basic_stat">When four generations of the Cooper clan come together for their annual Christmas Eve celebration, a series of unexpected visitors and unlikely events turn the night upside down, leading them all...                            </div>
+                        </li>
+                                        </ul>
+
+                                            <div class="page_nav">
+    <div class="page_nav_wrap">
+        <div class="page_flipper">
+                            <span class="flipper prev"><a class="action" rel="prev" href="/search/movie/love/results?page=2"><span class="text">prev</span></a></span>
+                                        <span class="flipper next"><a class="action" rel="next" href="/search/movie/love/results?page=4"><span class="text">next</span></a></span>
+                    </div>
+        <div class="pages">
+            <div class="label">Page:</div>
+            <ul class="pages"><li class="page first_page"><a class="page_num" href="/search/movie/love/results?page=0">1</a></li><li class="page"><a class="page_num" href="/search/movie/love/results?page=1">2</a></li><li class="page"><a class="page_num" href="/search/movie/love/results?page=2">3</a></li><li class="page active_page"><span class="page_num">4</span></li><li class="page"><a class="page_num" href="/search/movie/love/results?page=4">5</a></li><li class="page"><a class="page_num" href="/search/movie/love/results?page=5">6</a></li><li class="page"><a class="page_num" href="/search/movie/love/results?page=6">7</a></li><li class="page"><a class="page_num" href="/search/movie/love/results?page=7">8</a></li><li class="page"><a class="page_num" href="/search/movie/love/results?page=8">9</a></li><li class="page last_page"><span class="page_gap">&hellip;</span><a class="page_num" href="/search/movie/love/results?page=11">12</a></li></ul>
+        </div>
+    </div>
+</div>
+                    
+                            </div>
+
+            <div id="adcontainer2" class="gsa_container"></div>
+        </div>
+    
+
+                                                                </div>
+                            <div id="side" class="col side_col">
+                    
+
+                        
+                        <div id="mpu_plus_top" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_mpu_plus_top = googletag.defineSlot("/8264/Asia-metacritic/search",[[300,250],[300,600]], "mpu_plus_top").addService(googletag.pubads()).setTargeting("pos", "top");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("mpu_plus_top");
+                                    </script>
+                                        </div>
+                        
+
+
+
+
+    
+
+    <div id="taboola-right-rail-thumbnails"></div>
+    
+    <script type="text/javascript">
+        if ( window._taboola && window.metac_tContentWidget ) {
+                        var placement = 'desktop search Right Rail Thumbnails';
+            window.metac_tContentWidget.push(placement);
+            _taboola.push({
+                mode: 'alternating-thumbnails-rr',
+                container: 'taboola-right-rail-thumbnails',
+                placement: placement,
+                target_type: 'mix'
+            });
+                    }
+    </script>
+    
+
+
+
+
+
+                        
+                        <div id="mpu_bottom" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_mpu_bottom = googletag.defineSlot("/8264/Asia-metacritic/search",[300,250], "mpu_bottom").addService(googletag.pubads()).setTargeting("pos", "bottom");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("mpu_bottom");
+                                    </script>
+                                        </div>
+                        
+
+                </div>
+                    </div>
+    </div>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+                        
+                        <div id="leader_bottom" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_leader_bottom = googletag.defineSlot("/8264/Asia-metacritic/search",[[728,90],[970,66],[728,92],[970,250]], "leader_bottom").addService(googletag.pubads()).setTargeting("pos", "bottom");
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("leader_bottom");
+                                    </script>
+                                        </div>
+                        
+
+
+            </div>
+                        </div>
+            
+                        
+                        
+                        <div id="intromercial" class="ad_unit">
+                            
+                            <script type="text/javascript">
+                                            
+                        googletag.cmd.push(function() {
+                        
+                                                            window.metac_g_ad_intromercial = googletag.defineOutOfPageSlot("/8264/Asia-metacritic/search",
+                                    "intromercial").addService(googletag.pubads());
+                                                        
+                        
+                        });
+                        
+
+                        window.metac_ads_pushdisplay.push("intromercial");
+                                    </script>
+                                        </div>
+                        
+
+
+            
+    
+    <div id="mastfoot">
+        
+        
+        <footer id="bottom_footer">
+    <div id="providers">
+	<a href="http://www.allmusic.com">Music title data, credits, and images provided by <span>AMG</span></a>
+	<span class="link_divider">|</span><a href="http://www.imdb.com">Movie title data, credits, and poster art provided by <span>IMDb</span></a>
+	<span class="link_divider">|</span><a href="http://www.internetvideoarchive.com">Video and Images provided by <span>IVA</span></a>
+    <div id="trademark">
+        We Deal With Criticism<sup>&reg;</sup>&nbsp;
+	</div>
+</div>
+
+            <div class="site_links upper">
+                    <a href="http://www.metacritic.com/movie">
+                <span>Movies</span>
+            </a>
+                    <a href="http://www.metacritic.com/tv">
+                <span>TV</span>
+            </a>
+                    <a href="http://www.metacritic.com/music">
+                <span>Music</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/playstation-4">
+                <span>PS4</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/xbox-one">
+                <span>XboxOne</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/switch">
+                <span>Switch</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/pc">
+                <span>PC</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/wii-u">
+                <span>WiiU</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/3ds">
+                <span>3DS</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/playstation-vita">
+                <span>PS Vita</span>
+            </a>
+                    <a href="http://www.metacritic.com/game/ios">
+                <span>iOS</span>
+            </a>
+                    <a href="http://www.metacritic.com/feature">
+                <span>Features</span>
+            </a>
+                    <a href="http://www.metacritic.com/rss">
+                <span>RSS Feeds</span>
+            </a>
+                </div>
+    
+    <div class="pad_top1 pad_btm1">
+        <div class="social_round">
+            <a href="http://www.facebook.com/Metacritic" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/metacritic" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
+        </div>
+    </div>
+
+    
+    <div class="about_cbs">
+        <div id="footer_about_links">
+            <a class="first" href="http://www.cbsinteractive.com">About CBS Interactive</a>
+            <span class="link_divider">|</span><a href="http://www.cbsinteractive.com/careers/">Jobs</a>
+            <span class="link_divider">|</span><a href="http://www.cbsinteractive.com/advertise/">Advertise</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/faq">FAQ</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/about-metacritic">About Metacritic</a>
+            <span class="link_divider">|</span><a href="http://www.metacritic.com/contact-us">Contact</a>
+            <span class="link_divider">|</span><span id="footer_privacy"><a href="http://legalterms.cbsinteractive.com/privacy">Privacy Policy</a></span>
+            <span class="link_divider">|</span><span id="footer_terms"><a href="https://cbsi.secure.force.com/CBSi/articles/FAQ/CBSi-Terms-of-Use?template=template_tougl&referer=tougl.com&data=&cfs=default">Terms of Use</a></span>
+        </div>
+        <div id="footer_rights" class="pad_btm2">
+            &copy; 2017 CBS Interactive Inc. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+    </div>
+</div>
+
+<div id="site_scripts" class="dw_tracking">
+     
+<script type="text/javascript" src="/js/omniture/uuid.js"></script>
+<script type="text/javascript">
+    
+    if (self != top) {
+        top.location = self.location;
+    }
+    var MC_UUID = uuid.v1();
+</script>
+
+
+
+ 
+<script language="JavaScript" type="text/javascript">
+    
+    var utag_data = {
+        isDev:0,
+                            siteType:"desktop web",
+                deviceType:"desktop",
+                siteSection:"movies",
+                pageType:"search",
+                pageFindingMethod:"Internal:Search",
+                session: MetaC.adSession() + ':' + MetaC.adSubses(),
+                searchEventSearch:"1",userId:null,userState:"not authenticated",userType:"anon",searchTerm:"love",bkPath:"/8264/Asia-metacritic/search",_test:"redesign|movie|old",pageViewGuid:MC_UUID
+    };
+    
+    
+    
+    
+    if ( window.eventAmazonBuyView ) {
+        utag_data.eventAmazonBuyView = 1;
+    }
+    if ( window.eventAmazonPivView ) {
+        utag_data.eventAmazonPivView = 1;
+    }
+    
+    
+    
+    if ( MetaC._utagAutoPlay != -1 ) {
+        utag_data.videoAutoPlay = MetaC._utagAutoPlay ? 'on' : 'off';
+    }
+    
+    
+    
+    if ( window.metac_tContentWidget && window.metac_tContentWidget.length > 0 ) {
+        utag_data.contentWidget = window.metac_tContentWidget.join('|');;
+    }
+    
+
+    
+</script>
+
+
+
+
+<script type="text/javascript">
+    
+    
+    var __pv = MetaC.handleGooglePageView();
+    googletag.cmd.push(function() {
+        
+                    googletag.pubads().setTargeting("ptype", "search");
+            
+                                        googletag.pubads().setTargeting("test", "mcold");
+                
+        googletag.pubads().setTargeting("vguid", MC_UUID);
+        googletag.pubads().setTargeting("session", MetaC.adSession());
+        googletag.pubads().setTargeting("subses", MetaC.adSubses());
+        googletag.pubads().setTargeting("env", "prod");
+                        var parts = window.location.hash.split("=");
+        if ( parts.length > 1 && parts[0] == '#ftag' ) {
+            googletag.pubads().setTargeting("ftag",parts[1]);
+        }
+        
+                
+        
+        if ( window.I11C) {
+            if (window.I11C.Morph && window.I11C.Morph === 1) {
+                utag_data.adBlockRecovery = "unblocked";
+                utag_data.adsAreBlocked = "true";
+
+                var geo = MetaC.Cookie.get('il_geo');
+                if ( geo ) {
+                    geo = MetaC.Cookie.ilParse(geo);
+                    if ( geo && geo.postal_code && geo.country_code ) {
+                        googletag.pubads().setLocation(geo.postal_code + ',' + geo.country_code)
+                    }
+                }
+            } else {
+                utag_data.adBlockRecovery = 'instart_noop';
+                utag_data.adsAreBlocked = "false";
+            }
+        } else {
+            utag_data.adBlockRecovery = 'no_instart';
+            utag_data.adsAreBlocked = "false";
+        }
+
+        googletag.pubads().setTargeting("pv", __pv+""); // must be a string
+
+        googletag.pubads().enableAsyncRendering();
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+    
+    
+</script>
+
+
+
+
+    
+    
+    
+        <script type="text/JavaScript" src="http://cn.cbsimg.net/cnwk.1d/Aud/javascript/urs.js"></script>
+    
+
+    <script type="text/javascript">
+        if ( window.MetaC && MetaC.URS ) {
+            MetaC.URS.config(227, false);
+        }
+    </script>
+
+
+
+
+
+<script type="text/javascript">
+    (function(a,b,c,d){
+    a='//tags.tiqcdn.com/utag/cbsi/metacriticsite/prod/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
+</script>
+
+
+
+<!-- Adobe Marketing Cloud Tag Loader Code-->
+
+
+
+
+
+
+    <script type="text/javascript">
+        // amc.on('load', function (event, data) {
+        $(document).ready(function(){
+            setTimeout(function(){
+                MetaC.checkOmniEvents();
+            }, 300);
+        });
+        // });
+    </script>
+
+
+
+
+
+
+<script type="text/javascript">
+    
+    dwVars = {"siteId":"50","onId":"1","ptId":"6056"};
+    if (typeof DW == "object"){
+        DW.pageParams = dwVars;
+        DW.regSilo = '12';
+        DW.clear();
+    }
+</script>
+
+
+
+
+<script>
+    var cbsiApexGlobal = {
+        'SITE': dwVars.siteId,
+        'NODE': dwVars.onId,
+        'PTYPE':dwVars.ptId
+    };
+</script>
+
+
+
+
+
+
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22577913-5']);
+    _gaq.push(['_setCustomVar',1,'PageType',dwVars.ptId,3]);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['nT._setAccount', 'UA-27653683-1']);
+    _gaq.push(['nT._setAllowLinker', true]);
+    _gaq.push(['nT._setSampleRate', '1']);
+    _gaq.push(['nT._trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '123113677890173',
+            version    : 'v2.6',
+            channelUrl : 'http://www.metacritic.com/static/fbchannel.html',
+            status     : true,
+            xfbml      : true,
+            cookie     : true
+            });
+         MetaC.FB.initialized();
+        };
+    
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    
+</script>
+
+
+
+<script>
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+    twttr.ready(function (twttr) {
+        MetaC.Twitter.initialized();
+    });
+</script>
+
+
+
+
+
+
+<script>
+    /* display the google ads now that the html is finished processing */
+    googletag.cmd.push(function(){
+        MetaC.displayAds();
+    });
+</script>
+
+
+
+<script>
+    
+    
+    if ( window._taboola && window.mcwait_taboola == null ) {
+        _taboola.push({flush: true});
+    }
+    
+</script>
+
+
+
+    
+    
+    <script>
+    	if (typeof cbsiLoadOffer == "function"){
+                cbsiLoadOffer(cbsiApexGlobal,1000);
+        }
+    </script>
+    
+</div>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"860f7644b8","applicationID":"2033002","transactionName":"MgQEZ0dYCxEAVRBbDQtOJUZGTQoPTmUBUxAGCVwJR1wWFw1CFw==","queueTime":0,"applicationTime":3413,"atts":"HkMTEQ9CGE5DV0YIGRgc","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+
