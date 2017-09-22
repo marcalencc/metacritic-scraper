@@ -80,10 +80,8 @@ namespace MetacriticScraper.Tests
             SearchRequestItem item = new SearchRequestItem("1", "heart", "tvshow", param);
             item.FilterValidUrls();
 
-            Assert.AreEqual(item.Urls.Count, 3);
+            Assert.AreEqual(item.Urls.Count, 1);
             Assert.AreEqual(item.Urls[0], "search/tv/heart/results?page=0&sort=score");
-            Assert.AreEqual(item.Urls[1], "search/tv/heart/results?page=1&sort=score");
-            Assert.AreEqual(item.Urls[2], "search/tv/heart/results?page=2&sort=score");
         }
 
         [Test]
@@ -93,9 +91,8 @@ namespace MetacriticScraper.Tests
             SearchRequestItem item = new SearchRequestItem("1", "heart", "movie", param);
             item.FilterValidUrls();
 
-            Assert.AreEqual(item.Urls.Count, 2);
+            Assert.AreEqual(item.Urls.Count, 1);
             Assert.AreEqual(item.Urls[0], "search/movie/heart/results?page=1&sort=");
-            Assert.AreEqual(item.Urls[1], "search/movie/heart/results?page=2&sort=");
         }
 
         [Test]
@@ -105,11 +102,9 @@ namespace MetacriticScraper.Tests
             SearchRequestItem item = new SearchRequestItem("1", "heart", "tvshow", param);
             item.FilterValidUrls();
 
-            Assert.AreEqual(item.Urls.Count, 4);
+            Assert.AreEqual(item.Urls.Count, 2);
             Assert.AreEqual(item.Urls[0], "search/tv/heart/results?page=0&sort=");
             Assert.AreEqual(item.Urls[1], "search/tv/heart/results?page=1&sort=");
-            Assert.AreEqual(item.Urls[2], "search/tv/heart/results?page=2&sort=");
-            Assert.AreEqual(item.Urls[3], "search/tv/heart/results?page=3&sort=");
         }
 
         [Test]
@@ -136,26 +131,20 @@ namespace MetacriticScraper.Tests
             webUtils.SetupSequence(p => p.HttpGet(It.IsAny<string>(), It.IsAny<string>(),
                 It.IsAny<int>())).
                 Returns(Task.FromResult(testData0)).
-                Returns(Task.FromResult(testData1)).
-                Returns(Task.FromResult(testData2)).
-                Returns(Task.FromResult(testData3));
+                Returns(Task.FromResult(testData1));
 
             SearchRequestItem item = new SearchRequestItem("1", "love", "movie", "offset=11&limit=65");
             item.Urls = new List<string>();
             item.Urls.Add(@"/search/movie/love/results?page=0");
             item.Urls.Add(@"/search/movie/love/results?page=1");
-            item.Urls.Add(@"/search/movie/love/results?page=2");
-            item.Urls.Add(@"/search/movie/love/results?page=3");
             item.WebUtils = webUtils.Object;
             List<UrlResponsePair> resp = item.Scrape();
 
-            Assert.AreEqual(resp.Count, 4);
+            Assert.AreEqual(resp.Count, 2);
             Assert.AreEqual(resp[0].SearchItemCount, 10);
-            Assert.AreEqual(resp[3].SearchItemCount, 15);
+            Assert.AreEqual(resp[1].SearchItemCount, 10);
             Assert.AreEqual(resp[0].SequenceNo, 1);
             Assert.AreEqual(resp[1].SequenceNo, 2);
-            Assert.AreEqual(resp[2].SequenceNo, 3);
-            Assert.AreEqual(resp[3].SequenceNo, 4);
         }
 
         [Test]
@@ -279,11 +268,11 @@ namespace MetacriticScraper.Tests
                 typeof(SearchData.SearchItem));
             Assert.AreEqual(((SearchData)resp).TotalResultCount, 58);
             Assert.AreEqual(((SearchData)resp).SearchItems.Count, 20);
-            Assert.AreEqual(((SearchData)resp).SearchItems[2].Id, "/music/future-present-past-ep");
-            Assert.AreEqual(((SearchData)resp).SearchItems[6].Id, "/music/barbara-barbara-we-face-a-shining-future");
-            Assert.AreEqual(((SearchData)resp).SearchItems[8].Id, "/music/love-in-the-future");
-            Assert.AreEqual(((SearchData)resp).SearchItems[13].Id, "/music/in-the-future");
-            Assert.AreEqual(((SearchData)resp).SearchItems[17].Id, "/music/future-standards");
+            Assert.AreEqual(((SearchData)resp).SearchItems[2].Id, "/album/future-present-past-ep");
+            Assert.AreEqual(((SearchData)resp).SearchItems[6].Id, "/album/barbara-barbara-we-face-a-shining-future");
+            Assert.AreEqual(((SearchData)resp).SearchItems[8].Id, "/album/love-in-the-future");
+            Assert.AreEqual(((SearchData)resp).SearchItems[13].Id, "/album/in-the-future");
+            Assert.AreEqual(((SearchData)resp).SearchItems[17].Id, "/album/future-standards");
         }
     }
 }

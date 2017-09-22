@@ -132,7 +132,8 @@ namespace MetacriticScraper.RequestData
             if (base.Equals(obj))
             {
                 string name = obj.Name.Split(new string[] { " - " }, StringSplitOptions.None)[0].Trim();
-                result = string.Equals(Name, name, StringComparison.OrdinalIgnoreCase);
+                result = string.Equals(SimplifyRequestName(Name), SimplifyRequestName(name),
+                    StringComparison.OrdinalIgnoreCase);
                 if (result && !String.IsNullOrEmpty(ItemDate))
                 {
                     result = string.Equals(ItemDate, obj.ItemDate);

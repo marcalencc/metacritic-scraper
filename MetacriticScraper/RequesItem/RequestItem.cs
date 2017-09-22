@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using MetacriticScraper.Scraper;
 using Newtonsoft.Json;
 using MetacriticScraper.JSONObjects;
@@ -144,6 +145,12 @@ namespace MetacriticScraper.RequestData
             infoStr = infoStr.Substring(startIndex);
             int endIndex = infoStr.IndexOf(endPos);
             return infoStr.Substring(0, endIndex).Trim();
+        }
+
+        protected string SimplifyRequestName(string name)
+        {
+            Regex rgx = new Regex("[^a-zA-Z0-9]");
+            return rgx.Replace(name, "").ToLower();
         }
 
         #region IResult

@@ -155,7 +155,8 @@ namespace MetacriticScraper.RequestData
             bool result = false;
             if (base.Equals(obj))
             {
-                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase);
+                result = string.Equals(SimplifyRequestName(Name), SimplifyRequestName(obj.Name),
+                    StringComparison.OrdinalIgnoreCase);
             }
             return result;
         }

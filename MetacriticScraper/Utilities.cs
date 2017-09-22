@@ -14,6 +14,8 @@ namespace MetacriticScraper
         public static int TvShowTypeId = 70;
         public static int AlbumTypeId = 170;
         public static int PersonTypeId = 110;
+        public static int MAX_LIMIT = 20;
+        public static int DEFAULT_LIMIT = 20;
     }
 
     public interface IResult : IEquatable<IResult>
@@ -21,18 +23,5 @@ namespace MetacriticScraper
         string Name { get; }
         int RefTypeId { get; }
         string ItemDate { get; }
-    }
-
-    public class CaseInsensitiveComparer : IEqualityComparer<string>
-    {
-        public bool Equals(string x, string y)
-        {
-            return string.Equals(x, y, StringComparison.OrdinalIgnoreCase);
-        }
-
-        public int GetHashCode(string x)
-        {
-            return x.GetHashCode();
-        }
     }
 }

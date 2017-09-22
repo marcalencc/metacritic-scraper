@@ -46,9 +46,9 @@ namespace MetacriticScraper.RequestData
             string sort = m_parameterData.GetParameterValue("sort");
 
             string limitStr = m_parameterData.GetParameterValue("limit");
-            if (!int.TryParse(limitStr, out int limit))
+            if (!int.TryParse(limitStr, out int limit) || limit > Constants.MAX_LIMIT)
             {
-                limit = 20;
+                limit = Constants.DEFAULT_LIMIT;
             }
 
             string offsetStr = m_parameterData.GetParameterValue("offset");
@@ -107,10 +107,11 @@ namespace MetacriticScraper.RequestData
 
             int remainder = 0;
             string limitStr = m_parameterData.GetParameterValue("limit");
-            if (!int.TryParse(limitStr, out int limit))
+            if (!int.TryParse(limitStr, out int limit) || limit > Constants.MAX_LIMIT)
             {
-                limit = 20;
+                limit = Constants.DEFAULT_LIMIT;
             }
+
             string offsetStr = m_parameterData.GetParameterValue("offset");
             int.TryParse(offsetStr, out int offset);
 
@@ -191,6 +192,10 @@ namespace MetacriticScraper.RequestData
                         {
                             id = TrimAlbumUrl(id);
                         }
+                        else if (parts.Length > 0 && parts[0] == "tv")
+                        {
+                            id = id.Replace("tv/", "tvshow/");
+                        }
 
                         item.Id = id;
                         item.Title = ParseItem(ref response, @""">", "</a>");
@@ -222,7 +227,7 @@ namespace MetacriticScraper.RequestData
 
         private string TrimAlbumUrl(string url)
         {
-            return url.Substring(0, url.LastIndexOf('/'));
+            return url.Substring(0, url.LastIndexOf('/')).Replace("music/", "album/");
         }
 
         public override bool Equals(IResult obj)

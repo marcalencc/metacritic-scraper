@@ -121,7 +121,7 @@ namespace MetacriticScraper.RequestData
                         value = value.Replace("<span>", "").Replace("</span>", "");
                     }
 
-                    if (desc == "Genres")
+                    if (desc == "Genres" || desc == "Languages")
                     {
                         Regex rgx = new Regex("\\s+");
                         value = rgx.Replace(value, " ");
@@ -156,7 +156,8 @@ namespace MetacriticScraper.RequestData
             bool result = false;
             if (base.Equals(obj))
             {
-                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase);
+                result = string.Equals(SimplifyRequestName(Name), SimplifyRequestName(obj.Name),
+                    StringComparison.OrdinalIgnoreCase);
                 if (result && !String.IsNullOrEmpty(ItemDate))
                 {
                     result = string.Equals(ItemDate, obj.ItemDate);
