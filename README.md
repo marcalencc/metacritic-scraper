@@ -34,11 +34,48 @@ To add a request, call the 'AddItem' function.
 * 'url' can be any of the following:
 
 ```
-/<mediaType>/<title-separated-by-a-dash>
-/<mediaType>/<title-separated-by-a-dash>/<year>
-/<mediaType>/<title-separated-by-a-dash>/<details>
-/<mediaType>/<title-separated-by-a-dash>/<year>/<details>
-/person/<name-separated-by-a-dash>/<mediaType>
+/search/<dash-separated-search-string>/<mediaType>
+* Multiple search strings (e.g. 'awake-dead') means all the strings should appear in the media item title.
+* You can specify limit and offset on search requests. Default and maximum limit is 20. Default offset is 0. (see below)
+
+/search/<dash-separated-search-string>/<mediaType>?limit=15&offset=21
+/search/<dash-separated-search-string>/<mediaType>?offset=15
+/search/<dash-separated-search-string>/<mediaType>?limit=10
+
+/person/<dash-separated-name>/<mediaType>
+
+* Search and person responses include an Id field which can be used in album, tvshow and movie requests (see below)
+Sample Search Response: 
+         {  
+            "Id":"/movie/amityville-the-awakening",
+            "Title":"Amityville: The Awakening",
+            "ReleaseDate":"PG-13",
+            "Genre":"Thriller, Horror",
+            "Rating":{  
+               "CriticRating":0
+            }
+         }
+         
+Sample Person Response:
+          {  
+            "Credit":"Primary Artist",
+            "Item":{  
+               "Id":"/album/bangerz",
+               "Title":"Bangerz",
+               "ReleaseDate":"10/08/2013",
+               "Rating":{  
+                  "CriticRating":61,
+                  "UserRating":6.9
+               }
+            }
+         }
+
+* Alternatively, just plug in the dash separated title on the media requests
+
+/<mediaType>/<dash-separated-title>
+/<mediaType>/<dash-separated-title>/<year>
+/<mediaType>/<dash-separated-title>/<details>
+/<mediaType>/<dash-separated-title>/<year>/<details>
 
 <mediaType> = album|tvshow|movie
 <year> = specify the release year e.g (2015) or season for tv shows e.g. (6) to filter the results
