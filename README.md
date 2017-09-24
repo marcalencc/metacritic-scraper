@@ -35,8 +35,17 @@ To add a request, call the 'AddItem' function.
 
 ```
 /search/<dash-separated-search-string>/<mediaType>
-* Search responses include an Id field which can be used in album, tvshow and movie requests (see below)
-Example Response: 
+* Multiple search strings (e.g. 'awake-dead') means all the strings should appear in the media item title.
+* You can specify limit and offset on search requests. Default and maximum limit is 20. Default offset is 0. (see below)
+
+/search/<dash-separated-search-string>/<mediaType>?limit=15&offset=21
+/search/<dash-separated-search-string>/<mediaType>?offset=15
+/search/<dash-separated-search-string>/<mediaType>?limit=10
+
+/person/<dash-separated-name>/<mediaType>
+
+* Search and person responses include an Id field which can be used in album, tvshow and movie requests (see below)
+Sample Search Response: 
          {  
             "Id":"/movie/amityville-the-awakening",
             "Title":"Amityville: The Awakening",
@@ -47,19 +56,26 @@ Example Response:
             }
          }
          
-* Multiple search strings (e.g. 'awake-dead') means all the strings should appear in the media item title.
+Sample Person Response:
+          {  
+            "Credit":"Primary Artist",
+            "Item":{  
+               "Id":"/album/bangerz",
+               "Title":"Bangerz",
+               "ReleaseDate":"10/08/2013",
+               "Rating":{  
+                  "CriticRating":61,
+                  "UserRating":6.9
+               }
+            }
+         }
 
-* You can specify limit and offset. Default and maximumum limit is 20. Default offset is 0. (see below)
-/search/<dash-separated-search-string>/<mediaType>?limit=15&offset=21
-/search/<dash-separated-search-string>/<mediaType>?offset=15
-/search/<dash-separated-search-string>/<mediaType>?limit=10
+* Alternatively, just plug in the dash separated title on the media requests
 
-* Alternatively, just plug in the dash separated title
 /<mediaType>/<dash-separated-title>
 /<mediaType>/<dash-separated-title>/<year>
 /<mediaType>/<dash-separated-title>/<details>
 /<mediaType>/<dash-separated-title>/<year>/<details>
-/person/<dash-separated-name>/<mediaType>
 
 <mediaType> = album|tvshow|movie
 <year> = specify the release year e.g (2015) or season for tv shows e.g. (6) to filter the results
