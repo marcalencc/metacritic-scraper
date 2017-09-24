@@ -13,6 +13,7 @@ namespace MetacriticScraper.RequestData
         public PersonRequestItem(string id, string title, string thirdLevelRequest) :
             base(id, title, thirdLevelRequest)
         {
+            m_websiteString = "/person/" + title;
             MediaType = Constants.PersonTypeId;
         }
 

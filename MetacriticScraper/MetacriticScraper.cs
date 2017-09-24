@@ -229,6 +229,11 @@ namespace MetacriticScraper.Scraper
                         request.RetrieveImagePath();
                         m_dataFetchQueue.Enqueue(request);
                     }
+                    else if (request.ForceUrl())
+                    {
+                        Logger.Info("No valid urls from autosearch. Forcing the website url");
+                        m_dataFetchQueue.Enqueue(request);
+                    }
                     else
                     {
                         Logger.Info("No valid urls matching the request");
@@ -237,7 +242,7 @@ namespace MetacriticScraper.Scraper
                 }
                 else
                 {
-                    Logger.Info("No valid matches when autosearching");
+                    Logger.Info("No valid matches.");
                     throw new Errors.EmptyResponseException("No matching data found.");
                 }
             }
@@ -283,7 +288,8 @@ namespace MetacriticScraper.Scraper
         private async void FetchResults(IScrapable<IMetacriticData> item)
         {
             List<UrlResponsePair> urlResponsePairs = item.Scrape();
-            var tasks = urlResponsePairs.Select(pairs => Task.Run(() => item.Parse(pairs)));
+            var tasks = urlResponsePairs.Where(p => !string.IsNullOrEmpty(p.Response)).
+                Select(pairs => Task.Run(() => item.Parse(pairs)));
 
             RequestTrackerItem tItem;
             lock (m_requestTrackerLock)
@@ -306,9 +312,8 @@ namespace MetacriticScraper.Scraper
                     }
                     else
                     {
-                        throw new Errors.EmptyResponseException("Empty response");
+                        throw new Errors.EmptyResponseException("No matching data found.");
                     }
-
                 }
                 catch (EmptyResponseException ex)
                 {

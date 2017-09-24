@@ -90,6 +90,8 @@ namespace MetacriticScraper.RequestData
             }
         }
 
+        protected string m_websiteString;
+
         protected RequestItem(string id, string searchString, string thirdLevelReq)
         {
             m_searchString = searchString.Replace("-", " ").Replace(@"~ ", "-");
@@ -108,6 +110,17 @@ namespace MetacriticScraper.RequestData
         public abstract List<UrlResponsePair> Scrape();
         public abstract IMetacriticData Parse(UrlResponsePair urlResponsePair);
         public abstract bool FilterValidUrls();
+
+        public bool ForceUrl()
+        {
+            if (!string.IsNullOrEmpty(m_websiteString))
+            {
+                Urls.Add(m_websiteString);
+                SetThirdLevelRequest();
+                return true;
+            }
+            return false;
+        }
 
         public virtual void RetrieveImagePath()
         {

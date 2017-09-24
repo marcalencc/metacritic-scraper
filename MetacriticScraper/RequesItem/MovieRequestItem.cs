@@ -13,6 +13,7 @@ namespace MetacriticScraper.RequestData
         public MovieRequestItem(string id, string title, string thirdLevelReq) :
             base(id, title, thirdLevelReq)
         {
+            m_websiteString = "/movie/" + title;
             MediaType = Constants.MovieTypeId;
         }
 
@@ -103,10 +104,13 @@ namespace MetacriticScraper.RequestData
                     }
                 }
 
-                string imgPath;
-                if (UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                if (UrlImagePath != null)
                 {
-                    movie.ImageUrl = imgPath;
+                    string imgPath;
+                    if (UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                    {
+                        movie.ImageUrl = imgPath;
+                    }
                 }
 
                 return movie;
@@ -128,7 +132,7 @@ namespace MetacriticScraper.RequestData
                         value = value.Replace("<span>", "").Replace("</span>", "");
                     }
 
-                    if (desc == "Genres" || desc == "Languages")
+                    if (desc == "Genres" || desc == "Languages" || desc == "Countries")
                     {
                         Regex rgx = new Regex("\\s+");
                         value = rgx.Replace(value, " ");

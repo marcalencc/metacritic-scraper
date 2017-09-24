@@ -12,6 +12,7 @@ namespace MetacriticScraper.RequestData
         public AlbumRequestItem(string id, string title, string thirdLevelRequest) :
             base(id, title, thirdLevelRequest)
         {
+            m_websiteString = "/music/" + title;
             MediaType = Constants.AlbumTypeId;
         }
 
@@ -80,10 +81,13 @@ namespace MetacriticScraper.RequestData
 
                 album.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
 
-                string imgPath;
-                if(UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                if (UrlImagePath != null)
                 {
-                    album.ImageUrl = imgPath;
+                    string imgPath;
+                    if (UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                    {
+                        album.ImageUrl = imgPath;
+                    }
                 }
 
                 return album;

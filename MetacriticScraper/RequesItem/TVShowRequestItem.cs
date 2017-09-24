@@ -14,6 +14,7 @@ namespace MetacriticScraper.RequestData
         public TVShowRequestItem(string id, string title, string thirdLevelRequest) :
             base(id, title, thirdLevelRequest)
         {
+            m_websiteString = "/tv/" + title;
             MediaType = Constants.TvShowTypeId;
         }
 
@@ -93,13 +94,16 @@ namespace MetacriticScraper.RequestData
                     tvShow.ReleaseDate = releaseDate.ToString("MM/dd/yyyy");
                 }
 
-                string key = UrlImagePath.Keys.FirstOrDefault(k => urlResponsePair.Url.Contains(k));
-                if (key != null)
+                if (UrlImagePath != null)
                 {
-                    string imgPath;
-                    if (UrlImagePath.TryGetValue(key, out imgPath))
+                    string key = UrlImagePath.Keys.FirstOrDefault(k => urlResponsePair.Url.Contains(k));
+                    if (key != null)
                     {
-                        tvShow.ImageUrl = imgPath;
+                        string imgPath;
+                        if (UrlImagePath.TryGetValue(key, out imgPath))
+                        {
+                            tvShow.ImageUrl = imgPath;
+                        }
                     }
                 }
 
