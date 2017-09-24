@@ -77,9 +77,9 @@ namespace MetacriticScraper.RequestData
                 if (userRatingIdx != -1)
                 {
                     html = html.Substring(userRatingIdx);
-                    if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float temUserRating))
+                    if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float tempUserRating))
                     {
-                        userRating = temUserRating;
+                        userRating = tempUserRating;
                         userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
                     }
                 }

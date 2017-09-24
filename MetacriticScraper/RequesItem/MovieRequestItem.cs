@@ -68,24 +68,31 @@ namespace MetacriticScraper.RequestData
 
                         short? criticRating = null;
                         short? criticRatingCount = null;
-                        if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out short tempCriticRating))
+                        if (infoString.Contains(@"""ratingValue"" : """))
                         {
-                            criticRating = tempCriticRating;
-                            criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
+                            if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out short tempCriticRating))
+                            {
+                                criticRating = tempCriticRating;
+                                criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
+                            }
+
+                            // Critic
+                            html = html.Substring(html.IndexOf("Critics</span>"));
                         }
 
-                        // Critic
-                        html = html.Substring(html.IndexOf("Critics</span>"));
                         // User
-                        html = html.Substring(html.IndexOf("based on "));
-
-                        float? userRating = 0;
-                        short? userRatingCount = 0;
-                        if (short.TryParse(ParseItem(ref html, @"based on ", " Ratings"), out short tempUserRatingCount))
+                        float? userRating = null;
+                        short? userRatingCount = null;
+                        if (html.Contains(@">based on "))
                         {
-                            userRatingCount = tempUserRatingCount;
-                            html = html.Substring(html.IndexOf("metascore_w user"));
-                            userRating = float.Parse(ParseItem(ref html, @">", @"</span>"));
+                            html = html.Substring(html.IndexOf(">based on "));
+
+                            if (short.TryParse(ParseItem(ref html, @">based on ", " Ratings"), out short tempUserRatingCount))
+                            {
+                                userRatingCount = tempUserRatingCount;
+                                html = html.Substring(html.IndexOf("metascore_w user"));
+                                userRating = float.Parse(ParseItem(ref html, @">", @"</span>"));
+                            }
                         }
 
                         movie.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);

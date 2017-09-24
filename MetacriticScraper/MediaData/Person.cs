@@ -65,6 +65,10 @@ namespace MetacriticScraper.MediaData
             {
                 get
                 {
+                    if (m_averageRating == null)
+                    {
+                        return 0;
+                    }
                     return Math.Round((double) m_averageRating, 2);
                 }
                 set
