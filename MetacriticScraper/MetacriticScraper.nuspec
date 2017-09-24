@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>MetacriticScraper</id>
-    <version>1.1.1.0</version>
+    <version>1.1.1.1</version>
     <title>MetacriticScraper</title>
     <authors>marcalencc</authors>
     <owners>marcalencc</owners>
     <projectUrl>https://github.com/marcalencc/metacritic-scraper</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>C# library for scraping reviews and info including cast and credits of movies, albums and tv shows from Metacritic website</description>
-    <releaseNotes>Added media id on person requests and general fixes on movie requests</releaseNotes>
+    <releaseNotes>Allow media item search outside metacritic autosearch</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>scraping metacritic movie album tvshow reviews critics user rating popstar pop</tags>
   </metadata>
