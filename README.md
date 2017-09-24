@@ -46,6 +46,13 @@ Example Response:
                "CriticRating":0
             }
          }
+         
+* Multiple search strings (e.g. 'awake-dead') means all the strings should appear in the media item title.
+
+* You can specify limit and offset. Default and maximumum limit is 20. Default offset is 0. (see below)
+/search/<dash-separated-search-string>/<mediaType>?limit=15&offset=21
+/search/<dash-separated-search-string>/<mediaType>?offset=15
+/search/<dash-separated-search-string>/<mediaType>?limit=10
 
 * Alternatively, just plug in the dash separated title
 /<mediaType>/<dash-separated-title>
