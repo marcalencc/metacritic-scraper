@@ -34,11 +34,25 @@ To add a request, call the 'AddItem' function.
 * 'url' can be any of the following:
 
 ```
-/<mediaType>/<title-separated-by-a-dash>
-/<mediaType>/<title-separated-by-a-dash>/<year>
-/<mediaType>/<title-separated-by-a-dash>/<details>
-/<mediaType>/<title-separated-by-a-dash>/<year>/<details>
-/person/<name-separated-by-a-dash>/<mediaType>
+/search/<dash-separated-search-string>/<mediaType>
+* Search responses include an Id field which can be used in album, tvshow and movie requests (see below)
+Example Response: 
+         {  
+            "Id":"/movie/amityville-the-awakening",
+            "Title":"Amityville: The Awakening",
+            "ReleaseDate":"PG-13",
+            "Genre":"Thriller, Horror",
+            "Rating":{  
+               "CriticRating":0
+            }
+         }
+
+* Alternatively, just plug in the dash separated title
+/<mediaType>/<dash-separated-title>
+/<mediaType>/<dash-separated-title>/<year>
+/<mediaType>/<dash-separated-title>/<details>
+/<mediaType>/<dash-separated-title>/<year>/<details>
+/person/<dash-separated-name>/<mediaType>
 
 <mediaType> = album|tvshow|movie
 <year> = specify the release year e.g (2015) or season for tv shows e.g. (6) to filter the results
