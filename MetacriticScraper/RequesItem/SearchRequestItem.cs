@@ -63,7 +63,7 @@ namespace MetacriticScraper.RequestData
 
             int upperLimit = lowerLimit + (limit - 1 - remainder) / 20;
 
-            if (remainder > 0)
+            if (offset - 1 + limit > 20 * (upperLimit + 1))
             {
                 upperLimit++;
             }
@@ -118,13 +118,14 @@ namespace MetacriticScraper.RequestData
             for (int idx = 0; idx < Urls.Count; ++idx)
             {
                 string url = Urls[idx];
-                int included = 20;
+                int included = limit;
 
                 if (idx == 0)
                 {
                     if (offset != 0)
                     {
-                        included = 20 - ((offset - 1) % 20);
+                        int rem = 20 - ((offset - 1) % 20);
+                        included = (limit < rem) ? limit : rem;
                     }
                     remainder = included;
                 }
@@ -168,12 +169,36 @@ namespace MetacriticScraper.RequestData
                         upperBound = urlResponsePair.SearchItemCount;
                     }
                 }
+                else
+                {
+                    string offsetStr = m_parameterData.GetParameterValue("offset");
+                    int.TryParse(offsetStr, out int offset);
+                    int pageAdjustedOffset = 0;
+                    if (offset > 0)
+                    {
+                        pageAdjustedOffset = (offset % 20) - 1;
+                    }
+
+                    lowerBound = pageAdjustedOffset;
+                    upperBound = pageAdjustedOffset + urlResponsePair.SearchItemCount;
+                }
 
                 if (urlResponsePair.SequenceNo == 1)
                 {
                     int idx = response.IndexOf(@"class=""query_results""");
-                    response = response.Substring(idx);
-                    data.TotalResultCount = int.Parse(ParseItem(ref response, @" of ", @" results"));
+                    if (idx >= 0)
+                    {
+                        response = response.Substring(idx);
+                        if (response.Contains(@"Showing 1 to 20 of "))
+                        {
+                            data.TotalResultCount = int.Parse(ParseItem(ref response, @" of ", @" results"));
+                        }
+                    }
+                    // No result
+                    else
+                    {
+                        return data;
+                    }
                 }
 
                 int startIdx = response.IndexOf(@"class=""search_results");

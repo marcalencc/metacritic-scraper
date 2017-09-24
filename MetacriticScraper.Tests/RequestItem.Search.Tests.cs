@@ -76,6 +76,7 @@ namespace MetacriticScraper.Tests
         [Test]
         public void Test_Search_FilterValidUrls_WithLimit2()
         {
+            // limit max is 20
             string param = "sort=score&limit=41";
             SearchRequestItem item = new SearchRequestItem("1", "heart", "tvshow", param);
             item.FilterValidUrls();
@@ -87,6 +88,7 @@ namespace MetacriticScraper.Tests
         [Test]
         public void Test_Search_FilterValidUrls_WithLimitAndOffset()
         {
+            // limit max is 20
             string param = "offset=21&limit=21";
             SearchRequestItem item = new SearchRequestItem("1", "heart", "movie", param);
             item.FilterValidUrls();
@@ -98,6 +100,7 @@ namespace MetacriticScraper.Tests
         [Test]
         public void Test_Search_FilterValidUrls_WithLimitAndOffset2()
         {
+            // limit max is 20
             string param = "offset=20&limit=56";
             SearchRequestItem item = new SearchRequestItem("1", "heart", "tvshow", param);
             item.FilterValidUrls();
