@@ -48,7 +48,7 @@ namespace MetacriticScraper.RequestData
             if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
                 Album album = new Album();
-                album.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
+                album.Title = ParseItem(ref html, @"<h1>", @"</h1>");
                 album.PrimaryArtist = ParseItem(ref html, @"<span class=""band_name"" itemprop=""name"">", @"</span>");
                 string releaseDateStr = ParseItem(ref html, @"<span class=""data"" itemprop=""datePublished"">", @"</span>");
                 DateTime releaseDate;

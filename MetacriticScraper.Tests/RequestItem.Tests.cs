@@ -213,6 +213,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        [Ignore("Obsolete due to Metacritic site update")]
         public void Test_RequestItem_AlbumParse()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -232,6 +233,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        [Ignore("Obsolete due to Metacritic site update")]
         public void Test_RequestItem_AlbumParse2()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -250,6 +252,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        [Ignore("Obsolete due to Metacritic site update")]
         public void Test_RequestItem_AlbumParse3()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -265,6 +268,42 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(((Album) mItem).Rating.CriticReviewCount, 26);
             Assert.AreEqual(((Album) mItem).Rating.UserRating, 8.2f);
             Assert.AreEqual(((Album) mItem).Rating.UserReviewCount, 301);
+        }
+
+        [Test]
+        public void Test_RequestItem_AlbumParse4()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData_20171103\album_all_american_made.txt");
+
+            AlbumRequestItem item = new AlbumRequestItem("1", "all american made", "");
+            item.UrlImagePath = new Dictionary<string, string>();
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
+
+            Assert.AreEqual(((Album)mItem).Title, "All American Made");
+            Assert.AreEqual(((Album)mItem).PrimaryArtist, "Margo Price");
+            Assert.AreEqual(((Album)mItem).Rating.CriticRating, 82);
+            Assert.AreEqual(((Album)mItem).Rating.CriticReviewCount, 13);
+            Assert.AreEqual(((Album)mItem).Rating.UserRating, 6.3f);
+            Assert.AreEqual(((Album)mItem).Rating.UserReviewCount, 4);
+        }
+
+        [Test]
+        public void Test_RequestItem_AlbumParse5()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData_20171103\album_midnite_vultures.txt");
+
+            AlbumRequestItem item = new AlbumRequestItem("1", "Midnite Vultures", "");
+            item.UrlImagePath = new Dictionary<string, string>();
+            IMetacriticData mItem = item.Parse(new UrlResponsePair("url", testData));
+
+            Assert.AreEqual(((Album)mItem).Title, "Midnite Vultures");
+            Assert.AreEqual(((Album)mItem).PrimaryArtist, "Beck");
+            Assert.AreEqual(((Album)mItem).Rating.CriticRating, 83);
+            Assert.AreEqual(((Album)mItem).Rating.CriticReviewCount, 19);
+            Assert.AreEqual(((Album)mItem).Rating.UserRating, 8.8f);
+            Assert.AreEqual(((Album)mItem).Rating.UserReviewCount, 53);
         }
 
         [Test]
@@ -355,6 +394,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        [Ignore("Obsolete due to Metacritic site update")] 
         public void Test_RequestItem_TvShowParse()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -374,6 +414,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        [Ignore("Obsolete due to Metacritic site update")]
         public void Test_RequestItem_TvShowParse2()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -391,6 +432,7 @@ namespace MetacriticScraper.Tests
         }
 
         [Test]
+        [Ignore("Obsolete due to Metacritic site update")]
         public void Test_RequestItem_TvShowParse3()
         {
             var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -405,6 +447,45 @@ namespace MetacriticScraper.Tests
             Assert.AreEqual(((TVShow) mItem).Rating.CriticReviewCount, 26);
             Assert.AreEqual(((TVShow) mItem).Rating.UserRating, 9.2f);
             Assert.AreEqual(((TVShow) mItem).Rating.UserReviewCount, 426);
+        }
+
+        [Test]
+        public void Test_RequestItem_TvShowParse4()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData_20171103\tv_six_feet_under_1.txt");
+
+            TVShowRequestItem item = new TVShowRequestItem("1", "six-feet-under", "", "");
+            item.UrlImagePath = new Dictionary<string, string>();
+            item.UrlImagePath.Add(@"\tv\six-feet-under", "temptv.jpg");
+            IMetacriticData mItem = item.Parse(new UrlResponsePair(@"\tv\six-feet-under", testData));
+
+            Assert.AreEqual(((TVShow)mItem).Title, "Six Feet Under");
+            Assert.AreEqual(((TVShow)mItem).Rating.CriticRating, 74);
+            Assert.AreEqual(((TVShow)mItem).Rating.CriticReviewCount, 23);
+            Assert.AreEqual(((TVShow)mItem).Rating.UserRating, 8.3f);
+            Assert.AreEqual(((TVShow)mItem).Rating.UserReviewCount, 178);
+            Assert.AreEqual(((TVShow)mItem).ImageUrl, "temptv.jpg");
+        }
+
+        [Test]
+        public void Test_RequestItem_TvShowParse5()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string testData = File.ReadAllText(dir + @"\TestData_20171103\tv_the_wire_2.txt");
+
+            TVShowRequestItem item = new TVShowRequestItem("1", "the-wire", "2", "");
+            item.UrlImagePath = new Dictionary<string, string>();
+            item.UrlImagePath.Add(@"\tv\the-wire", "temptv.jpg");
+            IMetacriticData mItem = item.Parse(new UrlResponsePair(@"\tv\the-wire", testData));
+
+            Assert.AreEqual(((TVShow)mItem).Title, "The Wire");
+            Assert.AreEqual(((TVShow)mItem).Season, 2);
+            Assert.AreEqual(((TVShow)mItem).Rating.CriticRating, 95);
+            Assert.AreEqual(((TVShow)mItem).Rating.CriticReviewCount, 17);
+            Assert.AreEqual(((TVShow)mItem).Rating.UserRating, 9.2f);
+            Assert.AreEqual(((TVShow)mItem).Rating.UserReviewCount, 344);
+            Assert.AreEqual(((TVShow)mItem).ImageUrl, "temptv.jpg");
         }
 
         [Test]

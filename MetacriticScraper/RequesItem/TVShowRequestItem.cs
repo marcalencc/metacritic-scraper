@@ -58,8 +58,8 @@ namespace MetacriticScraper.RequestData
             if (String.IsNullOrEmpty(m_thirdLevelRequest))
             {
                 TVShow tvShow = new TVShow();
-                tvShow.Title = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
-                tvShow.Season = Int32.Parse(ParseItem(ref html, @"Season ", @"</span>"));
+                tvShow.Title = ParseItem(ref html, @"<h1>", @"</h1>");
+                tvShow.Season = Int32.Parse(ParseItem(ref html, @"Season ", @"</h2>"));
 
                 tvShow.Studio = ParseItem(ref html, @"<span itemprop=""name"">", @"</span>");
 
