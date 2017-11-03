@@ -57,16 +57,6 @@ namespace MetacriticScraper.MediaData
                 creditMediaPairItems.Select(m => m.Item));
         }
 
-        public string Scrape()
-        {
-            return string.Empty;
-        }
-
-        public Person Parse(string html)
-        {
-            return null;
-        }
-
         public struct PersonRatingSummary
         {
             public double? HighestRating;
@@ -75,6 +65,10 @@ namespace MetacriticScraper.MediaData
             {
                 get
                 {
+                    if (m_averageRating == null)
+                    {
+                        return 0;
+                    }
                     return Math.Round((double) m_averageRating, 2);
                 }
                 set

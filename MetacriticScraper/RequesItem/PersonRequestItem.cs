@@ -13,6 +13,7 @@ namespace MetacriticScraper.RequestData
         public PersonRequestItem(string id, string title, string thirdLevelRequest) :
             base(id, title, thirdLevelRequest)
         {
+            m_websiteString = "/person/" + title;
             MediaType = Constants.PersonTypeId;
         }
 
@@ -82,6 +83,19 @@ namespace MetacriticScraper.RequestData
                         criticScore = tempCriticScore;
                     }
 
+                    string id = ParseItem(ref html, @"href=""", @""">");
+
+                    // Album url has different format
+                    string[] parts = id.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length > 0 && parts[0] == "music")
+                    {
+                        id = TrimAlbumUrl(id);
+                    }
+                    else if (parts.Length > 0 && parts[0] == "tv")
+                    {
+                        id = id.Replace("tv/", "tvshow/").Replace(@"/season-", @"/");
+                    }
+
                     string title = ParseItem(ref html, @""">", "</a>");
                     DateTime releaseDate;
 
@@ -104,6 +118,7 @@ namespace MetacriticScraper.RequestData
                     Rating rating = new Rating(criticScore, userScore);
                     MediaItem item = new MediaItem()
                     {
+                        Id = id,
                         Title = title,
                         ReleaseDate = releaseDate.ToString("MM/dd/yyyy"),
                         Rating = rating
@@ -116,6 +131,11 @@ namespace MetacriticScraper.RequestData
             }
 
             return person;
+        }
+
+        private string TrimAlbumUrl(string url)
+        {
+            return url.Substring(0, url.LastIndexOf('/')).Replace("music/", "album/");
         }
 
         private bool IsMediaTypeAvailable(string html)
@@ -141,7 +161,8 @@ namespace MetacriticScraper.RequestData
             bool result = false;
             if (base.Equals(obj))
             {
-                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase);
+                result = string.Equals(SimplifyRequestName(Name), SimplifyRequestName(obj.Name),
+                    StringComparison.OrdinalIgnoreCase);
             }
             return result;
         }

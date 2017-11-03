@@ -12,6 +12,7 @@ namespace MetacriticScraper.RequestData
         public AlbumRequestItem(string id, string title, string thirdLevelRequest) :
             base(id, title, thirdLevelRequest)
         {
+            m_websiteString = "/music/" + title;
             MediaType = Constants.AlbumTypeId;
         }
 
@@ -67,19 +68,26 @@ namespace MetacriticScraper.RequestData
 
                 float? userRating = null;
                 short? userRatingCount = null;
-                html = html.Substring(html.IndexOf("metascore_w user large"));
-                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float tempUserRating))
+                int userRatingIdx = html.IndexOf("metascore_w user large");
+                if (userRatingIdx != -1)
                 {
-                    userRating = tempUserRating;
-                    userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
+                    html = html.Substring(userRatingIdx);
+                    if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float tempUserRating))
+                    {
+                        userRating = tempUserRating;
+                        userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
+                    }
                 }
 
                 album.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
 
-                string imgPath;
-                if(UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                if (UrlImagePath != null)
                 {
-                    album.ImageUrl = imgPath;
+                    string imgPath;
+                    if (UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                    {
+                        album.ImageUrl = imgPath;
+                    }
                 }
 
                 return album;
@@ -128,7 +136,8 @@ namespace MetacriticScraper.RequestData
             if (base.Equals(obj))
             {
                 string name = obj.Name.Split(new string[] { " - " }, StringSplitOptions.None)[0].Trim();
-                result = string.Equals(Name, name, StringComparison.OrdinalIgnoreCase);
+                result = string.Equals(SimplifyRequestName(Name), SimplifyRequestName(name),
+                    StringComparison.OrdinalIgnoreCase);
                 if (result && !String.IsNullOrEmpty(ItemDate))
                 {
                     result = string.Equals(ItemDate, obj.ItemDate);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using MetacriticScraper.Scraper;
 using Newtonsoft.Json;
 using MetacriticScraper.JSONObjects;
@@ -89,6 +90,8 @@ namespace MetacriticScraper.RequestData
             }
         }
 
+        protected string m_websiteString;
+
         protected RequestItem(string id, string searchString, string thirdLevelReq)
         {
             m_searchString = searchString.Replace("-", " ").Replace(@"~ ", "-");
@@ -107,6 +110,17 @@ namespace MetacriticScraper.RequestData
         public abstract List<UrlResponsePair> Scrape();
         public abstract IMetacriticData Parse(UrlResponsePair urlResponsePair);
         public abstract bool FilterValidUrls();
+
+        public bool ForceUrl()
+        {
+            if (!string.IsNullOrEmpty(m_websiteString))
+            {
+                Urls.Add(m_websiteString);
+                SetThirdLevelRequest();
+                return true;
+            }
+            return false;
+        }
 
         public virtual void RetrieveImagePath()
         {
@@ -144,6 +158,12 @@ namespace MetacriticScraper.RequestData
             infoStr = infoStr.Substring(startIndex);
             int endIndex = infoStr.IndexOf(endPos);
             return infoStr.Substring(0, endIndex).Trim();
+        }
+
+        protected string SimplifyRequestName(string name)
+        {
+            Regex rgx = new Regex("[^a-zA-Z0-9]");
+            return rgx.Replace(name, "").ToLower();
         }
 
         #region IResult

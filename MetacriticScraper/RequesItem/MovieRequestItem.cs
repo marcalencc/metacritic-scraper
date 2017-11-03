@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using MetacriticScraper.Scraper;
 using MetacriticScraper.Interfaces;
 using MetacriticScraper.MediaData;
@@ -12,6 +13,7 @@ namespace MetacriticScraper.RequestData
         public MovieRequestItem(string id, string title, string thirdLevelReq) :
             base(id, title, thirdLevelReq)
         {
+            m_websiteString = "/movie/" + title;
             MediaType = Constants.MovieTypeId;
         }
 
@@ -67,24 +69,31 @@ namespace MetacriticScraper.RequestData
 
                         short? criticRating = null;
                         short? criticRatingCount = null;
-                        if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out short tempCriticRating))
+                        if (infoString.Contains(@"""ratingValue"" : """))
                         {
-                            criticRating = tempCriticRating;
-                            criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
+                            if (short.TryParse(ParseItem(ref infoString, @"""ratingValue"" : """, @""""), out short tempCriticRating))
+                            {
+                                criticRating = tempCriticRating;
+                                criticRatingCount = Int16.Parse(ParseItem(ref infoString, @"""ratingCount"" : """, @""""));
+                            }
+
+                            // Critic
+                            html = html.Substring(html.IndexOf("Critics</span>"));
                         }
 
-                        // Critic
-                        html = html.Substring(html.IndexOf("Critics</span>"));
                         // User
-                        html = html.Substring(html.IndexOf("based on "));
-
-                        float? userRating = 0;
-                        short? userRatingCount = 0;
-                        if (short.TryParse(ParseItem(ref html, @"based on ", " Ratings"), out short tempUserRatingCount))
+                        float? userRating = null;
+                        short? userRatingCount = null;
+                        if (html.Contains(@">based on "))
                         {
-                            userRatingCount = tempUserRatingCount;
-                            html = html.Substring(html.IndexOf("metascore_w user"));
-                            userRating = float.Parse(ParseItem(ref html, @">", @"</span>"));
+                            html = html.Substring(html.IndexOf(">based on "));
+
+                            if (short.TryParse(ParseItem(ref html, @">based on ", " Ratings"), out short tempUserRatingCount))
+                            {
+                                userRatingCount = tempUserRatingCount;
+                                html = html.Substring(html.IndexOf("metascore_w user"));
+                                userRating = float.Parse(ParseItem(ref html, @">", @"</span>"));
+                            }
                         }
 
                         movie.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
@@ -95,10 +104,13 @@ namespace MetacriticScraper.RequestData
                     }
                 }
 
-                string imgPath;
-                if (UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                if (UrlImagePath != null)
                 {
-                    movie.ImageUrl = imgPath;
+                    string imgPath;
+                    if (UrlImagePath.TryGetValue(urlResponsePair.Url, out imgPath))
+                    {
+                        movie.ImageUrl = imgPath;
+                    }
                 }
 
                 return movie;
@@ -114,9 +126,16 @@ namespace MetacriticScraper.RequestData
                     {
                         value = ParseItem(ref value, @""">", @"</a>");
                     }
+
                     if (value.Contains("<span>"))
                     {
                         value = value.Replace("<span>", "").Replace("</span>", "");
+                    }
+
+                    if (desc == "Genres" || desc == "Languages" || desc == "Countries")
+                    {
+                        Regex rgx = new Regex("\\s+");
+                        value = rgx.Replace(value, " ");
                     }
 
                     DetailItem detail = new DetailItem(desc, value);
@@ -125,16 +144,16 @@ namespace MetacriticScraper.RequestData
 
                 while (html.Contains(@"<td class=""person"">"))
                 {
-                    string desc = ParseItem(ref html, @"<td class=""person"">", @"</td>");
-                    if (desc.Contains("</a>"))
+                    string name = ParseItem(ref html, @"<td class=""person"">", @"</td>");
+                    if (name.Contains("</a>"))
                     {
-                        desc = ParseItem(ref desc, @""">", @"</a>");
+                        name = ParseItem(ref name, @""">", @"</a>");
                     }
 
-                    string value = ParseItem(ref html, @"<td class=""role"">", @"</td>");
+                    string role = ParseItem(ref html, @"<td class=""role"">", @"</td>");
 
-                    DetailItem detail = new DetailItem(desc, value);
-                    mediaDetail.Details.Add(detail);
+                    MediaCredit credit = new MediaCredit(name, role);
+                    mediaDetail.Credits.Add(credit);
                 }
 
                 return mediaDetail;
@@ -148,7 +167,8 @@ namespace MetacriticScraper.RequestData
             bool result = false;
             if (base.Equals(obj))
             {
-                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase);
+                result = string.Equals(SimplifyRequestName(Name), SimplifyRequestName(obj.Name),
+                    StringComparison.OrdinalIgnoreCase);
                 if (result && !String.IsNullOrEmpty(ItemDate))
                 {
                     result = string.Equals(ItemDate, obj.ItemDate);

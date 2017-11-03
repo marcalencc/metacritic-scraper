@@ -11,12 +11,21 @@ namespace MetacriticScraper.Scraper
 {
     public class UrlParser : IParser
     {
-        private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/", "/person/" };
+        private string[] MAIN_KEYWORDS = new string[] { "/movie/", "/album/", "/tvshow/", "/person/", "/search/" };
         private string[] OTHER_KEYWORDS = new string[] { "details" };
-        private string[] PERSON_PARAMS = new string[] {"movie", "album", "tvshow"};
+        private string[] MEDIA_TYPES = new string[] {"movie", "album", "tvshow"};
+        private string[] SEARCH_TYPES = new string[] { "movie", "album", "tvshow", "person" };
 
         public bool ParseRequestUrl(string id, string url, out string keyword, out string title,
             out string yearOrSeason, out string thirdLevelReq)
+        {
+            string parameters = null;
+            return ParseRequestUrl(id, url, out keyword, out title, out yearOrSeason, out thirdLevelReq,
+                ref parameters);
+        }
+
+        public bool ParseRequestUrl(string id, string url, out string keyword, out string title,
+            out string yearOrSeason, out string thirdLevelReq, ref string parameters)
         {
             try
             {
@@ -51,9 +60,32 @@ namespace MetacriticScraper.Scraper
                             {
                                 if (keyword.Contains("person"))
                                 {
-                                    if (PERSON_PARAMS.Contains(url))
+                                    if (MEDIA_TYPES.Contains(url))
                                     {
                                         thirdLevelReq = url;
+                                    }
+                                    else
+                                    {
+                                        throw new InvalidUrlException("Invalid parameter: " + url);
+                                    }
+                                }
+                                else if (keyword.Contains("search"))
+                                {
+                                    if (title.Length <= 3)
+                                    {
+                                        throw new InvalidUrlException("Search query should be at least three characters.");
+                                    }
+
+                                    thirdLevelReq = url;
+                                    if (url.IndexOf("?") >= 0)
+                                    {
+                                        thirdLevelReq = url.Substring(0, url.IndexOf("?"));
+                                    }
+
+                                    if (SEARCH_TYPES.Contains(thirdLevelReq))
+                                    {
+                                        url = url.Replace(thirdLevelReq + "?", "");
+                                        parameters = url;
                                     }
                                     else
                                     {
@@ -104,9 +136,10 @@ namespace MetacriticScraper.Scraper
                             }
                             return true;
                         }
-                        else if (keyword.Contains("person"))
+                        else if (keyword.Contains("person") || keyword.Contains("search"))
                         {
-                            throw new InvalidUrlException(@"Category required for ""person"" request");
+                            throw new InvalidUrlException(@"Category required for """ +
+                                keyword.Replace("/", "") + @""" request");
                         }
                         return true;
                     }
@@ -125,6 +158,12 @@ namespace MetacriticScraper.Scraper
 
         public RequestItem CreateRequestItem(string id, string keyword, string title, string yearOrSeason,
             string thirdLevelReq)
+        {
+            return CreateRequestItem(id, keyword, title, yearOrSeason, thirdLevelReq, null);
+        }
+
+        public RequestItem CreateRequestItem(string id, string keyword, string title, string yearOrSeason,
+            string thirdLevelReq, string parameterString)
         {
             if (keyword == "/movie/")
             {
@@ -170,7 +209,17 @@ namespace MetacriticScraper.Scraper
                     return new PersonRequestItem(id, title, thirdLevelReq);
                 }
             }
-
+            else if (keyword == "/search/")
+            {
+                if (string.IsNullOrEmpty(thirdLevelReq))
+                {
+                    throw new InvalidUrlException(@"Category required for ""search"" request");
+                }
+                else
+                {
+                    return new SearchRequestItem(id, title, thirdLevelReq, parameterString);
+                }
+            }
             return null;
         }
     }

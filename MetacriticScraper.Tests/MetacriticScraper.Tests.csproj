@@ -55,7 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PersonRequestItem.Tests.cs" />
+    <Compile Include="Parameter.Test.cs" />
+    <Compile Include="RequestItem.Person.Tests.cs" />
+    <Compile Include="RequestItem.Search.Tests.cs" />
     <Compile Include="RequestItem.Tests.cs" />
     <Content Include="TestData\album_aseatatthetable_scraped.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -78,6 +80,7 @@
     <Content Include="TestData\album_teensofdenial_details.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Compile Include="UrlParser.Search.Tests.cs" />
     <Compile Include="UrlParser.Test.cs" />
     <Compile Include="WebScraper.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +110,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\person_woodyallen_tvshow_100_scraped.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\search_album_future.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\search_love_0.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\search_love_1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\search_love_2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\search_love_3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\tvshow_arrested_development_scraped.txt">

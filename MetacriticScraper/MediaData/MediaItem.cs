@@ -9,6 +9,7 @@ namespace MetacriticScraper.MediaData
 {
     public class MediaItem : IMetacriticData, IEquatable<MediaItem>
     {
+        public string Id { get; set; }
         public string Title { get; set; }
         public string ReleaseDate { get; set; }
         public Rating Rating { get; set; }

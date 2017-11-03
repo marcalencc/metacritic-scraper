@@ -14,6 +14,8 @@ namespace MetacriticScraper
         public static int TvShowTypeId = 70;
         public static int AlbumTypeId = 170;
         public static int PersonTypeId = 110;
+        public static int MAX_LIMIT = 20;
+        public static int DEFAULT_LIMIT = 20;
     }
 
     public interface IResult : IEquatable<IResult>

@@ -80,9 +80,13 @@
     <Compile Include="Errors\SystemBusyException.cs" />
     <Compile Include="Errors\TimeoutElapsedException.cs" />
     <Compile Include="Interfaces\IMetacriticData.cs" />
+    <Compile Include="Interfaces\IParameterData.cs" />
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Interfaces\IScraper.cs" />
     <Compile Include="Interfaces\IWebUtils.cs" />
+    <Compile Include="MediaData\SearchData.cs" />
+    <Compile Include="MediaData\SearchParameter.cs" />
+    <Compile Include="RequesItem\SearchRequestItem.cs" />
     <Compile Include="UrlResponsePair.cs" />
     <Compile Include="RequesItem\PersonRequestItem.cs" />
     <Compile Include="UrlParser.cs" />

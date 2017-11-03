@@ -8,7 +8,7 @@ using MetacriticScraper.Interfaces;
 using MetacriticScraper.Errors;
 using MetacriticScraper.Scraper;
 using MetacriticScraper.RequestData;
-using MetacriticScraper.JSONObjects;
+using MetacriticScraper.JSONObjects; 
 using MetacriticScraper.MediaData;
 using Moq;
 

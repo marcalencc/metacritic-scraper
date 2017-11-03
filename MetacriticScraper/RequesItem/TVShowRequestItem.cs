@@ -14,6 +14,7 @@ namespace MetacriticScraper.RequestData
         public TVShowRequestItem(string id, string title, string thirdLevelRequest) :
             base(id, title, thirdLevelRequest)
         {
+            m_websiteString = "/tv/" + title;
             MediaType = Constants.TvShowTypeId;
         }
 
@@ -73,11 +74,15 @@ namespace MetacriticScraper.RequestData
 
                 float? userRating = null;
                 short? userRatingCount = null;
-                html = html.Substring(html.IndexOf("metascore_w user large"));
-                if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float temUserRating))
+                int userRatingIdx = html.IndexOf("metascore_w user large");
+                if (userRatingIdx != -1)
                 {
-                    userRating = temUserRating;
-                    userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
+                    html = html.Substring(userRatingIdx);
+                    if (float.TryParse(ParseItem(ref html, @""">", @"</div>"), out float tempUserRating))
+                    {
+                        userRating = tempUserRating;
+                        userRatingCount = Int16.Parse(ParseItem(ref html, @"user-reviews"">", @" Ratings"));
+                    }
                 }
 
                 tvShow.Rating = new Rating(criticRating, userRating, criticRatingCount, userRatingCount);
@@ -89,13 +94,16 @@ namespace MetacriticScraper.RequestData
                     tvShow.ReleaseDate = releaseDate.ToString("MM/dd/yyyy");
                 }
 
-                string key = UrlImagePath.Keys.FirstOrDefault(k => urlResponsePair.Url.Contains(k));
-                if (key != null)
+                if (UrlImagePath != null)
                 {
-                    string imgPath;
-                    if (UrlImagePath.TryGetValue(key, out imgPath))
+                    string key = UrlImagePath.Keys.FirstOrDefault(k => urlResponsePair.Url.Contains(k));
+                    if (key != null)
                     {
-                        tvShow.ImageUrl = imgPath;
+                        string imgPath;
+                        if (UrlImagePath.TryGetValue(key, out imgPath))
+                        {
+                            tvShow.ImageUrl = imgPath;
+                        }
                     }
                 }
 
@@ -127,10 +135,10 @@ namespace MetacriticScraper.RequestData
                 {
                     html = html.Substring(html.IndexOf(@"<td class=""person"">") +
                         @"<td class=""person"">".Length);
-                    string desc = ParseItem(ref html, @""">", @"</a>");
-                    string value = ParseItem(ref html, @"<td class=""role"">", @"</td>");
-                    DetailItem detail = new DetailItem(desc, value);
-                    mediaDetails.Details.Add(detail);
+                    string name = ParseItem(ref html, @""">", @"</a>");
+                    string role = ParseItem(ref html, @"<td class=""role"">", @"</td>");
+                    MediaCredit credit = new MediaCredit(name, role);
+                    mediaDetails.Credits.Add(credit);
                 }
 
                 return mediaDetails;
@@ -151,7 +159,8 @@ namespace MetacriticScraper.RequestData
             bool result = false;
             if (base.Equals(obj))
             {
-                result = string.Equals(Name, obj.Name, StringComparison.OrdinalIgnoreCase);
+                result = string.Equals(SimplifyRequestName(Name), SimplifyRequestName(obj.Name),
+                    StringComparison.OrdinalIgnoreCase);
             }
             return result;
         }

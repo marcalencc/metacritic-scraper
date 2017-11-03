@@ -172,12 +172,14 @@ namespace MetacriticScraper.Scraper
                 string title;
                 string yearOrSeason;
                 string thirdLevelReq;
+                string param = null;
+                url = url.ToLower();
                 bool valid = m_urlParser.ParseRequestUrl(id, url, out keyword, out title, out yearOrSeason,
-                    out thirdLevelReq);
+                    out thirdLevelReq, ref param);
                 if (valid)
                 {
                     RequestItem req = m_urlParser.CreateRequestItem(id, keyword, title, yearOrSeason.ToString(),
-                        thirdLevelReq);
+                        thirdLevelReq, param);
                     if (req != null)
                     {
                         m_requestQueue.Enqueue(req);
@@ -208,10 +210,7 @@ namespace MetacriticScraper.Scraper
                 }
                 else
                 {
-                    if (!m_requestQueue.WaitOnEmpty(10000))
-                    {
-                        Logger.Info("RequestThreadProc woke up after ten seconds.");
-                    }
+                    m_requestQueue.WaitOnEmpty(10000);
                 }
 
                 Thread.Sleep(10);
@@ -230,6 +229,11 @@ namespace MetacriticScraper.Scraper
                         request.RetrieveImagePath();
                         m_dataFetchQueue.Enqueue(request);
                     }
+                    else if (request.ForceUrl())
+                    {
+                        Logger.Info("No valid urls from autosearch. Forcing the website url");
+                        m_dataFetchQueue.Enqueue(request);
+                    }
                     else
                     {
                         Logger.Info("No valid urls matching the request");
@@ -238,7 +242,7 @@ namespace MetacriticScraper.Scraper
                 }
                 else
                 {
-                    Logger.Info("No valid matches when autosearching");
+                    Logger.Info("No valid matches.");
                     throw new Errors.EmptyResponseException("No matching data found.");
                 }
             }
@@ -275,10 +279,7 @@ namespace MetacriticScraper.Scraper
                 }
                 else
                 {
-                    if (!m_dataFetchQueue.WaitOnEmpty(10000))
-                    {
-                        Logger.Info("DataFetchThreadProc woke up after ten seconds.");
-                    }
+                    m_dataFetchQueue.WaitOnEmpty(10000);
                 }
                 Thread.Sleep(10);
             }
@@ -287,7 +288,8 @@ namespace MetacriticScraper.Scraper
         private async void FetchResults(IScrapable<IMetacriticData> item)
         {
             List<UrlResponsePair> urlResponsePairs = item.Scrape();
-            var tasks = urlResponsePairs.Select(pairs => Task.Run(() => item.Parse(pairs)));
+            var tasks = urlResponsePairs.Where(p => !string.IsNullOrEmpty(p.Response)).
+                Select(pairs => Task.Run(() => item.Parse(pairs)));
 
             RequestTrackerItem tItem;
             lock (m_requestTrackerLock)
@@ -310,9 +312,8 @@ namespace MetacriticScraper.Scraper
                     }
                     else
                     {
-                        throw new Errors.EmptyResponseException("Empty response");
+                        throw new Errors.EmptyResponseException("No matching data found.");
                     }
-
                 }
                 catch (EmptyResponseException ex)
                 {
