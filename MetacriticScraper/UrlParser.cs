@@ -29,6 +29,11 @@ namespace MetacriticScraper.Scraper
         {
             try
             {
+                if (url.EndsWith("/"))
+                {
+                    url = url.Remove(url.Length - 1);
+                }
+
                 keyword = string.Empty;
                 for (int idx = 0; idx < MAIN_KEYWORDS.Length; ++idx)
                 {

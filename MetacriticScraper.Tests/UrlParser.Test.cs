@@ -360,6 +360,92 @@ namespace MetacriticScraper.Tests
                 EqualTo("Invalid parameter: 1945"));
         }
 
+        [Test]
+        public void Test_UrlParser_ParseValidUrlWithExtraSlash()
+        {
+            string url = "/album/the-suburbs/";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(ret, true);
+            Assert.AreEqual(keyword, "/album/");
+            Assert.AreEqual(title, "the-suburbs");
+            Assert.AreEqual(yearOrSeason, "");
+        }
+
+        [Test]
+        public void Test_UrlParser_ParseValidUrlWithExtraSlash2()
+        {
+            string url = "/album/the-suburbs/details/";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(ret, true);
+            Assert.AreEqual(keyword, "/album/");
+            Assert.AreEqual(title, "the-suburbs");
+            Assert.AreEqual(yearOrSeason, "");
+            Assert.AreEqual(thirdLevelReq, "details");
+        }
+
+
+        [Test]
+        public void Test_UrlParser_ParseValidUrlWithExtraSlash3()
+        {
+            string url = "/album/the-suburbs/2011/";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(ret, true);
+            Assert.AreEqual(keyword, "/album/");
+            Assert.AreEqual(title, "the-suburbs");
+            Assert.AreEqual(yearOrSeason, "2011");
+            Assert.AreEqual(thirdLevelReq, "");
+        }
+
+        [Test]
+        public void Test_UrlParser_ParseInvalidUrlWithExtraSlash()
+        {
+            string url = "/album/";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            bool ret = m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq);
+
+            Assert.AreEqual(ret, false);
+        }
+
+        [Test]
+        public void Test_UrlParser_ParseInvalidUrlWithExtraSlash2()
+        {
+            string url = "/album/the-suburbs//";
+            string keyword;
+            string title;
+            string yearOrSeason;
+            string thirdLevelReq;
+
+            Assert.That(() => m_urlParser.ParseRequestUrl("1", url, out keyword, out title, out yearOrSeason,
+                out thirdLevelReq), Throws.Exception.TypeOf<InvalidUrlException>().
+                With.Property("Message").
+                EqualTo("Invalid parameter: "));
+        }
 
         [Test]
         public void Test_UrlParser_MovieItemCreationNoThirdLevelRequest()
