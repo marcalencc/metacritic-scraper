@@ -246,11 +246,11 @@ namespace MetacriticScraper.Scraper
                     throw new Errors.EmptyResponseException("No matching data found.");
                 }
             }
-            catch (EmptyResponseException ex)
+            catch (EmptyResponseException)
             {
-                Logger.Error("No response received");
+                Logger.Info("No response received");
                 Error[] error = new Error[1];
-                Error err = new Error(ex);
+                Error err = new Error("No matching item found!");
                 error[0] = err;
                 PublishResult(request.RequestId, error);
                 RequestTrackerItem item = m_requestTracker.FirstOrDefault(r => r.RequestId == request.RequestId);
@@ -315,11 +315,11 @@ namespace MetacriticScraper.Scraper
                         throw new Errors.EmptyResponseException("No matching data found.");
                     }
                 }
-                catch (EmptyResponseException ex)
+                catch (EmptyResponseException)
                 {
-                    Logger.Error("No response received");
+                    Logger.Info("No response received");
                     Error[] error = new Error[1];
-                    Error err = new Error(ex);
+                    Error err = new Error("No matching item found!");
                     error[0] = err;
                     PublishResult(tItem.RequestId, error);
                     RequestTrackerItem reqItem = m_requestTracker.FirstOrDefault(r => r.RequestId == tItem.RequestId);

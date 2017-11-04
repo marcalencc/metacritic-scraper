@@ -15,12 +15,21 @@ namespace MetacriticScraper.Errors
             Message = exception.Message;
         }
 
+        public Error (string message)
+        {
+            Message = message;
+        }
+
         private string m_exception;
         public string Exception
         {
             get
             {
-                return m_exception.Substring(0, m_exception.IndexOf(':'));
+                if (!string.IsNullOrEmpty(m_exception))
+                {
+                    return m_exception.Substring(0, m_exception.IndexOf(':'));
+                }
+                return null;
             }
             set
             {
