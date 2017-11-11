@@ -41,7 +41,7 @@ namespace MetacriticScraper.RequestData
         {
             if (!String.IsNullOrEmpty(m_season))
             {
-                Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url + "/season-" + m_season).ToList();
+                Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url + "/season-" + m_season).Distinct().ToList();
             }
             else
             {

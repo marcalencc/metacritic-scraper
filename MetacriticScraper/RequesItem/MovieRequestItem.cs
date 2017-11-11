@@ -38,7 +38,7 @@ namespace MetacriticScraper.RequestData
 
         public override bool FilterValidUrls()
         {
-            Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url).ToList();
+            Urls = m_autoResult.Where(r => this.Equals(r)).Select(r => r.Url).Distinct().ToList();
             SetThirdLevelRequest();
             Logger.Info("{0} urls filtered for {1}", Urls.Count, SearchString);
             return Urls.Count > 0;
