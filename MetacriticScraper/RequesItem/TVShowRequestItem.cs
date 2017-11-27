@@ -4,6 +4,7 @@ using System.Linq;
 using MetacriticScraper.Scraper;
 using MetacriticScraper.Interfaces;
 using MetacriticScraper.MediaData;
+using System.Text.RegularExpressions;
 
 namespace MetacriticScraper.RequestData
 {
@@ -125,6 +126,12 @@ namespace MetacriticScraper.RequestData
                     if (desc == "Seasons")
                     {
                         value = value.Replace(" ", String.Empty);
+                    }
+
+                    if (desc.Contains("Genre"))
+                    {
+                        Regex rgx = new Regex("\\s+");
+                        value = rgx.Replace(value, " ");
                     }
 
                     DetailItem detail = new DetailItem(desc, value);
