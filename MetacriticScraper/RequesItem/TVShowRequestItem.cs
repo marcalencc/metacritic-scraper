@@ -31,7 +31,7 @@ namespace MetacriticScraper.RequestData
             List<UrlResponsePair> responses = new List<UrlResponsePair>();
             foreach (string url in Urls)
             {
-                var task = m_webUtils.HttpGet(Constants.MetacriticURL + "/" + url, Constants.MetacriticURL, 30000);
+                var task = m_webUtils.HttpGet(url, Constants.MetacriticURL, 30000);
                 responses.Add(new UrlResponsePair(url, task.Result));
             }
 
