@@ -115,7 +115,7 @@ namespace MetacriticScraper.RequestData
         {
             if (!string.IsNullOrEmpty(m_websiteString))
             {
-                Urls.Add(m_websiteString);
+                Urls.Add(Constants.MetacriticURL + m_websiteString);
                 SetThirdLevelRequest();
                 return true;
             }
