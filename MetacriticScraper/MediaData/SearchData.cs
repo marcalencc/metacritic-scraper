@@ -34,8 +34,6 @@ namespace MetacriticScraper.MediaData
         {
             public string Id { get; set; }
             public string Title { get; set; }
-            public string ReleaseDate { get; set; }
-            public string Genre { get; set; }
             public Rating Rating { get; set; }
 
             public bool Equals(SearchItem other)
@@ -44,11 +42,8 @@ namespace MetacriticScraper.MediaData
                 {
                     return Id == other.Id;
                 }
-                else
-                {
-                    return Title == other.Title &&
-                        ReleaseDate == other.ReleaseDate;
-                }
+
+                return false;
             }
         }
     }

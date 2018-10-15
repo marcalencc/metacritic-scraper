@@ -209,6 +209,12 @@ namespace MetacriticScraper.RequestData
                     while (response.Contains(@"class=""result_wrap""") && idx <= upperBound)
                     {
                         SearchData.SearchItem item = new SearchData.SearchItem();
+
+                        response = response.Substring(response.IndexOf(@"<span class=""metascore_w"));
+                        string criticScoreStr = ParseItem(ref response, @""">", "</span>");
+                        short.TryParse(criticScoreStr, out short criticScore);
+                        item.Rating = new Rating(criticScore);
+
                         string id = ParseItem(ref response, @"href=""", @""">");
 
                         // Album url has different format
@@ -221,21 +227,9 @@ namespace MetacriticScraper.RequestData
                         {
                             id = id.Replace("tv/", "tvshow/");
                         }
-
                         item.Id = id;
-                        item.Title = ParseItem(ref response, @""">", "</a>");
-                        string criticScoreStr = ParseItem(ref response, @""">", "</span>");
-                        short.TryParse(criticScoreStr, out short criticScore);
-                        item.Rating = new Rating(criticScore);
-                        item.ReleaseDate = ParseItem(ref response, @"<span class=""data"">", "</span>");
 
-                        if (response.Contains(@"class=""stat genre"""))
-                        {
-                            response = response.Substring(response.IndexOf(@"class=""stat genre"""));
-                            string genre = ParseItem(ref response, @"<span class=""data"">", "</span>");
-                            Regex rgx = new Regex("\\s+");
-                            item.Genre = rgx.Replace(genre, " ");
-                        }
+                        item.Title = ParseItem(ref response, @""">", "</a>");
 
                         if (idx > lowerBound)
                         {
